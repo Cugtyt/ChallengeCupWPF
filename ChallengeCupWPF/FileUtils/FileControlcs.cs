@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupWPF
 {
-    class FileControlcs
+    public static class FileUtils
     {
         /// <summary>
         /// read data form file

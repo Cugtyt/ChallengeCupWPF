@@ -78,7 +78,7 @@ namespace ChallengeCupWPF
                 Console.WriteLine("open file: " + openFile.FileName);
 #endif
                 // Read form file
-                dataList = await FileControlcs.ReadDataAsync(openFile.FileName);
+                dataList = await FileUtils.ReadDataAsync(openFile.FileName);
                 // Add data to dataSource
                 for (int i = 0; i < dataList.Length; i++)
                 {
@@ -92,7 +92,7 @@ namespace ChallengeCupWPF
 
         private async void SaveFile_Click(object sender, RoutedEventArgs e)
         {
-            await FileControlcs.WriteData(dataList, "c:\\");
+            await FileUtils.WriteData(dataList, "c:\\");
         }
     }
 }
