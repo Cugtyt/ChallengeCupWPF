@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ChallengeCupWPF
@@ -44,8 +45,7 @@ namespace ChallengeCupWPF
                         // read all data form file
                         string text = reader.ReadToEnd();
                         #region SpiltData
-                        // it costs less time than RegexMatch
-                        string[] data = text.Replace("\r\n", " ")
+                        string[] data = text.Replace("\r\n", " ").Replace("\t", " ")
                             .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 #if DEBUG
                         foreach (var d in data)

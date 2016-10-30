@@ -14,7 +14,7 @@ namespace ChallengeCupWPF.DataUtils
     /// <summary>
     /// FFT data
     /// </summary>
-    static class FFT
+    public static class FFT
     {
         /// <summary>
         /// Get data from ObservableDataSource<Point>[] and FFT them
@@ -23,8 +23,6 @@ namespace ChallengeCupWPF.DataUtils
         /// <returns>FFT result</returns>
         public static ObservableDataSource<Point>[] FFTForward(ObservableDataSource<Point>[] dataSource)
         {
-            //var points = dataSource[0].GetPoints().ToList();
-
             // Get points form dataSource
             List<Point>[] points = new List<Point>[dataSource.Length];
             for (int i = 0; i < points.Length; i++)

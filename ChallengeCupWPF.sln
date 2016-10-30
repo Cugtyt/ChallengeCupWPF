@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeCupWPF", "ChallengeCupWPF\ChallengeCupWPF.csproj", "{C7685BE1-E7BB-4E2A-9960-5B651DBC0C75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChallengeCupWPFTests", "ChallengeCupWPFTests\ChallengeCupWPFTests.csproj", "{9A21B192-8C9C-4128-AC97-0F69DF76D259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C7685BE1-E7BB-4E2A-9960-5B651DBC0C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7685BE1-E7BB-4E2A-9960-5B651DBC0C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7685BE1-E7BB-4E2A-9960-5B651DBC0C75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A21B192-8C9C-4128-AC97-0F69DF76D259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A21B192-8C9C-4128-AC97-0F69DF76D259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A21B192-8C9C-4128-AC97-0F69DF76D259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A21B192-8C9C-4128-AC97-0F69DF76D259}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

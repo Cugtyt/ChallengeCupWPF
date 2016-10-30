@@ -7,66 +7,42 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupWPF.TCPRead
 {
-    class TCPRead
+    public class TCPRead
     {
-        private static int portNum = 13;
-        private static string hostName = "host.contoso.com";
-        //private static bool isStoped = true;
+        private static int port = 5000;
+        private static string server = "127.0.0.1";
+        public static float data;
+        public static bool isConnect = true;
 
-        public static void Read(List<float> dataList)
+        public static void Read()
         {
-            // This is demo
-            // Change it while using
-            try
+            using (TcpClient client = new TcpClient(server, port))
             {
-                TcpClient client = new TcpClient(hostName, portNum);
-                NetworkStream ns = client.GetStream();
-                byte[] bytes = new byte[1024];
-                int bytesRead = ns.Read(bytes, 0, bytes.Length);
-                Console.WriteLine(Encoding.ASCII.GetString(bytes, 0, bytesRead));
-                client.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
+                using (NetworkStream stream = client.GetStream())
+                {
+                    // DO NOT REMOVE, FOR TEST
+                    // Read data once, Tested successfully
+                    // Uncommit this code block whiling testing
+                    // -----------test code block begins------------
+                    //Byte[] recv = new Byte[4];
+                    //stream.Read(recv, 0, recv.Length);
+                    //bytes = BitConverter.ToSingle(recv, 0);
+                    // -----------test code block ends------------
+
+                    while (isConnect)
+                    {
+                        Byte[] recv = new Byte[4];
+                        stream.Read(recv, 0, recv.Length);
+                        data = BitConverter.ToSingle(recv, 0);
+                        Console.WriteLine(data);
+                        if (data == -1000f)
+                        {
+                            isConnect = false;
+                        }
+                    }
+                }
             }
         }
 
     }
-
-    //public class TcpTimeServer {
-
-    //private const int portNum = 13;
-
-    //public static int Main(String[] args) {
-    //    bool done = false;
-
-    //    TcpListener listener = new TcpListener(portNum);
-
-    //    listener.Start();
-
-    //    while (!done) {
-    //        Console.Write("Waiting for connection...");
-    //        TcpClient client = listener.AcceptTcpClient();
-
-    //        Console.WriteLine("Connection accepted.");
-    //        NetworkStream ns = client.GetStream();
-
-    //        byte[] byteTime = Encoding.ASCII.GetBytes(DateTime.Now.ToString());
-
-    //        try {
-    //            ns.Write(byteTime, 0, byteTime.Length);
-    //            ns.Close();
-    //            client.Close();
-    //        } catch (Exception e) {
-    //            Console.WriteLine(e.ToString());
-    //        }
-    //    }
-
-    //    listener.Stop();
-
-    //    return 0;
-    //}
-
-//}
 }

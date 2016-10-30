@@ -92,7 +92,7 @@ namespace ChallengeCupWPF
 
         private async void SaveFile_Click(object sender, RoutedEventArgs e)
         {
-            await FileUtils.WriteData(dataList, "c:\\");
+            await FileUtils.WriteData(dataList, @"C:\Users\Daniel\Desktop\write.txt");
         }
     }
 }
