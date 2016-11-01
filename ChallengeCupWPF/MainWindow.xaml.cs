@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
+using ChallengeCupWPF.DataUtils;
+using System.Linq;
 
 namespace ChallengeCupWPF
 {
@@ -32,6 +34,7 @@ namespace ChallengeCupWPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Set dataSource
             for (int i = 0; i < dataSource.Length; i++)
             {
                 dataSource[i] = new ObservableDataSource<Point>();
@@ -48,26 +51,8 @@ namespace ChallengeCupWPF
             if (enableTCPRead && TCPRead.TCPRead.isConnected)
             {
                 dataSource[0].AppendAsync(Dispatcher, new Point(x++, TCPRead.TCPRead.data));
-                //dataSource[0].AppendAsync(Dispatcher, new Point(x++, TCPRead.TCPRead.data[10]));
-                //Task.Run(AddTCPDataToDataSource, cts.Token);
             }
         }
-
-        /// <summary>
-        /// Add tcp data to dataSource
-        /// </summary>
-        //private Task AddTCPDataToDataSource()
-        //{
-            //            for (int i = 0; i < TCPRead.TCPRead.data.Length; i++)
-            //            {
-            //                dataSource[0].AppendAsync(Dispatcher, new Point(x++, TCPRead.TCPRead.data[i]));
-            //#if DEBUG
-            //                Console.WriteLine("dataSource[0] append " + TCPRead.TCPRead.data[i]);
-            //#endif
-            //            }
-            //dataSource[0].AppendAsync(Dispatcher, new Point(x++, TCPRead.TCPRead.data[10]));
-            //return null;
-        //}
 
         /// <summary>
         /// Open file and read data
@@ -85,9 +70,10 @@ namespace ChallengeCupWPF
             if (openFile.ShowDialog() == true)
             {
 #if DEBUG
-                Console.WriteLine("open file: " + openFile.FileName);
+                Console.WriteLine("Open file: " + openFile.FileName);
 #endif
-                ClearDataSourceAll();
+                dataSource.ClearDataSourceAll();
+                
                 // Read form file
                 List<float>[] dataList = await FileUtils.ReadDataAsync(openFile.FileName);
 
@@ -102,10 +88,22 @@ namespace ChallengeCupWPF
             }
         }
 
-        private void SaveFile_Click(object sender, RoutedEventArgs e)
+        private async void SaveFile_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Get data to write
-            //await FileUtils.WriteData(dataList, @"C:\Users\Daniel\Desktop\write.txt");
+
+            // Doesn't Test yet
+            // TODO: open SaveFileDialog and add path to write data.
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "txt file|*.txt";
+            if (saveFile.ShowDialog() == true)
+            {
+#if DEBUG
+                Console.WriteLine("Write to file: " + saveFile.FileName);
+#endif
+                // Not update data from tcp
+                enableTCPRead = false;
+                await FileUtils.WriteData(dataSource.ToList().ToFloatList(), saveFile.FileName);
+            }
         }
 
         private void ConnectTCP_Click(object sender, RoutedEventArgs e)
@@ -114,7 +112,7 @@ namespace ChallengeCupWPF
             if (enableTCPRead)
             {
                 x = 0;
-                ClearDataSourceAll();
+                dataSource.ClearDataSourceAll();
                 Task.Run(TCPRead.TCPRead.Read, cts.Token);
             }
             else
@@ -124,27 +122,10 @@ namespace ChallengeCupWPF
             }
         }
 
-        /// <summary>
-        /// Clear dataSource[index]
-        /// </summary>
-        /// <param name="index"></param>
-        private void ClearDataSource(int index)
+        private void FFTForward_Click(object sender, RoutedEventArgs e)
         {
-            if (dataSource[index].Collection != null)
-            {
-                dataSource[index].Collection.Clear();
-            }
-        }
-
-        /// <summary>
-        /// Clear dataSource array
-        /// </summary>
-        private void ClearDataSourceAll()
-        {
-            for (int i = 0; i < dataSource.Length; i++)
-            {
-                ClearDataSource(i);
-            }
+            //TODO: make this work
+            dataSource.AddMany
         }
     }
 }

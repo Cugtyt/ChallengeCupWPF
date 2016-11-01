@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ChallengeCupWPF.TCPRead
 {
@@ -47,6 +48,11 @@ namespace ChallengeCupWPF.TCPRead
                         isConnected = false;
                     }
                 }
+            }
+            catch (SocketException e)
+            {
+                MessageBox.Show("无连接");
+                Console.WriteLine(e);
             }
             catch (Exception e)
             {

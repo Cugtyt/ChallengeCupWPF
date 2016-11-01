@@ -81,26 +81,30 @@ namespace ChallengeCupWPF
 #if DEBUG
             Console.WriteLine("write to file " + filePath);
 #endif
-            using (StreamWriter writer = new StreamWriter(filePath))
+            Task.Run(() =>
             {
-                // write number of chanels to file
-                writer.WriteLine(data.Length);
-#if DEBUG
-                Console.WriteLine("chanel number is " + data.Length);
-#endif
-                // write data
-                for (int i = 0; i < data[0].Count; i++)
+
+                using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    foreach (var item in data)
-                    {
-                        writer.Write(item[i] + "\t");
-                    }
-                    writer.WriteLine();
-                }
+                    // write number of chanels to file
+                    writer.WriteLine(data.Length);
 #if DEBUG
-                Console.WriteLine("write done");
+                    Console.WriteLine("chanel number is " + data.Length);
 #endif
-            }
+                    // write data
+                    for (int i = 0; i < data[0].Count; i++)
+                    {
+                        foreach (var item in data)
+                        {
+                            writer.Write(item[i] + "\t");
+                        }
+                        writer.WriteLine();
+                    }
+#if DEBUG
+                    Console.WriteLine("write done");
+#endif
+                }
+            });
             return null;
         }
     }
