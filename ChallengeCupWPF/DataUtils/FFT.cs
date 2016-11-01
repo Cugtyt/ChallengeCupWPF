@@ -1,12 +1,8 @@
-﻿using MathNet.Numerics;
-using MathNet.Numerics.IntegralTransforms;
+﻿using MathNet.Numerics.IntegralTransforms;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ChallengeCupWPF.DataUtils

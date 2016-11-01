@@ -10,10 +10,13 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <DockPanel>
-            <Menu IsMainMenu="True" DockPanel.Dock="Top" Height="28">
+            <Menu DockPanel.Dock="Top" Height="28">
                 <MenuItem Header="File" Height="28" FontSize="14">
                     <MenuItem Header="Open" Click="OpenFile_Click"/>
                     <MenuItem Header="Save" Click="SaveFile_Click"/>
+                </MenuItem>
+                <MenuItem Header="TCP" Height="28" FontSize="14">
+                    <MenuItem Header="Connect" Click="ConnectTCP_Click"/>
                 </MenuItem>
             </Menu>
             <d3:ChartPlotter x:Name="plotter" Margin="10,10,20,10" Grid.Row="1">

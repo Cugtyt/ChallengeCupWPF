@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ChallengeCupWPF
@@ -74,6 +71,13 @@ namespace ChallengeCupWPF
         /// <param name="filePath">file path</param>
         public static Task WriteData(List<float>[] data, string filePath)
         {
+            if (data == null || data[0] == null)
+            {
+#if DEBUG
+                Console.WriteLine("Data to write is empty");
+#endif
+                return null;
+            }
 #if DEBUG
             Console.WriteLine("write to file " + filePath);
 #endif

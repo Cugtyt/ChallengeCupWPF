@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ChallengeCupWPF.TCPRead
@@ -11,37 +8,52 @@ namespace ChallengeCupWPF.TCPRead
     {
         private static int port = 5000;
         private static string server = "127.0.0.1";
+        // Store data from tcp
+        //public static float[] data = new float[100];
         public static float data;
-        public static bool isConnect = true;
+        // Whether tcp is connected
+        public static bool isConnected = false;
+        // Array index to write
+        public static int index = 0;
 
-        public static void Read()
+        public static Task Read()
         {
-            using (TcpClient client = new TcpClient(server, port))
+            try
             {
-                using (NetworkStream stream = client.GetStream())
+                using (TcpClient client = new TcpClient(server, port))
                 {
-                    // DO NOT REMOVE, FOR TEST
-                    // Read data once, Tested successfully
-                    // Uncommit this code block whiling testing
-                    // -----------test code block begins------------
-                    //Byte[] recv = new Byte[4];
-                    //stream.Read(recv, 0, recv.Length);
-                    //bytes = BitConverter.ToSingle(recv, 0);
-                    // -----------test code block ends------------
-
-                    while (isConnect)
+                    using (NetworkStream stream = client.GetStream())
                     {
-                        Byte[] recv = new Byte[4];
-                        stream.Read(recv, 0, recv.Length);
-                        data = BitConverter.ToSingle(recv, 0);
-                        Console.WriteLine(data);
-                        if (data == -1000f)
+                        // DO NOT REMOVE, FOR TEST
+                        // Read data once, Tested successfully
+                        // Uncommit this code block whiling testing
+                        // -----------test code block begins------------
+                        //Byte[] recv = new Byte[4];
+                        //stream.Read(recv, 0, recv.Length);
+                        //bytes = BitConverter.ToSingle(recv, 0);
+                        // -----------test code block ends------------
+
+                        isConnected = true;
+                        while (isConnected)
                         {
-                            isConnect = false;
+                            Byte[] recv = new Byte[4];
+                            stream.Read(recv, 0, recv.Length);
+                            data = BitConverter.ToSingle(recv, 0);
+                            //data[index] = BitConverter.ToSingle(recv, 0);
+                            //Console.WriteLine("TCPRead recv " + data[index]);
+                            Task.Delay(10);
+                            //index = (++index) % data.Length;
                         }
+                        isConnected = false;
                     }
                 }
             }
+            catch (Exception e)
+            {
+                isConnected = false;
+                Console.WriteLine(e);
+            }
+            return null;
         }
 
     }
