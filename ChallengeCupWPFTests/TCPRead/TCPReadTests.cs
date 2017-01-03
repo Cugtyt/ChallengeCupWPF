@@ -19,7 +19,7 @@ namespace ChallengeCupWPF.TCPRead.Tests
             // Notice: Start a server first
             // Server sample is in LearnWPF/TCPServer
             TCPRead.Read();
-            Assert.AreEqual(TCPRead.data, 1500.0f);
+            Assert.AreEqual(TCPRead.Data, 1500.0f);
         }
     }
 

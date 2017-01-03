@@ -1,0 +1,39 @@
+﻿<Window x:Class="ChallengeCupV1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChallengeCupV1"
+        xmlns:data="clr-namespace:ChallengeCupV1.DataSource"
+        xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Wave" Name="wave">
+                <TabItem.Resources>
+                    <data:Data x:Key="dataSource"/>
+                </TabItem.Resources>
+                <d3:ChartPlotter x:Name="plotter" Margin="10,10,20,10" DataContext="{StaticResource dataSource}">
+                    <d3:ChartPlotter.VerticalAxis>
+                        <d3:VerticalIntegerAxis />
+                    </d3:ChartPlotter.VerticalAxis>
+                    <d3:ChartPlotter.HorizontalAxis>
+                        <d3:HorizontalIntegerAxis />
+                    </d3:ChartPlotter.HorizontalAxis>
+                    <d3:Header Content="Title"/>
+                    <d3:VerticalAxisTitle Content="Y"/>
+                    <d3:LineGraph x:Name="line" DataSource="{Binding Points}"/>
+                </d3:ChartPlotter>
+            </TabItem>
+
+            <TabItem Header="Gear" Name="gear">
+
+            </TabItem>
+
+            <TabItem Header="Status" Name="status">
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
