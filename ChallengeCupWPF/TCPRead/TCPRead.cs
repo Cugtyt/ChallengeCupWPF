@@ -7,8 +7,8 @@ namespace ChallengeCupWPF.TCPRead
 {
     public class TCPRead
     {
-        private static int port = 5000;
-        private static string server = "127.0.0.1";
+        private static int port = 3000;
+        private static string server = "129.168.1.200";
         // Store data from tcp
         //public static float[] data = new float[100];
         public static float Data;

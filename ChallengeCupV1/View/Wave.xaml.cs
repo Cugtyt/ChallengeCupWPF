@@ -23,6 +23,21 @@ namespace ChallengeCupV1.View
         public Wave()
         {
             InitializeComponent();
+            DataContext = new DataSource.Data();
+        }
+
+        /// <summary>
+        /// Test OK
+        /// add test data to dataSource, it can display
+        /// time: 2017年1月10日17:16:41
+        /// </summary>
+        public void change()
+        {
+            var dataSource = (DataSource.Data)DataContext;
+            dataSource.Add(50);
+            dataSource.Add(80);
+            dataSource.Add(100);
+            dataSource.Update();
         }
     }
 }

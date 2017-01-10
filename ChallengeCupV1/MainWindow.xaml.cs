@@ -24,9 +24,7 @@ namespace ChallengeCupV1
         public MainWindow()
         {
             InitializeComponent();
-            DataSource.Data points = new DataSource.Data();
-            //wave.DataContext = points;
-
+            wave1.change();
         }
     }
 }
