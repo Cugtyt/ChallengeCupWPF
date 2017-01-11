@@ -20,10 +20,14 @@ namespace ChallengeCupV1.View
     /// </summary>
     public partial class Wave : UserControl
     {
+        DataSource.Data dataSource = new DataSource.Data();
         public Wave()
         {
+#if DEBUG
+            Console.WriteLine("Wave: Wave()");
+#endif
             InitializeComponent();
-            DataContext = new DataSource.Data();
+            DataContext = dataSource;
         }
 
         /// <summary>
@@ -33,11 +37,23 @@ namespace ChallengeCupV1.View
         /// </summary>
         public void change()
         {
-            var dataSource = (DataSource.Data)DataContext;
+#if DEBUG
+            Console.WriteLine("Wave: change()");
+#endif
             dataSource.Add(50);
             dataSource.Add(80);
             dataSource.Add(100);
             dataSource.Update();
+        }
+
+        /// <summary>
+        /// Add double list to dataSource
+        /// </summary>
+        /// <param name="yList"></param>
+        /// <returns></returns>
+        public async Task AddPoints(List<double> yList)
+        {
+            await dataSource.Add(yList);
         }
     }
 }

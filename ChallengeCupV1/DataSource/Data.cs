@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,9 +17,12 @@ namespace ChallengeCupV1.DataSource
     /// </summary>
     public class Data : DependencyObject
     {
-
-        static int capacity = 200;
-        Queue<double> y = new Queue<double>(capacity);
+        private static int times = 0;
+        private static int capacity = 100;
+        // y data set
+        //Queue<double> yQueue = new Queue<double>(capacity);
+        private double[] ySet = new double[capacity];
+        private int writeIndex = 0;
 
         public ObservableDataSource<Point> Points
         {
@@ -55,27 +59,89 @@ namespace ChallengeCupV1.DataSource
         /// Add new y value
         /// </summary>
         /// <param name="newY"></param>
-        public void Add(double newY)
+        public Task Add(double newY)
         {
-            if (y.Count == capacity)
+            times++;
+#if DEBUG
+            // Console.WriteLine("Data: Add(" + newY + ")");
+#endif
+            //if (yQueue.Count >= capacity)
+            //{
+            //    yQueue.Dequeue();
+            //}
+            //yQueue.Enqueue(newY);
+            ySet[writeIndex++] = newY;
+            writeIndex = writeIndex % capacity;
+            if (times == 20)
             {
-                y.Dequeue();
+                Update();
+                times = 0;
             }
-            y.Enqueue(newY);
+            return null;
+        }
+
+        /// <summary>
+        /// Add double list to ySet
+        /// </summary>
+        /// <param name="newYs"></param>
+        /// <returns></returns>
+        public async Task Add(List<double> newYs)
+        {
+            if (newYs.Count >= capacity)
+            {
+                //yQueue = new Queue<double>(newYs);
+                ySet = newYs.ToArray();
+                await Update();
+                return;
+            }
+            for (int i = 0; i < newYs.Count; i++)
+            {
+                //yQueue.Enqueue(newYs[i]);
+                ySet[writeIndex++] = newYs[i];
+                writeIndex = writeIndex % capacity;
+            }
+            await Update();
         }
 
         /// <summary>
         /// Update Points when it's time to display
         /// </summary>
-        public void Update()
+        public Task Update()
         {
+#if DEBUG
+            Console.WriteLine("Data: Update()");
+#endif
             List<Point> pl = new List<Point>();
-            for (int i = 0; i < y.Count; i++)
+            //for (int i = 0; i < yQueue.Count; i++)
+            //{
+            //    pl.Add(new Point(i, yQueue.ElementAt(i)));
+            //}
+            for (int i = 0; i < capacity; i++)
             {
-                pl.Add(new Point(i, y.ElementAt(i)));
+                pl.Add(new Point(i, ySet[i]));
             }
             Points.Collection.Clear();
             Points.AppendMany(pl);
+            return null;
+        }
+
+        /// <summary>
+        /// Transform yQueue to complex array
+        /// </summary>
+        /// <returns></returns>
+        public Complex[] ToComplexArray()
+        {
+            //Complex[] com = new Complex[yQueue.Count];
+            //for (int i = 0; i < yQueue.Count; i++)
+            //{
+            //    com[i] = new Complex(yQueue.ElementAt(i), 0);
+            //}
+            Complex[] com = new Complex[capacity];
+            for (int i = 0; i < capacity; i++)
+            {
+                com[i] = new Complex(ySet[i], 0);
+            }
+            return com;
         }
     }
 }

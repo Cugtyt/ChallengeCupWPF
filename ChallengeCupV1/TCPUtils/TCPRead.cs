@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ChallengeCupWPF.TCPRead
+namespace ChallengeCupV1.TCPUtils
 {
     public class TCPRead
     {
         private static int port = 5000;
         private static string server = "127.0.0.1";
         // Store data from tcp
-        //public static float[] data = new float[100];
-        public static float Data;
+        public static double Data;
         // Whether tcp is connected
         public static bool IsConnected = false;
         // Array index to write
@@ -35,15 +37,14 @@ namespace ChallengeCupWPF.TCPRead
                 // -----------test code block ends------------
 
                 IsConnected = true;
-                Byte[] recv = new Byte[4];
+                byte[] recv = new byte[4];
                 while (IsConnected)
                 {
                     stream.Read(recv, 0, recv.Length);
-                    Data = BitConverter.ToSingle(recv, 0);
-                    //data[index] = BitConverter.ToSingle(recv, 0);
-                    //Console.WriteLine("TCPRead recv " + data[index]);
+                    Data = BitConverter.ToDouble(recv, 0);
+
                     Task.Delay(10);
-                    //index = (++index) % data.Length;
+                  
                 }
                 IsConnected = false;
             }
