@@ -10,7 +10,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <TabControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" Margin="5,5,5,0">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="60"/>
+                </Style>
+            </TabControl.Resources>
             <TabItem Header="Wave" Name="waveTab">
                 <TabItem.Resources>
                     <data:Data x:Key="dataSource"/>
@@ -57,6 +67,6 @@
 
             </TabItem>
         </TabControl>
-        
+        <view:FunctionColumn Grid.Row="1"/>
     </Grid>
 </Window>

@@ -71,6 +71,12 @@
     <Compile Include="View\FunctionColumn.xaml.cs">
       <DependentUpon>FunctionColumn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Gear.xaml.cs">
+      <DependentUpon>Gear.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Status.xaml.cs">
+      <DependentUpon>Status.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Wave.xaml.cs">
       <DependentUpon>Wave.xaml</DependentUpon>
     </Compile>
@@ -88,6 +94,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\FunctionColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gear.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Status.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
