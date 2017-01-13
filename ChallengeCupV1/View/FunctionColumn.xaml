@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:ChallengeCupV1.View"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
-    <DockPanel Margin="5,5,10,5">
-        <Button x:Name="connect" Content="Connect" Width="60" Click="connect_Click"/>
-        <Button x:Name="start" Content="Start" Width="60" Click="start_Click"/>
-        <Button x:Name="exit" Content="Exit" Width="60" HorizontalAlignment="Right" Click="exit_Click"/>
+    <DockPanel Margin="5,5,10,10">
+        <Button x:Name="connect" Content="Connect" Width="100" Click="connect_Click"/>
+        <Button x:Name="start" Content="Start" Width="100" Click="start_Click"/>
+        <Button x:Name="exit" Content="Exit" Width="100" HorizontalAlignment="Right" Click="exit_Click"/>
     </DockPanel>
 </UserControl>

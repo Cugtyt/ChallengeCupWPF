@@ -60,11 +60,25 @@ namespace ChallengeCupV1
             {
                 var data = await File.FileUtils
                 .ReadDataAsync(directoryPath + files[fileIndex++].Name);
-                wave1.AddPoints(data[0]);
-                wave2.AddPoints(data[1]);
-                wave3.AddPoints(data[2]);
-                wave4.AddPoints(data[3]);
+                //wave1.AddPoints(data[0]);
+                //wave2.AddPoints(data[1]);
+                //wave3.AddPoints(data[2]);
+                //wave4.AddPoints(data[3]);
+                wave.AddPoints(data[0]);
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+            WindowStyle = WindowStyle.None;
+            ResizeMode = ResizeMode.NoResize;
+            Topmost = true;
+
+            Left = 0.0;
+            Top = 0.0;
+            Width = SystemParameters.PrimaryScreenWidth;
+            Height = SystemParameters.PrimaryScreenHeight;
         }
     }
 }

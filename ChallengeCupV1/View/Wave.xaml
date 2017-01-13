@@ -7,6 +7,7 @@
              xmlns:data="clr-namespace:ChallengeCupV1.DataSource"
              xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
              mc:Ignorable="d" 
+             Foreground="Black"
              d:DesignHeight="300" d:DesignWidth="300">
     <!--<UserControl.Resources>
         <data:Data x:Key="dataSource"/>
@@ -19,8 +20,8 @@
         <d3:ChartPlotter.HorizontalAxis>
             <d3:HorizontalIntegerAxis />
         </d3:ChartPlotter.HorizontalAxis>
-        <d3:Header Content="Title"/>
+        <!--<d3:Header Content="Title"/>-->
         <d3:VerticalAxisTitle Content="Y"/>
-        <d3:LineGraph x:Name="line" DataSource="{Binding Points}" />
+        <d3:LineGraph x:Name="line" DataSource="{Binding Points}"/>
     </d3:ChartPlotter>
 </UserControl>

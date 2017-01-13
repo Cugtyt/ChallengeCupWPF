@@ -5,68 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChallengeCupV1"
         xmlns:view="clr-namespace:ChallengeCupV1.View"
+        xmlns:waveTab="clr-namespace:ChallengeCupV1.View.WaveTab"
         xmlns:data="clr-namespace:ChallengeCupV1.DataSource"
         xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Background="SlateGray"
+        Loaded="Window_Loaded"
+        Title="MainWindow" Height="350" Width="525" AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0" Margin="5,5,5,0">
+        <TabControl Grid.Row="0" TabStripPlacement="Left" Margin="1,-1,-1,6">
             <TabControl.Resources>
-                <Style TargetType="TabItem">
-                    <Setter Property="Height" Value="30"/>
-                    <Setter Property="Width" Value="60"/>
-                </Style>
+                <ResourceDictionary Source="View/Resource/TabStyle.xaml"/>
             </TabControl.Resources>
             <TabItem Header="Wave" Name="waveTab">
                 <TabItem.Resources>
                     <data:Data x:Key="dataSource"/>
                 </TabItem.Resources>
                 <Grid>
-                    <UniformGrid Rows="2" Columns="2">
-                        <!--<Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>-->
-                    <view:Wave x:Name="wave1" 
-                               Margin="10,10,20,10" Grid.Column="0" Grid.Row="0"/>
-                    <view:Wave x:Name="wave2" 
-                               Margin="10,10,20,10" Grid.Column="1" Grid.Row="0"/>
-                    <view:Wave x:Name="wave3" 
-                               Margin="10,10,20,10" Grid.Column="0" Grid.Row="1"/>
-                    <view:Wave x:Name="wave4" 
-                               Margin="10,10,20,10" Grid.Column="1" Grid.Row="1"/>
-                    </UniformGrid>
+                    
+                    <view:Wave x:Name="wave"/>
                 </Grid>
-                
-                <!--<d3:ChartPlotter x:Name="plotter" Margin="10,10,20,10" DataContext="{StaticResource dataSource}">
-                    <d3:ChartPlotter.VerticalAxis>
-                        <d3:VerticalIntegerAxis />
-                    </d3:ChartPlotter.VerticalAxis>
-                    <d3:ChartPlotter.HorizontalAxis>
-                        <d3:HorizontalIntegerAxis />
-                    </d3:ChartPlotter.HorizontalAxis>
-                    <d3:Header Content="Title"/>
-                    <d3:VerticalAxisTitle Content="Y"/>
-                    <d3:LineGraph x:Name="line" DataSource="{Binding Points}"/>
-                </d3:ChartPlotter>-->
             </TabItem>
 
-            <TabItem Header="Gear" Name="gear">
+            <TabItem Header="Gear" Name="gear"></TabItem>
 
-            </TabItem>
-
-            <TabItem Header="Status" Name="status">
-
-            </TabItem>
+            <TabItem Header="Status" Name="status"></TabItem>
         </TabControl>
-        <view:FunctionColumn Grid.Row="1"/>
+        <view:FunctionColumn Grid.Row="1" Margin="120,0,0,0"/>
     </Grid>
 </Window>

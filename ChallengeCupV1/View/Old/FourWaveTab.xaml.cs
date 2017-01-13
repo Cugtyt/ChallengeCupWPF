@@ -16,28 +16,13 @@ using System.Windows.Shapes;
 namespace ChallengeCupV1.View
 {
     /// <summary>
-    /// FunctionColumn.xaml 的交互逻辑
+    /// FourWaveTab.xaml 的交互逻辑
     /// </summary>
-    public partial class FunctionColumn : UserControl
+    public partial class FourWaveTab : UserControl
     {
-        public FunctionColumn()
+        public FourWaveTab()
         {
             InitializeComponent();
-        }
-
-        private void start_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void connect_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

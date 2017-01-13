@@ -28,6 +28,7 @@ namespace ChallengeCupV1.View
 #endif
             InitializeComponent();
             DataContext = dataSource;
+           
         }
 
         /// <summary>
