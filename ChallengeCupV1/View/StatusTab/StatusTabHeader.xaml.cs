@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChallengeCupV1.View.WaveTab
+namespace ChallengeCupV1.View.StatusTab
 {
     /// <summary>
-    /// TabContent.xaml 的交互逻辑
+    /// StatusTabHeader.xaml 的交互逻辑
     /// </summary>
-    public partial class TabContent : UserControl
+    public partial class StatusTabHeader : UserControl
     {
-        public TabContent()
+        public StatusTabHeader()
         {
             InitializeComponent();
         }

@@ -13,16 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChallengeCupV1.View
+namespace ChallengeCupV1.View.WaveTab
 {
     /// <summary>
-    /// Gear.xaml 的交互逻辑
+    /// TabContent.xaml 的交互逻辑
     /// </summary>
-    public partial class Gear : UserControl
+    public partial class WaveTabContent : UserControl
     {
-        public Gear()
+       
+        public WaveTabContent()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Add double list to dataSource
+        /// </summary>
+        /// <param name="yList"></param>
+        /// <returns></returns>
+        public async Task AddPoints(List<double> yList)
+        {
+            await wavePlot.AddPoints(yList);
         }
     }
 }

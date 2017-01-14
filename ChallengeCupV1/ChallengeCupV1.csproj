@@ -68,23 +68,29 @@
     <Compile Include="DataSource\FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />
     <Compile Include="TCPUtils\TCPRead.cs" />
+    <Compile Include="View\GearTab\GearTabHeader.xaml.cs">
+      <DependentUpon>GearTabHeader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Old\FourWaveTab.xaml.cs">
       <DependentUpon>FourWaveTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FunctionColumn.xaml.cs">
       <DependentUpon>FunctionColumn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gear.xaml.cs">
-      <DependentUpon>Gear.xaml</DependentUpon>
+    <Compile Include="View\StatusTab\StatusTabHeader.xaml.cs">
+      <DependentUpon>StatusTabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Status.xaml.cs">
-      <DependentUpon>Status.xaml</DependentUpon>
+    <Compile Include="View\WaveTab\WaveTabContent.xaml.cs">
+      <DependentUpon>WaveTabContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\WaveTab\TabContent.xaml.cs">
-      <DependentUpon>TabContent.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Wave.xaml.cs">
+    <Compile Include="View\Old\Wave.xaml.cs">
       <DependentUpon>Wave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WaveTab\WavePlot.xaml.cs">
+      <DependentUpon>WavePlot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WaveTab\WaveTabHeader.xaml.cs">
+      <DependentUpon>WaveTabHeader.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\GearTab\GearTabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Old\FourWaveTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,23 +117,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gear.xaml">
+    <Page Include="View\Resource\Style\TabHeaderStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Resource\TabStyle.xaml">
+    <Page Include="View\Resource\Style\TabStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Status.xaml">
+    <Page Include="View\StatusTab\StatusTabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\WaveTab\TabContent.xaml">
+    <Page Include="View\WaveTab\WaveTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Wave.xaml">
+    <Page Include="View\Old\Wave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WaveTab\WavePlot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WaveTab\WaveTabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,7 +174,32 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resource\Icon\WaveTabIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resource\Icon\Connect.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\Exit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\GearTabIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\GenerateReport.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\Start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\Resource\Icon\StatusTabIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

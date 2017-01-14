@@ -44,10 +44,10 @@ namespace ChallengeCupV1
             files = dire.GetFiles();
 #if DEBUG
             Console.WriteLine("files name list");
-            for (int i = 0; i < files.Length; i++)
-            {
-                Console.WriteLine(files[i].Name);
-            }
+            //for (int i = 0; i < files.Length; i++)
+            //{
+            //    Console.WriteLine(files[i].Name);
+            //}
 #endif
             timer.Interval = TimeSpan.FromMilliseconds(100);
             timer.Tick += new EventHandler(AnimatedPlot);
@@ -64,12 +64,16 @@ namespace ChallengeCupV1
                 //wave2.AddPoints(data[1]);
                 //wave3.AddPoints(data[2]);
                 //wave4.AddPoints(data[3]);
+                //wave.AddPoints(data[0]);
+                //((View.WaveTab.TabContent)wave.Content).wavePlot.AddPoints(data[0]);
+                //wave.wavePlot.AddPoints(data[0]);
                 wave.AddPoints(data[0]);
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Set window size max
             WindowState = WindowState.Normal;
             WindowStyle = WindowStyle.None;
             ResizeMode = ResizeMode.NoResize;

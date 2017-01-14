@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ChallengeCupV1.View
+namespace ChallengeCupV1.View.GearTab
 {
     /// <summary>
-    /// Status.xaml 的交互逻辑
+    /// GearTabHeader.xaml 的交互逻辑
     /// </summary>
-    public partial class Status : UserControl
+    public partial class GearTabHeader : UserControl
     {
-        public Status()
+        public GearTabHeader()
         {
             InitializeComponent();
         }
