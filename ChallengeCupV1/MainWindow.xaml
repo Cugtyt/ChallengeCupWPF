@@ -9,7 +9,6 @@
         xmlns:gearTab="clr-namespace:ChallengeCupV1.View.GearTab"
         xmlns:statusTab="clr-namespace:ChallengeCupV1.View.StatusTab"
         xmlns:data="clr-namespace:ChallengeCupV1.DataSource"
-        xmlns:style="clr-namespace:ChallengeCupV1.View"
         xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
         mc:Ignorable="d"
         Background="SlateGray"
@@ -20,7 +19,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0" TabStripPlacement="Left" Margin="1,-1,-1,6">
+        <TabControl Grid.Row="0" TabStripPlacement="Left">
             <TabControl.Resources>
                 <ResourceDictionary Source="View/Resource/Style/TabStyle.xaml"/>
             </TabControl.Resources>

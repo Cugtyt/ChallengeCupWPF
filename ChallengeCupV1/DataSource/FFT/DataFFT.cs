@@ -8,13 +8,13 @@ using MathNet.Numerics.IntegralTransforms;
 
 namespace ChallengeCupV1.DataSource.FFT
 {
-    class DataFFT
+    public class DataFFT
     {
         /// <summary>
         /// Forward Complex[] data
         /// </summary>
         /// <returns></returns>
-        public Task<bool> Forward(Complex[] data)
+        public static Task<Complex[]> Forward(Complex[] data)
         {
 #if DEBUG
             Console.WriteLine("DataFFT: Forward()");
@@ -28,7 +28,7 @@ namespace ChallengeCupV1.DataSource.FFT
 #if DEBUG
                 Console.WriteLine("Forward ends");
 #endif
-                return true;
+                return data;
             });
         }
     }

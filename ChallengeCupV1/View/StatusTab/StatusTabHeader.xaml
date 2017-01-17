@@ -12,7 +12,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Source="/View/Resource/Icon/StatusTabIcon.png"/>
+        <Image Grid.Column="0" Source="/View/Resource/Icon/StatusTabIcon.png" Margin="0,0,10,0"/>
         <TextBlock Grid.Column="1" Text="Status"/>    
     </Grid>
 </UserControl>

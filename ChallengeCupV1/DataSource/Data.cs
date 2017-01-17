@@ -19,8 +19,6 @@ namespace ChallengeCupV1.DataSource
     {
         private static int times = 0;
         private static int capacity = 100;
-        // y data set
-        //Queue<double> yQueue = new Queue<double>(capacity);
         private double[] ySet = new double[capacity];
         private int writeIndex = 0;
 
@@ -126,22 +124,29 @@ namespace ChallengeCupV1.DataSource
         }
 
         /// <summary>
-        /// Transform yQueue to complex array
+        /// Transform ySet to complex array
         /// </summary>
         /// <returns></returns>
         public Complex[] ToComplexArray()
         {
-            //Complex[] com = new Complex[yQueue.Count];
-            //for (int i = 0; i < yQueue.Count; i++)
-            //{
-            //    com[i] = new Complex(yQueue.ElementAt(i), 0);
-            //}
             Complex[] com = new Complex[capacity];
             for (int i = 0; i < capacity; i++)
             {
                 com[i] = new Complex(ySet[i], 0);
             }
             return com;
+        }
+
+        /// <summary>
+        /// Transform complex array to ySet
+        /// </summary>
+        /// <returns></returns>
+        public void FromComplexArray(Complex[] com)
+        {
+            for (int i = 0; i < com.Length && i < capacity; i++)
+            {
+                ySet[i] = com[i].Real;
+            }
         }
     }
 }

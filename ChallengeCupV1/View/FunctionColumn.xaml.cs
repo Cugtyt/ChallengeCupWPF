@@ -20,19 +20,42 @@ namespace ChallengeCupV1.View
     /// </summary>
     public partial class FunctionColumn : UserControl
     {
+        bool ConnectBtnPressed = false;
+        bool StartBtnPressed = false;
+
         public FunctionColumn()
         {
             InitializeComponent();
         }
 
-        private void start_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void connect_Click(object sender, RoutedEventArgs e)
         {
+            ConnectBtnPressed = !ConnectBtnPressed;
+            // Connect asked
+            if (ConnectBtnPressed)
+            {
 
+            }
+            // Connected cancled
+            else
+            {
+
+            }
+        }
+
+        private void start_Click(object sender, RoutedEventArgs e)
+        {
+            StartBtnPressed = !StartBtnPressed;
+            // Start asked
+            if (StartBtnPressed)
+            {
+
+            }
+            // Start cancled
+            else
+            {
+
+            }
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)

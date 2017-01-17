@@ -65,9 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataSource\DataTypeAdapter.cs" />
     <Compile Include="DataSource\FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />
-    <Compile Include="TCPUtils\TCPRead.cs" />
     <Compile Include="View\GearTab\GearTabHeader.xaml.cs">
       <DependentUpon>GearTabHeader.xaml</DependentUpon>
     </Compile>
@@ -117,7 +117,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Resource\Style\TabHeaderStyle.xaml">
+    <Page Include="View\Resource\Style\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Resource\Style\ComboBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,25 +184,40 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\Connect.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Resource\Icon\Exit.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="View\Resource\Icon\GearTabIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\GenerateReport.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="View\Resource\Icon\Start.png">
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resource\Icon\StatusTabIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\StatusTabIcon.png" />
+    <Resource Include="View\Resource\Icon\ConnectDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\ConnectEnabled.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\ExitDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\ExitEnabled.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\GenerateReportDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\GenerateReportEnabled.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\StartDefault.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Icon\StartEnabled.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,10 +5,95 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChallengeCupV1.View"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="300">
-    <DockPanel Margin="5,5,10,10">
-        <Button x:Name="connect" Content="Connect" Width="100" Click="connect_Click"/>
-        <Button x:Name="start" Content="Start" Width="100" Click="start_Click"/>
-        <Button x:Name="exit" Content="Exit" Width="100" HorizontalAlignment="Right" Click="exit_Click"/>
+             FontSize="20"
+             d:DesignHeight="50" d:DesignWidth="500">
+    <DockPanel>
+        <DockPanel.Resources>
+            <ResourceDictionary Source="/View/Resource/Style/ButtonStyle.xaml"/>
+        </DockPanel.Resources>
+        
+        <Button x:Name="connect" Click="connect_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Name="connectIcon" Source="/View/Resource/Icon/ConnectDefault.png"/>
+                        <TextBlock Grid.Column="1" Text="Connect" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Source" Value="/View/Resource/Icon/ConnectEnabled.png" TargetName="connectIcon"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Name="connectIcon" Source="/View/Resource/Icon/ConnectDefault.png"/>
+                <TextBlock Grid.Column="1" Text="Connect" VerticalAlignment="Center"/>
+            </Grid>
+        </Button>
+        
+        <Button x:Name="start" Click="start_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Name="startIcon" Source="/View/Resource/Icon/StartDefault.png"/>
+                        <TextBlock Grid.Column="1" Text="Start" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Source" Value="/View/Resource/Icon/StartEnabled.png" TargetName="startIcon"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Name="startIcon" Source="/View/Resource/Icon/StartDefault.png"/>
+                <TextBlock Grid.Column="1" Text="Start" VerticalAlignment="Center"/>
+            </Grid>
+        </Button>
+        
+        <Button x:Name="exit" HorizontalAlignment="Right" Click="exit_Click" Margin="5,5,20,5">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Name="exitIcon" Source="/View/Resource/Icon/ExitDefault.png"/>
+                        <TextBlock Grid.Column="1" Text="Exit" VerticalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Source" Value="/View/Resource/Icon/ExitEnabled.png" TargetName="exitIcon"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Name="exitIcon" Source="/View/Resource/Icon/ExitDefault.png"/>
+                <TextBlock Grid.Column="1" Text="Exit" VerticalAlignment="Center"/>
+            </Grid>
+        </Button>
     </DockPanel>
 </UserControl>
