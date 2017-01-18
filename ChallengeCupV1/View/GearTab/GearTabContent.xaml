@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="ChallengeCupV1.View.GearTab.GearTabContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChallengeCupV1.View.GearTab"
+             mc:Ignorable="d" 
+             Foreground="Black"
+             FontSize="16"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="40,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                   Text="齿轮检测"/>
+            <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Text="Gear status monitoring"/>
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <StackPanel.Resources>
+                        <ResourceDictionary Source="/View/Resource/Style/ComboBoxStyle.xaml"/>
+                    </StackPanel.Resources>
+                    <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
+                        <ComboBoxItem Name="gear1" Content="Gear1" IsSelected="True" Selected="gear1_Selected"/>
+                        <ComboBoxItem Name="gear2" Content="Gear2" Selected="gear2_Selected"/>
+                        <ComboBoxItem Name="gear3" Content="Gear3" Selected="gear3_Selected"/>
+                        <ComboBoxItem Name="gear4" Content="Gear4" Selected="gear4_Selected"/>
+                    </ComboBox>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

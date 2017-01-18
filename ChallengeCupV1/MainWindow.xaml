@@ -11,9 +11,10 @@
         xmlns:data="clr-namespace:ChallengeCupV1.DataSource"
         xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
         mc:Ignorable="d"
-        Background="SlateGray"
-        Loaded="Window_Loaded"
-        Title="MainWindow" Height="350" Width="525" AllowsTransparency="True" WindowStyle="None">
+        Background="SlateGray" Loaded="Window_Loaded"
+        WindowState="Normal" ResizeMode="NoResize" Topmost="True"
+        Left="0" Top="0" 
+        AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -21,31 +22,34 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0" TabStripPlacement="Left">
             <TabControl.Resources>
-                <ResourceDictionary Source="View/Resource/Style/TabStyle.xaml"/>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/View/Resource/Style/TabStyle.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
             </TabControl.Resources>
             <TabItem Name="waveTab">
                 <TabItem.Resources>
-                    <data:Data x:Key="dataSource"/>
+                    <data:WaveData x:Key="dataSource"/>
                 </TabItem.Resources>
                 <TabItem.Header>
                     <waveTab:WaveTabHeader/>
                 </TabItem.Header>
-                <Grid>
-                    <waveTab:WaveTabContent x:Name="wave"/>
-                </Grid>
+                <waveTab:WaveTabContent x:Name="wave"/>
             </TabItem>
-            <TabItem Name="gear">
+            <TabItem Name="gearTab">
                 <TabItem.Header>
                     <gearTab:GearTabHeader/>
                 </TabItem.Header>
-
+                <gearTab:GearTabContent x:Name="gear"/>
             </TabItem>
-            <TabItem Name="status">
+            <TabItem Name="statusTab">
                 <TabItem.Header>
                     <statusTab:StatusTabHeader/>
                 </TabItem.Header>
+                <statusTab:StatusTabContent x:Name="status"/>
             </TabItem>
         </TabControl>
-        <view:FunctionColumn Grid.Row="1" Margin="150,0,0,0"/>
+        <view:FunctionColumn x:Name="functionColumn" Grid.Row="1" Margin="150,0,0,0"/>
     </Grid>
 </Window>

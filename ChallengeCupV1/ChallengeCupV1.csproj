@@ -38,8 +38,8 @@
     <Reference Include="DynamicDataDisplay">
       <HintPath>..\..\DynamicDataDisplay v0.3 Binaries &amp; Samples\DynamicDataDisplay\DynamicDataDisplay.dll</HintPath>
     </Reference>
-    <Reference Include="MathNet.Numerics, Version=3.16.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.3.16.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    <Reference Include="MathNet.Numerics, Version=3.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.17.0\lib\net40\MathNet.Numerics.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -66,8 +66,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataSource\DataTypeAdapter.cs" />
-    <Compile Include="DataSource\FFT\DataFFT.cs" />
+    <Compile Include="DataSource\GearStatusData.cs" />
+    <Compile Include="FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />
+    <Compile Include="View\GearTab\GearTabContent.xaml.cs">
+      <DependentUpon>GearTabContent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GearTab\GearTabHeader.xaml.cs">
       <DependentUpon>GearTabHeader.xaml</DependentUpon>
     </Compile>
@@ -76,6 +80,9 @@
     </Compile>
     <Compile Include="View\FunctionColumn.xaml.cs">
       <DependentUpon>FunctionColumn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StatusTab\StatusTabContent.xaml.cs">
+      <DependentUpon>StatusTabContent.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StatusTab\StatusTabHeader.xaml.cs">
       <DependentUpon>StatusTabHeader.xaml</DependentUpon>
@@ -100,11 +107,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataSource\Data.cs" />
+    <Compile Include="DataSource\WaveData.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\GearTab\GearTabContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\GearTab\GearTabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,15 +128,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Resource\Style\ButtonStyle.xaml">
+    <Resource Include="View\Resource\Style\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Resource\Style\ComboBoxStyle.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Style\ComboBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Resource\Style\TabStyle.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Style\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Resource\Style\TabStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Page Include="View\StatusTab\StatusTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

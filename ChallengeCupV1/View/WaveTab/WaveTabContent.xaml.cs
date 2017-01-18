@@ -1,7 +1,8 @@
 ﻿using ChallengeCupV1.DataSource;
-using ChallengeCupV1.DataSource.FFT;
+using ChallengeCupV1.FFT;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ChallengeCupV1.View.WaveTab
 {
@@ -23,25 +25,42 @@ namespace ChallengeCupV1.View.WaveTab
     /// </summary>
     public partial class WaveTabContent : UserControl
     {
-        CH selectedCH = CH.CH1;
-        Grating selectedGrating = Grating.G1;
-        Domain selectedDomain = Domain.Time;
+        private DispatcherTimer timer = new DispatcherTimer();
+        string directoryPath = @"C:\debug\FBG解调系统数据文件\数据文件\2017-01-11\temp\";
+        FileInfo[] files;
+        static int fileIndex = 0;
+
+        CH selectedCH;
+        Grating selectedGrating;
+        Domain selectedDomain;
 
         public WaveTabContent()
         {
             InitializeComponent();
+            var dire = new DirectoryInfo(directoryPath);
+            files = dire.GetFiles();
+#if DEBUG
+            Console.WriteLine("files name list");
+            //for (int i = 0; i < files.Length; i++)
+            //{
+            //    Console.WriteLine(files[i].Name);
+            //}
+#endif
+            timer.Interval = TimeSpan.FromMilliseconds(100);
+            timer.Tick += new EventHandler(AnimatedPlot);
+            timer.IsEnabled = true;
         }
 
-        /// <summary>
-        /// Add double list to dataSource
-        /// </summary>
-        /// <param name="yList"></param>
-        /// <returns></returns>
-        public async Task AddPoints(List<double> yList)
+        private async void AnimatedPlot(object sender, EventArgs e)
         {
-            await wavePlot.AddPoints(yList);
+            if (fileIndex < files.Length)
+            {
+                AddPoints(await File.FileUtils
+                .ReadDataAsync(directoryPath + files[fileIndex++].Name));
+            }
         }
 
+        
         /// <summary>
         /// Add double list array to dataSource
         /// added index of array is determined by value of selectedCH
@@ -57,14 +76,66 @@ namespace ChallengeCupV1.View.WaveTab
                     await wavePlot.AddPoints(yListArray[selected]);
                     break;
                 case Domain.Frequency:
-                    await wavePlot.AddPoints(
-                        DataFFT.Forward(yListArray[selected].ToComplex()).Result
-                        .ToDoubleList());
+                    //await wavePlot.AddPoints(
+                    //    DataFFT.Forward(yListArray[selected].ToComplex()).Result
+                    //    .ToDoubleList());
+                    await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
+                    
                     break;
                 default:
                     break;
             }
-            
+        }
+
+
+        private void g1_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedGrating = Grating.G1;
+        }
+
+        private void g2_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedGrating = Grating.G2;
+        }
+
+        private void g3_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedGrating = Grating.G3;
+        }
+
+        private void g4_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedGrating = Grating.G4;
+        }
+
+        private void time_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedDomain = Domain.Time;
+        }
+
+        private void freq_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedDomain = Domain.Frequency;
+        }
+
+        private void ch1_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedCH = CH.CH1;
+        }
+
+        private void ch2_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedCH = CH.CH2;
+        }
+
+        private void ch3_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedCH = CH.CH3;
+        }
+
+        private void ch4_Selected(object sender, RoutedEventArgs e)
+        {
+            selectedCH = CH.CH4;
         }
     }
 }

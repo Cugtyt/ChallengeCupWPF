@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathNet.Numerics.IntegralTransforms;
 
-namespace ChallengeCupV1.DataSource.FFT
+namespace ChallengeCupV1.FFT
 {
     public class DataFFT
     {

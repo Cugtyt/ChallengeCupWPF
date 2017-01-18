@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ChallengeCupV1.View.Resource.Style">
     <Style TargetType="ToggleButton" x:Key="ComboxStyleBtn">
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -31,12 +32,16 @@
 
     <!--Combox-->
     <Style TargetType="ComboBox" x:Key="ComboBoxStyle">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Height" Value="28"/>
+
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <!--ComBoxItem-->
                 <Style TargetType="ComboBoxItem">
-                    <Setter Property="MinHeight" Value="22"></Setter>
-                    <Setter Property="MinWidth" Value="60"></Setter>
+                    <Setter Property="Height" Value="30"/>
+                    <!--<Setter Property="MinHeight" Value="40"></Setter>
+                    <Setter Property="MinWidth" Value="60"></Setter>-->
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ComboBoxItem">

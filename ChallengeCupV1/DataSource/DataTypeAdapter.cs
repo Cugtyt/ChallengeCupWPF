@@ -34,7 +34,7 @@ namespace ChallengeCupV1.DataSource
             List<double> list = new List<double>();
             for (int i = 0; i < data.Length; i++)
             {
-                list[i] = data[i].Real;
+                list.Add(data[i].Real);
             }
             return list;
         }

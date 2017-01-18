@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ChallengeCupV1.FFT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,7 +22,7 @@ namespace ChallengeCupV1.View.WaveTab
     /// </summary>
     public partial class WavePlot : UserControl
     {
-        DataSource.Data dataSource = new DataSource.Data();
+        DataSource.WaveData dataSource = new DataSource.WaveData();
         public WavePlot()
         {
 #if DEBUG
@@ -36,16 +38,16 @@ namespace ChallengeCupV1.View.WaveTab
         /// add test data to dataSource, it can display
         /// time: 2017年1月10日17:16:41
         /// </summary>
-        public void change()
-        {
-#if DEBUG
-            Console.WriteLine("Wave: change()");
-#endif
-            dataSource.Add(50);
-            dataSource.Add(80);
-            dataSource.Add(100);
-            dataSource.Update();
-        }
+//        public void change()
+//        {
+//#if DEBUG
+//            Console.WriteLine("Wave: change()");
+//#endif
+//            dataSource.Add(50);
+//            dataSource.Add(80);
+//            dataSource.Add(100);
+//            dataSource.Update();
+//        }
 
         /// <summary>
         /// Add double list to dataSource
@@ -55,6 +57,20 @@ namespace ChallengeCupV1.View.WaveTab
         public async Task AddPoints(List<double> yList)
         {
             await dataSource.Add(yList);
+        }
+        
+        public Task AddFreqPoints(Complex[] com)
+        {
+            // test begin
+            //Complex[] test = new Complex[200];
+            //for (int i = 0; i < test.Length; i++)
+            //{
+            //    test[i] = new Complex(Math.Sin(i), 0);
+            //}
+            //dataSource.FromComplexArray(DataFFT.Forward(test).Result);
+            // test end
+            dataSource.FromComplexArray(com);
+            return null;
         }
     }
 }

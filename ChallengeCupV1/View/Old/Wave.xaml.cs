@@ -20,7 +20,7 @@ namespace ChallengeCupV1.View
     /// </summary>
     public partial class Wave : UserControl
     {
-        DataSource.Data dataSource = new DataSource.Data();
+        DataSource.WaveData dataSource = new DataSource.WaveData();
         public Wave()
         {
 #if DEBUG
@@ -36,16 +36,16 @@ namespace ChallengeCupV1.View
         /// add test data to dataSource, it can display
         /// time: 2017年1月10日17:16:41
         /// </summary>
-        public void change()
-        {
-#if DEBUG
-            Console.WriteLine("Wave: change()");
-#endif
-            dataSource.Add(50);
-            dataSource.Add(80);
-            dataSource.Add(100);
-            dataSource.Update();
-        }
+//        public void change()
+//        {
+//#if DEBUG
+//            Console.WriteLine("Wave: change()");
+//#endif
+//            dataSource.Add(50);
+//            dataSource.Add(80);
+//            dataSource.Add(100);
+//            dataSource.Update();
+//        }
 
         /// <summary>
         /// Add double list to dataSource
