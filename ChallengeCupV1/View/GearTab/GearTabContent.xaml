@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ChallengeCupV1.View.GearTab"
+             xmlns:gears="clr-namespace:ChallengeCupV1.View.GearTab.Gears"
              mc:Ignorable="d" 
              Foreground="Black"
              FontSize="16"
@@ -13,7 +14,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="40,0,0,0">
+        <Grid Margin="40,0,0,0" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -26,7 +27,11 @@
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <StackPanel.Resources>
-                        <ResourceDictionary Source="/View/Resource/Style/ComboBoxStyle.xaml"/>
+                        <ResourceDictionary>
+                            <ResourceDictionary.MergedDictionaries>
+                                <ResourceDictionary Source="/View/Resource/Style/ComboBoxStyle.xaml"/>
+                            </ResourceDictionary.MergedDictionaries>
+                        </ResourceDictionary>
                     </StackPanel.Resources>
                     <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
                         <ComboBoxItem Name="gear1" Content="Gear1" IsSelected="True" Selected="gear1_Selected"/>
@@ -35,8 +40,11 @@
                         <ComboBoxItem Name="gear4" Content="Gear4" Selected="gear4_Selected"/>
                     </ComboBox>
                 </StackPanel>
-
             </Grid>
         </Grid>
+        <Grid Grid.Row="1">
+            <gears:Gear1 x:Name="gear"/>
+        </Grid>
+        <local:InitPage Grid.Row="1"/>
     </Grid>
 </UserControl>

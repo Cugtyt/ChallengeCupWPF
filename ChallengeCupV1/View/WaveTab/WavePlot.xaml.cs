@@ -23,6 +23,7 @@ namespace ChallengeCupV1.View.WaveTab
     public partial class WavePlot : UserControl
     {
         DataSource.WaveData dataSource = new DataSource.WaveData();
+
         public WavePlot()
         {
 #if DEBUG
@@ -30,7 +31,6 @@ namespace ChallengeCupV1.View.WaveTab
 #endif
             InitializeComponent();
             DataContext = dataSource;
-
         }
 
         /// <summary>

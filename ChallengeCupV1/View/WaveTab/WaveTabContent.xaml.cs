@@ -25,7 +25,10 @@ namespace ChallengeCupV1.View.WaveTab
     /// </summary>
     public partial class WaveTabContent : UserControl
     {
-        private DispatcherTimer timer = new DispatcherTimer();
+        public static DispatcherTimer Timer = new DispatcherTimer()
+        {
+            Interval = TimeSpan.FromMilliseconds(100),
+        };
         string directoryPath = @"C:\debug\FBG解调系统数据文件\数据文件\2017-01-11\temp\";
         FileInfo[] files;
         static int fileIndex = 0;
@@ -34,6 +37,8 @@ namespace ChallengeCupV1.View.WaveTab
         Grating selectedGrating;
         Domain selectedDomain;
 
+
+        // TODO: read file and then remove it very 100 milliseconds
         public WaveTabContent()
         {
             InitializeComponent();
@@ -46,9 +51,8 @@ namespace ChallengeCupV1.View.WaveTab
             //    Console.WriteLine(files[i].Name);
             //}
 #endif
-            timer.Interval = TimeSpan.FromMilliseconds(100);
-            timer.Tick += new EventHandler(AnimatedPlot);
-            timer.IsEnabled = true;
+            Timer.Tick += new EventHandler(AnimatedPlot);
+            //timer.IsEnabled = true;
         }
 
         private async void AnimatedPlot(object sender, EventArgs e)
@@ -87,6 +91,10 @@ namespace ChallengeCupV1.View.WaveTab
             }
         }
 
+        //public void EnableTimer(bool enable)
+        //{
+        //    Timer.IsEnabled = enable;
+        //}
 
         private void g1_Selected(object sender, RoutedEventArgs e)
         {

@@ -46,11 +46,13 @@ namespace ChallengeCupV1.View
             if ("Start" == (string)start.Content)
             {
                 start.Content = "Stop";
+                WaveTab.WaveTabContent.Timer.IsEnabled = true;
             }
             // Start cancled
             else
             {
                 start.Content = "Start";
+                WaveTab.WaveTabContent.Timer.IsEnabled = false;
             }
            
         }

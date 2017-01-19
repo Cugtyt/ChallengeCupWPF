@@ -46,6 +46,7 @@ namespace ChallengeCupV1.View.GearTab
         {
             selectedGear = Gear.G4;
         }
+
     }
 
     enum Gear

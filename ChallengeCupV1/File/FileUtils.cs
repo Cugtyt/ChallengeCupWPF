@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupV1.File
 {
-    class FileUtils
+    public static class FileUtils
     {
         /// <summary>
-        /// read data form file
+        /// Read data form file
         /// </summary>
         /// <param name="filePath">file path</param>
         /// <returns>data from file</returns>
@@ -82,6 +82,17 @@ namespace ChallengeCupV1.File
                 return dataList;
             });
 
+        }
+
+        /// <summary>
+        /// Remove file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static Task RemoveFile(string filePath)
+        {
+            // TODO: implement this method
+            return null;
         }
     }
 }
