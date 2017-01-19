@@ -26,7 +26,7 @@
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <StackPanel.Resources>
-                        <ResourceDictionary Source="/View/Resource/Style/ComboBoxStyle.xaml"/>
+                        <ResourceDictionary Source="/ChallengeCupV1;component/View/Resource/Style/ComboBoxStyle.xaml"/>
                     </StackPanel.Resources>
                     <!--<RadioButton Name="ch1" GroupName="CH" Content="CH1" Margin="0,0,20,0" IsChecked="True" Click="ch1_Click"/>
                     <RadioButton Name="ch2" GroupName="CH" Content="CH2" Margin="0,0,20,0" Click="ch2_Click"/>

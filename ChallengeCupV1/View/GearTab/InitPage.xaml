@@ -8,7 +8,26 @@
              Background="White"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="This is init page"/>
-        <Button Name="apply" Content="Apply" Click="apply_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/ChallengeCupV1;component/View/Resource/Style/ComboBoxStyle.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </StackPanel.Resources>
+            <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
+                <ComboBoxItem Name="gear1" Content="Gear1" Selected="gear1_Selected" IsSelected="True"/>
+                <ComboBoxItem Name="gear2" Content="Gear2" Selected="gear2_Selected"/>
+                <ComboBoxItem Name="gear3" Content="Gear3" Selected="gear3_Selected"/>
+                <ComboBoxItem Name="gear4" Content="Gear4" Selected="gear4_Selected"/>
+            </ComboBox>
+        </StackPanel>
+        <Button Grid.Row="1" Name="apply" Content="Apply" Click="apply_Click"/>
     </Grid>
 </UserControl>

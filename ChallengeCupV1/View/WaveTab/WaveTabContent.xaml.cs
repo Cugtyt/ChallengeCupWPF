@@ -59,7 +59,7 @@ namespace ChallengeCupV1.View.WaveTab
         {
             if (fileIndex < files.Length)
             {
-                AddPoints(await File.FileUtils
+                await AddPoints(await File.FileUtils
                 .ReadDataAsync(directoryPath + files[fileIndex++].Name));
             }
         }

@@ -13,7 +13,7 @@
         <Grid.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/View/Resource/Style/DataGridStyle.xaml"/>
+                    <ResourceDictionary Source="/ChallengeCupV1;component/View/Resource/Style/DataGridStyle.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
@@ -44,12 +44,12 @@
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Image Grid.Row="0" Name="genRepoIcon" Source="/View/Resource/Icon/GenerateReportDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/GenerateReportDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                             <TextBlock Grid.Row="1" FontSize="15" Text="Generate Report" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter Property="Source" Value="/View/Resource/Icon/GenerateReportEnabled.png" TargetName="genRepoIcon"/>
+                                <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/GenerateReportEnabled.png" TargetName="genRepoIcon"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

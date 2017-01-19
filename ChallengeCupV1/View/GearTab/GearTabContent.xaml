@@ -11,12 +11,11 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="40,0,0,0" Grid.Row="0">
+        <!--<Grid Margin="40,0,0,0" Grid.Row="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
@@ -24,27 +23,46 @@
                    Text="齿轮检测"/>
             <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
                    Text="Gear status monitoring"/>
-            <Grid Grid.Row="2">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <StackPanel.Resources>
-                        <ResourceDictionary>
-                            <ResourceDictionary.MergedDictionaries>
-                                <ResourceDictionary Source="/View/Resource/Style/ComboBoxStyle.xaml"/>
-                            </ResourceDictionary.MergedDictionaries>
-                        </ResourceDictionary>
-                    </StackPanel.Resources>
-                    <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
-                        <ComboBoxItem Name="gear1" Content="Gear1" IsSelected="True" Selected="gear1_Selected"/>
-                        <ComboBoxItem Name="gear2" Content="Gear2" Selected="gear2_Selected"/>
-                        <ComboBoxItem Name="gear3" Content="Gear3" Selected="gear3_Selected"/>
-                        <ComboBoxItem Name="gear4" Content="Gear4" Selected="gear4_Selected"/>
-                    </ComboBox>
-                </StackPanel>
+            
+        </Grid>-->
+        <Grid Grid.Row="0" Margin="40,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                   Text="齿轮检测"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Text="Gear status monitoring"/>
             </Grid>
+            <Button Grid.Column="1" Margin="0,10,0,0" Click="setting_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/GenerateReportDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" FontSize="15" Text="Setting" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/GenerateReportEnabled.png" TargetName="genRepoIcon"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
             <gears:Gear1 x:Name="gear"/>
         </Grid>
-        <local:InitPage Grid.Row="1"/>
+        <local:InitPage Grid.Row="1" x:Name="initPage"/>
     </Grid>
 </UserControl>

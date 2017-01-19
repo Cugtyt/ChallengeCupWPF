@@ -20,36 +20,20 @@ namespace ChallengeCupV1.View.GearTab
     /// </summary>
     public partial class GearTabContent : UserControl
     {
-        Gear selectedGear;
+        public static Gear SelectedGear = Gear.G1;
 
         public GearTabContent()
         {
             InitializeComponent();
         }
 
-        private void gear1_Selected(object sender, RoutedEventArgs e)
+        private void setting_Click(object sender, RoutedEventArgs e)
         {
-            selectedGear = Gear.G1;
+            initPage.Visibility = Visibility.Visible;
         }
-
-        private void gear2_Selected(object sender, RoutedEventArgs e)
-        {
-            selectedGear = Gear.G2;
-        }
-
-        private void gear3_Selected(object sender, RoutedEventArgs e)
-        {
-            selectedGear = Gear.G3;
-        }
-
-        private void gear4_Selected(object sender, RoutedEventArgs e)
-        {
-            selectedGear = Gear.G4;
-        }
-
     }
 
-    enum Gear
+    public enum Gear
     {
         G1, G2, G3, G4
     }

@@ -29,5 +29,25 @@ namespace ChallengeCupV1.View.GearTab
         {
             Visibility = Visibility.Hidden;
         }
+
+        private void gear1_Selected(object sender, RoutedEventArgs e)
+        {
+            GearTabContent.SelectedGear = Gear.G1;
+        }
+
+        private void gear2_Selected(object sender, RoutedEventArgs e)
+        {
+            GearTabContent.SelectedGear = Gear.G2;
+        }
+
+        private void gear3_Selected(object sender, RoutedEventArgs e)
+        {
+            GearTabContent.SelectedGear = Gear.G3;
+        }
+
+        private void gear4_Selected(object sender, RoutedEventArgs e)
+        {
+            GearTabContent.SelectedGear = Gear.G4;
+        }
     }
 }
