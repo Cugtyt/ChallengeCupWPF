@@ -22,13 +22,29 @@ namespace ChallengeCupV1.View.StatusTab
     /// </summary>
     public partial class StatusTabContent : UserControl
     {
+        public List<GearStatusData> ItemsSource = new List<GearStatusData>();
+        //{
+        //    get { return (List<GearStatusData>)GetValue(ItemSourceProperty); }
+        //    set { SetValue(ItemSourceProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for ItemSource.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ItemSourceProperty =
+        //    DependencyProperty.Register("ItemSource", typeof(List<GearStatusData>), typeof(StatusTabContent));
+
+
         public StatusTabContent()
         {
             InitializeComponent();
-            var itemsource = new List<GearStatusData>();
-            itemsource.Add(new GearStatusData());
-            itemsource.Add(new GearStatusData());
-            dataGrid.ItemsSource = itemsource;
+            ItemsSource.Add(new GearStatusData());
+            ItemsSource.Add(new GearStatusData());
+            dataGrid.ItemsSource = ItemsSource;
+            ItemsSource[0].Frequency = 5.0;
+        }
+
+        private void generateReport_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

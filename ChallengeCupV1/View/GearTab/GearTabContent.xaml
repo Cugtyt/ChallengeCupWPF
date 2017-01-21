@@ -61,10 +61,7 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Name="gear3D">
-            <!--<gears:Gear1 x:Name="gear"/>-->
-            <UserControl Name="gear"/>
-        </Grid>
+        <Grid Grid.Row="1" Name="gear"/>
         <local:InitPage Grid.Row="1" x:Name="initPage"/>
     </Grid>
 </UserControl>

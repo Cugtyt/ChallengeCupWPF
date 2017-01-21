@@ -134,20 +134,29 @@ namespace ChallengeCupV1.File
             return null;
         }
 
-        public static Task<FileInfo[]> ReadGearLib(string gearDir)
+//        public static Task<FileInfo[]> ReadGearLib(string gearDir)
+//        {
+//#if DEBUG
+//            if (!Directory.Exists(gearDir))
+//            {
+//                Console.WriteLine("FileUtils: ReadGearLib() -> directory is not vaild");
+//                return null;
+//            }
+//#endif
+//            return Task.Run(() =>
+//            {
+//                DirectoryInfo dire = new DirectoryInfo(gearDir);
+//                return dire.GetFiles();
+//            });
+//        }
+
+        public static string GetRootPath()
         {
-#if DEBUG
-            if (!Directory.Exists(gearDir))
-            {
-                Console.WriteLine("FileUtils: ReadGearLib() -> directory is not vaild");
-                return null;
-            }
-#endif
-            return Task.Run(() =>
-            {
-                DirectoryInfo dire = new DirectoryInfo(gearDir);
-                return dire.GetFiles();
-            });
+            string BaseDirectoryPath = AppDomain.CurrentDomain.BaseDirectory; 
+            string rootPath = BaseDirectoryPath.Substring(0, BaseDirectoryPath.LastIndexOf("\\")); 
+            rootPath = rootPath.Substring(0, rootPath.LastIndexOf("\\"));
+            rootPath = rootPath.Substring(0, rootPath.LastIndexOf("\\"));
+            return rootPath;
         }
     }
 }

@@ -30,10 +30,10 @@ namespace ChallengeCupV1.View.GearTab
         private void apply_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
-           
-            (VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(
-                VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(this))))
-                as GearTabContent).ShowSettingBtn();
+            var parent = (VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(
+                VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(this)))) as GearTabContent);
+            parent.ShowSettingBtn();
+            parent.UpdateGear();
         }
 
 

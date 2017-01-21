@@ -23,10 +23,10 @@ namespace ChallengeCupV1
     /// </summary>
     public partial class MainWindow : Window
     {
-       
         public MainWindow()
         {
             InitializeComponent();
+            Console.WriteLine(File.FileUtils.GetRootPath());
         }
 
        

@@ -9,50 +9,99 @@ namespace ChallengeCupV1.DataSource
 {
     public class GearStatusData : DependencyObject
     {
-        public double Item1
+        /// <summary>
+        /// Stress 应力
+        /// </summary>
+        public double Stress
         {
-            get { return (double)GetValue(Item1Property); }
-            set { SetValue(Item1Property, value); }
+            get { return (double)GetValue(StressProperty); }
+            set { SetValue(StressProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Item1.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Item1Property =
-            DependencyProperty.Register("Item1", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
+        // Using a DependencyProperty as the backing store for Stress.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StressProperty =
+            DependencyProperty.Register("Stress", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
 
-        public double Item2
+        /// <summary>
+        /// Strain 应变
+        /// </summary>
+        public double Strain
         {
-            get { return (double)GetValue(Item2Property); }
-            set { SetValue(Item2Property, value); }
+            get { return (double)GetValue(StrainProperty); }
+            set { SetValue(StrainProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Item2.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Item2Property =
-            DependencyProperty.Register("Item2", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
+        // Using a DependencyProperty as the backing store for Strain.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StrainProperty =
+            DependencyProperty.Register("Strain", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
 
 
-
-        public double Item3
+        /// <summary>
+        /// Temperature 温度
+        /// </summary>
+        public double Temperature
         {
-            get { return (double)GetValue(Item3Property); }
-            set { SetValue(Item3Property, value); }
+            get { return (double)GetValue(TemperatureProperty); }
+            set { SetValue(TemperatureProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Item3.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Item3Property =
-            DependencyProperty.Register("Item3", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
+        // Using a DependencyProperty as the backing store for Temperature.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TemperatureProperty =
+            DependencyProperty.Register("Temperature", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
 
 
-
-        public double Item4
+        /// <summary>
+        /// Frequency 频率
+        /// </summary>
+        public double Frequency
         {
-            get { return (double)GetValue(Item4Property); }
-            set { SetValue(Item4Property, value); }
+            get { return (double)GetValue(FrequencyProperty); }
+            set { SetValue(FrequencyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Item4.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Item4Property =
-            DependencyProperty.Register("Item4", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
+        // Using a DependencyProperty as the backing store for Frequency.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FrequencyProperty =
+            DependencyProperty.Register("Frequency", typeof(double), typeof(GearStatusData), new PropertyMetadata(0.0));
 
 
+        /// <summary>
+        /// Calculate stress
+        /// </summary>
+        /// <returns></returns>
+        public double CalculateStress()
+        {
+            // TODO: implement this
+            return 0;
+        }
+
+        /// <summary>
+        /// Calculate strain
+        /// </summary>
+        /// <returns></returns>
+        public double CalculateStrain()
+        {
+            // TODO: implement this
+            return 0;
+        }
+
+        /// <summary>
+        /// Calculate temperature
+        /// </summary>
+        /// <returns></returns>
+        public double CalculateTemperature()
+        {
+            // TODO: implement this
+            return 0;
+        }
+
+        /// <summary>
+        /// Calculate trequency
+        /// </summary>
+        /// <returns></returns>
+        public double CalculateFrequency()
+        {
+            // TODO: implement this
+            return 0;
+        }
     }
 }

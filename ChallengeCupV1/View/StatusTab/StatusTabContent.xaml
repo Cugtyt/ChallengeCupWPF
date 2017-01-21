@@ -36,7 +36,7 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
                    Text="Status infomation"/>
             </Grid>
-            <Button Grid.Column="1" Margin="0,10,0,0">
+            <Button Grid.Column="1" Name="generateReport" Margin="0,10,0,0" Click="generateReport_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -57,15 +57,15 @@
             </Button>
         </Grid>
         <DataGrid Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" GridLinesVisibility="Horizontal">
-            <DataGrid.Resources>
+            <!--<DataGrid.Resources>
                 <data:GearStatusData x:Key="gearStatusData"/>
-            </DataGrid.Resources>
+            </DataGrid.Resources>-->
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="gear" Header="Gear" Width="2*"/>
-                <DataGridTextColumn x:Name="item1" Header="Item1" Width="1*" Binding="{Binding Item1}"/>
-                <DataGridTextColumn x:Name="item2" Header="Item2" Width="1*" Binding="{Binding Item2}"/>
-                <DataGridTextColumn x:Name="item3" Header="Item3" Width="1*" Binding="{Binding Item3}"/>
-                <DataGridTextColumn x:Name="item4" Header="Item4" Width="1*" Binding="{Binding Item4}"/>
+                <DataGridTextColumn x:Name="stress" Header="Stress" Width="1*" Binding="{Binding Stress}"/>
+                <DataGridTextColumn x:Name="strain" Header="Strain" Width="1*" Binding="{Binding Strain}"/>
+                <DataGridTextColumn x:Name="temperature" Header="Temperature" Width="1*" Binding="{Binding Temperature}"/>
+                <DataGridTextColumn x:Name="frequency" Header="Frequency" Width="1*" Binding="{Binding Frequency}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

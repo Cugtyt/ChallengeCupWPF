@@ -24,8 +24,14 @@ namespace ChallengeCupV1.DataSource
 
         public ObservableDataSource<Point> Points
         {
-            get { return (ObservableDataSource<Point>)GetValue(PointsProperty); }
-            set { SetValue(PointsProperty, value); }
+            get
+            {
+                return (ObservableDataSource<Point>)GetValue(PointsProperty);
+            }
+            set
+            {
+                SetValue(PointsProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for Points.  This enables animation, styling, binding, etc...
@@ -38,7 +44,7 @@ namespace ChallengeCupV1.DataSource
         public WaveData()
         {
             Points = new ObservableDataSource<Point>();
-            
+
         }
 
         /// <summary>

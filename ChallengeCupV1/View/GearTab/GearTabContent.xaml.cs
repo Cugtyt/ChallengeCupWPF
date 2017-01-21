@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -8,6 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -22,12 +25,11 @@ namespace ChallengeCupV1.View.GearTab
     { 
         public static Gear SelectedGear = Gear.G1;
         public static int GratingNumber = 1;
-        private static string gearLibPath = @"\View\GearTab\Gears";
+        private static string gearLibPath = File.FileUtils.GetRootPath() + @"\View\GearTab\Gears";
 
         public GearTabContent()
         {
             InitializeComponent();
-            gear3D.Children.Add(new Gears.Gear1());
         }
 
         private void setting_Click(object sender, RoutedEventArgs e)
@@ -38,13 +40,13 @@ namespace ChallengeCupV1.View.GearTab
 
         /// <summary>
         /// Choose gear to show in GearTabControl
+        /// Use reflection to get gear in lib
         /// </summary>
         public void UpdateGear()
         {
-            // TODO: update gear dynamicly
             int index = (int)Enum.Parse(typeof(Gear), SelectedGear.ToString());
-            //File.FileUtils.ReadGearLib()
-            
+            gear.Children.Add(Assembly.GetExecutingAssembly()
+                .CreateInstance("ChallengeCupV1.View.GearTab.Gears.Gear" + index) as UserControl);
         }
 
         public void ShowSettingBtn()
@@ -55,6 +57,6 @@ namespace ChallengeCupV1.View.GearTab
 
     public enum Gear
     {
-        G1, G2, G3, G4
+        G1 = 1, G2, G3, G4
     }
 }

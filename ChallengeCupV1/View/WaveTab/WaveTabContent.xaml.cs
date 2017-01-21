@@ -29,7 +29,7 @@ namespace ChallengeCupV1.View.WaveTab
         {
             Interval = TimeSpan.FromMilliseconds(100),
         };
-        string directoryPath = @"C:\debug\FBG解调系统数据文件\数据文件\2017-01-11\temp\";
+        string directoryPath = File.FileUtils.GetRootPath() + @"\DataSource\data\";
         FileInfo[] files;
         static int fileIndex = 0;
 
