@@ -44,9 +44,9 @@ namespace ChallengeCupV1.View.GearTab
         /// </summary>
         public void UpdateGear()
         {
-            int index = (int)Enum.Parse(typeof(Gear), SelectedGear.ToString());
             gear.Children.Add(Assembly.GetExecutingAssembly()
-                .CreateInstance("ChallengeCupV1.View.GearTab.Gears.Gear" + index) as UserControl);
+                .CreateInstance("ChallengeCupV1.View.GearTab.Gears.Gear" + 
+                (int)Enum.Parse(typeof(Gear), SelectedGear.ToString())) as UserControl);
         }
 
         public void ShowSettingBtn()
