@@ -22,11 +22,11 @@ namespace ChallengeCupV1.FFT
             return Task.Run(() =>
             {
 #if DEBUG
-                Console.WriteLine("Forward begins");
+                Console.WriteLine("DataFFT: Forward() -> Forward begins");
 #endif
                 Fourier.Forward(data);
 #if DEBUG
-                Console.WriteLine("Forward ends");
+                Console.WriteLine("DataFFT: Forward() -> Forward ends");
 #endif
                 return data;
             });

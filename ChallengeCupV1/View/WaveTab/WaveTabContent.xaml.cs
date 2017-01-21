@@ -45,7 +45,7 @@ namespace ChallengeCupV1.View.WaveTab
             var dire = new DirectoryInfo(directoryPath);
             files = dire.GetFiles();
 #if DEBUG
-            Console.WriteLine("files name list");
+            Console.WriteLine("WaveTabContent:WaveTabContent() -> files name list");
             //for (int i = 0; i < files.Length; i++)
             //{
             //    Console.WriteLine(files[i].Name);
@@ -59,8 +59,8 @@ namespace ChallengeCupV1.View.WaveTab
         {
             if (fileIndex < files.Length)
             {
-                await AddPoints(await File.FileUtils
-                .ReadDataAsync(directoryPath + files[fileIndex++].Name));
+                AddPoints(await File.FileUtils
+                .ReadWaveData(directoryPath + files[fileIndex++].Name));
             }
         }
 
@@ -77,12 +77,18 @@ namespace ChallengeCupV1.View.WaveTab
             switch (selectedDomain)
             {
                 case Domain.Time:
-                    await wavePlot.AddPoints(yListArray[selected]);
+#if DEBUG
+                    Console.WriteLine("WaveTabContent:AddPoints() -> add time domain points");
+#endif
+                    await wavePlot.AddTimePoints(yListArray[selected]);
                     break;
                 case Domain.Frequency:
                     //await wavePlot.AddPoints(
                     //    DataFFT.Forward(yListArray[selected].ToComplex()).Result
                     //    .ToDoubleList());
+#if DEBUG
+                    Console.WriteLine("WaveTabContent:AddPoints() -> add frequency domain points");
+#endif
                     await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
                     
                     break;

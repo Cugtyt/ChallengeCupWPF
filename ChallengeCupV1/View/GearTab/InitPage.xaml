@@ -13,7 +13,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
@@ -21,13 +21,28 @@
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </StackPanel.Resources>
-            <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
-                <ComboBoxItem Name="gear1" Content="Gear1" Selected="gear1_Selected" IsSelected="True"/>
-                <ComboBoxItem Name="gear2" Content="Gear2" Selected="gear2_Selected"/>
-                <ComboBoxItem Name="gear3" Content="Gear3" Selected="gear3_Selected"/>
-                <ComboBoxItem Name="gear4" Content="Gear4" Selected="gear4_Selected"/>
-            </ComboBox>
+            <StackPanel Orientation="Horizontal">
+                <Label Content=" Gear: " Margin="0,0,20,0" Width="80"/>
+                <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
+                    <ComboBoxItem Name="gear1" Content="Gear1" Selected="gear1_Selected" IsSelected="True"/>
+                    <ComboBoxItem Name="gear2" Content="Gear2" Selected="gear2_Selected"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content=" Grateing Number: " Margin="0,0,20,0" Width="80"/>
+                <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
+                    <ComboBoxItem Name="num1" Content="1" Selected="num1_Selected" IsSelected="True"/>
+                    <ComboBoxItem Name="num2" Content="2" Selected="num2_Selected"/>
+                    <ComboBoxItem Name="num3" Content="3" Selected="num3_Selected"/>
+                    <ComboBoxItem Name="num4" Content="4" Selected="num4_Selected"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content=" Grateing Number: " Margin="0,0,20,0" Width="80"/>
+                <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
-        <Button Grid.Row="1" Name="apply" Content="Apply" Click="apply_Click"/>
+        <Button Grid.Row="1" Name="apply" Width="100" Content="Apply" Click="apply_Click"/>
     </Grid>
 </UserControl>

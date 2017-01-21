@@ -14,20 +14,20 @@ namespace ChallengeCupV1.File
         /// </summary>
         /// <param name="filePath">file path</param>
         /// <returns>data from file</returns>
-        public static Task<List<double>[]> ReadDataAsync(string filePath)
+        public static Task<List<double>[]> ReadWaveData(string filePath)
         {
 #if DEBUG
-            Console.WriteLine("file is " + filePath);
+            Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is " + filePath);
 #endif
             if (!System.IO.File.Exists(filePath))
             {
 #if DEBUG
-                Console.WriteLine("file is not valid");
+                Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is not valid");
 #endif
                 return null;
             }
 #if DEBUG
-            Console.WriteLine("file is valid");
+            Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is valid");
 #endif
             string text;
             List<double>[] dataList = new List<double>[4];
@@ -91,8 +91,63 @@ namespace ChallengeCupV1.File
         /// <returns></returns>
         public static Task RemoveFile(string filePath)
         {
-            // TODO: implement this method
+#if DEBUG
+            Console.WriteLine("FileUtils: RemoveFile() -> file is " + filePath);
+#endif
+            if (!System.IO.File.Exists(filePath))
+            {
+#if DEBUG
+                Console.WriteLine("FileUtils: RemoveFile() -> file is not exit");
+#endif
+                return null;
+            }
+            // File exits
+            try
+            {
+                System.IO.File.Delete(filePath);
+#if DEBUG
+                Console.WriteLine("FileUtils: RemoveFile() -> remove file done");
+#endif
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
             return null;
+        }
+
+        /// <summary>
+        /// Remove all files
+        /// </summary>
+        /// <param name="info">FileInfo array</param>
+        /// <returns></returns>
+        public static Task RemoveFileAll(FileInfo[] info)
+        {
+#if DEBUG
+            Console.WriteLine("FileUtils: RemoveFileAll()");
+#endif
+            for (int i = 0; i < info.Length; i++)
+            {
+                info[i].Delete();
+            }
+            return null;
+        }
+
+        public static Task<FileInfo[]> ReadGearLib(string gearDir)
+        {
+#if DEBUG
+            if (!Directory.Exists(gearDir))
+            {
+                Console.WriteLine("FileUtils: ReadGearLib() -> directory is not vaild");
+                return null;
+            }
+#endif
+            return Task.Run(() =>
+            {
+                DirectoryInfo dire = new DirectoryInfo(gearDir);
+                return dire.GetFiles();
+            });
         }
     }
 }

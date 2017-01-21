@@ -54,7 +54,7 @@ namespace ChallengeCupV1.View.WaveTab
         /// </summary>
         /// <param name="yList"></param>
         /// <returns></returns>
-        public async Task AddPoints(List<double> yList)
+        public async Task AddTimePoints(List<double> yList)
         {
             await dataSource.Add(yList);
         }

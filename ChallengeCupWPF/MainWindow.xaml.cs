@@ -101,7 +101,7 @@ namespace ChallengeCupWPF
             if (openFile.ShowDialog() == true)
             {
 #if DEBUG
-                Console.WriteLine("Open file: " + openFile.FileName);
+                Console.WriteLine("MainWindow: OpenFile_Click() -> open file: " + openFile.FileName);
 #endif
                 dataSource.ClearDataSourceAll();
                 
@@ -129,7 +129,7 @@ namespace ChallengeCupWPF
             if (saveFile.ShowDialog() == true)
             {
 #if DEBUG
-                Console.WriteLine("Write to file: " + saveFile.FileName);
+                Console.WriteLine("MainWindow: SaveFile_Click() -> write to file: " + saveFile.FileName);
 #endif
                 // Not update data from tcp
                 enableTCPRead = false;
@@ -151,7 +151,7 @@ namespace ChallengeCupWPF
                 catch (Exception ex)
                 {
 #if DEBUG
-                    Console.WriteLine("MainWindow.ConnectTCP_Click(): " + ex);
+                    Console.WriteLine("MainWindow: ConnectTCP_Click() -> " + ex);
 #endif
                     cts?.Cancel();
                     TCPRead.TCPRead.IsConnected = false;
@@ -171,7 +171,7 @@ namespace ChallengeCupWPF
             if (dataSource[0].Collection.Count == 0)
             {
 #if DEBUG
-                Console.WriteLine("dataSource[0] is null");
+                Console.WriteLine("MainWindow: FFTForward_Click -> dataSource[0] is null");
 #endif
                 MessageBox.Show("No data");
                 return;

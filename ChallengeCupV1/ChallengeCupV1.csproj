@@ -72,6 +72,9 @@
     <Compile Include="View\GearTab\Gears\Gear1.xaml.cs">
       <DependentUpon>Gear1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\GearTab\Gears\Gear2.xaml.cs">
+      <DependentUpon>Gear2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GearTab\GearTabContent.xaml.cs">
       <DependentUpon>GearTabContent.xaml</DependentUpon>
     </Compile>
@@ -119,6 +122,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\GearTab\Gears\Gear1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GearTab\Gears\Gear2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
