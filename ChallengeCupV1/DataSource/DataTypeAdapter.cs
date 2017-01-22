@@ -31,12 +31,13 @@ namespace ChallengeCupV1.DataSource
         /// <returns></returns>
         public static List<double> ToDoubleList(this Complex[] data)
         {
-            List<double> list = new List<double>();
-            for (int i = 0; i < data.Length; i++)
-            {
-                list.Add(data[i].Real);
-            }
-            return list;
+            //List<double> list = new List<double>();
+            //for (int i = 0; i < data.Length; i++)
+            //{
+            //    list.Add(data[i].Real);
+            //}
+            //return list;
+            return (from d in data select d.Real).ToList();
         }
     }
 }

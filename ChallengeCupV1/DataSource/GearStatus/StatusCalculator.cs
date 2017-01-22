@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupV1.DataSource.GearStatus
 {
-    public static class StatusCalculater
+    public static class StatusCalculator
     {
-        public static Func<List<double>, double> StressCalculater = (input) => 
+        public static Func<List<double>, double> StressCalculator = (input) => 
         {
             return 0.0;
         };
 
-        public static Func<List<double>, double> StrainCalculater = (input) =>
+        public static Func<List<double>, double> StrainCalculator = (input) =>
         {
             return 0.0;
         };
 
-        public static Func<List<double>, double> TemperatureCalculater = (input) =>
+        public static Func<List<double>, double> TemperatureCalculator = (input) =>
         {
             return 0.0;
         };
 
-        public static Func<List<double>, double> FrequencyCalculater = (input) =>
+        public static Func<List<double>, double> FrequencyCalculator = (input) =>
         {
             return 0.0;
         };

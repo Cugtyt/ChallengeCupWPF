@@ -15,25 +15,31 @@ namespace ChallengeCupV1.Reflection
         /// <param name="namespace_">namespace to search</param>
         /// <param name="type">filter interface type</param>
         /// <returns></returns>
-        public static List<Type> GetClassList(string namespace_, Type type = null)
+        public static IEnumerable<Type> GetClassList(string namespace_, Type type = null)
         {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            List<Type> classList = new List<Type>();
-            foreach (var t in asm.GetTypes())
-            {
-                if (t.Namespace == namespace_)
-                {
-                    if (type == null)
-                    {
-                        classList.Add(t);
-                    }
-                    else if (t.GetInterface(type.Name) != null)
-                    {
-                        classList.Add(t);
-                    }
-                }
-            }
-            return classList;
+            //Assembly asm = Assembly.GetExecutingAssembly();
+            return from t in Assembly.GetExecutingAssembly().GetTypes()
+                    where t.Namespace == namespace_
+                    where type != null ? t.GetInterface(type.Name) != null : true
+                    select t;
+                
+
+            //List<Type> classList = new List<Type>();
+            //foreach (var t in asm.GetTypes())
+            //{
+            //    if (t.Namespace == namespace_)
+            //    {
+            //        if (type == null)
+            //        {
+            //            classList.Add(t);
+            //        }
+            //        else if (t.GetInterface(type.Name) != null)
+            //        {
+            //            classList.Add(t);
+            //        }
+            //    }
+            //}
+            //return classList;
         }
 
     }

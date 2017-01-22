@@ -26,7 +26,6 @@ namespace ChallengeCupV1
         public MainWindow()
         {
             InitializeComponent();
-            Console.WriteLine(File.FileUtils.GetRootPath());
         }
 
        
