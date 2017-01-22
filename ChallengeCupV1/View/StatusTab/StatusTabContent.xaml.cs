@@ -1,4 +1,5 @@
 ﻿using ChallengeCupV1.DataSource;
+using ChallengeCupV1.DataSource.GearStatus;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -22,7 +23,7 @@ namespace ChallengeCupV1.View.StatusTab
     /// </summary>
     public partial class StatusTabContent : UserControl
     {
-        public List<GearStatusData> ItemsSource = new List<GearStatusData>();
+        //public List<GearStatusData> ItemsSource = new List<GearStatusData>();
         //{
         //    get { return (List<GearStatusData>)GetValue(ItemSourceProperty); }
         //    set { SetValue(ItemSourceProperty, value); }
@@ -32,14 +33,27 @@ namespace ChallengeCupV1.View.StatusTab
         //public static readonly DependencyProperty ItemSourceProperty =
         //    DependencyProperty.Register("ItemSource", typeof(List<GearStatusData>), typeof(StatusTabContent));
 
+        public List<StatusData> statusData;
+
 
         public StatusTabContent()
         {
             InitializeComponent();
+            initStatusData();
             //ItemsSource.Add(new GearStatusData());
             //ItemsSource.Add(new GearStatusData());
-            dataGrid.ItemsSource = ItemsSource;
+            //dataGrid.ItemsSource = ItemsSource;
             //ItemsSource[0].Frequency = 5.0;
+            dataGrid.ItemsSource = statusData;
+        }
+
+        private void initStatusData()
+        {
+            statusData = new List<StatusData>();
+            statusData.Add(new StatusData("Stress", StatusCalculater.StressCalculater));
+            statusData.Add(new StatusData("Strain", StatusCalculater.StressCalculater));
+            statusData.Add(new StatusData("Temperature", StatusCalculater.TemperatureCalculater));
+            statusData.Add(new StatusData("Frequency", StatusCalculater.FrequencyCalculater));
         }
 
         private void generateReport_Click(object sender, RoutedEventArgs e)

@@ -39,9 +39,10 @@ namespace ChallengeCupV1.View.GearTab
                 gearLibSource.Add(c.Name);
             }
             gearSelectComboBox.ItemsSource = gearLibSource;
-            gearSelectComboBox.SelectedItem = classes[0];
+            gearSelectComboBox.SelectedIndex = 0;
             // Set grating number for gratingNumberComboBox
             gratingNumberComboBox.ItemsSource = gratingNumberSource;
+            gratingNumberComboBox.SelectedIndex = 0;
         }
 
         private void apply_Click(object sender, RoutedEventArgs e)

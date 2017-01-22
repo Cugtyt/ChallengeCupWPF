@@ -77,6 +77,10 @@ namespace ChallengeCupV1.View.GearTab
 
         private void gearContainer_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.ClickCount == 2)
+            {
+                gear.Reset();
+            }
             gear.MouseDown(e);
         }
 

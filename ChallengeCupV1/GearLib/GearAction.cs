@@ -23,8 +23,9 @@ namespace ChallengeCupV1.GearLib
         public static void Reset(this IGear gear)
         {
             PerspectiveCamera camera = gear.GetCamera();
-            camera.Position = new Point3D(camera.Position.X, camera.Position.Y, 5);
-            gear.GetModel().Transform = new Transform3DGroup();
+            camera.Position = new Point3D(-9.53674351933387E-07, 0.000154495239200969, 192.326262603187);
+            //gear.GetModel().Transform = new Transform3DGroup();
+            gear.GetAxisAngleRotation().Angle = 90;
         }
 
         public static void MouseUp(this IGear gear)

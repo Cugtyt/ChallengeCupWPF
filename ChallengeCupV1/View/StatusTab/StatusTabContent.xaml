@@ -57,15 +57,16 @@
             </Button>
         </Grid>
         <DataGrid Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" GridLinesVisibility="Horizontal">
-            <!--<DataGrid.Resources>
-                <data:GearStatusData x:Key="gearStatusData"/>
-            </DataGrid.Resources>-->
-            <DataGrid.Columns>
+            <!--<DataGrid.Columns>
                 <DataGridTextColumn x:Name="gear" Header="Gear" Width="2*"/>
                 <DataGridTextColumn x:Name="stress" Header="Stress" Width="1*" Binding="{Binding Stress}"/>
                 <DataGridTextColumn x:Name="strain" Header="Strain" Width="1*" Binding="{Binding Strain}"/>
                 <DataGridTextColumn x:Name="temperature" Header="Temperature" Width="1*" Binding="{Binding Temperature}"/>
                 <DataGridTextColumn x:Name="frequency" Header="Frequency" Width="1*" Binding="{Binding Frequency}"/>
+            </DataGrid.Columns>-->
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="parameter" Header="Parameter" Width="1*" Binding="{Binding Name}"/>
+                <DataGridTextColumn x:Name="value" Header="Value" Width="1*" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

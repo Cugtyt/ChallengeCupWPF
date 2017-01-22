@@ -67,6 +67,8 @@
     </ApplicationDefinition>
     <Compile Include="DataSource\DataTypeAdapter.cs" />
     <Compile Include="DataSource\GearStatusData.cs" />
+    <Compile Include="DataSource\GearStatus\StatusCalculater.cs" />
+    <Compile Include="DataSource\GearStatus\StatusData.cs" />
     <Compile Include="FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />
     <Compile Include="GearLib\Gear1.xaml.cs">
