@@ -75,6 +75,8 @@
     <Compile Include="View\GearTab\Gears\Gear2.xaml.cs">
       <DependentUpon>Gear2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\GearTab\Gears\GearAction.cs" />
+    <Compile Include="View\GearTab\Gears\IGear.cs" />
     <Compile Include="View\GearTab\GearTabContent.xaml.cs">
       <DependentUpon>GearTabContent.xaml</DependentUpon>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChallengeCupV1.View.GearTab.Gears;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -25,7 +27,9 @@ namespace ChallengeCupV1.View.GearTab
     { 
         public static Gear SelectedGear = Gear.G1;
         public static int GratingNumber = 1;
-        private static string gearLibPath = File.FileUtils.GetRootPath() + @"\View\GearTab\Gears";
+        private Gears.IGear gear;
+        private bool IsMouseDown;
+        private Point MouseLastPos;
 
         public GearTabContent()
         {
@@ -44,14 +48,46 @@ namespace ChallengeCupV1.View.GearTab
         /// </summary>
         public void UpdateGear()
         {
-            gear.Children.Add(Assembly.GetExecutingAssembly()
-                .CreateInstance("ChallengeCupV1.View.GearTab.Gears.Gear" + 
-                (int)Enum.Parse(typeof(Gear), SelectedGear.ToString())) as UserControl);
+            gear = Assembly.GetExecutingAssembly()
+                .CreateInstance("ChallengeCupV1.View.GearTab.Gears.Gear" +
+                (int)Enum.Parse(typeof(Gear), SelectedGear.ToString())) as Gears.IGear;
+            gearContainer.Children.Clear();
+            gearContainer.Children.Add(gear as UserControl);
         }
 
         public void ShowSettingBtn()
         {
             setting.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Gear model zoom in and zoom out while mouse wheeling
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gearContainer_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            gear.Zoom(e.Delta);
+        }
+
+        private void gearContainer_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            gear.MouseUp();
+        }
+
+        private void gearContainer_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            gear.MouseDown(e);
+        }
+
+        private void gearContainer_MouseMove(object sender, MouseEventArgs e)
+        {
+            gear.MouseMove();
+        }
+
+        private void gearContainer_MouseLeave(object sender, MouseEventArgs e)
+        {
+            gear.MouseUp();
         }
     }
 

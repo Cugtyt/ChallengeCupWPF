@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:ChallengeCupV1.View.GearTab.Gears"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Viewport3D ClipToBounds="True">
+    <Grid Background="#02FFFFFF">
+        <Viewport3D Name="viewPort" ClipToBounds="True">
             <Viewport3D.Camera>
-                <PerspectiveCamera FieldOfView="45" FarPlaneDistance="896.85993018317913" LookDirection="0,0,-373.251623201929" NearPlaneDistance="0.1" Position="-9.53674351933387E-07,0.000160217285298359,373.251665163598" UpDirection="0,1,0"/>
+                <PerspectiveCamera x:Name="camera" FieldOfView="45" FarPlaneDistance="896.85993018317913" LookDirection="0,0,-373.251623201929" NearPlaneDistance="0.1" Position="-9.53674351933387E-07,0.000160217285298359,373.251665163598" UpDirection="0,1,0"/>
             </Viewport3D.Camera>
-            <ModelVisual3D x:Name="World">
+            <ModelVisual3D>
                 <ModelVisual3D.Transform>
                     <Transform3DGroup>
                         <TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="0"/>
@@ -25,12 +25,12 @@
                         <TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="0"/>
                     </Transform3DGroup>
                 </ModelVisual3D.Transform>
-                <ModelVisual3D x:Name="AmbientLightContainer">
+                <ModelVisual3D>
                     <ModelVisual3D.Content>
                         <AmbientLight x:Name="AmbientLight" Color="#FF7F7F7F"/>
                     </ModelVisual3D.Content>
                 </ModelVisual3D>
-                <ModelVisual3D x:Name="DirectionalLightContainer">
+                <ModelVisual3D>
                     <ModelVisual3D.Content>
                         <DirectionalLight x:Name="DirectionalLight" Color="#FF3F3F3F" Direction="0,0,-1">
                             <DirectionalLight.Transform>
@@ -39,15 +39,15 @@
                         </DirectionalLight>
                     </ModelVisual3D.Content>
                 </ModelVisual3D>
-                <ModelVisual3D x:Name="RootGeometryContainer">
-                    <ModelVisual3D x:Name="______">
+                <ModelVisual3D>
+                    <ModelVisual3D>
                         <ModelVisual3D.Transform>
                             <Transform3DGroup>
                                 <TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="0"/>
                                 <ScaleTransform3D ScaleZ="1" ScaleY="1" ScaleX="1"/>
-                                <RotateTransform3D d:EulerAngles="0,-5,0">
+                                <RotateTransform3D x:Name="rotateTransform" d:EulerAngles="0,-5,0">
                                     <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D Axis="0,-1,0" Angle="5"/>
+                                        <AxisAngleRotation3D x:Name="axisAngleRotation" Axis="0,-1,0" Angle="5"/>
                                     </RotateTransform3D.Rotation>
                                 </RotateTransform3D>
                                 <TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="0"/>
@@ -55,7 +55,7 @@
                             </Transform3DGroup>
                         </ModelVisual3D.Transform>
                         <ModelVisual3D.Content>
-                            <GeometryModel3D x:Name="DefaultMaterial" d:Bounds="-15.0001344680786,-74.2981491088867,-74.2982711791992,30.0000276565552,148.596618652344,148.596626281738">
+                            <GeometryModel3D x:Name="gearModel" d:Bounds="-15.0001344680786,-74.2981491088867,-74.2982711791992,30.0000276565552,148.596618652344,148.596626281738">
                                 <GeometryModel3D.Geometry>
                                     <MeshGeometry3D Normals="0,0,1 0,0,1 0,0,1 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0
 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0 1,0,0

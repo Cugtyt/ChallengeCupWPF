@@ -61,7 +61,12 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Name="gear"/>
+        <Grid Grid.Row="1" Name="gearContainer" 
+              MouseUp="gearContainer_MouseUp"
+              MouseDown="gearContainer_MouseDown"
+              MouseMove="gearContainer_MouseMove"
+              MouseLeave="gearContainer_MouseLeave"
+              MouseWheel="gearContainer_MouseWheel"/>
         <local:InitPage Grid.Row="1" x:Name="initPage"/>
     </Grid>
 </UserControl>

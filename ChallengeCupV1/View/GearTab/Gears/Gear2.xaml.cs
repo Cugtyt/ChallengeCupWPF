@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -18,11 +19,31 @@ namespace ChallengeCupV1.View.GearTab.Gears
     /// <summary>
     /// Gear2.xaml 的交互逻辑
     /// </summary>
-    public partial class Gear2 : UserControl
+    public partial class Gear2 : UserControl, IGear
     {
         public Gear2()
         {
             InitializeComponent();
+        }
+
+        public AxisAngleRotation3D GetAxisAngleRotation()
+        {
+            return axisAngleRotation;
+        }
+
+        public PerspectiveCamera GetCamera()
+        {
+            return camera;
+        }
+
+        public GeometryModel3D GetModel()
+        {
+            return gearModel;
+        }
+
+        public Viewport3D GetViewPort()
+        {
+            return viewPort;
         }
     }
 }
