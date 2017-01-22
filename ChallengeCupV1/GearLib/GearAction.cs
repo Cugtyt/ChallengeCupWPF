@@ -14,6 +14,7 @@ namespace ChallengeCupV1.GearLib
         private static bool isMouseDown;
         private static Point mouseLastPos;
 
+        #region Zoom in and zoom out
         public static void Zoom(this IGear gear, double z)
         {
             PerspectiveCamera camera = gear.GetCamera();
@@ -27,6 +28,9 @@ namespace ChallengeCupV1.GearLib
             //gear.GetModel().Transform = new Transform3DGroup();
             gear.GetAxisAngleRotation().Angle = 90;
         }
+        #endregion
+
+        #region rotate
 
         public static void MouseUp(this IGear gear)
         {
@@ -54,6 +58,7 @@ namespace ChallengeCupV1.GearLib
             gear.GetAxisAngleRotation().Angle += diff / viewPort.ActualWidth * 64 * Math.PI;
             mouseLastPos = curPos;
         }
+        #endregion
 
     }
 }

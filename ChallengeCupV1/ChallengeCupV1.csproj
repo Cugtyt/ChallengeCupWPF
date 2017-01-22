@@ -66,7 +66,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataSource\DataTypeAdapter.cs" />
-    <Compile Include="DataSource\GearStatusData.cs" />
     <Compile Include="DataSource\GearStatus\StatusCalculater.cs" />
     <Compile Include="DataSource\GearStatus\StatusData.cs" />
     <Compile Include="FFT\DataFFT.cs" />

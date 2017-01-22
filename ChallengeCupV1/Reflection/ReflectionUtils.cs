@@ -9,27 +9,12 @@ namespace ChallengeCupV1.Reflection
 {
     public static class ReflectionUtils
     {
-        //public static List<Type> GetClassList(string namespace_, string classPartName = null)
-        //{
-        //    Assembly asm = Assembly.GetExecutingAssembly();
-        //    List<Type> classList = new List<Type>();
-        //    foreach (var type in asm.GetTypes())
-        //    {
-        //        if (type.Namespace == namespace_)
-        //        {
-        //            if (classPartName == null)
-        //            {
-        //                classList.Add(type);
-        //            }
-        //            else if(type.Name.Contains(classPartName))
-        //            {
-        //                classList.Add(type);
-        //            }
-        //        }
-        //    }
-        //    return classList;
-        //}
-
+        /// <summary>
+        /// Get classes list in given namespace and filtered by given interface
+        /// </summary>
+        /// <param name="namespace_">namespace to search</param>
+        /// <param name="type">filter interface type</param>
+        /// <returns></returns>
         public static List<Type> GetClassList(string namespace_, Type type = null)
         {
             Assembly asm = Assembly.GetExecutingAssembly();
