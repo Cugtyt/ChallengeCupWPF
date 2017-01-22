@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
 
-namespace ChallengeCupV1.View.GearTab.Gears
+namespace ChallengeCupV1.GearLib
 {
     public static class GearAction
     {
@@ -49,6 +49,7 @@ namespace ChallengeCupV1.View.GearTab.Gears
             var viewPort = gear.GetViewPort();
             Point curPos = Mouse.GetPosition(viewPort);
             double diff = curPos.X - mouseLastPos.X;
+            // Speed up factor is 16
             gear.GetAxisAngleRotation().Angle += diff / viewPort.ActualWidth * 64 * Math.PI;
             mouseLastPos = curPos;
         }

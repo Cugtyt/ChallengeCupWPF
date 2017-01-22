@@ -1,4 +1,4 @@
-﻿using ChallengeCupV1.View.GearTab.Gears;
+﻿using ChallengeCupV1.GearLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,9 +27,7 @@ namespace ChallengeCupV1.View.GearTab
     { 
         public static Gear SelectedGear = Gear.G1;
         public static int GratingNumber = 1;
-        private Gears.IGear gear;
-        private bool IsMouseDown;
-        private Point MouseLastPos;
+        private GearLib.IGear gear;
 
         public GearTabContent()
         {
@@ -49,8 +47,8 @@ namespace ChallengeCupV1.View.GearTab
         public void UpdateGear()
         {
             gear = Assembly.GetExecutingAssembly()
-                .CreateInstance("ChallengeCupV1.View.GearTab.Gears.Gear" +
-                (int)Enum.Parse(typeof(Gear), SelectedGear.ToString())) as Gears.IGear;
+                .CreateInstance("ChallengeCupV1.GearLib.Gear" +
+                (int)Enum.Parse(typeof(Gear), SelectedGear.ToString())) as GearLib.IGear;
             gearContainer.Children.Clear();
             gearContainer.Children.Add(gear as UserControl);
         }
