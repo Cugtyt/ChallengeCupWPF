@@ -77,6 +77,7 @@
     </Compile>
     <Compile Include="GearLib\GearAction.cs" />
     <Compile Include="GearLib\IGear.cs" />
+    <Compile Include="Reflection\ReflectionUtils.cs" />
     <Compile Include="View\GearTab\GearTabContent.xaml.cs">
       <DependentUpon>GearTabContent.xaml</DependentUpon>
     </Compile>

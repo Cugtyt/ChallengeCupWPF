@@ -36,10 +36,10 @@ namespace ChallengeCupV1.View.StatusTab
         public StatusTabContent()
         {
             InitializeComponent();
-            ItemsSource.Add(new GearStatusData());
-            ItemsSource.Add(new GearStatusData());
+            //ItemsSource.Add(new GearStatusData());
+            //ItemsSource.Add(new GearStatusData());
             dataGrid.ItemsSource = ItemsSource;
-            ItemsSource[0].Frequency = 5.0;
+            //ItemsSource[0].Frequency = 5.0;
         }
 
         private void generateReport_Click(object sender, RoutedEventArgs e)

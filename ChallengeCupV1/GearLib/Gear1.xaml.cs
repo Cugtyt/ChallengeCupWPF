@@ -21,6 +21,8 @@ namespace ChallengeCupV1.GearLib
     /// </summary>
     public partial class Gear1 : UserControl, IGear
     {
+        public DataSource.GearStatusData Status = new DataSource.GearStatusData();
+
         public Gear1()
         {
             InitializeComponent();
