@@ -173,7 +173,7 @@ namespace ChallengeCupV1.File
         /// <param name="dirPath"></param>
         /// <param name="datalist"></param>
         /// <returns></returns>
-        public static Task GenerateStatusReportFile(string dirPath, List<StatusData> datalist)
+        public static Task GenerateStatusReportFile(string dirPath, List<StatusDataTemplate> datalist)
         {
             #region Generate and check if the file path created by time is valid, it shoule always be vaild
 

@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace ChallengeCupV1.DataSource.GearStatus
 {
-    public class StatusData : DependencyObject
+    public class StatusDataTemplate : DependencyObject
     {
         /// <summary>
         /// Status data name
@@ -22,7 +22,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
 
         // Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NameProperty =
-            DependencyProperty.Register("Name", typeof(string), typeof(StatusData));
+            DependencyProperty.Register("Name", typeof(string), typeof(StatusDataTemplate));
 
         /// <summary>
         /// Status value
@@ -35,14 +35,14 @@ namespace ChallengeCupV1.DataSource.GearStatus
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(StatusData), new PropertyMetadata(0.0));
+            DependencyProperty.Register("Value", typeof(double), typeof(StatusDataTemplate), new PropertyMetadata(0.0));
 
         /// <summary>
         /// This calculater is used to calculate the Value
         /// </summary>
         private Func<List<double>, double> calculater;
 
-        public StatusData(string name, Func<List<double>, double> cal, string Unit)
+        public StatusDataTemplate(string name, Func<List<double>, double> cal, string Unit)
         {
             Name = name;
             calculater = cal;

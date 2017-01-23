@@ -68,7 +68,8 @@
     <Compile Include="DataSource\DataTypeAdapter.cs" />
     <Compile Include="DataSource\GearStatus\StatusCalculator.cs" />
     <Compile Include="DataSource\GearStatus\StatusConstantParam.cs" />
-    <Compile Include="DataSource\GearStatus\StatusData.cs" />
+    <Compile Include="DataSource\GearStatus\StatusDataContainer.cs" />
+    <Compile Include="DataSource\GearStatus\StatusDataTemplate.cs" />
     <Compile Include="FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />
     <Compile Include="GearLib\Gear1.xaml.cs">
@@ -88,6 +89,9 @@
     </Compile>
     <Compile Include="View\GearTab\InitPage.xaml.cs">
       <DependentUpon>InitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GearTab\ParamDisplay.xaml.cs">
+      <DependentUpon>ParamDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Old\FourWaveTab.xaml.cs">
       <DependentUpon>FourWaveTab.xaml</DependentUpon>
@@ -143,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\GearTab\InitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GearTab\ParamDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

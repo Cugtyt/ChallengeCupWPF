@@ -33,28 +33,29 @@ namespace ChallengeCupV1.View.StatusTab
         //public static readonly DependencyProperty ItemSourceProperty =
         //    DependencyProperty.Register("ItemSource", typeof(List<GearStatusData>), typeof(StatusTabContent));
 
-        public List<StatusData> statusData;
+        //public List<StatusDataTemplate> statusData;
 
 
         public StatusTabContent()
         {
             InitializeComponent();
-            initStatusData();
+            //initStatusData();
             //ItemsSource.Add(new GearStatusData());
             //ItemsSource.Add(new GearStatusData());
             //dataGrid.ItemsSource = ItemsSource;
             //ItemsSource[0].Frequency = 5.0;
-            dataGrid.ItemsSource = statusData;
+            //dataGrid.ItemsSource = statusData;
+            dataGrid.ItemsSource = StatusDataContainer.StatusData;
         }
 
-        private void initStatusData()
-        {
-            statusData = new List<StatusData>();
-            statusData.Add(new StatusData("Stress", StatusCalculator.StressCalculator, "N"));
-            statusData.Add(new StatusData("Strain", StatusCalculator.StressCalculator, "N"));
-            statusData.Add(new StatusData("Temperature", StatusCalculator.TemperatureCalculator, "N"));
-            statusData.Add(new StatusData("Frequency", StatusCalculator.FrequencyCalculator, "N"));
-        }
+        //private void initStatusData()
+        //{
+        //    statusData = new List<StatusDataTemplate>();
+        //    statusData.Add(new StatusDataTemplate("Stress", StatusCalculator.StressCalculator, "N"));
+        //    statusData.Add(new StatusDataTemplate("Strain", StatusCalculator.StressCalculator, "N"));
+        //    statusData.Add(new StatusDataTemplate("Temperature", StatusCalculator.TemperatureCalculator, "N"));
+        //    statusData.Add(new StatusDataTemplate("Frequency", StatusCalculator.FrequencyCalculator, "N"));
+        //}
 
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
