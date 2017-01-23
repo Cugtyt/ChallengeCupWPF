@@ -73,7 +73,7 @@ namespace ChallengeCupV1.View.WaveTab
         /// <returns></returns>
         public async Task AddPoints(List<double>[] yListArray)
         {
-            var selected = (int)Enum.Parse(typeof(CH), selectedCH.ToString());
+            var selected = (int)Enum.Parse(typeof(CH), selectedCH.ToString()) + 1;
             switch (selectedDomain)
             {
                 case Domain.Time:

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChallengeCupV1.DataSource.GearStatus;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,30 +15,29 @@ namespace ChallengeCupV1.File
         /// </summary>
         /// <param name="filePath">file path</param>
         /// <returns>data from file</returns>
-        public static Task<List<double>[]> ReadWaveData(string filePath)
+        public static Task<List<double>[]> ReadWaveData(string filePath, int max = 10000)
         {
 #if DEBUG
-            Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is " + filePath);
+            Console.WriteLine("FileUtils: ReadWaveData() -> file is " + filePath);
 #endif
             if (!System.IO.File.Exists(filePath))
             {
 #if DEBUG
-                Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is not valid");
+                Console.WriteLine("FileUtils: ReadWaveData() -> file is not valid");
 #endif
-                return null;
+                throw new Exception("File is not valid.");
             }
 #if DEBUG
-            Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is valid");
+            Console.WriteLine("FileUtils: ReadWaveData() -> file is valid");
 #endif
-            string text;
-            List<double>[] dataList = new List<double>[4];
-            for (int i = 0; i < dataList.Length; i++)
-            {
-                dataList[i] = new List<double>();
-            }
-
+            //List<double>[] dataList = new List<double>[4];
+            //for (int i = 0; i < dataList.Length; i++)
+            //{
+            //    dataList[i] = new List<double>();
+            //}
             return Task.Run(() =>
             {
+                string text;
                 // begin to read data form file
                 using (StreamReader reader = new StreamReader(filePath))
                 {
@@ -49,21 +49,41 @@ namespace ChallengeCupV1.File
                 string[] testResult = text.Replace("\r", " ").Replace("\t", " ").Replace("\n", " ")
                 .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-                for (int i = 0; i < testResult.Length; i++)
+                List<double>[] dataList;
+                try
+                {
+                    dataList = new List<double>[int.Parse(testResult[1]) + 1];
+                    for (int i = 0; i < dataList.Length; i++)
+                    {
+                        dataList[i] = new List<double>();
+                    }
+                }
+                catch (Exception)
+                {
+#if DEBUG
+                    Console.WriteLine("File formate is illegal.");
+#endif
+                    throw new Exception("File formate is illegal.");
+                }
+
+                for (int i = 0; i < testResult.Length && i < max; i++)
                 {
                     switch (i % 10)
                     {
-                        case 6:
+                        case 5:
                             dataList[0].Add(double.Parse(testResult[i]));
                             break;
-                        case 7:
+                        case 6:
                             dataList[1].Add(double.Parse(testResult[i]));
                             break;
-                        case 8:
+                        case 7:
                             dataList[2].Add(double.Parse(testResult[i]));
                             break;
-                        case 9:
+                        case 8:
                             dataList[3].Add(double.Parse(testResult[i]));
+                            break;
+                        case 9:
+                            dataList[4].Add(double.Parse(testResult[i]));
                             break;
                         default:
                             break;
@@ -134,29 +154,64 @@ namespace ChallengeCupV1.File
             return null;
         }
 
-//        public static Task<FileInfo[]> ReadGearLib(string gearDir)
-//        {
-//#if DEBUG
-//            if (!Directory.Exists(gearDir))
-//            {
-//                Console.WriteLine("FileUtils: ReadGearLib() -> directory is not vaild");
-//                return null;
-//            }
-//#endif
-//            return Task.Run(() =>
-//            {
-//                DirectoryInfo dire = new DirectoryInfo(gearDir);
-//                return dire.GetFiles();
-//            });
-//        }
-
+        /// <summary>
+        /// Get project root path
+        /// </summary>
+        /// <returns></returns>
         public static string GetRootPath()
         {
-            string BaseDirectoryPath = AppDomain.CurrentDomain.BaseDirectory; 
-            string rootPath = BaseDirectoryPath.Substring(0, BaseDirectoryPath.LastIndexOf("\\")); 
+            string BaseDirectoryPath = AppDomain.CurrentDomain.BaseDirectory;
+            string rootPath = BaseDirectoryPath.Substring(0, BaseDirectoryPath.LastIndexOf("\\"));
             rootPath = rootPath.Substring(0, rootPath.LastIndexOf("\\"));
             rootPath = rootPath.Substring(0, rootPath.LastIndexOf("\\"));
             return rootPath;
+        }
+
+        /// <summary>
+        /// Generate status report to file
+        /// </summary>
+        /// <param name="dirPath"></param>
+        /// <param name="datalist"></param>
+        /// <returns></returns>
+        public static Task GenerateStatusReportFile(string dirPath, List<StatusData> datalist)
+        {
+            #region Generate and check if the file path created by time is valid, it shoule always be vaild
+
+#if DEBUG
+            Console.WriteLine("FileUtils: GenerateStatusReportFile() -> dir is " + dirPath);
+#endif
+            string timeStamp = DateTime.Now.ToString();
+            string filePath = dirPath + @"\" + "GearStatusData" + timeStamp + ".txt";
+            if (!System.IO.File.Exists(filePath))
+            {
+#if DEBUG
+                Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is not valid, IT CANNOT HAPPENED!!!");
+#endif
+                return null;
+            }
+#if DEBUG
+            Console.WriteLine("FileUtils: GenerateStatusReportFile() -> filePath: " + filePath);
+#endif
+            #endregion
+
+            return Task.Run(() =>
+            {
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(string.Format("This is a gear status data file generated by CCV1.\n Time: " 
+                    + timeStamp + "\n{0:-20}Value\n", "StatusPARM"));
+                foreach (var d in datalist)
+                {
+                    sb.Append(string.Format("{0:-20}{1}", d.Name, d.Value));
+                }
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    writer.Write(sb);
+#if DEBUG
+                    Console.WriteLine("write done");
+#endif
+                }
+            });
         }
     }
 }
