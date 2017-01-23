@@ -50,10 +50,10 @@ namespace ChallengeCupV1.View.StatusTab
         private void initStatusData()
         {
             statusData = new List<StatusData>();
-            statusData.Add(new StatusData("Stress", StatusCalculator.StressCalculator));
-            statusData.Add(new StatusData("Strain", StatusCalculator.StressCalculator));
-            statusData.Add(new StatusData("Temperature", StatusCalculator.TemperatureCalculator));
-            statusData.Add(new StatusData("Frequency", StatusCalculator.FrequencyCalculator));
+            statusData.Add(new StatusData("Stress", StatusCalculator.StressCalculator, "N"));
+            statusData.Add(new StatusData("Strain", StatusCalculator.StressCalculator, "N"));
+            statusData.Add(new StatusData("Temperature", StatusCalculator.TemperatureCalculator, "N"));
+            statusData.Add(new StatusData("Frequency", StatusCalculator.FrequencyCalculator, "N"));
         }
 
         private void generateReport_Click(object sender, RoutedEventArgs e)

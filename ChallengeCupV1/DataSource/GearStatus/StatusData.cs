@@ -18,6 +18,8 @@ namespace ChallengeCupV1.DataSource.GearStatus
             set { SetValue(NameProperty, value); }
         }
 
+        public string Unit;
+
         // Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NameProperty =
             DependencyProperty.Register("Name", typeof(string), typeof(StatusData));
@@ -40,7 +42,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         private Func<List<double>, double> calculater;
 
-        public StatusData(string name, Func<List<double>, double> cal)
+        public StatusData(string name, Func<List<double>, double> cal, string Unit)
         {
             Name = name;
             calculater = cal;
