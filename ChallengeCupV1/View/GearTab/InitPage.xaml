@@ -56,12 +56,12 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/ConnectDefault.png"/>
+                        <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/SettingDefault.png"/>
                         <TextBlock Grid.Column="1" Text="{TemplateBinding Button.Content}" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/ConnectEnabled.png" TargetName="connectIcon"/>
+                            <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/SettingEnabled.png" TargetName="connectIcon"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
