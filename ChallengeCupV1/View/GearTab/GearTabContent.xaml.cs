@@ -48,9 +48,10 @@ namespace ChallengeCupV1.View.GearTab
             //gear = Assembly.GetExecutingAssembly()
             //    .CreateInstance("ChallengeCupV1.GearLib.Gear" +
             //    (int)Enum.Parse(typeof(Gear), SelectedGear.ToString())) as GearLib.IGear;
-            gear = Assembly.GetExecutingAssembly()
-                .CreateInstance("ChallengeCupV1.GearLib.Gear" + initPage.GetGearIndex())
-                as IGear;
+            //gear = Assembly.GetExecutingAssembly()
+            //    .CreateInstance("ChallengeCupV1.GearLib.Gear" + initPage.GetGearIndex())
+            //    as IGear;
+            gear = GearFactory.GetGear(initPage.GetGearIndex(), initPage.GetGratingNumber());
             gearContainer.Children.Clear();
             gearContainer.Children.Add(gear as UserControl);
         }

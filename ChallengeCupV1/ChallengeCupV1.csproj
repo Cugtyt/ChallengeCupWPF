@@ -70,6 +70,7 @@
     <Compile Include="DataSource\GearStatus\StatusConstantParam.cs" />
     <Compile Include="DataSource\GearStatus\StatusDataContainer.cs" />
     <Compile Include="DataSource\GearStatus\StatusDataTemplate.cs" />
+    <Compile Include="DataSource\SettingData.cs" />
     <Compile Include="FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />
     <Compile Include="GearLib\Gear1.xaml.cs">
@@ -79,7 +80,9 @@
       <DependentUpon>Gear2.xaml</DependentUpon>
     </Compile>
     <Compile Include="GearLib\GearAction.cs" />
+    <Compile Include="GearLib\GearFactory.cs" />
     <Compile Include="GearLib\IGear.cs" />
+    <Compile Include="GearLib\IGrating.cs" />
     <Compile Include="Reflection\ReflectionUtils.cs" />
     <Compile Include="View\GearTab\GearTabContent.xaml.cs">
       <DependentUpon>GearTabContent.xaml</DependentUpon>

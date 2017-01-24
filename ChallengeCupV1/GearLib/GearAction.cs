@@ -30,7 +30,7 @@ namespace ChallengeCupV1.GearLib
         }
         #endregion
 
-        #region rotate
+        #region Rotate
 
         public static void MouseUp(this IGear gear)
         {

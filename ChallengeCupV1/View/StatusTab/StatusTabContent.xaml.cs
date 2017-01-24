@@ -35,6 +35,7 @@ namespace ChallengeCupV1.View.StatusTab
 
         //public List<StatusDataTemplate> statusData;
 
+        public StatusDataContainer statusDataSource = new StatusDataContainer();
 
         public StatusTabContent()
         {
@@ -45,7 +46,7 @@ namespace ChallengeCupV1.View.StatusTab
             //dataGrid.ItemsSource = ItemsSource;
             //ItemsSource[0].Frequency = 5.0;
             //dataGrid.ItemsSource = statusData;
-            dataGrid.ItemsSource = StatusDataContainer.StatusData;
+            dataGrid.ItemsSource = statusDataSource.StatusData;
         }
 
         //private void initStatusData()
@@ -59,7 +60,7 @@ namespace ChallengeCupV1.View.StatusTab
 
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
-           
+            File.FileUtils.GenerateStatusReportFile(SettingData.StatusReportDir, statusDataSource.StatusData);
         }
     }
 }

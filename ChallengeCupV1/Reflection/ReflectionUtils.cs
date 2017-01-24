@@ -15,12 +15,12 @@ namespace ChallengeCupV1.Reflection
         /// <param name="namespace_">namespace to search</param>
         /// <param name="type">filter interface type</param>
         /// <returns></returns>
-        public static IEnumerable<Type> GetClassList(string namespace_, Type type = null)
+        public static IEnumerable<Type> GetClassList(string namespace_)
         {
             //Assembly asm = Assembly.GetExecutingAssembly();
             return from t in Assembly.GetExecutingAssembly().GetTypes()
                     where t.Namespace == namespace_
-                    where type != null ? t.GetInterface(type.Name) != null : true
+                    //where type != null ? t.GetInterface(type.Name) != null : true
                     select t;
                 
 
@@ -42,5 +42,23 @@ namespace ChallengeCupV1.Reflection
             //return classList;
         }
 
+        public static IEnumerable<Type> IsInterfaceFilter(IEnumerable<Type> rowType, Type type)
+        {
+            return from t in rowType
+                   where t.GetInterface(type.Name) != null
+                   select t;
+        }
+
+        public static IEnumerable<Type> IsNotInterfaceFilter(IEnumerable<Type> rowType, Type type)
+        {
+            return from t in rowType
+                   where t.GetInterface(type.Name) == null
+                   select t;
+        }
+
+        public static object GetClassByName(string className)
+        {
+            return Assembly.GetExecutingAssembly().CreateInstance(className);
+        }
     }
 }

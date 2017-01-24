@@ -29,7 +29,7 @@ namespace ChallengeCupV1.View.WaveTab
         {
             Interval = TimeSpan.FromMilliseconds(100),
         };
-        string directoryPath = File.FileUtils.GetRootPath() + @"\DataSource\data\";
+        //string directoryPath = File.FileUtils.GetRootPath() + @"\DataSource\data\";
         FileInfo[] files;
         static int fileIndex = 0;
 
@@ -42,8 +42,9 @@ namespace ChallengeCupV1.View.WaveTab
         public WaveTabContent()
         {
             InitializeComponent();
-            var dire = new DirectoryInfo(directoryPath);
-            files = dire.GetFiles();
+            //var dire = new DirectoryInfo(directoryPath);
+            var dir = new DirectoryInfo(SettingData.WaveDataDir);
+            files = dir.GetFiles();
 #if DEBUG
             Console.WriteLine("WaveTabContent:WaveTabContent() -> files name list");
             //for (int i = 0; i < files.Length; i++)
@@ -60,7 +61,7 @@ namespace ChallengeCupV1.View.WaveTab
             if (fileIndex < files.Length)
             {
                 AddPoints(await File.FileUtils
-                .ReadWaveData(directoryPath + files[fileIndex++].Name));
+                .ReadWaveData(SettingData.WaveDataDir + files[fileIndex++].Name));
             }
         }
 

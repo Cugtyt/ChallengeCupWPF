@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupV1.DataSource.GearStatus
 {
-    public static class StatusDataContainer
+    public class StatusDataContainer
     {
-        public static List<StatusDataTemplate> StatusData = new List<StatusDataTemplate>()
+        public List<StatusDataTemplate> StatusData = new List<StatusDataTemplate>()
         {
             new StatusDataTemplate("Stress", StatusCalculator.StressCalculator, "N"),
             new StatusDataTemplate("Strain", StatusCalculator.StressCalculator, "N"),

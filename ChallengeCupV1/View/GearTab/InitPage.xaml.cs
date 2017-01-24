@@ -1,5 +1,6 @@
 ﻿using ChallengeCupV1.DataSource;
 using ChallengeCupV1.GearLib;
+using ChallengeCupV1.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,13 +28,15 @@ namespace ChallengeCupV1.View.GearTab
     public partial class InitPage : UserControl
     {
         ObservableCollection<string> gearLibSource = new ObservableCollection<string>();
-        ObservableCollection<int> gratingNumberSource = new ObservableCollection<int>() { 1, 2, 3, 4 };
+        ObservableCollection<int> gratingNumberSource = new ObservableCollection<int>() { 0, 1, 2, 3, 4 };
 
         public InitPage()
         {
             InitializeComponent();
             // Search in GearLib to set items for gearSelectComboBox
-            var classes = Reflection.ReflectionUtils.GetClassList("ChallengeCupV1.GearLib", typeof(IGear));
+            var classes = ReflectionUtils.IsNotInterfaceFilter(ReflectionUtils.IsInterfaceFilter(
+                ReflectionUtils.GetClassList("ChallengeCupV1.GearLib"), typeof(IGear)), typeof(IGrating));
+
             foreach (var c in classes)
             {
                 gearLibSource.Add(c.Name);
@@ -61,7 +64,7 @@ namespace ChallengeCupV1.View.GearTab
 
         public int GetGratingNumber()
         {
-            return gratingNumberComboBox.SelectedIndex + 1;
+            return gratingNumberComboBox.SelectedIndex;
         }
 
         //#region Select gear
