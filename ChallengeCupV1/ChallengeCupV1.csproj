@@ -102,6 +102,12 @@
     <Compile Include="View\FunctionColumn.xaml.cs">
       <DependentUpon>FunctionColumn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SettingTab\SettingTabContent.xaml.cs">
+      <DependentUpon>SettingTabContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingTab\SettingTabHeader.xaml.cs">
+      <DependentUpon>SettingTabHeader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StatusTab\StatusTabContent.xaml.cs">
       <DependentUpon>StatusTabContent.xaml</DependentUpon>
     </Compile>
@@ -185,6 +191,14 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Page Include="View\SettingTab\SettingTabContent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingTab\SettingTabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\StatusTab\StatusTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
