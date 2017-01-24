@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChallengeCupV1.DataSource;
+using ChallengeCupV1.DataSource.GearStatus;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,34 @@ namespace ChallengeCupV1.View.SettingTab
         public SettingTabContent()
         {
             InitializeComponent();
+            statusReportDir.Text = SettingData.StatusReportDir;
+            E_PARM.Text = StatusConstantParam.E.ToString();
+            u_PARM.Text = StatusConstantParam.u.ToString();
+            delta_PARM.Text = StatusConstantParam.delta.ToString();
+            alpha_PARM.Text = StatusConstantParam.alpha.ToString();
+        }
+
+      
+        private void browseFile_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.Cancel)
+            {
+                return;
+            }
+            string dir = dialog.SelectedPath.Trim();
+            statusReportDir.Text = dir;
+        }
+
+        private void apply_Click(object sender, RoutedEventArgs e)
+        {
+            SettingData.StatusReportDir = statusReportDir.Text;
+            StatusConstantParam.E = double.Parse(E_PARM.Text);
+            StatusConstantParam.u = double.Parse(u_PARM.Text);
+            StatusConstantParam.delta = double.Parse(delta_PARM.Text);
+            StatusConstantParam.alpha = double.Parse(alpha_PARM.Text);
         }
     }
 }

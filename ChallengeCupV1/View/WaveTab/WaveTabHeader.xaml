@@ -11,8 +11,8 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Source="/View/Resource/Icon/WaveTabIcon.png" Margin="0,0,10,0"/>
-        <TextBlock Grid.Column="1" Text="Wave"/>
+        <Image Grid.Column="0" Source="/ChallengeCupV1;component/View/Resource/Icon/WaveTabIcon.png" Margin="0,0,10,0"/>
+        <TextBlock Grid.Column="1" Text="波形"/>
     </Grid>
     
 </UserControl>

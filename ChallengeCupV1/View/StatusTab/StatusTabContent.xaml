@@ -45,7 +45,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/GenerateReportDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" FontSize="15" Text="Generate Report" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBlock Grid.Row="1" FontSize="15" Text="生成报告" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="Button.IsPressed" Value="True">
@@ -65,8 +65,8 @@
                 <DataGridTextColumn x:Name="frequency" Header="Frequency" Width="1*" Binding="{Binding Frequency}"/>
             </DataGrid.Columns>-->
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="parameter" Header="Parameter" Width="1*" Binding="{Binding Name}"/>
-                <DataGridTextColumn x:Name="value" Header="Value" Width="1*" Binding="{Binding Value}"/>
+                <DataGridTextColumn x:Name="parameter" Header="参数" Width="1*" Binding="{Binding Name}"/>
+                <DataGridTextColumn x:Name="value" Header="参数值" Width="1*" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

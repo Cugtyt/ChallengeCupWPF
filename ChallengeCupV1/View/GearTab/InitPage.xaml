@@ -10,7 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
@@ -23,7 +23,7 @@
                 </ResourceDictionary>
             </StackPanel.Resources>
             <StackPanel Orientation="Horizontal">
-                <Label Content=" Gear: " Margin="0,0,20,0" Width="80"/>
+                <Label Content="齿轮选择：" Margin="0,0,20,0" Width="80"/>
                 <!--<ComboBox Width="150"  Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
                     <ComboBoxItem Name="gear1" Content="Gear1" Selected="gear1_Selected" IsSelected="True"/>
                     <ComboBoxItem Name="gear2" Content="Gear2" Selected="gear2_Selected"/>
@@ -32,7 +32,7 @@
                           Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content=" Grateing Number: " Margin="0,0,20,0" Width="80"/>
+                <Label Content="光栅数：" Margin="0,0,20,0" Width="80"/>
                 <!--<ComboBox Width="150" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
                     <ComboBoxItem Name="num1" Content="1" Selected="num1_Selected" IsSelected="True"/>
                     <ComboBoxItem Name="num2" Content="2" Selected="num2_Selected"/>
@@ -42,13 +42,13 @@
                 <ComboBox Width="150" Name="gratingNumberComboBox"
                           Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <!--<StackPanel Orientation="Horizontal">
                 <Label Content=" Grateing Number: " Margin="0,0,20,0" Width="80"/>
                 <ComboBox Width="150" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
                 </ComboBox>
-            </StackPanel>
+            </StackPanel>-->
         </StackPanel>
-        <Button Grid.Row="1" Name="apply" Width="100" Content="Apply" Click="apply_Click">
+        <Button Grid.Row="1" Name="apply" Width="100" Height="40" Content="应用" Click="apply_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>

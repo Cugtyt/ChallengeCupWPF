@@ -13,7 +13,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Grid Margin="40,0,0,0">
+        <Grid Margin="40,0,0,0" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -52,6 +52,6 @@
                
             </Grid>
         </Grid>
-        <local:WavePlot Grid.Row="3" x:Name="wavePlot"/>
+        <local:WavePlot Grid.Row="1" x:Name="wavePlot"/>
     </Grid>
 </UserControl>

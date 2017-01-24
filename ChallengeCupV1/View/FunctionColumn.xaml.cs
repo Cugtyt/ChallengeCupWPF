@@ -29,29 +29,29 @@ namespace ChallengeCupV1.View
         {
             
             // Connect asked
-            if ((string)connect.Content == "Connect")
+            if ((string)connect.Content == "连接")
             {
-                connect.Content = "Connected";
+                connect.Content = "断开";
             }
             // Connected cancled
             else
             {
-                connect.Content = "Connect";
+                connect.Content = "连接";
             }
         }
 
         private void start_Click(object sender, RoutedEventArgs e)
         {
             // Start asked
-            if ("Start" == (string)start.Content)
+            if ("开始" == (string)start.Content)
             {
-                start.Content = "Stop";
+                start.Content = "停止";
                 WaveTab.WaveTabContent.Timer.IsEnabled = true;
             }
             // Start cancled
             else
             {
-                start.Content = "Start";
+                start.Content = "停止";
                 WaveTab.WaveTabContent.Timer.IsEnabled = false;
             }
            
