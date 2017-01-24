@@ -7,12 +7,20 @@
              mc:Ignorable="d" 
              Foreground="Black"
              FontSize="20"
-             d:DesignHeight="500" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBox">
+                <Setter Property="Width" Value="120"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Width" Value="180"/>
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid Margin="40,0,0,0" Grid.Row="0">
             <Grid.RowDefinitions>
@@ -28,31 +36,31 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="报告生成文件夹： " Width="260"/>
-                    <TextBox Name="statusReportDir" Width="200"/>
+                    <TextBox Name="statusReportDir" Width="600"/>
                     <Button Content="浏览" Background="Transparent" Click="browseFile_Click"/>
                 </StackPanel>
-                <Label Content="参数设置"/>
+                <Label Content="参数设置" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="材料弹性模量： " Width="180"/>
-                        <TextBox Name="E_PARM" Width="100"/>
+                        <Label Content="材料弹性模量： "/>
+                        <TextBox Name="E_PARM"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="材料的泊松比： " Width="180"/>
-                        <TextBox Name="u_PARM" Width="100"/>
+                        <Label Content="材料的泊松比： "/>
+                        <TextBox Name="u_PARM"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="材料相关常量： " Width="180"/>
-                        <TextBox Name="delta_PARM" Width="100"/>
+                        <Label Content="材料相关常量： "/>
+                        <TextBox Name="delta_PARM" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="光栅灵敏度系数： " Width="180"/>
-                        <TextBox Name="alpha_PARM" Width="100"/>
+                        <Label Content="光栅灵敏度系数： "/>
+                        <TextBox Name="alpha_PARM"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </Grid>
-        <Button Grid.Row="2" Name="apply" Width="100" Content="应用" Click="apply_Click">
+        <Button Grid.Row="2" Name="apply" Width="150" Height="60" Content="应用" Click="apply_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>

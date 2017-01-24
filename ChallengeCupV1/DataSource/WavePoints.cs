@@ -15,7 +15,7 @@ namespace ChallengeCupV1.DataSource
     /// 
     /// Contains data to show in chart
     /// </summary>
-    public class WaveData : DependencyObject
+    public class WavePoints : DependencyObject
     {
         private int capacity;
         private double[] ySet;
@@ -34,12 +34,12 @@ namespace ChallengeCupV1.DataSource
 
         // Using a DependencyProperty as the backing store for Points.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PointsProperty =
-            DependencyProperty.Register("Points", typeof(ObservableDataSource<Point>), typeof(WaveData));
+            DependencyProperty.Register("Points", typeof(ObservableDataSource<Point>), typeof(WavePoints));
 
         /// <summary>
         /// Initial all points as (0, 0)
         /// </summary>
-        public WaveData(int capacity = 200)
+        public WavePoints(int capacity = 200)
         {
             Points = new ObservableDataSource<Point>();
             this.capacity = capacity;
@@ -84,10 +84,6 @@ namespace ChallengeCupV1.DataSource
         /// <returns></returns>
         public void FromComplexArray(Complex[] com)
         {
-            //for (int i = 0; i < com.Length && i < capacity; i++)
-            //{
-            //    ySet[i] = com[i].Real;
-            //}
             List<Point> pl = new List<Point>();
             for (int i = 0; i < com.Length && i < 200; i++)
             {

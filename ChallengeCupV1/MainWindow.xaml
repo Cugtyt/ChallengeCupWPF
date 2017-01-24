@@ -18,8 +18,8 @@
         AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0" TabStripPlacement="Left">
             <TabControl.Resources>
@@ -29,34 +29,31 @@
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </TabControl.Resources>
-            <TabItem Name="waveTab">
-                <TabItem.Resources>
-                    <data:WaveData x:Key="dataSource"/>
-                </TabItem.Resources>
+            <TabItem>
                 <TabItem.Header>
                     <waveTab:WaveTabHeader/>
                 </TabItem.Header>
                 <waveTab:WaveTabContent/>
             </TabItem>
-            <TabItem Name="gearTab">
+            <TabItem>
                 <TabItem.Header>
                     <gearTab:GearTabHeader/>
                 </TabItem.Header>
                 <gearTab:GearTabContent x:Name="gear"/>
             </TabItem>
-            <TabItem Name="statusTab">
+            <TabItem>
                 <TabItem.Header>
                     <statusTab:StatusTabHeader/>
                 </TabItem.Header>
                 <statusTab:StatusTabContent x:Name="status"/>
             </TabItem>
-            <TabItem Name="settingTab">
+            <TabItem>
                 <TabItem.Header>
                     <settingTab:SettingTabHeader/>
                 </TabItem.Header>
                 <settingTab:SettingTabContent x:Name="setting"/>
             </TabItem>
         </TabControl>
-        <view:FunctionColumn x:Name="functionColumn" Grid.Row="1" Margin="150,0,0,0"/>
+        <view:FunctionBar Grid.Row="1" Margin="150,0,0,0"/>
     </Grid>
 </Window>

@@ -13,17 +13,6 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="11*"/>
         </Grid.RowDefinitions>
-        <!--<Grid Margin="40,0,0,0" Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
-                   Text="齿轮检测"/>
-            <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Text="Gear status monitoring"/>
-            
-        </Grid>-->
         <Grid Grid.Row="0" Margin="40,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -65,7 +54,7 @@
               MouseDown="gearContainer_MouseDown"
               MouseMove="gearContainer_MouseMove"
               MouseLeave="gearContainer_MouseLeave"
-              MouseWheel="gearContainer_MouseWheel"/>
-        <local:InitPage Grid.Row="1" x:Name="initPage"/>
+              MouseWheel="gearContainer_MouseWheel" Margin="5"/>
+        <local:InitPage Grid.Row="1" x:Name="initPage" Width="450" Height="300"/>
     </Grid>
 </UserControl>

@@ -25,41 +25,38 @@ namespace ChallengeCupV1.View.WaveTab
     /// </summary>
     public partial class WaveTabContent : UserControl
     {
-        public static bool IsDisplaying = false;
+        //public static bool IsDisplaying = false;
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromMilliseconds(100),
+            Interval = TimeSpan.FromMilliseconds(100)
         };
-        FileInfo[] files;
-        static int fileIndex = 0;
+        //private FileInfo[] files;
+        //private int fileIndex = 0;
 
-        CH selectedCH;
-        Grating selectedGrating;
-        Domain selectedDomain;
+        CH selectedCH = CH.CH1;
+        Grating selectedGrating = Grating.G1;
+        Domain selectedDomain = Domain.Time;
 
 
         public WaveTabContent()
         {
             InitializeComponent();
             //var dire = new DirectoryInfo(directoryPath);
-            var dir = new DirectoryInfo(SettingData.WaveDataDir);
-            files = dir.GetFiles();
-            //-----------------------
-            // Remove all files in dir
-            //File.FileUtils.RemoveFileAll(files);
-            //-------------------------
-#if DEBUG
-            Console.WriteLine("WaveTabContent:WaveTabContent() -> files name list");
-            //for (int i = 0; i < files.Length; i++)
-            //{
-            //    Console.WriteLine(files[i].Name);
-            //}
-#endif
+            //var dir = new DirectoryInfo(SettingDataContainer.WaveDataDir);
+            //files = dir.GetFiles();
+            
+//#if DEBUG
+//            Console.WriteLine("WaveTabContent:WaveTabContent() -> files name list");
+//            //for (int i = 0; i < files.Length; i++)
+//            //{
+//            //    Console.WriteLine(files[i].Name);
+//            //}
+//#endif
             Timer.Tick += new EventHandler(AnimatedPlot);
             //timer.IsEnabled = true;
         }
 
-        private async void AnimatedPlot(object sender, EventArgs e)
+        private void AnimatedPlot(object sender, EventArgs e)
         {
             //------------------------------------------------
             //var dir = new DirectoryInfo(SettingData.WaveDataDir);
@@ -71,44 +68,65 @@ namespace ChallengeCupV1.View.WaveTab
             //}
             //File.FileUtils.RemoveFileAll(files);
             //-------------------------------------------------
-            if (IsDisplaying && fileIndex < files.Length)
-            {
-                AddPoints(await File.FileUtils
-                .ReadWaveData(SettingData.WaveDataDir + files[fileIndex++].Name));
-            }
-        }
-
-        
-        /// <summary>
-        /// Add double list array to dataSource
-        /// added index of array is determined by value of selectedCH
-        /// </summary>
-        /// <param name="yListArray"></param>
-        /// <returns></returns>
-        public async Task AddPoints(List<double>[] yListArray)
-        {
-            var selected = (int)Enum.Parse(typeof(CH), selectedCH.ToString()) + 1;
+            //if (IsDisplaying && fileIndex < files.Length)
+            //{
+            //    AddPoints(await File.FileUtils
+            //    .ReadWaveData(SettingDataContainer.WaveDataDir + files[fileIndex++].Name));
+            //}
+            var selected = (int)Enum.Parse(typeof(Grating), selectedGrating.ToString()) + 1;
             switch (selectedDomain)
             {
                 case Domain.Time:
 #if DEBUG
-                    Console.WriteLine("WaveTabContent:AddPoints() -> add time domain points");
+                    Console.WriteLine("WaveTabContent:AnimatedPlot() -> add time domain points");
 #endif
-                    await wavePlot.AddTimePoints(yListArray[selected]);
+                    wavePlot.AddTimePoints(GratingDataContainer.Data[selected]);
                     break;
                 case Domain.Frequency:
 #if DEBUG
-                    Console.WriteLine("WaveTabContent:AddPoints() -> add frequency domain points");
+                    Console.WriteLine("WaveTabContent:AnimatedPlot() -> add frequency domain points");
 #endif
                     //await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
-                    await wavePlot.AddFreqPoints(DataFFT.Forward(
-                        (from y in yListArray[selected] select new Complex(y, 0)).ToArray())
+                    wavePlot.AddFreqPoints(DataFFT.Forward(
+                        (from y in GratingDataContainer.Data[selected] select new Complex(y, 0)).ToArray())
                         .Result);
                     break;
                 default:
                     break;
             }
         }
+
+
+        /// <summary>
+        /// Add double list array to dataSource
+        /// added index of array is determined by value of selectedCH
+        /// </summary>
+        /// <param name="yListArray"></param>
+        /// <returns></returns>
+        //        public async Task AddPoints(List<double>[] yListArray)
+        //        {
+        //            var selected = (int)Enum.Parse(typeof(CH), selectedCH.ToString()) + 1;
+        //            switch (selectedDomain)
+        //            {
+        //                case Domain.Time:
+        //#if DEBUG
+        //                    Console.WriteLine("WaveTabContent:AddPoints() -> add time domain points");
+        //#endif
+        //                    await wavePlot.AddTimePoints(yListArray[selected]);
+        //                    break;
+        //                case Domain.Frequency:
+        //#if DEBUG
+        //                    Console.WriteLine("WaveTabContent:AddPoints() -> add frequency domain points");
+        //#endif
+        //                    //await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
+        //                    await wavePlot.AddFreqPoints(DataFFT.Forward(
+        //                        (from y in yListArray[selected] select new Complex(y, 0)).ToArray())
+        //                        .Result);
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
 
         private void g1_Selected(object sender, RoutedEventArgs e)
         {

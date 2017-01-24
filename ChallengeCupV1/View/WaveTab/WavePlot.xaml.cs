@@ -11,7 +11,7 @@ namespace ChallengeCupV1.View.WaveTab
     /// </summary>
     public partial class WavePlot : UserControl
     {
-        DataSource.WaveData dataSource = new DataSource.WaveData();
+        DataSource.WavePoints dataSource = new DataSource.WavePoints();
 
         public WavePlot()
         {

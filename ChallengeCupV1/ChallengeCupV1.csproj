@@ -65,12 +65,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataSource\GratingDataContainer.cs" />
     <Compile Include="Old\DataTypeAdapter.cs" />
     <Compile Include="DataSource\GearStatus\StatusCalculator.cs" />
     <Compile Include="DataSource\GearStatus\StatusConstantParam.cs" />
     <Compile Include="DataSource\GearStatus\StatusDataContainer.cs" />
     <Compile Include="DataSource\GearStatus\StatusDataTemplate.cs" />
-    <Compile Include="DataSource\SettingData.cs" />
+    <Compile Include="DataSource\SettingDataContainer.cs" />
     <Compile Include="FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />
     <Compile Include="GearLib\Gear1.xaml.cs">
@@ -99,8 +100,8 @@
     <Compile Include="Old\FourWaveTab.xaml.cs">
       <DependentUpon>FourWaveTab.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\FunctionColumn.xaml.cs">
-      <DependentUpon>FunctionColumn.xaml</DependentUpon>
+    <Compile Include="View\FunctionBar.xaml.cs">
+      <DependentUpon>FunctionBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingTab\SettingTabContent.xaml.cs">
       <DependentUpon>SettingTabContent.xaml</DependentUpon>
@@ -134,7 +135,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataSource\WaveData.cs" />
+    <Compile Include="DataSource\WavePoints.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -167,7 +168,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\FunctionColumn.xaml">
+    <Page Include="View\FunctionBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

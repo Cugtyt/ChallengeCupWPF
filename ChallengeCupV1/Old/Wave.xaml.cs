@@ -20,7 +20,7 @@ namespace ChallengeCupV1.View
     /// </summary>
     public partial class Wave : UserControl
     {
-        DataSource.WaveData dataSource = new DataSource.WaveData();
+        DataSource.WavePoints dataSource = new DataSource.WavePoints();
         public Wave()
         {
 #if DEBUG

@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ChallengeCupV1.View.StatusTab
 {
@@ -23,17 +24,27 @@ namespace ChallengeCupV1.View.StatusTab
     /// </summary>
     public partial class StatusTabContent : UserControl
     {
-        public StatusDataContainer statusDataSource = new StatusDataContainer();
+        private StatusDataContainer statusDataSource = new StatusDataContainer();
+        public static DispatcherTimer Timer = new DispatcherTimer()
+        {
+            Interval = TimeSpan.FromMilliseconds(100),
+        };
 
         public StatusTabContent()
         {
             InitializeComponent();
             dataGrid.ItemsSource = statusDataSource.StatusData;
+            Timer.Tick += new EventHandler(calculateParam);
+        }
+
+        private void calculateParam(object sender, EventArgs e)
+        {
+            statusDataSource.Calculate();
         }
 
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
-            File.FileUtils.GenerateStatusReportFile(SettingData.StatusReportDir, statusDataSource.StatusData);
+            File.FileUtils.GenerateStatusReportFile(SettingDataContainer.StatusReportDir, statusDataSource.StatusData);
         }
     }
 }

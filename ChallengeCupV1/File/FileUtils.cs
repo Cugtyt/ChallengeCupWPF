@@ -15,7 +15,7 @@ namespace ChallengeCupV1.File
         /// </summary>
         /// <param name="filePath">file path</param>
         /// <returns>data from file</returns>
-        public static Task<List<double>[]> ReadWaveData(string filePath, int max = 10000)
+        public static Task<List<double>[]> ReadWaveData(string filePath, int max = 1000)
         {
 #if DEBUG
             Console.WriteLine("FileUtils: ReadWaveData() -> file is " + filePath);
@@ -66,7 +66,7 @@ namespace ChallengeCupV1.File
                     throw new Exception("File formate is illegal.");
                 }
 
-                for (int i = 0; i < testResult.Length && i < max; i++)
+                for (int i = 0; i < testResult.Length - 20 && i < max * 10; i++)
                 {
                     switch (i % 10)
                     {
@@ -203,5 +203,6 @@ namespace ChallengeCupV1.File
             }
             
         }
+
     }
 }

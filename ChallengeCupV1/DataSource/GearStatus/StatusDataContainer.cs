@@ -15,5 +15,13 @@ namespace ChallengeCupV1.DataSource.GearStatus
             new StatusDataTemplate("Temperature", StatusCalculator.TemperatureCalculator, "N"),
             new StatusDataTemplate("Frequency", StatusCalculator.FrequencyCalculator, "N")
         };
+
+        public void Calculate()
+        {
+            StatusData[0].Calculate(new List<double>() { });
+            StatusData[1].Calculate(new List<double>() { });
+            StatusData[2].Calculate(new List<double>() { });
+            StatusData[3].Calculate(new List<double>() { });
+        }
     }
 }

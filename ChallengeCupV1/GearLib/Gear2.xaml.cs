@@ -47,5 +47,11 @@ namespace ChallengeCupV1.GearLib
         {
             return viewPort;
         }
+
+        public void Reset()
+        {
+            camera.Position = new Point3D(-9.53674351933387E-07, 0.000160217285298359, 410.251665163598);
+            axisAngleRotation.Angle = 5;
+        }
     }
 }

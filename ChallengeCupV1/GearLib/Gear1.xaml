@@ -8,7 +8,13 @@
     <Grid Background="#02FFFFFF">
         <Viewport3D Name="viewPort" ClipToBounds="True">
             <Viewport3D.Camera>
-                <PerspectiveCamera x:Name="camera" FieldOfView="45" FarPlaneDistance="462.12708416576214" LookDirection="0,0,-192.326222548866" NearPlaneDistance="0.1" Position="-9.53674351933387E-07,0.000154495239200969,192.326262603187" UpDirection="0,1,0"/>
+                <PerspectiveCamera x:Name="camera"
+                                   FieldOfView="45" 
+                                   FarPlaneDistance="896.85993018317913" 
+                                   LookDirection="0,0,-192.326222548866" 
+                                   NearPlaneDistance="0.1" 
+                                   Position="-9.53674351933387E-07, 0.000154495239200969, 220.326262603187" 
+                                   UpDirection="0,1,0"/>
             </Viewport3D.Camera>
             <ModelVisual3D>
                 <ModelVisual3D>

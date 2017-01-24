@@ -26,7 +26,7 @@ namespace ChallengeCupV1.View.SettingTab
         {
             InitializeComponent();
             // Init text box
-            statusReportDir.Text = SettingData.StatusReportDir;
+            statusReportDir.Text = SettingDataContainer.StatusReportDir;
             E_PARM.Text = StatusConstantParam.E.ToString();
             u_PARM.Text = StatusConstantParam.u.ToString();
             delta_PARM.Text = StatusConstantParam.delta.ToString();
@@ -49,7 +49,7 @@ namespace ChallengeCupV1.View.SettingTab
 
         private void apply_Click(object sender, RoutedEventArgs e)
         {
-            SettingData.StatusReportDir = statusReportDir.Text;
+            SettingDataContainer.StatusReportDir = statusReportDir.Text;
             StatusConstantParam.E = double.Parse(E_PARM.Text);
             StatusConstantParam.u = double.Parse(u_PARM.Text);
             StatusConstantParam.delta = double.Parse(delta_PARM.Text);

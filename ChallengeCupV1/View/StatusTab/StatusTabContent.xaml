@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              Foreground="Black"
              FontSize="16"
-             d:DesignHeight="300" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
@@ -56,7 +56,7 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <DataGrid Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" GridLinesVisibility="Horizontal">
+        <DataGrid Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" GridLinesVisibility="Horizontal" Margin="0,30,0,0">
             <!--<DataGrid.Columns>
                 <DataGridTextColumn x:Name="gear" Header="Gear" Width="2*"/>
                 <DataGridTextColumn x:Name="stress" Header="Stress" Width="1*" Binding="{Binding Stress}"/>

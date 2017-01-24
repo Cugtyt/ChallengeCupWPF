@@ -7,14 +7,26 @@
              xmlns:dataSource="clr-namespace:ChallengeCupV1.DataSource"
              mc:Ignorable="d" 
              Background="White"
+             BorderThickness="1"
+             BorderBrush="Green"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.Resources>
+            <Style TargetType="StackPanel">
+                <Setter Property="Margin" Value="0,15,0,0"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Width" Value="120"/>
+                <Setter Property="Margin" Value="0,0,20,0"/>
+            </Style>
+        </Grid.Resources>
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center">
             <StackPanel.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
@@ -23,16 +35,16 @@
                 </ResourceDictionary>
             </StackPanel.Resources>
             <StackPanel Orientation="Horizontal">
-                <Label Content="齿轮选择：" Margin="0,0,20,0" Width="80"/>
+                <Label Content="齿轮选择：" VerticalAlignment="Center"/>
                 <!--<ComboBox Width="150"  Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
                     <ComboBoxItem Name="gear1" Content="Gear1" Selected="gear1_Selected" IsSelected="True"/>
                     <ComboBoxItem Name="gear2" Content="Gear2" Selected="gear2_Selected"/>
                 </ComboBox>-->
                 <ComboBox Width="150" Name="gearSelectComboBox" 
-                          Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center"/>
+                          Style="{StaticResource ResourceKey=ComboBoxStyle}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Content="光栅数：" Margin="0,0,20,0" Width="80"/>
+                <Label Content="光栅数：" HorizontalAlignment="Center"/>
                 <!--<ComboBox Width="150" Style="{StaticResource ResourceKey=ComboBoxStyle}" VerticalAlignment="Center">
                     <ComboBoxItem Name="num1" Content="1" Selected="num1_Selected" IsSelected="True"/>
                     <ComboBoxItem Name="num2" Content="2" Selected="num2_Selected"/>
@@ -48,7 +60,7 @@
                 </ComboBox>
             </StackPanel>-->
         </StackPanel>
-        <Button Grid.Row="1" Name="apply" Width="100" Height="40" Content="应用" Click="apply_Click">
+        <Button Grid.Row="1" Name="apply" Width="150" Height="60" Content="应用" Click="apply_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
@@ -57,7 +69,7 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/SettingDefault.png"/>
-                        <TextBlock Grid.Column="1" Text="{TemplateBinding Button.Content}" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" FontSize="20" Text="{TemplateBinding Button.Content}" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Button.IsPressed" Value="True">
