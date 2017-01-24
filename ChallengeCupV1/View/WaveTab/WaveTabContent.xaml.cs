@@ -30,7 +30,6 @@ namespace ChallengeCupV1.View.WaveTab
         {
             Interval = TimeSpan.FromMilliseconds(100),
         };
-        //string directoryPath = File.FileUtils.GetRootPath() + @"\DataSource\data\";
         FileInfo[] files;
         static int fileIndex = 0;
 
@@ -39,7 +38,6 @@ namespace ChallengeCupV1.View.WaveTab
         Domain selectedDomain;
 
 
-        // TODO: read file and then remove it very 100 milliseconds
         public WaveTabContent()
         {
             InitializeComponent();
@@ -99,9 +97,6 @@ namespace ChallengeCupV1.View.WaveTab
                     await wavePlot.AddTimePoints(yListArray[selected]);
                     break;
                 case Domain.Frequency:
-                    //await wavePlot.AddPoints(
-                    //    DataFFT.Forward(yListArray[selected].ToComplex()).Result
-                    //    .ToDoubleList());
 #if DEBUG
                     Console.WriteLine("WaveTabContent:AddPoints() -> add frequency domain points");
 #endif
@@ -114,11 +109,6 @@ namespace ChallengeCupV1.View.WaveTab
                     break;
             }
         }
-
-        //public void EnableTimer(bool enable)
-        //{
-        //    Timer.IsEnabled = enable;
-        //}
 
         private void g1_Selected(object sender, RoutedEventArgs e)
         {

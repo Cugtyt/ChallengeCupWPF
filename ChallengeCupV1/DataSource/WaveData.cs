@@ -17,10 +17,8 @@ namespace ChallengeCupV1.DataSource
     /// </summary>
     public class WaveData : DependencyObject
     {
-        //private static int times = 0;
-        private int capacity = 200;
+        private int capacity;
         private double[] ySet;
-        //private int writeIndex = 0;
 
         public ObservableDataSource<Point> Points
         {
@@ -44,6 +42,7 @@ namespace ChallengeCupV1.DataSource
         public WaveData(int capacity = 200)
         {
             Points = new ObservableDataSource<Point>();
+            this.capacity = capacity;
             ySet = new double[capacity];
         }
 
@@ -78,21 +77,6 @@ namespace ChallengeCupV1.DataSource
             Points.AppendMany(pl);
             return null;
         }
-
-        /// <summary>
-        /// Transform ySet to complex array
-        /// </summary>
-        /// <returns></returns>
-        //public Complex[] ToComplexArray()
-        //{
-        //    return (from y in ySet select new Complex(y, 0)).ToArray();
-        //    //Complex[] com = new Complex[capacity];
-        //    //for (int i = 0; i < capacity; i++)
-        //    //{
-        //    //    com[i] = new Complex(ySet[i], 0);
-        //    //}
-        //    //return com;
-        //}
 
         /// <summary>
         /// Transform complex array to ySet

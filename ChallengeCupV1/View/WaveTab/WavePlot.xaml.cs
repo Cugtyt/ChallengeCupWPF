@@ -23,22 +23,6 @@ namespace ChallengeCupV1.View.WaveTab
         }
 
         /// <summary>
-        /// Test OK
-        /// add test data to dataSource, it can display
-        /// time: 2017年1月10日17:16:41
-        /// </summary>
-//        public void change()
-//        {
-//#if DEBUG
-//            Console.WriteLine("Wave: change()");
-//#endif
-//            dataSource.Add(50);
-//            dataSource.Add(80);
-//            dataSource.Add(100);
-//            dataSource.Update();
-//        }
-
-        /// <summary>
         /// Add double list to dataSource
         /// </summary>
         /// <param name="yList"></param>
@@ -50,14 +34,6 @@ namespace ChallengeCupV1.View.WaveTab
         
         public Task AddFreqPoints(Complex[] com)
         {
-            // test begin
-            //Complex[] test = new Complex[200];
-            //for (int i = 0; i < test.Length; i++)
-            //{
-            //    test[i] = new Complex(Math.Sin(i), 0);
-            //}
-            //dataSource.FromComplexArray(DataFFT.Forward(test).Result);
-            // test end
             dataSource.FromComplexArray(com);
             return null;
         }

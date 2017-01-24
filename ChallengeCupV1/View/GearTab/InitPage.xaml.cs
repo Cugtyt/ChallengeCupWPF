@@ -66,49 +66,5 @@ namespace ChallengeCupV1.View.GearTab
         {
             return gratingNumberComboBox.SelectedIndex;
         }
-
-        //#region Select gear
-        //private void gear1_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.SelectedGear = Gear.G1;
-        //}
-
-        //private void gear2_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.SelectedGear = Gear.G2;
-        //}
-
-        //private void gear3_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.SelectedGear = Gear.G3;
-        //}
-
-        //private void gear4_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.SelectedGear = Gear.G4;
-        //}
-        //#endregion
-
-        //#region Select grating number
-        //private void num1_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.GratingNumber = 1;
-        //}
-
-        //private void num2_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.GratingNumber = 2;
-        //}
-
-        //private void num3_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.GratingNumber = 3;
-        //}
-
-        //private void num4_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    GearTabContent.GratingNumber = 4;
-        //}
-        //#endregion
     }
 }

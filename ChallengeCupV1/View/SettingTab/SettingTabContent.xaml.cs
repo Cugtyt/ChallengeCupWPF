@@ -25,6 +25,7 @@ namespace ChallengeCupV1.View.SettingTab
         public SettingTabContent()
         {
             InitializeComponent();
+            // Init text box
             statusReportDir.Text = SettingData.StatusReportDir;
             E_PARM.Text = StatusConstantParam.E.ToString();
             u_PARM.Text = StatusConstantParam.u.ToString();

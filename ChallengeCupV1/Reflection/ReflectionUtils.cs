@@ -22,24 +22,6 @@ namespace ChallengeCupV1.Reflection
                     where t.Namespace == namespace_
                     //where type != null ? t.GetInterface(type.Name) != null : true
                     select t;
-                
-
-            //List<Type> classList = new List<Type>();
-            //foreach (var t in asm.GetTypes())
-            //{
-            //    if (t.Namespace == namespace_)
-            //    {
-            //        if (type == null)
-            //        {
-            //            classList.Add(t);
-            //        }
-            //        else if (t.GetInterface(type.Name) != null)
-            //        {
-            //            classList.Add(t);
-            //        }
-            //    }
-            //}
-            //return classList;
         }
 
         public static IEnumerable<Type> IsInterfaceFilter(IEnumerable<Type> rowType, Type type)

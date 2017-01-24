@@ -25,7 +25,6 @@ namespace ChallengeCupV1.View.GearTab
     /// </summary>
     public partial class GearTabContent : UserControl
     { 
-        //public static int GratingNumber = 1;
         private IGear gear;
 
         public GearTabContent()
@@ -45,12 +44,6 @@ namespace ChallengeCupV1.View.GearTab
         /// </summary>
         public void UpdateGear()
         {
-            //gear = Assembly.GetExecutingAssembly()
-            //    .CreateInstance("ChallengeCupV1.GearLib.Gear" +
-            //    (int)Enum.Parse(typeof(Gear), SelectedGear.ToString())) as GearLib.IGear;
-            //gear = Assembly.GetExecutingAssembly()
-            //    .CreateInstance("ChallengeCupV1.GearLib.Gear" + initPage.GetGearIndex())
-            //    as IGear;
             gear = GearFactory.GetGear(initPage.GetGearIndex(), initPage.GetGratingNumber());
             gearContainer.Children.Clear();
             gearContainer.Children.Add(gear as UserControl);
@@ -96,8 +89,4 @@ namespace ChallengeCupV1.View.GearTab
         }
     }
 
-    //public enum Gear
-    //{
-    //    G1 = 1, G2, G3, G4
-    //}
 }
