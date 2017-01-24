@@ -31,11 +31,13 @@ namespace ChallengeCupV1.View
             // Connect asked
             if ((string)connect.Content == "连接")
             {
+                WaveTab.WaveTabContent.Timer.IsEnabled = true;
                 connect.Content = "断开";
             }
             // Connected cancled
             else
             {
+                WaveTab.WaveTabContent.Timer.IsEnabled = false;
                 connect.Content = "连接";
             }
         }
@@ -45,14 +47,14 @@ namespace ChallengeCupV1.View
             // Start asked
             if ("开始" == (string)start.Content)
             {
+                WaveTab.WaveTabContent.IsDisplaying = true;
                 start.Content = "停止";
-                WaveTab.WaveTabContent.Timer.IsEnabled = true;
             }
             // Start cancled
             else
             {
-                start.Content = "停止";
-                WaveTab.WaveTabContent.Timer.IsEnabled = false;
+                WaveTab.WaveTabContent.IsDisplaying = false;
+                start.Content = "开始";
             }
            
         }

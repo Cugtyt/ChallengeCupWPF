@@ -65,7 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataSource\DataTypeAdapter.cs" />
+    <Compile Include="Old\DataTypeAdapter.cs" />
     <Compile Include="DataSource\GearStatus\StatusCalculator.cs" />
     <Compile Include="DataSource\GearStatus\StatusConstantParam.cs" />
     <Compile Include="DataSource\GearStatus\StatusDataContainer.cs" />
@@ -96,7 +96,7 @@
     <Compile Include="View\GearTab\ParamDisplay.xaml.cs">
       <DependentUpon>ParamDisplay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Old\FourWaveTab.xaml.cs">
+    <Compile Include="Old\FourWaveTab.xaml.cs">
       <DependentUpon>FourWaveTab.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FunctionColumn.xaml.cs">
@@ -117,7 +117,7 @@
     <Compile Include="View\WaveTab\WaveTabContent.xaml.cs">
       <DependentUpon>WaveTabContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Old\Wave.xaml.cs">
+    <Compile Include="Old\Wave.xaml.cs">
       <DependentUpon>Wave.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\WaveTab\WavePlot.xaml.cs">
@@ -163,7 +163,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Old\FourWaveTab.xaml">
+    <Page Include="Old\FourWaveTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,7 +211,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Old\Wave.xaml">
+    <Page Include="Old\Wave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

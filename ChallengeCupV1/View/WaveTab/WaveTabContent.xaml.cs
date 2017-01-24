@@ -25,6 +25,7 @@ namespace ChallengeCupV1.View.WaveTab
     /// </summary>
     public partial class WaveTabContent : UserControl
     {
+        public static bool IsDisplaying = false;
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
             Interval = TimeSpan.FromMilliseconds(100),
@@ -45,6 +46,10 @@ namespace ChallengeCupV1.View.WaveTab
             //var dire = new DirectoryInfo(directoryPath);
             var dir = new DirectoryInfo(SettingData.WaveDataDir);
             files = dir.GetFiles();
+            //-----------------------
+            // Remove all files in dir
+            //File.FileUtils.RemoveFileAll(files);
+            //-------------------------
 #if DEBUG
             Console.WriteLine("WaveTabContent:WaveTabContent() -> files name list");
             //for (int i = 0; i < files.Length; i++)
@@ -58,7 +63,17 @@ namespace ChallengeCupV1.View.WaveTab
 
         private async void AnimatedPlot(object sender, EventArgs e)
         {
-            if (fileIndex < files.Length)
+            //------------------------------------------------
+            //var dir = new DirectoryInfo(SettingData.WaveDataDir);
+            //files = dir.GetFiles();
+            //if (IsDisplaying && files != null)
+            //{
+            //    AddPoints(await File.FileUtils
+            //    .ReadWaveData(SettingData.WaveDataDir + files[0].Name));
+            //}
+            //File.FileUtils.RemoveFileAll(files);
+            //-------------------------------------------------
+            if (IsDisplaying && fileIndex < files.Length)
             {
                 AddPoints(await File.FileUtils
                 .ReadWaveData(SettingData.WaveDataDir + files[fileIndex++].Name));
@@ -90,8 +105,10 @@ namespace ChallengeCupV1.View.WaveTab
 #if DEBUG
                     Console.WriteLine("WaveTabContent:AddPoints() -> add frequency domain points");
 #endif
-                    await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
-                    
+                    //await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
+                    await wavePlot.AddFreqPoints(DataFFT.Forward(
+                        (from y in yListArray[selected] select new Complex(y, 0)).ToArray())
+                        .Result);
                     break;
                 default:
                     break;
@@ -143,7 +160,7 @@ namespace ChallengeCupV1.View.WaveTab
             selectedCH = CH.CH2;
         }
 
-        private void ch3_Selected(object sender, RoutedEventArgs e)
+         private void ch3_Selected(object sender, RoutedEventArgs e)
         {
             selectedCH = CH.CH3;
         }
