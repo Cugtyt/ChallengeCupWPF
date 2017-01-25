@@ -41,8 +41,11 @@ namespace ChallengeCupV1.View
         {
             if (index < files.Length)
             {
-                GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
-                    SettingDataContainer.WaveDataDir + files[index++].Name);
+                //GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
+                //    SettingDataContainer.WaveDataDir + files[index++].Name);
+                await GratingDataContainer.GetDataFrom(
+                    File.FileUtils.ReadDataFromFile(
+                        SettingDataContainer.WaveDataDir + files[index++].Name).Result);
             }
         }
 
