@@ -12,7 +12,7 @@
         <DockPanel.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/ChallengeCupV1;component/View/Resource/Style/ButtonStyle.xaml"/>
+                    <ResourceDictionary Source="/ChallengeCupV1;component/Resources/Style/ButtonStyle.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </DockPanel.Resources>
@@ -25,12 +25,12 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/ConnectDefault.png"/>
+                        <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/Resources/Icon/ConnectDefault.png"/>
                         <TextBlock Grid.Column="1" Text="{TemplateBinding Button.Content}" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/ConnectEnabled.png" TargetName="connectIcon"/>
+                            <Setter Property="Source" Value="/ChallengeCupV1;component/Resources/Icon/ConnectEnabled.png" TargetName="connectIcon"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -45,12 +45,12 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Name="startIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/StartDefault.png"/>
+                        <Image Grid.Column="0" Name="startIcon" Source="/ChallengeCupV1;component/Resources/Icon/StartDefault.png"/>
                         <TextBlock Grid.Column="1" Name="startText" Text="{TemplateBinding Button.Content}" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/StartEnabled.png" TargetName="startIcon"/>
+                            <Setter Property="Source" Value="/ChallengeCupV1;component/Resources/Icon/StartEnabled.png" TargetName="startIcon"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -65,12 +65,12 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Name="exitIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/ExitDefault.png"/>
+                        <Image Grid.Column="0" Name="exitIcon" Source="/ChallengeCupV1;component/Resources/Icon/ExitDefault.png"/>
                         <TextBlock Grid.Column="1" Text="退出" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/ExitEnabled.png" TargetName="exitIcon"/>
+                            <Setter Property="Source" Value="/ChallengeCupV1;component/Resources/Icon/ExitEnabled.png" TargetName="exitIcon"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

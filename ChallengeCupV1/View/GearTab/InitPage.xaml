@@ -30,7 +30,7 @@
             <StackPanel.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
-                        <ResourceDictionary Source="/ChallengeCupV1;component/View/Resource/Style/ComboBoxStyle.xaml"/>
+                        <ResourceDictionary Source="/ChallengeCupV1;component/Resources/Style/ComboBoxStyle.xaml"/>
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </StackPanel.Resources>
@@ -68,12 +68,12 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/SettingDefault.png"/>
+                        <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/Resources/Icon/SettingDefault.png"/>
                         <TextBlock Grid.Column="1" FontSize="20" Text="{TemplateBinding Button.Content}" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/SettingEnabled.png" TargetName="connectIcon"/>
+                            <Setter Property="Source" Value="/ChallengeCupV1;component/Resources/Icon/SettingEnabled.png" TargetName="connectIcon"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

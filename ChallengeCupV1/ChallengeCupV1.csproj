@@ -231,22 +231,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Resource Include="View\Resource\Style\ButtonStyle.xaml">
+    <Resource Include="Resources\Style\ButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Style\ComboBoxStyle.xaml">
+    <Resource Include="Resources\Style\ComboBoxStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Style\DataGridStyle.xaml">
+    <Resource Include="Resources\Style\DataGridStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Style\TabStyle.xaml">
+    <Resource Include="Resources\Style\TabStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -318,52 +318,52 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\WaveTabIcon.png">
+    <Resource Include="Resources\Icon\WaveTabIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\GearTabIcon.png">
+    <Resource Include="Resources\Icon\GearTabIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\StatusTabIcon.png">
+    <Resource Include="Resources\Icon\StatusTabIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\ConnectDefault.png">
+    <Resource Include="Resources\Icon\ConnectDefault.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\ConnectEnabled.png">
+    <Resource Include="Resources\Icon\ConnectEnabled.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\ExitDefault.png">
+    <Resource Include="Resources\Icon\ExitDefault.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\ExitEnabled.png">
+    <Resource Include="Resources\Icon\ExitEnabled.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\GenerateReportDefault.png">
+    <Resource Include="Resources\Icon\GenerateReportDefault.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\GenerateReportEnabled.png">
+    <Resource Include="Resources\Icon\GenerateReportEnabled.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\StartDefault.png">
+    <Resource Include="Resources\Icon\StartDefault.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="View\Resource\Icon\StartEnabled.png">
+    <Resource Include="Resources\Icon\StartEnabled.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\SettingDefault.png" />
-    <Resource Include="View\Resource\Icon\SettingEnabled.png" />
+    <Resource Include="Resources\Icon\SettingDefault.png" />
+    <Resource Include="Resources\Icon\SettingEnabled.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Resource\Icon\SettingTabIcon.png" />
+    <Resource Include="Resources\Icon\SettingTabIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

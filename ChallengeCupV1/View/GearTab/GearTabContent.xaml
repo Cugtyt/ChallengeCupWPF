@@ -37,12 +37,12 @@
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV1;component/View/Resource/Icon/SettingDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV1;component/Resources/Icon/SettingDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                             <TextBlock Grid.Row="1" FontSize="15" Text="齿轮选择" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="Button.IsPressed" Value="True">
-                                <Setter Property="Source" Value="/ChallengeCupV1;component/View/Resource/Icon/SettingEnabled.png" TargetName="genRepoIcon"/>
+                                <Setter Property="Source" Value="/ChallengeCupV1;component/Resources/Icon/SettingEnabled.png" TargetName="genRepoIcon"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

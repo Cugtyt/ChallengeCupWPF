@@ -11,7 +11,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Source="/ChallengeCupV1;component/View/Resource/Icon/SettingTabIcon.png" Margin="0,0,10,0"/>
+        <Image Grid.Column="0" Source="/ChallengeCupV1;component/Resources/Icon/SettingTabIcon.png" Margin="0,0,10,0"/>
         <TextBlock Grid.Column="1" Text="设置"/>
     </Grid>
 </UserControl>

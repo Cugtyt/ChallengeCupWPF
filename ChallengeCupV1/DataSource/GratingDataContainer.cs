@@ -14,6 +14,13 @@ namespace ChallengeCupV1.DataSource
 
         public static Task<List<double>[]> GetDataFrom(string[] data)
         {
+            if (data == null)
+            {
+#if DEBUG
+                Console.WriteLine("GratingDataContainer: GetDataFrom() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("GratingDataContainer: GetDataFrom()");
+            }
             return Task.Run(() =>
             {
                 lock (typeof(GratingDataContainer))
