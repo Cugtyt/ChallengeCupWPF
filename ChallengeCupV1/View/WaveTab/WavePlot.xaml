@@ -22,8 +22,8 @@
                 <d3:HorizontalIntegerAxis />
             </d3:ChartPlotter.HorizontalAxis>
             <!--<d3:Header Content="Title"/>-->
-            <d3:VerticalAxisTitle Content="Y"/>
-            <d3:LineGraph x:Name="line" DataSource="{Binding Points}"/>
+            <d3:VerticalAxisTitle Name="verticalTitle" Content="WaveLength"/>
+            <d3:LineGraph x:Name="line"/>
         </d3:ChartPlotter>
     </Grid>
 </UserControl>

@@ -25,7 +25,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// Output:
         ///     σ_x -- 应力
         /// </summary>
-        public static Func<List<double>, double> StressCalculator = (input) => 
+        public static Func<List<double>, double> StressCalculator = (input) =>
         {
             if (input == null)
             {

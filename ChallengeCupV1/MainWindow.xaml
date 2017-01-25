@@ -18,10 +18,12 @@
         AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <TabControl Grid.Row="0" TabStripPlacement="Left">
+        <view:TitleBar Grid.Row="0" Margin="5,7,2,3"/>
+        <TabControl Grid.Row="1" TabStripPlacement="Left">
             <TabControl.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
@@ -54,6 +56,6 @@
                 <settingTab:SettingTabContent x:Name="setting"/>
             </TabItem>
         </TabControl>
-        <view:FunctionBar Grid.Row="1" Margin="150,0,0,0"/>
+        <view:FunctionBar Grid.Row="2" Margin="150,0,0,0"/>
     </Grid>
 </Window>

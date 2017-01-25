@@ -51,6 +51,7 @@ namespace ChallengeCupV1.File
                     reader.ReadLine();
                     text = reader.ReadToEnd();
                 }
+                var temp = text.Substring(0, text.LastIndexOf('\n'));
                 string[] testResult = text.Replace("\r", " ").Replace("\t", " ").Replace("\n", " ")
                 .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 

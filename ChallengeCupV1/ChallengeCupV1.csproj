@@ -139,6 +139,9 @@
     <Compile Include="View\StatusTab\StatusTabHeader.xaml.cs">
       <DependentUpon>StatusTabHeader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TitleBar.xaml.cs">
+      <DependentUpon>TitleBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\WaveTab\WaveTabContent.xaml.cs">
       <DependentUpon>WaveTabContent.xaml</DependentUpon>
     </Compile>
@@ -261,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\StatusTab\StatusTabHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TitleBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

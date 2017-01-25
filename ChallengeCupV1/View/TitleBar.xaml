@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ChallengeCupV1.View.TitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChallengeCupV1.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="800">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left"
+                Orientation="Horizontal">
+                <Image/>
+                <TextBlock FontSize="18" Foreground="WhiteSmoke"
+                    Text="WHUT基于光纤光栅传感技术的齿轮运行状态检测系统上位机"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right"
+                Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="minWindow" Content="Min" Click="minWindow_Click"/>
+                <Button Name="colseWindow" Content="Close" Click="colseWindow_Click"/>
+            </StackPanel>
+        </DockPanel> 
+    </Grid>
+</UserControl>

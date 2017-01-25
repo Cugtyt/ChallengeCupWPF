@@ -15,11 +15,11 @@ namespace ChallengeCupV1.View.WaveTab
 
         public WavePlot()
         {
-#if DEBUG
-            Console.WriteLine("Wave: Wave()");
-#endif
             InitializeComponent();
-            DataContext = dataSource;
+            plotter.Children.Remove(plotter.MouseNavigation);
+            plotter.Children.Remove(plotter.KeyboardNavigation);
+            //DataContext = dataSource;
+            line.DataSource = dataSource.Points;
         }
 
         /// <summary>
@@ -36,6 +36,18 @@ namespace ChallengeCupV1.View.WaveTab
         {
             dataSource.FromComplexArray(com);
             return null;
+        }
+
+        public void SetYTitle(string title)
+        {
+            if (title == null)
+            {
+#if DEBUG
+                Console.WriteLine("WavePlot: SetYTitle() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("WavePlot: SetYTitle()");
+            }
+            verticalTitle.Content = title;
         }
     }
 }

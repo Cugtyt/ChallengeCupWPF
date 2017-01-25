@@ -151,11 +151,21 @@ namespace ChallengeCupV1.View.WaveTab
         private void time_Selected(object sender, RoutedEventArgs e)
         {
             selectedDomain = Domain.Time;
+            if (wavePlot == null)
+            {
+                return;
+            }
+            wavePlot.SetYTitle("WaveLength");
         }
 
         private void freq_Selected(object sender, RoutedEventArgs e)
         {
             selectedDomain = Domain.Frequency;
+            if (wavePlot == null)
+            {
+                return;
+            }
+            wavePlot.SetYTitle("");
         }
 
         private void ch1_Selected(object sender, RoutedEventArgs e)

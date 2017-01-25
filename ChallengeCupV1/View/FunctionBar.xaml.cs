@@ -76,6 +76,7 @@ namespace ChallengeCupV1.View
             if ("开始" == (string)start.Content)
             {
                 WaveTab.WaveTabContent.Timer.IsEnabled = true;
+                StatusTab.StatusTabContent.Timer.IsEnabled = true;
                 //WaveTab.WaveTabContent.IsDisplaying = true;
                 start.Content = "停止";
             }

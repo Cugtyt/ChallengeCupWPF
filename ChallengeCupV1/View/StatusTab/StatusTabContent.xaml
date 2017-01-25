@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              Foreground="Black"
              FontSize="16"
-             d:DesignHeight="600" d:DesignWidth="800">
+             d:DesignHeight="300" d:DesignWidth="400">
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
@@ -19,7 +19,8 @@
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="11*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="0.6*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="40,0,0,0">
             <Grid.ColumnDefinitions>
@@ -69,5 +70,8 @@
                 <DataGridTextColumn x:Name="value" Header="参数值" Width="1*" Binding="{Binding Value}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBlock Grid.Row="2" 
+                   TextWrapping="WrapWithOverflow"
+            Text="说明：   以上参数计算与齿轮材料以及光波长特性等值有关，如果使用不同材料和光波，请在设置中进行相关值设定。"/>
     </Grid>
 </UserControl>
