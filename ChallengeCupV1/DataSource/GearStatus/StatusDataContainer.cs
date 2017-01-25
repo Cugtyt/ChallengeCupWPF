@@ -18,10 +18,18 @@ namespace ChallengeCupV1.DataSource.GearStatus
 
         public void Calculate()
         {
-            StatusData[0].Calculate(new List<double>() { });
-            StatusData[1].Calculate(new List<double>() { });
-            StatusData[2].Calculate(new List<double>() { });
-            StatusData[3].Calculate(new List<double>() { });
+#if DEBUG
+            Console.WriteLine("StatusDataContainer: Calculate() -> calculating");
+#endif
+            //StatusData[0].Calculate(new List<double>() { });
+            //StatusData[1].Calculate(new List<double>() { });
+            //StatusData[2].Calculate(new List<double>() { });
+            //StatusData[3].Calculate(new List<double>() { });
+
+            StatusData[0].Value = 1;
+            StatusData[1].Value = 2;
+            StatusData[2].Value = 3;
+            StatusData[3].Value = 4;
         }
     }
 }

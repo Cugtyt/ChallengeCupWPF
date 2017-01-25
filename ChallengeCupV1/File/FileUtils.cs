@@ -17,15 +17,20 @@ namespace ChallengeCupV1.File
         /// <returns>data from file</returns>
         public static Task<List<double>[]> ReadWaveData(string filePath, int max = 1000)
         {
+            if (filePath == null)
+            {
 #if DEBUG
-            Console.WriteLine("FileUtils: ReadWaveData() -> file is " + filePath);
+                Console.WriteLine("FileUtils: ReadWaveData() -> Illegal input, argument can not be null.");
 #endif
+                throw new ArgumentNullException("FileUtils: ReadWaveData()");
+            }
+            
             if (!System.IO.File.Exists(filePath))
             {
 #if DEBUG
                 Console.WriteLine("FileUtils: ReadWaveData() -> file is not valid");
 #endif
-                throw new Exception("File is not valid.");
+                throw new FileNotFoundException("FileUtils: ReadWaveData() -> file " + filePath + "is not valid.");
             }
 #if DEBUG
             Console.WriteLine("FileUtils: ReadWaveData() -> file is valid");
@@ -101,15 +106,20 @@ namespace ChallengeCupV1.File
         /// <returns></returns>
         public static Task RemoveFile(string filePath)
         {
+            if (filePath == null)
+            {
 #if DEBUG
-            Console.WriteLine("FileUtils: RemoveFile() -> file is " + filePath);
+                Console.WriteLine("FileUtils: RemoveFile() -> Illegal input, argument can not be null.");
 #endif
+                throw new ArgumentNullException("FileUtils: RemoveFile()");
+            }
+
             if (!System.IO.File.Exists(filePath))
             {
 #if DEBUG
                 Console.WriteLine("FileUtils: RemoveFile() -> file is not exit");
 #endif
-                return null;
+                throw new FileNotFoundException("FileUtils: RemoveFile() -> file " + filePath + "is not valid.");
             }
             // File exits
             try
@@ -134,9 +144,14 @@ namespace ChallengeCupV1.File
         /// <returns></returns>
         public static Task RemoveFileAll(FileInfo[] info)
         {
+            if (info == null)
+            {
 #if DEBUG
-            Console.WriteLine("FileUtils: RemoveFileAll()");
+                Console.WriteLine("FileUtils: RemoveFileAll() -> Illegal input, argument can not be null.");
 #endif
+                throw new ArgumentNullException("FileUtils: RemoveFileAll()");
+            }
+
             for (int i = 0; i < info.Length; i++)
             {
                 info[i].Delete();
@@ -166,6 +181,13 @@ namespace ChallengeCupV1.File
         public static void GenerateStatusReportFile(string dirPath, List<StatusDataTemplate> datalist)
         {
             #region Generate and check if the file path created by time is valid, it shoule always be vaild
+            if (dirPath == null)
+            {
+#if DEBUG
+                Console.WriteLine("FileUtils: GenerateStatusReportFile() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("FileUtils: GenerateStatusReportFile()");
+            }
 
 #if DEBUG
             Console.WriteLine("FileUtils: GenerateStatusReportFile() -> dir is " + dirPath);
@@ -175,8 +197,9 @@ namespace ChallengeCupV1.File
             if (System.IO.File.Exists(filePath))
             {
 #if DEBUG
-                Console.WriteLine("FileUtils: ReadWaveDataAsync() -> file is not valid, IT CANNOT HAPPENED!!!");
+                Console.WriteLine("FileUtils: GenerateStatusReportFile() -> file is not valid, IT CANNOT HAPPENED!!!");
 #endif
+                throw new Exception("FileUtils: GenerateStatusReportFile() -> file exits.");
             }
 #if DEBUG
             Console.WriteLine("FileUtils: GenerateStatusReportFile() -> filePath: " + filePath);

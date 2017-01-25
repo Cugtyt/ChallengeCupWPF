@@ -27,9 +27,21 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         public static Func<List<double>, double> StressCalculator = (input) => 
         {
+            if (input == null)
+            {
+#if DEBUG
+                Console.WriteLine("StatusCalculator: StressCalculator() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("StatusCalculator: StressCalculator()");
+            }
             if (input.Count != 2)
             {
-                throw new Exception("Illegal input");
+#if DEBUG
+                Console.WriteLine("StatusCalculator: StressCalculator() -> Illegal input, expect count of input is 2, but accpet "
+                    + input.Count + ".");
+#endif
+                throw new ArgumentException("StatusCalculator: StressCalculator() -> Illegal input, expect count of input is 2, but accpet "
+                    + input.Count + ".");
             }
             //return -1 * StatusConstantParam.E * input[0]
             /// (StatusConstantParam.u
@@ -51,9 +63,21 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         public static Func<List<double>, double> StrainCalculator = (input) =>
         {
+            if (input == null)
+            {
+#if DEBUG
+                Console.WriteLine("StatusCalculator: StrainCalculator() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("StatusCalculator: StrainCalculator()");
+            }
             if (input.Count != 1)
             {
-                throw new Exception("Illegal input");
+#if DEBUG
+            Console.WriteLine("StatusCalculator: StrainCalculator() -> Illegal input, expect count of input is 1, but accpet "
+                + input.Count + ".");
+#endif
+                throw new ArgumentException("StatusCalculator: StrainCalculator() -> Illegal input, expect count of input is 1, but accpet "
+                + input.Count + ".");
             }
             //return input[0] / StatusConstantParam.alpha;
             return 0.0;

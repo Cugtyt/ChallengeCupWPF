@@ -42,10 +42,18 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         private Func<List<double>, double> calculater;
 
-        public StatusDataTemplate(string name, Func<List<double>, double> cal, string Unit)
+        public StatusDataTemplate(string name, Func<List<double>, double> cal, string unit)
         {
+            if (name == null || cal == null || unit == null)
+            {
+#if DEBUG
+                Console.WriteLine("StatusDataTemplate: StatusDataTemplate() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("StatusDataTemplate: StatusDataTemplate()");
+            }
             Name = name;
             calculater = cal;
+            Unit = unit;
         }
 
         /// <summary>
@@ -55,6 +63,13 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// <returns></returns>
         public double Calculate(List<double> input)
         {
+            if (input == null)
+            {
+#if DEBUG
+                Console.WriteLine("StatusDataTemplate: Calculate() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("StatusDataTemplate: Calculate()");
+            }
             Value = calculater(input);
             return Value;
         }

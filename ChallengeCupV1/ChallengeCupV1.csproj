@@ -66,6 +66,30 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataSource\GratingDataContainer.cs" />
+    <Compile Include="GearLib\Gear1Grating1.xaml.cs">
+      <DependentUpon>Gear1Grating1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GearLib\Gear1Grating2.xaml.cs">
+      <DependentUpon>Gear1Grating2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GearLib\Gear1Grating3.xaml.cs">
+      <DependentUpon>Gear1Grating3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GearLib\Gear1Grating4.xaml.cs">
+      <DependentUpon>Gear1Grating4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GearLib\Gear2Grating1.xaml.cs">
+      <DependentUpon>Gear2Grating1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GearLib\Gear2Grating2.xaml.cs">
+      <DependentUpon>Gear2Grating2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GearLib\Gear2Grating3.xaml.cs">
+      <DependentUpon>Gear2Grating3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GearLib\Gear2Grating4.xaml.cs">
+      <DependentUpon>Gear2Grating4.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Old\DataTypeAdapter.cs" />
     <Compile Include="DataSource\GearStatus\StatusCalculator.cs" />
     <Compile Include="DataSource\GearStatus\StatusConstantParam.cs" />
@@ -127,6 +151,38 @@
     <Compile Include="View\WaveTab\WaveTabHeader.xaml.cs">
       <DependentUpon>WaveTabHeader.xaml</DependentUpon>
     </Compile>
+    <Page Include="GearLib\Gear1Grating1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GearLib\Gear1Grating2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GearLib\Gear1Grating3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GearLib\Gear1Grating4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GearLib\Gear2Grating1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GearLib\Gear2Grating2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GearLib\Gear2Grating3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GearLib\Gear2Grating4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

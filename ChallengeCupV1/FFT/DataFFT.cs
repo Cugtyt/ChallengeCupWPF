@@ -14,21 +14,25 @@ namespace ChallengeCupV1.FFT
         /// Forward Complex[] data
         /// </summary>
         /// <returns></returns>
-        public static Task<Complex[]> Forward(Complex[] data)
+        public static Task<Complex[]> Forward(Complex[] input)
         {
+            if (input == null)
+            {
 #if DEBUG
-            Console.WriteLine("DataFFT: Forward()");
+                Console.WriteLine("DataFFT: Forward() -> Illegal input, argument can not be null.");
 #endif
+                throw new ArgumentNullException("DataFFT: Forward()");
+            }
             return Task.Run(() =>
             {
 #if DEBUG
                 Console.WriteLine("DataFFT: Forward() -> Forward begins");
 #endif
-                Fourier.Forward(data);
+                Fourier.Forward(input);
 #if DEBUG
                 Console.WriteLine("DataFFT: Forward() -> Forward ends");
 #endif
-                return data;
+                return input;
             });
         }
     }

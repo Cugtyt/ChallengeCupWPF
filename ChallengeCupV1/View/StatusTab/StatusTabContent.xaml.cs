@@ -27,7 +27,7 @@ namespace ChallengeCupV1.View.StatusTab
         private StatusDataContainer statusDataSource = new StatusDataContainer();
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromMilliseconds(100),
+            Interval = TimeSpan.FromSeconds(2),
         };
 
         public StatusTabContent()
@@ -35,6 +35,7 @@ namespace ChallengeCupV1.View.StatusTab
             InitializeComponent();
             dataGrid.ItemsSource = statusDataSource.StatusData;
             Timer.Tick += new EventHandler(calculateParam);
+            Timer.IsEnabled = true;
         }
 
         private void calculateParam(object sender, EventArgs e)

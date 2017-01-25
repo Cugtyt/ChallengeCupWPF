@@ -49,13 +49,20 @@ namespace ChallengeCupV1.DataSource
         /// <summary>
         /// Add double list to ySet
         /// </summary>
-        /// <param name="newYs"></param>
+        /// <param name="input"></param>
         /// <returns></returns>
-        public async Task Add(List<double> newYs)
+        public async Task Add(List<double> input)
         {
-            for (int i = 0; i < newYs.Count && i < capacity; i++)
+            if (input == null)
             {
-                ySet[i] = newYs[i];
+#if DEBUG
+                Console.WriteLine("WavePoints: Add() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("WavePoints: Add()");
+            }
+            for (int i = 0; i < input.Count && i < capacity; i++)
+            {
+                ySet[i] = input[i];
             }
             await Update();
         }
@@ -65,9 +72,6 @@ namespace ChallengeCupV1.DataSource
         /// </summary>
         public Task Update()
         {
-#if DEBUG
-            Console.WriteLine("Data: Update()");
-#endif
             List<Point> pl = new List<Point>();
             for (int i = 0; i < ySet.Length; i++)
             {
@@ -82,12 +86,19 @@ namespace ChallengeCupV1.DataSource
         /// Transform complex array to ySet
         /// </summary>
         /// <returns></returns>
-        public void FromComplexArray(Complex[] com)
+        public void FromComplexArray(Complex[] input)
         {
-            List<Point> pl = new List<Point>();
-            for (int i = 0; i < com.Length && i < 200; i++)
+            if (input == null)
             {
-                pl.Add(new Point(i * 2e5 / 200, Math.Abs(com[i].Real)));
+#if DEBUG
+                Console.WriteLine("WavePoints: FromComplexArray() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("WavePoints: FromComplexArray()");
+            }
+            List<Point> pl = new List<Point>();
+            for (int i = 0; i < input.Length && i < 200; i++)
+            {
+                pl.Add(new Point(i * 2e5 / 200, Math.Abs(input[i].Real)));
             }
             Points.Collection.Clear();
             Points.AppendMany(pl);
