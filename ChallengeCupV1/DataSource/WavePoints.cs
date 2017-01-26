@@ -17,9 +17,17 @@ namespace ChallengeCupV1.DataSource
     /// </summary>
     public class WavePoints : DependencyObject
     {
+        /// <summary>
+        /// Capacity of ySet
+        /// </summary>
         private int capacity;
+        /// <summary>
+        /// All the ys of points
+        /// </summary>
         private double[] ySet;
-
+        /// <summary>
+        /// Points is the final points set to show in chart
+        /// </summary>
         public ObservableDataSource<Point> Points
         {
             get
@@ -36,9 +44,6 @@ namespace ChallengeCupV1.DataSource
         public static readonly DependencyProperty PointsProperty =
             DependencyProperty.Register("Points", typeof(ObservableDataSource<Point>), typeof(WavePoints));
 
-        /// <summary>
-        /// Initial all points as (0, 0)
-        /// </summary>
         public WavePoints(int capacity = 200)
         {
             Points = new ObservableDataSource<Point>();

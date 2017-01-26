@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupV1.DataSource.GearStatus
 {
+    /// <summary>
+    /// StatusConstantParam contains some constant params
+    /// used by calculator associate with material and etc.
+    /// </summary>
     public static class StatusConstantParam
     {
         /// <summary>

@@ -10,10 +10,23 @@ using System.Windows.Threading;
 
 namespace ChallengeCupV1.GearLib
 {
+    /// <summary>
+    /// GearAction define all actions gear model can do,
+    /// zoom in and zoom out, rotate in vertial and horizontal
+    /// </summary>
     public static class GearAction
     {
+        /// <summary>
+        /// If mouse is down now
+        /// </summary>
         private static bool isMouseDown;
+        /// <summary>
+        /// Store last position of mouse
+        /// </summary>
         private static Point mouseLastPos;
+        /// <summary>
+        /// Rotate style choosed of gear, there are two style: vertical and horizontal
+        /// </summary>
         private static RotateStyle rotateStyle;
         public enum RotateStyle
         {
@@ -21,6 +34,13 @@ namespace ChallengeCupV1.GearLib
         }
 
         #region Zoom in and zoom out
+        /// <summary>
+        /// Zoom in and out of gear
+        /// 
+        /// Set z of camera's positon by the input argument
+        /// </summary>
+        /// <param name="gear"></param>
+        /// <param name="z"></param>
         public static void Zoom(this IGear gear, double z)
         {
             PerspectiveCamera camera = gear.GetCamera();
@@ -30,6 +50,15 @@ namespace ChallengeCupV1.GearLib
         #endregion
 
         #region Rotate
+        /// <summary>
+        /// Set gear's rotate style
+        /// 
+        /// First reset gear's view, without this gear will have the
+        /// angle got before, so for a comfortable view, reset is better.
+        /// Then set rotateStyle, and set axis
+        /// </summary>
+        /// <param name="gear"></param>
+        /// <param name="rs"></param>
         public static void SetRotateStyle(this IGear gear, RotateStyle rs)
         {
             gear.Reset();
@@ -38,11 +67,22 @@ namespace ChallengeCupV1.GearLib
                 new Vector3D(1, 0, 0) : new Vector3D(0, 1, 0);
         }
 
+        /// <summary>
+        /// Set isMouseDown to be false
+        /// </summary>
+        /// <param name="gear"></param>
         public static void MouseUp(this IGear gear)
         {
             isMouseDown = false;
         }
 
+        /// <summary>
+        /// Set isMouseDown to be true
+        /// 
+        /// When mouse down, store the positon of current mouse.
+        /// </summary>
+        /// <param name="gear"></param>
+        /// <param name="e"></param>
         public static void MouseDown(this IGear gear, MouseButtonEventArgs e)
         {
             isMouseDown = true;
@@ -52,7 +92,19 @@ namespace ChallengeCupV1.GearLib
             mouseLastPos = Mouse.GetPosition(viewPort);
         }
 
-        public static void MouseMove(this IGear gear)
+        /// <summary>
+        /// Rotate gear
+        /// 
+        /// When mouse down and move, this method will be called,
+        /// get the positon of current mouse, then calculate the difference
+        /// between it and last mouse positon which was stored in mouseLastPos,
+        /// then set the gear's angle of AxisAngleRotation.
+        /// 
+        /// There is a speed up factor to enlarge the calculated angle, 
+        /// cause calculated angle isn't big enough to set a comfortable view.
+        /// </summary>
+        /// <param name="gear"></param>
+        public static void Rotate(this IGear gear)
         {
             if (isMouseDown == false)
             {

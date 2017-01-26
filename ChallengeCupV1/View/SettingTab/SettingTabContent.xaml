@@ -39,7 +39,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Label Content="报告生成文件夹： " Width="260"/>
                     <TextBox Name="statusReportDir" Width="700"/>
-                    <Button Content="浏览" Background="Transparent" Click="browseFile_Click"/>
+                    <Button Content="浏览" Background="Transparent" Click="browseDir_Click"/>
                 </StackPanel>
                 <Label Content="参数设置" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">

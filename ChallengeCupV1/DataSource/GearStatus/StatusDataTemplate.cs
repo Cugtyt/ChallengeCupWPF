@@ -7,6 +7,9 @@ using System.Windows;
 
 namespace ChallengeCupV1.DataSource.GearStatus
 {
+    /// <summary>
+    /// StatusDataTemplate hold infos of status data
+    /// </summary>
     public class StatusDataTemplate : DependencyObject
     {
         /// <summary>
@@ -18,6 +21,9 @@ namespace ChallengeCupV1.DataSource.GearStatus
             set { SetValue(NameProperty, value); }
         }
 
+        /// <summary>
+        /// Status data unit
+        /// </summary>
         public string Unit;
 
         // Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...

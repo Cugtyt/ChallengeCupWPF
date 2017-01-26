@@ -35,8 +35,12 @@ namespace ChallengeCupV1.View.SettingTab
             alpha_PARM.Text = StatusConstantParam.alpha.ToString();
         }
 
-      
-        private void browseFile_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Brower and set generate report dir path of setting data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void browseDir_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
             System.Windows.Forms.DialogResult result = dialog.ShowDialog();
@@ -49,6 +53,11 @@ namespace ChallengeCupV1.View.SettingTab
             statusReportDir.Text = dir;
         }
 
+        /// <summary>
+        /// Apply all settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void apply_Click(object sender, RoutedEventArgs e)
         {
             SettingContainer.StatusReportDir = statusReportDir.Text;

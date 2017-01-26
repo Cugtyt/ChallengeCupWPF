@@ -8,10 +8,21 @@ namespace ChallengeCupV1.DataSource
 {
     public static class GratingDataContainer
     {
+        /// <summary>
+        /// MaxLength limits length every list of double in Data array
+        /// </summary>
         public static int MaxLength = 1000;
-
+        /// <summary>
+        /// Stores all data after parsing input data
+        /// </summary>
         public static List<double>[] Data;
 
+        /// <summary>
+        /// Get data from a string array input,
+        /// there should be infos of length of data array in input
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static Task<List<double>[]> GetDataFrom(string[] data)
         {
             if (data == null)

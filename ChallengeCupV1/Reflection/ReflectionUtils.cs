@@ -10,7 +10,7 @@ namespace ChallengeCupV1.Reflection
     public static class ReflectionUtils
     {
         /// <summary>
-        /// Get classes list in given namespace and filtered by given interface
+        /// Get classes list in given namespace
         /// </summary>
         /// <param name="namespace_">namespace to search</param>
         /// <param name="type">filter interface type</param>
@@ -31,6 +31,12 @@ namespace ChallengeCupV1.Reflection
                     select t;
         }
 
+        /// <summary>
+        /// Keep elements are interface of the input type in rowType
+        /// </summary>
+        /// <param name="rowType"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static IEnumerable<Type> IsInterfaceFilter(IEnumerable<Type> rowType, Type type)
         {
             if (rowType == null || type == null)
@@ -45,6 +51,12 @@ namespace ChallengeCupV1.Reflection
                    select t;
         }
 
+        /// <summary>
+        /// Remove elements are not interface of the input type in rowType
+        /// </summary>
+        /// <param name="rowType"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static IEnumerable<Type> IsNotInterfaceFilter(IEnumerable<Type> rowType, Type type)
         {
             if (rowType == null || type == null)

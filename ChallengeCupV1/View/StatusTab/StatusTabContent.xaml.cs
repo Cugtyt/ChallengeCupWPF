@@ -24,7 +24,13 @@ namespace ChallengeCupV1.View.StatusTab
     /// </summary>
     public partial class StatusTabContent : UserControl
     {
+        /// <summary>
+        /// Data source of data grid to show 
+        /// </summary>
         private StatusDataContainer statusDataSource = new StatusDataContainer();
+        /// <summary>
+        /// Timer to set interval of calculating status data
+        /// </summary>
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
             Interval = TimeSpan.FromSeconds(2),
@@ -38,11 +44,21 @@ namespace ChallengeCupV1.View.StatusTab
             //Timer.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Calculate event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void calculateParam(object sender, EventArgs e)
         {
             statusDataSource.Calculate();
         }
 
+        /// <summary>
+        /// Generate status data file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
             File.FileUtils.GenerateStatusReportFile(SettingContainer.StatusReportDir, statusDataSource.StatusData);

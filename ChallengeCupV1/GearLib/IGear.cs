@@ -9,7 +9,7 @@ using System.Windows.Media.Media3D;
 namespace ChallengeCupV1.GearLib
 {
     /// <summary>
-    /// All gear in GearLib(which is lib of gear) must implement iterface IGear
+    /// All gear in GearLib(which is lib of gear) must implement IGear as a identifier
     /// </summary>
     public interface IGear
     {

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupV1.GearLib
 {
+    /// <summary>
+    /// All gear with grating must implement IGrating as a identifier
+    /// </summary>
     public interface IGrating
     {
     }

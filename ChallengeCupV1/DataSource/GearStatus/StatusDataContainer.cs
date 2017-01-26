@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupV1.DataSource.GearStatus
 {
+    /// <summary>
+    /// StatusDataContainer contains a list of StatusDataTemplate
+    /// in which all status data are stored.
+    /// </summary>
     public class StatusDataContainer
     {
+        /// <summary>
+        /// All status data are stored in StatusData. when new param 
+        /// is needed, add a new StatusDataTemplate object to it.
+        /// </summary>
         public List<StatusDataTemplate> StatusData = new List<StatusDataTemplate>()
         {
             new StatusDataTemplate("Stress", StatusCalculator.StressCalculator, "N"),
@@ -16,6 +24,9 @@ namespace ChallengeCupV1.DataSource.GearStatus
             new StatusDataTemplate("Frequency", StatusCalculator.FrequencyCalculator, "N")
         };
 
+        /// <summary>
+        /// Calculate and update the value of each status value in StatusData
+        /// </summary>
         public void Calculate()
         {
 #if DEBUG

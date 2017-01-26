@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace ChallengeCupV1.DataSource.GearStatus
 {
+    /// <summary>
+    /// StatusCalculator is a calculator set, stores all algorithm
+    /// of param need to be calculated.
+    /// 
+    /// These calculators should be used as a part of StatusDataTemplate
+    /// when a status data object is produced.
+    /// </summary>
     public static class StatusCalculator
     {
 

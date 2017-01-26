@@ -27,12 +27,20 @@ namespace ChallengeCupV1.View.GearTab
     /// </summary>
     public partial class InitPage : UserControl
     {
+        /// <summary>
+        /// ComboBox items source, name collection of gear in gear lib
+        /// </summary>
         ObservableCollection<string> gearLibSource = new ObservableCollection<string>();
+        /// <summary>
+        /// ComboBox items source, collection of grating number
+        /// </summary>
         ObservableCollection<int> gratingNumberSource = new ObservableCollection<int>() { 0, 1, 2, 3, 4 };
 
         public InitPage()
         {
             InitializeComponent();
+
+            #region Init ComboBox
             // Search in GearLib to set items for gearSelectComboBox
             var classes = ReflectionUtils.IsNotInterfaceFilter(ReflectionUtils.IsInterfaceFilter(
                 ReflectionUtils.GetClassList("ChallengeCupV1.GearLib"), typeof(IGear)), typeof(IGrating));
@@ -46,19 +54,26 @@ namespace ChallengeCupV1.View.GearTab
             // Set grating number for gratingNumberComboBox
             gratingNumberComboBox.ItemsSource = gratingNumberSource;
             gratingNumberComboBox.SelectedIndex = 0;
+            #endregion
         }
 
+        /// <summary>
+        /// Apply all setting
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void apply_Click(object sender, RoutedEventArgs e)
         {
             Visibility = Visibility.Hidden;
             var parent = (VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(
                 VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(this)))) as GearTabContent);
-            parent.ShowSettingBtn();
+            parent.ShowHidden();
             parent.UpdateGear();
         }
 
         public int GetGearIndex()
         {
+            // Indexs of gear in lib start from 1
             return gearSelectComboBox.SelectedIndex + 1;
         }
 

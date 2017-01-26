@@ -44,18 +44,21 @@ namespace ChallengeCupV1.View.GearTab
 
         /// <summary>
         /// Choose gear to show in GearTabControl
-        /// Use reflection to get gear in lib
         /// </summary>
         public void UpdateGear()
         {
             gear = GearFactory.GetGear(initPage.GetGearIndex(), initPage.GetGratingNumber());
+            // Set rotate style, cause new gear's rotate style may not be set
             gear.SetRotateStyle(horizontal.IsChecked.Value ? 
                 GearAction.RotateStyle.Horizontal : GearAction.RotateStyle.vertical);
             gearContainer.Children.Clear();
             gearContainer.Children.Add(gear as UserControl);
         }
 
-        public void ShowSettingBtn()
+        /// <summary>
+        /// Show hidden things
+        /// </summary>
+        public void ShowHidden()
         {
             setting.Visibility = Visibility.Visible;
             sideBar.Visibility = Visibility.Visible;
@@ -71,6 +74,11 @@ namespace ChallengeCupV1.View.GearTab
             gear.Zoom(e.Delta);
         }
 
+        /// <summary>
+        /// When mouse up, call gear's MouseUp()
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gearContainer_MouseUp(object sender, MouseButtonEventArgs e)
         {
             gear.MouseUp();
@@ -102,15 +110,27 @@ namespace ChallengeCupV1.View.GearTab
             }
         }
 
+        /// <summary>
+        /// Call gear's Rotate() while mouse moving
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gearContainer_MouseMove(object sender, MouseEventArgs e)
         {
-            gear.MouseMove();
+            gear.Rotate();
         }
 
+        /// <summary>
+        /// Call gear's MouseUp() when mouse leave current view part
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gearContainer_MouseLeave(object sender, MouseEventArgs e)
         {
             gear.MouseUp();
         }
+
+        #region Set rotate style
 
         private void vertical_Click(object sender, RoutedEventArgs e)
         {
@@ -121,6 +141,7 @@ namespace ChallengeCupV1.View.GearTab
         {
             gear.SetRotateStyle(GearAction.RotateStyle.Horizontal);
         }
+        #endregion
     }
 
 }

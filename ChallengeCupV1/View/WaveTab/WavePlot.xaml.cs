@@ -17,12 +17,17 @@ namespace ChallengeCupV1.View.WaveTab
     /// </summary>
     public partial class WavePlot : UserControl
     {
-        DataSource.WavePoints dataSource = new DataSource.WavePoints();
+        /// <summary>
+        /// Data source to show in chart
+        /// </summary>
+        WavePoints dataSource = new DataSource.WavePoints();
 
         public WavePlot()
         {
             InitializeComponent();
+            // Set axes range
             ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
+            // Set mouse cannot change view of plotter
             plotter.Children.Remove(plotter.MouseNavigation);
             plotter.Children.Remove(plotter.KeyboardNavigation);
 
@@ -32,7 +37,7 @@ namespace ChallengeCupV1.View.WaveTab
         }
 
         /// <summary>
-        /// Add double list to dataSource
+        /// Add double list to dataSource in time domain
         /// </summary>
         /// <param name="yList"></param>
         /// <returns></returns>
@@ -47,6 +52,11 @@ namespace ChallengeCupV1.View.WaveTab
             await dataSource.Add(yList);
         }
         
+        /// <summary>
+        /// Add complex array to dataSource in freq domain
+        /// </summary>
+        /// <param name="com"></param>
+        /// <returns></returns>
         public Task AddFreqPoints(Complex[] com)
         {
             plotter.Viewport.Restrictions.Clear();
@@ -55,6 +65,10 @@ namespace ChallengeCupV1.View.WaveTab
             return null;
         }
 
+        /// <summary>
+        /// Set vertical title
+        /// </summary>
+        /// <param name="title"></param>
         public void SetYTitle(string title)
         {
             if (title == null)

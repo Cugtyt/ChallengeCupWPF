@@ -23,6 +23,9 @@ namespace ChallengeCupV1.View
     /// </summary>
     public partial class FunctionBar : UserControl
     {
+        /// <summary>
+        /// Timer to set gratingdata in GratingDataContainer
+        /// </summary>
         private DispatcherTimer timer = new DispatcherTimer()
         {
             Interval = TimeSpan.FromMilliseconds(50)
@@ -99,6 +102,11 @@ namespace ChallengeCupV1.View
            
         }
 
+        /// <summary>
+        /// Close window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
