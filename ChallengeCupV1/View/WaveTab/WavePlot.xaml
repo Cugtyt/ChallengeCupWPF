@@ -19,7 +19,7 @@
                 <d3:VerticalIntegerAxis />
             </d3:ChartPlotter.VerticalAxis>
             <d3:ChartPlotter.HorizontalAxis>
-                <d3:HorizontalIntegerAxis />
+                <d3:HorizontalIntegerAxis Name="xAxis"/>
             </d3:ChartPlotter.HorizontalAxis>
             <!--<d3:Header Content="Title"/>-->
             <d3:VerticalAxisTitle Name="verticalTitle" Content="WaveLength"/>

@@ -23,12 +23,9 @@ namespace ChallengeCupV1.View.WaveTab
         {
             InitializeComponent();
             ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
-            //restr.YRange = new DisplayRange(
-            //    SettingDataContainer.WavePlotTimeDomainMinY, 
-            //    SettingDataContainer.WavePlotTimeDomainMaxY);
-            //plotter.Viewport.Restrictions.Add(restr);
             plotter.Children.Remove(plotter.MouseNavigation);
             plotter.Children.Remove(plotter.KeyboardNavigation);
+
             //DataContext = dataSource;
             line.DataSource = dataSource.Points;
             
@@ -46,12 +43,14 @@ namespace ChallengeCupV1.View.WaveTab
                 SettingDataContainer.WavePlotTimeDomainMinY,
                 SettingDataContainer.WavePlotTimeDomainMaxY);
             plotter.Viewport.Restrictions.Add(restr);
+            xAxis.Visibility = Visibility.Hidden;
             await dataSource.Add(yList);
         }
         
         public Task AddFreqPoints(Complex[] com)
         {
             plotter.Viewport.Restrictions.Clear();
+            xAxis.Visibility = Visibility.Visible;
             dataSource.FromComplexArray(com);
             return null;
         }
