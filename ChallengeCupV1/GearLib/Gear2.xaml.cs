@@ -28,11 +28,6 @@ namespace ChallengeCupV1.GearLib
             InitializeComponent();
         }
 
-        public AxisAngleRotation3D GetAxisAngleRotation()
-        {
-            return axisAngleRotation;
-        }
-
         public PerspectiveCamera GetCamera()
         {
             return camera;
@@ -43,15 +38,21 @@ namespace ChallengeCupV1.GearLib
             return gearModel;
         }
 
+
         public Viewport3D GetViewPort()
         {
             return viewPort;
         }
 
+        public AxisAngleRotation3D GetAxisAngleRotation()
+        {
+            return axisAngleRotation;
+        }
+
         public void Reset()
         {
-            camera.Position = new Point3D(-9.53674351933387E-07, 0.000160217285298359, 410.251665163598);
-            axisAngleRotation.Angle = 5;
+            camera.Position = new Point3D(0, 0, 400);
+            axisAngleRotation.Angle = 0;
         }
     }
 }

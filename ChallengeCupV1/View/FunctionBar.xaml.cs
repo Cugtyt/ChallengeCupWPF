@@ -49,7 +49,7 @@ namespace ChallengeCupV1.View
                 //    SettingDataContainer.WaveDataDir + files[index++].Name);
                 await GratingDataContainer.GetDataFrom(
                     File.FileUtils.ReadDataFromFile(
-                        SettingDataContainer.WaveDataDir + files[index++].Name).Result);
+                        SettingContainer.WaveDataDir + files[index++].Name).Result);
             }
         }
 
@@ -60,7 +60,7 @@ namespace ChallengeCupV1.View
             if ((string)connect.Content == "连接")
             {
                 //WaveTab.WaveTabContent.Timer.IsEnabled = true;
-                var dir = new DirectoryInfo(SettingDataContainer.WaveDataDir);
+                var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
                 files = dir.GetFiles();
                 timer.IsEnabled = true;
                 connect.Content = "断开";

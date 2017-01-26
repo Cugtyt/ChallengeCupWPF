@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Foreground="Black"
              FontSize="16"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -49,12 +49,27 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Name="gearContainer" 
+        <Grid Grid.Row="1"
               MouseUp="gearContainer_MouseUp"
               MouseDown="gearContainer_MouseDown"
               MouseMove="gearContainer_MouseMove"
               MouseLeave="gearContainer_MouseLeave"
-              MouseWheel="gearContainer_MouseWheel" Margin="5"/>
+              MouseWheel="gearContainer_MouseWheel" Margin="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Name="gearContainer"/>
+            <StackPanel Grid.Column="1" Name="sideBar" Visibility="Hidden" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Name="horizontal" GroupName="rotateStyle" IsChecked="True"
+                                 Content="Horizontal" Margin="0,0,20,0" Click="horizontal_Click"/>
+                    <RadioButton Name="vertical" GroupName="rotateStyle" 
+                                 Content="Vertical" Margin="0,0,20,0" Click="vertical_Click"/>
+                </StackPanel>
+                <TextBlock Text="说明：&#x0a;鼠标左键按下移动旋转齿轮&#x0a;双击恢复初始状态&#x0a;滚轮可以进行缩放" TextWrapping="WrapWithOverflow"/>
+            </StackPanel>
+        </Grid>
         <local:InitPage Grid.Row="1" x:Name="initPage" Width="450" Height="300"/>
     </Grid>
 </UserControl>

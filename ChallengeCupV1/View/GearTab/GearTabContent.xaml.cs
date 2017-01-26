@@ -1,4 +1,5 @@
-﻿using ChallengeCupV1.GearLib;
+﻿using ChallengeCupV1.DataSource;
+using ChallengeCupV1.GearLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ChallengeCupV1.View.GearTab
 {
@@ -26,6 +28,7 @@ namespace ChallengeCupV1.View.GearTab
     public partial class GearTabContent : UserControl
     { 
         private IGear gear;
+        private int mouseClickCount;
 
         public GearTabContent()
         {
@@ -36,6 +39,7 @@ namespace ChallengeCupV1.View.GearTab
         {
             initPage.Visibility = Visibility.Visible;
             setting.Visibility = Visibility.Hidden;
+            sideBar.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -45,6 +49,8 @@ namespace ChallengeCupV1.View.GearTab
         public void UpdateGear()
         {
             gear = GearFactory.GetGear(initPage.GetGearIndex(), initPage.GetGratingNumber());
+            gear.SetRotateStyle(horizontal.IsChecked.Value ? 
+                GearAction.RotateStyle.Horizontal : GearAction.RotateStyle.vertical);
             gearContainer.Children.Clear();
             gearContainer.Children.Add(gear as UserControl);
         }
@@ -52,6 +58,7 @@ namespace ChallengeCupV1.View.GearTab
         public void ShowSettingBtn()
         {
             setting.Visibility = Visibility.Visible;
+            sideBar.Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -69,13 +76,30 @@ namespace ChallengeCupV1.View.GearTab
             gear.MouseUp();
         }
 
+        /// <summary>
+        /// When mouse down, there are two situation,
+        /// one is double click to reset gear view,
+        /// antoher is rotate gear view.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gearContainer_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount == 2)
+            mouseClickCount += 1;
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 300);
+            timer.Tick += (s, e1) => { timer.IsEnabled = false; mouseClickCount = 0; };
+            timer.IsEnabled = true;
+            if (mouseClickCount % 2 == 0)
             {
+                timer.IsEnabled = false;
+                mouseClickCount = 0;
                 gear.Reset();
             }
-            gear.MouseDown(e);
+            else
+            {
+                gear.MouseDown(e);
+            }
         }
 
         private void gearContainer_MouseMove(object sender, MouseEventArgs e)
@@ -86,6 +110,16 @@ namespace ChallengeCupV1.View.GearTab
         private void gearContainer_MouseLeave(object sender, MouseEventArgs e)
         {
             gear.MouseUp();
+        }
+
+        private void vertical_Click(object sender, RoutedEventArgs e)
+        {
+            gear.SetRotateStyle(GearAction.RotateStyle.vertical);
+        }
+
+        private void horizontal_Click(object sender, RoutedEventArgs e)
+        {
+            gear.SetRotateStyle(GearAction.RotateStyle.Horizontal);
         }
     }
 

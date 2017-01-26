@@ -26,29 +26,31 @@ namespace ChallengeCupV1.GearLib
             InitializeComponent();
         }
 
-        public AxisAngleRotation3D GetAxisAngleRotation()
-        {
-            throw new NotImplementedException();
-        }
-
         public PerspectiveCamera GetCamera()
         {
-            throw new NotImplementedException();
+            return camera;
         }
 
         public GeometryModel3D GetModel()
         {
-            throw new NotImplementedException();
+            return gearModel;
         }
+
 
         public Viewport3D GetViewPort()
         {
-            throw new NotImplementedException();
+            return viewPort;
+        }
+
+        public AxisAngleRotation3D GetAxisAngleRotation()
+        {
+            return axisAngleRotation;
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            camera.Position = new Point3D(0, 0, 400);
+            axisAngleRotation.Angle = 0;
         }
     }
 }

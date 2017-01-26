@@ -20,7 +20,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="40,0,0,0">
             <Grid.ColumnDefinitions>
@@ -71,7 +71,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="2" 
-                   TextWrapping="WrapWithOverflow"
-            Text="说明：   以上参数计算与齿轮材料以及光波长特性等值有关，如果使用不同材料和光波，请在设置中进行相关值设定。"/>
+                   TextWrapping="Wrap"
+            Text="说明：&#x0a;以上参数计算与齿轮材料以及光波长特性等值有关，如果使用不同材料和光波，请在设置中进行相关值设定" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

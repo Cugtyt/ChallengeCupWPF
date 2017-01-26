@@ -40,8 +40,8 @@ namespace ChallengeCupV1.View.WaveTab
         {
             ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
             restr.YRange = new DisplayRange(
-                SettingDataContainer.WavePlotTimeDomainMinY,
-                SettingDataContainer.WavePlotTimeDomainMaxY);
+                SettingContainer.WavePlotTimeDomainMinY,
+                SettingContainer.WavePlotTimeDomainMaxY);
             plotter.Viewport.Restrictions.Add(restr);
             xAxis.Visibility = Visibility.Hidden;
             await dataSource.Add(yList);

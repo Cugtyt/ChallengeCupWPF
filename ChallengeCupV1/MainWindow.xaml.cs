@@ -34,8 +34,8 @@ namespace ChallengeCupV1
             // Set window size max
             //Width = SystemParameters.PrimaryScreenWidth;
             //Height = SystemParameters.PrimaryScreenHeight;
-            Width = 600;
-            Height = 500;
+            Width = 800;
+            Height = 450;
         }
     }
 }

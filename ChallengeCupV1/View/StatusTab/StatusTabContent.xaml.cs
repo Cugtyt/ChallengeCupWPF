@@ -45,7 +45,7 @@ namespace ChallengeCupV1.View.StatusTab
 
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
-            File.FileUtils.GenerateStatusReportFile(SettingDataContainer.StatusReportDir, statusDataSource.StatusData);
+            File.FileUtils.GenerateStatusReportFile(SettingContainer.StatusReportDir, statusDataSource.StatusData);
         }
     }
 }
