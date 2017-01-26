@@ -27,6 +27,8 @@ namespace ChallengeCupV1.View.SettingTab
             InitializeComponent();
             // Init text box
             statusReportDir.Text = SettingDataContainer.StatusReportDir;
+            maxYTimeDomain.Text = SettingDataContainer.WavePlotTimeDomainMaxY.ToString();
+            minYTimeDomain.Text = SettingDataContainer.WavePlotTimeDomainMinY.ToString();
             E_PARM.Text = StatusConstantParam.E.ToString();
             u_PARM.Text = StatusConstantParam.u.ToString();
             delta_PARM.Text = StatusConstantParam.delta.ToString();
@@ -50,6 +52,8 @@ namespace ChallengeCupV1.View.SettingTab
         private void apply_Click(object sender, RoutedEventArgs e)
         {
             SettingDataContainer.StatusReportDir = statusReportDir.Text;
+            SettingDataContainer.WavePlotTimeDomainMaxY = double.Parse(maxYTimeDomain.Text);
+            SettingDataContainer.WavePlotTimeDomainMinY = double.Parse(minYTimeDomain.Text);
             StatusConstantParam.E = double.Parse(E_PARM.Text);
             StatusConstantParam.u = double.Parse(u_PARM.Text);
             StatusConstantParam.delta = double.Parse(delta_PARM.Text);

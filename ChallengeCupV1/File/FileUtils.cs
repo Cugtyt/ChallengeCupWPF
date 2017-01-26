@@ -186,11 +186,11 @@ namespace ChallengeCupV1.File
         }
 
         /// <summary>
-        /// Remove all files
+        /// Remove all files from start to end, end will not be deleted.
         /// </summary>
         /// <param name="info">FileInfo array</param>
         /// <returns></returns>
-        public static Task RemoveFileAll(FileInfo[] info)
+        public static Task RemoveFileAll(FileInfo[] info, int start, int end)
         {
             if (info == null)
             {
@@ -200,7 +200,7 @@ namespace ChallengeCupV1.File
                 throw new ArgumentNullException("FileUtils: RemoveFileAll()");
             }
 
-            for (int i = 0; i < info.Length; i++)
+            for (int i = start; i < end; i++)
             {
                 info[i].Delete();
             }

@@ -11,7 +11,7 @@
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBox">
-                <Setter Property="Width" Value="120"/>
+                <Setter Property="Width" Value="180"/>
             </Style>
             <Style TargetType="Label">
                 <Setter Property="Width" Value="180"/>
@@ -32,11 +32,11 @@
             <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
                    Text="Setting"/>
         </Grid>
-        <Grid Margin="40,20,0,0" Grid.Row="1">
+        <StackPanel Margin="40,20,0,0" Grid.Row="1">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="报告生成文件夹： " Width="260"/>
-                    <TextBox Name="statusReportDir" Width="600"/>
+                    <TextBox Name="statusReportDir" Width="700"/>
                     <Button Content="浏览" Background="Transparent" Click="browseFile_Click"/>
                 </StackPanel>
                 <Label Content="参数设置" HorizontalAlignment="Left"/>
@@ -58,8 +58,19 @@
                         <TextBox Name="alpha_PARM"/>
                     </StackPanel>
                 </StackPanel>
+                <Label Content="波形显示设置" HorizontalAlignment="Left"/>
+                <StackPanel Orientation="Vertical" Margin="80,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="时域最大波长： "/>
+                        <TextBox Name="maxYTimeDomain"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="时域最小波长： "/>
+                        <TextBox Name="minYTimeDomain"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
-        </Grid>
+        </StackPanel>
         <Button Grid.Row="2" Name="apply" Width="150" Height="60" Content="应用" Click="apply_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">

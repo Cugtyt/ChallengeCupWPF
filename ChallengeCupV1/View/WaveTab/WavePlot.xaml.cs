@@ -1,7 +1,13 @@
-﻿using System;
+﻿using ChallengeCupV1.DataSource;
+using Microsoft.Research.DynamicDataDisplay;
+using Microsoft.Research.DynamicDataDisplay.Charts;
+using Microsoft.Research.DynamicDataDisplay.Charts.Axes;
+using Microsoft.Research.DynamicDataDisplay.ViewportRestrictions;
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ChallengeCupV1.View.WaveTab
@@ -16,10 +22,16 @@ namespace ChallengeCupV1.View.WaveTab
         public WavePlot()
         {
             InitializeComponent();
+            ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
+            //restr.YRange = new DisplayRange(
+            //    SettingDataContainer.WavePlotTimeDomainMinY, 
+            //    SettingDataContainer.WavePlotTimeDomainMaxY);
+            //plotter.Viewport.Restrictions.Add(restr);
             plotter.Children.Remove(plotter.MouseNavigation);
             plotter.Children.Remove(plotter.KeyboardNavigation);
             //DataContext = dataSource;
             line.DataSource = dataSource.Points;
+            
         }
 
         /// <summary>
@@ -29,11 +41,17 @@ namespace ChallengeCupV1.View.WaveTab
         /// <returns></returns>
         public async Task AddTimePoints(List<double> yList)
         {
+            ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
+            restr.YRange = new DisplayRange(
+                SettingDataContainer.WavePlotTimeDomainMinY,
+                SettingDataContainer.WavePlotTimeDomainMaxY);
+            plotter.Viewport.Restrictions.Add(restr);
             await dataSource.Add(yList);
         }
         
         public Task AddFreqPoints(Complex[] com)
         {
+            plotter.Viewport.Restrictions.Clear();
             dataSource.FromComplexArray(com);
             return null;
         }
@@ -50,4 +68,46 @@ namespace ChallengeCupV1.View.WaveTab
             verticalTitle.Content = title;
         }
     }
+
+    /// <summary>
+    /// Set Axes Range
+    /// </summary>
+    class ViewportAxesRangeRestriction : IViewportRestriction
+    {
+        public DisplayRange XRange = null;
+        public DisplayRange YRange = null;
+
+        public event EventHandler Changed;
+
+        public Rect Apply(Rect oldVisible, Rect newVisible, Viewport2D viewport)
+        {
+            if (XRange != null)
+            {
+                newVisible.X = XRange.Start;
+                newVisible.Width = XRange.End - XRange.Start;
+            }
+
+            if (YRange != null)
+            {
+                newVisible.Y = YRange.Start;
+                newVisible.Height = YRange.End - YRange.Start;
+            }
+            return newVisible;
+        }
+    }
+
+    /// <summary>
+    /// Display range
+    /// </summary>
+    class DisplayRange
+    {
+        public double Start { get; set; }
+        public double End { get; set; }
+        public DisplayRange(double start, double end)
+        {
+            Start = start;
+            End = end;
+        }
+    }
+
 }

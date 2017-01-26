@@ -39,6 +39,10 @@ namespace ChallengeCupV1.View
 
         private async void ReadDataFromFile(object sender, EventArgs e)
         {
+            //-----------------------
+            // Remove all files in dir
+            //File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
+            //-------------------------
             if (index < files.Length)
             {
                 //GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
@@ -56,10 +60,6 @@ namespace ChallengeCupV1.View
             if ((string)connect.Content == "连接")
             {
                 //WaveTab.WaveTabContent.Timer.IsEnabled = true;
-                //-----------------------
-                // Remove all files in dir
-                //File.FileUtils.RemoveFileAll(files);
-                //-------------------------
                 var dir = new DirectoryInfo(SettingDataContainer.WaveDataDir);
                 files = dir.GetFiles();
                 timer.IsEnabled = true;
@@ -78,6 +78,11 @@ namespace ChallengeCupV1.View
             // Start asked
             if ("开始" == (string)start.Content)
             {
+                if ((string)connect.Content == "连接")
+                {
+                    start.Content = "请先连接";
+                    return;
+                }
                 WaveTab.WaveTabContent.Timer.IsEnabled = true;
                 StatusTab.StatusTabContent.Timer.IsEnabled = true;
                 //WaveTab.WaveTabContent.IsDisplaying = true;
@@ -87,6 +92,7 @@ namespace ChallengeCupV1.View
             else
             {
                 WaveTab.WaveTabContent.Timer.IsEnabled = false;
+                StatusTab.StatusTabContent.Timer.IsEnabled = false;
                 //WaveTab.WaveTabContent.IsDisplaying = false;
                 start.Content = "开始";
             }

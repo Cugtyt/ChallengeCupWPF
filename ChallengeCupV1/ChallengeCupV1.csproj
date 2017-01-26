@@ -69,15 +69,6 @@
     <Compile Include="GearLib\Gear1Grating1.xaml.cs">
       <DependentUpon>Gear1Grating1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GearLib\Gear1Grating2.xaml.cs">
-      <DependentUpon>Gear1Grating2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GearLib\Gear1Grating3.xaml.cs">
-      <DependentUpon>Gear1Grating3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GearLib\Gear1Grating4.xaml.cs">
-      <DependentUpon>Gear1Grating4.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GearLib\Gear2Grating1.xaml.cs">
       <DependentUpon>Gear2Grating1.xaml</DependentUpon>
     </Compile>
@@ -155,18 +146,6 @@
       <DependentUpon>WaveTabHeader.xaml</DependentUpon>
     </Compile>
     <Page Include="GearLib\Gear1Grating1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GearLib\Gear1Grating2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GearLib\Gear1Grating3.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GearLib\Gear1Grating4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
