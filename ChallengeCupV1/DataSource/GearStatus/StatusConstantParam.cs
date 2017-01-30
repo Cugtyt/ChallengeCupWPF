@@ -25,11 +25,13 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// <summary>
         /// δ -- 与齿轮材料有关的常量
         /// </summary>
-        public static double delta = 1;
+        public static double DELTA = 1;
 
         /// <summary>
         /// α_ɛ -- 对于中心波长处于1550nm附近的光栅，其灵敏度系数大约为α_ɛ=1.2pm/μɛ
         /// </summary>
-        public static double alpha = 1.2;
+        public static double ALPHA = 1.2;
+
+        public static double GEAR_WIDTH = 1;
     }
 }

@@ -31,8 +31,9 @@ namespace ChallengeCupV1.View.SettingTab
             minYTimeDomain.Text = SettingContainer.WavePlotTimeDomainMinY.ToString();
             E_PARM.Text = StatusConstantParam.E.ToString();
             u_PARM.Text = StatusConstantParam.u.ToString();
-            delta_PARM.Text = StatusConstantParam.delta.ToString();
-            alpha_PARM.Text = StatusConstantParam.alpha.ToString();
+            delta_PARM.Text = StatusConstantParam.DELTA.ToString();
+            alpha_PARM.Text = StatusConstantParam.ALPHA.ToString();
+            gearWidth.Text = StatusConstantParam.GEAR_WIDTH.ToString();
         }
 
         /// <summary>
@@ -65,8 +66,9 @@ namespace ChallengeCupV1.View.SettingTab
             SettingContainer.WavePlotTimeDomainMinY = double.Parse(minYTimeDomain.Text);
             StatusConstantParam.E = double.Parse(E_PARM.Text);
             StatusConstantParam.u = double.Parse(u_PARM.Text);
-            StatusConstantParam.delta = double.Parse(delta_PARM.Text);
-            StatusConstantParam.alpha = double.Parse(alpha_PARM.Text);
+            StatusConstantParam.DELTA = double.Parse(delta_PARM.Text);
+            StatusConstantParam.ALPHA = double.Parse(alpha_PARM.Text);
+            StatusConstantParam.GEAR_WIDTH = double.Parse(gearWidth.Text);
         }
     }
 }

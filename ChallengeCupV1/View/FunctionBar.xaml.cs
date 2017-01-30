@@ -72,6 +72,8 @@ namespace ChallengeCupV1.View
             else
             {
                 timer.IsEnabled = false;
+                WaveTab.WaveTabContent.Timer.IsEnabled = false;
+                StatusTab.StatusTabContent.Timer.IsEnabled = false;
                 connect.Content = "连接";
             }
         }

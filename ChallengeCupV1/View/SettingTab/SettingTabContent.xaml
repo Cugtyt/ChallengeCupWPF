@@ -59,6 +59,10 @@
                         <Label Content="光栅灵敏度系数： "/>
                         <TextBox Name="alpha_PARM"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="齿宽： "/>
+                        <TextBox Name="gearWidth"/>
+                    </StackPanel>
                 </StackPanel>
                 <Label Content="波形显示设置" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">

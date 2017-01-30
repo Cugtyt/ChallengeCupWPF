@@ -36,11 +36,15 @@ namespace ChallengeCupV1.DataSource.GearStatus
             //StatusData[1].Calculate(new List<double>() { });
             //StatusData[2].Calculate(new List<double>() { });
             //StatusData[3].Calculate(new List<double>() { });
-
-            StatusData[0].Value = 1;
-            StatusData[1].Value = 2;
-            StatusData[2].Value = 3;
-            StatusData[3].Value = 4;
+            //StatusData[0].Value = 1;
+            //StatusData[1].Value = 2;
+            //StatusData[2].Value = 3;
+            //StatusData[3].Value = 4;
+            StatusCalculator.CalculateDELTA();
+            foreach (var s in StatusData)
+            {
+                s.Calculate();
+            }
         }
     }
 }

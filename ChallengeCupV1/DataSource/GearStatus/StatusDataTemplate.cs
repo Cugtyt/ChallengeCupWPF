@@ -33,6 +33,18 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// <summary>
         /// Status value
         /// </summary>
+        //public List<double> Value
+        //{
+        //    get { return (List<double>)GetValue(ValueProperty); }
+        //    set { SetValue(ValueProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ValueProperty =
+        //    DependencyProperty.Register("Value", typeof(List<double>), typeof(StatusDataTemplate));
+
+
+
         public double Value
         {
             get { return (double)GetValue(ValueProperty); }
@@ -43,12 +55,16 @@ namespace ChallengeCupV1.DataSource.GearStatus
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(StatusDataTemplate), new PropertyMetadata(0.0));
 
+
+
+
+
         /// <summary>
         /// This calculater is used to calculate the Value
         /// </summary>
-        private Func<List<double>, double> calculater;
+        private Func<IEnumerable<double>> calculater;
 
-        public StatusDataTemplate(string name, Func<List<double>, double> cal, string unit)
+        public StatusDataTemplate(string name, Func<IEnumerable<double>> cal, string unit)
         {
             if (name == null || cal == null || unit == null)
             {
@@ -67,17 +83,16 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public double Calculate(List<double> input)
+        public void Calculate()
         {
-            if (input == null)
-            {
-#if DEBUG
-                Console.WriteLine("StatusDataTemplate: Calculate() -> Illegal input, argument can not be null.");
-#endif
-                throw new ArgumentNullException("StatusDataTemplate: Calculate()");
-            }
-            Value = calculater(input);
-            return Value;
+            //            if (input == null)
+            //            {
+            //#if DEBUG
+            //                Console.WriteLine("StatusDataTemplate: Calculate() -> Illegal input, argument can not be null.");
+            //#endif
+            //                throw new ArgumentNullException("StatusDataTemplate: Calculate()");
+            //            }
+            Value = calculater().Average();
         }
     }
 }
