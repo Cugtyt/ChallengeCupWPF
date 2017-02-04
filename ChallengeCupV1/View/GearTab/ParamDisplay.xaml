@@ -16,8 +16,7 @@
         </Grid.Resources>
         <DataGrid Name="waveLength" AutoGenerateColumns="False" GridLinesVisibility="Horizontal" LoadingRow="waveLength_LoadingRow">
             <DataGrid.Columns>
-                <!--<DataGridTextColumn Header="ID" Width="1*" Binding="{Binding ID}"/>-->
-                <DataGridTextColumn Header="波长" Width="1*" Binding="{Binding}"/>
+                <DataGridTextColumn Header="波长" Width="*" Binding="{Binding}"/>
             </DataGrid.Columns>
         </DataGrid>   
     </Grid>

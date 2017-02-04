@@ -39,7 +39,7 @@ namespace ChallengeCupV1.View.GearTab
         public InitPage()
         {
             InitializeComponent();
-
+            UserControlManager.Register(this, this.GetType().Name);
             #region Init ComboBox
             // Search in GearLib to set items for gearSelectComboBox
             var classes = ReflectionUtils.IsNotInterfaceFilter(ReflectionUtils.IsInterfaceFilter(

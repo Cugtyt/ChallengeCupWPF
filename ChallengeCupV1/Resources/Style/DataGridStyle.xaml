@@ -6,6 +6,7 @@
         <Setter Property="CanUserAddRows" Value="False"/>
         <Setter Property="CanUserReorderColumns" Value="False"/>
         <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <!--<Setter Property="BorderBrush" Value="#d6c79b" />-->
         <!--<Setter Property="HorizontalGridLinesBrush">
             <Setter.Value>
