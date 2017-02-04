@@ -64,6 +64,11 @@ namespace ChallengeCupV1.View.GearTab
 #if DEBUG
             Console.WriteLine("this is updateSource");
 #endif
+            // Check data validation first
+            if (!GratingDataContainer.IsDataReady)
+            {
+                return;
+            }
             waveLengthSource.Clear();
             for (int i = 1; i < GratingDataContainer.Data.Length 
                 && i < (UserControlManager.Get("InitPage") as InitPage).GetGratingNumber() + 1; i++)

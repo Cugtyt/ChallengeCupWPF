@@ -99,6 +99,11 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// <returns></returns>
         public void Calculate()
         {
+            // Check data validation first
+            if (!GratingDataContainer.IsDataReady)
+            {
+                return;
+            }
             ValueSet = calculater();
             Value = ValueSet.Average();
         }

@@ -105,7 +105,49 @@ namespace ChallengeCupV1.File
         /// </summary>
         /// <param name="filePath">file path</param>
         /// <returns>data from file</returns>
-        public static Task<string[]> ReadDataFromFile(string filePath)
+//        public static Task<string[]> ReadDataFromFile(string filePath)
+//        {
+//            if (filePath == null)
+//            {
+//#if DEBUG
+//                Console.WriteLine("FileUtils: ReadWaveData() -> Illegal input, argument can not be null.");
+//#endif
+//                throw new ArgumentNullException("FileUtils: ReadWaveData()");
+//            }
+
+//            if (!System.IO.File.Exists(filePath))
+//            {
+//#if DEBUG
+//                Console.WriteLine("FileUtils: ReadWaveData() -> file is not valid");
+//#endif
+//                throw new FileNotFoundException("FileUtils: ReadWaveData() -> file " + filePath + "is not valid.");
+//            }
+//#if DEBUG
+//            Console.WriteLine("FileUtils: ReadWaveData() -> file is valid");
+//#endif
+//            //List<double>[] dataList = new List<double>[4];
+//            //for (int i = 0; i < dataList.Length; i++)
+//            //{
+//            //    dataList[i] = new List<double>();
+//            //}
+//            return Task.Run(() =>
+//            {
+//                string text;
+//                // begin to read data form file
+//                using (StreamReader reader = new StreamReader(filePath))
+//                {
+//                    reader.ReadLine();
+//                    reader.ReadLine();
+//                    reader.ReadLine();
+//                    text = reader.ReadToEnd();
+//                }
+//                text = text.Substring(0, text.LastIndexOf('\n'));
+//                return text.Replace("\r", " ").Replace("\t", " ").Replace("\n", " ")
+//                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+//            });
+//        }
+
+        public static string[] ReadDataFromFile(string filePath)
         {
             if (filePath == null)
             {
@@ -114,7 +156,7 @@ namespace ChallengeCupV1.File
 #endif
                 throw new ArgumentNullException("FileUtils: ReadWaveData()");
             }
-
+            
             if (!System.IO.File.Exists(filePath))
             {
 #if DEBUG
@@ -130,21 +172,21 @@ namespace ChallengeCupV1.File
             //{
             //    dataList[i] = new List<double>();
             //}
-            return Task.Run(() =>
+            //return Task.Run(() =>
+            //{
+            string text;
+            // begin to read data form file
+            using (StreamReader reader = new StreamReader(filePath))
             {
-                string text;
-                // begin to read data form file
-                using (StreamReader reader = new StreamReader(filePath))
-                {
-                    reader.ReadLine();
-                    reader.ReadLine();
-                    reader.ReadLine();
-                    text = reader.ReadToEnd();
-                }
-                text = text.Substring(0, text.LastIndexOf('\n'));
-                return text.Replace("\r", " ").Replace("\t", " ").Replace("\n", " ")
-                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            });
+                reader.ReadLine();
+                reader.ReadLine();
+                reader.ReadLine();
+                text = reader.ReadToEnd();
+            }
+            text = text.Substring(0, text.LastIndexOf('\n'));
+            return text.Replace("\r", " ").Replace("\t", " ").Replace("\n", " ")
+            .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            //});
         }
 
         /// <summary>
@@ -152,38 +194,38 @@ namespace ChallengeCupV1.File
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static Task RemoveFile(string filePath)
-        {
-            if (filePath == null)
-            {
-#if DEBUG
-                Console.WriteLine("FileUtils: RemoveFile() -> Illegal input, argument can not be null.");
-#endif
-                throw new ArgumentNullException("FileUtils: RemoveFile()");
-            }
+//        public static Task RemoveFile(string filePath)
+//        {
+//            if (filePath == null)
+//            {
+//#if DEBUG
+//                Console.WriteLine("FileUtils: RemoveFile() -> Illegal input, argument can not be null.");
+//#endif
+//                throw new ArgumentNullException("FileUtils: RemoveFile()");
+//            }
 
-            if (!System.IO.File.Exists(filePath))
-            {
-#if DEBUG
-                Console.WriteLine("FileUtils: RemoveFile() -> file is not exit");
-#endif
-                throw new FileNotFoundException("FileUtils: RemoveFile() -> file " + filePath + "is not valid.");
-            }
-            // File exits
-            try
-            {
-                System.IO.File.Delete(filePath);
-#if DEBUG
-                Console.WriteLine("FileUtils: RemoveFile() -> remove file done");
-#endif
-            }
-            catch (IOException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+//            if (!System.IO.File.Exists(filePath))
+//            {
+//#if DEBUG
+//                Console.WriteLine("FileUtils: RemoveFile() -> file is not exit");
+//#endif
+//                throw new FileNotFoundException("FileUtils: RemoveFile() -> file " + filePath + "is not valid.");
+//            }
+//            // File exits
+//            try
+//            {
+//                System.IO.File.Delete(filePath);
+//#if DEBUG
+//                Console.WriteLine("FileUtils: RemoveFile() -> remove file done");
+//#endif
+//            }
+//            catch (IOException e)
+//            {
+//                Console.WriteLine(e.Message);
+//            }
 
-            return null;
-        }
+//            return null;
+//        }
 
         /// <summary>
         /// Remove all files from start to end, end will not be deleted.
@@ -192,16 +234,14 @@ namespace ChallengeCupV1.File
         /// <returns></returns>
         public static Task RemoveFileAll(FileInfo[] info, int start, int end)
         {
-            if (info == null)
+            if (info == null || end <= start)
             {
-#if DEBUG
-                Console.WriteLine("FileUtils: RemoveFileAll() -> Illegal input, argument can not be null.");
-#endif
-                throw new ArgumentNullException("FileUtils: RemoveFileAll()");
+                return null;
             }
 
             for (int i = start; i < end; i++)
             {
+                Console.WriteLine("now " + i);
                 info[i].Delete();
             }
             return null;

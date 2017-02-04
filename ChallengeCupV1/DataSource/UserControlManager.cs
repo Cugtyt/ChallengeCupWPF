@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace ChallengeCupV1.View
+namespace ChallengeCupV1.DataSource
 {
     /// <summary>
     /// User controls in view folder for calling user control class methods easily

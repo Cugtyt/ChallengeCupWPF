@@ -59,6 +59,12 @@ namespace ChallengeCupV1.DataSource.GearStatus
             /// (StatusConstantParam.u
             //* (Math.Pow(StatusConstantParam.delta, input[1])) 
             //* StatusConstantParam.alpha);
+
+            // Check data validation first
+            if (DELTABuffer.Count == 0)
+            {
+                return null;
+            }
             return from delta in DELTABuffer
                    select -1 * StatusConstantParam.E * delta
                    / (StatusConstantParam.u * (Math.Pow(StatusConstantParam.DELTA, StatusConstantParam.GEAR_WIDTH))
@@ -96,16 +102,32 @@ namespace ChallengeCupV1.DataSource.GearStatus
             //                + input.Length + ".");
             //            }
             //return input[0] / StatusConstantParam.alpha;
+
+            // Check data validation first
+            if (DELTABuffer.Count == 0)
+            {
+                return null;
+            }
             return from delta in DELTABuffer select delta / StatusConstantParam.ALPHA;
         };
 
         public static Func<IEnumerable<double>> TemperatureCalculator = () =>
         {
+            // Check data validation first
+            if (DELTABuffer.Count == 0)
+            {
+                return null;
+            }
             return new List<double>() { 0 };
         };
 
         public static Func<IEnumerable<double>> FrequencyCalculator = () =>
         {
+            // Check data validation first
+            if (DELTABuffer.Count == 0)
+            {
+                return null;
+            }
             return new List<double>() { 0 };
         };
 
@@ -114,6 +136,10 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         public static void CalculateDELTA()
         {
+            if (!GratingDataContainer.IsDataReady)
+            {
+                return;
+            }
             DELTABuffer.Clear();
             double temp;
             // Basic value is array index 0, so starts from 1

@@ -59,7 +59,12 @@ namespace ChallengeCupV1.View.WaveTab
 
         private void AnimatedPlot(object sender, EventArgs e)
         {
+            // Check data validation first
             var selected = (int)Enum.Parse(typeof(Grating), selectedGrating.ToString()) + 1;
+            if (!GratingDataContainer.IsDataReady || GratingDataContainer.Data.Length <= selected)
+            {
+                return;
+            }
             switch (selectedDomain)
             {
                 case Domain.Time:

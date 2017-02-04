@@ -15,7 +15,8 @@ namespace ChallengeCupV1.DataSource
         /// <summary>
         /// Wave data dir
         /// </summary>
-        public static string WaveDataDir = File.FileUtils.GetRootPath() + @"\DataSource\data\";
+        //public static string WaveDataDir = File.FileUtils.GetRootPath() + @"\DataSource\data\";
+        public static string WaveDataDir = @"C:\debug\FBG解调系统数据文件\数据文件\2017-01-11\temp\";
         /// <summary>
         /// File where to generate report
         /// </summary>

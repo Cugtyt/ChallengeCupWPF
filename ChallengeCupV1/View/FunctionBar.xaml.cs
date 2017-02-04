@@ -32,12 +32,13 @@ namespace ChallengeCupV1.View
         };
 
         private FileInfo[] files;
-        private int index = 0;
+        private DirectoryInfo dir = new DirectoryInfo(SettingContainer.WaveDataDir);
+        //private int index = 0;
 
         public FunctionBar()
         {
             InitializeComponent();
-            UserControlManager.Register(this, this.GetType().Name);
+            UserControlManager.Register(this, GetType().Name);
             timer.Tick += new EventHandler(ReadDataFromFile);
         }
 
@@ -47,14 +48,35 @@ namespace ChallengeCupV1.View
             // Remove all files in dir
             //File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
             //-------------------------
-            if (index < files.Length)
+            //if (index < files.Length)
+            //{
+            //    //GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
+            //    //    SettingDataContainer.WaveDataDir + files[index++].Name);
+            //    await GratingDataContainer.GetDataFrom(
+            //        File.FileUtils.ReadDataFromFile(
+            //            SettingContainer.WaveDataDir + files[index++].Name).Result);
+            //}
+            files = dir.GetFiles();
+            if (files.Length > 0)
             {
-                //GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
-                //    SettingDataContainer.WaveDataDir + files[index++].Name);
-                await GratingDataContainer.GetDataFrom(
-                    File.FileUtils.ReadDataFromFile(
-                        SettingContainer.WaveDataDir + files[index++].Name).Result);
+                try
+                {
+                    GratingDataContainer.GetDataFrom(
+                           File.FileUtils.ReadDataFromFile(
+                                SettingContainer.WaveDataDir + files.Last().Name));
+                    File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
+                    files.Last().Delete();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
+        }
+
+        public void UpdateDir()
+        {
+            dir = new DirectoryInfo(SettingContainer.WaveDataDir);
         }
 
         private void connect_Click(object sender, RoutedEventArgs e)
@@ -64,14 +86,19 @@ namespace ChallengeCupV1.View
             if ((string)connect.Content == "连接")
             {
                 //WaveTab.WaveTabContent.Timer.IsEnabled = true;
-                var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
-                files = dir.GetFiles();
+                //var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
+                //files = dir.GetFiles();
                 timer.IsEnabled = true;
                 connect.Content = "断开";
             }
             // Connected cancled
             else
             {
+                if ("停止" == (string)start.Content)
+                {
+                    connect.Content = "请先停止";
+                    return;
+                }
                 timer.IsEnabled = false;
                 WaveTab.WaveTabContent.Timer.IsEnabled = false;
                 StatusTab.StatusTabContent.Timer.IsEnabled = false;

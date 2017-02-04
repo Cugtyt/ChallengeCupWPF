@@ -73,6 +73,7 @@ namespace ChallengeCupV1.View.SettingTab
             StatusConstantParam.ALPHA = double.Parse(alpha_PARM.Text);
             StatusConstantParam.GEAR_WIDTH = double.Parse(gearWidth.Text);
             (UserControlManager.Get("WavePlot") as WaveTab.WavePlot).UpdateYRange();
+            (UserControlManager.Get("FunctionBar") as FunctionBar).UpdateDir();
         }
     }
 }
