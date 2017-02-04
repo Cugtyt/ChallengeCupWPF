@@ -67,11 +67,15 @@
                 <Label Content="波形显示设置" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="时域最大波长： "/>
+                        <Label Content="时域波长参考值： "/>
+                        <TextBox Name="referYTimeDomain"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="时域波长最大值： "/>
                         <TextBox Name="maxYTimeDomain"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="时域最小波长： "/>
+                        <Label Content="时域波长最小值： "/>
                         <TextBox Name="minYTimeDomain"/>
                     </StackPanel>
                 </StackPanel>

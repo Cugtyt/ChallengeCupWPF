@@ -28,8 +28,9 @@ namespace ChallengeCupV1.View.SettingTab
             UserControlManager.Register(this, this.GetType().Name);
             // Init text box
             statusReportDir.Text = SettingContainer.StatusReportDir;
-            maxYTimeDomain.Text = SettingContainer.WavePlotTimeDomainMaxY.ToString();
-            minYTimeDomain.Text = SettingContainer.WavePlotTimeDomainMinY.ToString();
+            maxYTimeDomain.Text = SettingContainer.MaxYWavePlotTimeDomain.ToString();
+            minYTimeDomain.Text = SettingContainer.MinYWavePlotTimeDomain.ToString();
+            referYTimeDomain.Text = SettingContainer.ReferYWavePlotTimeDomain.ToString();
             E_PARM.Text = StatusConstantParam.E.ToString();
             u_PARM.Text = StatusConstantParam.u.ToString();
             delta_PARM.Text = StatusConstantParam.DELTA.ToString();
@@ -63,8 +64,9 @@ namespace ChallengeCupV1.View.SettingTab
         private void apply_Click(object sender, RoutedEventArgs e)
         {
             SettingContainer.StatusReportDir = statusReportDir.Text;
-            SettingContainer.WavePlotTimeDomainMaxY = double.Parse(maxYTimeDomain.Text);
-            SettingContainer.WavePlotTimeDomainMinY = double.Parse(minYTimeDomain.Text);
+            SettingContainer.MaxYWavePlotTimeDomain = double.Parse(maxYTimeDomain.Text);
+            SettingContainer.MinYWavePlotTimeDomain = double.Parse(minYTimeDomain.Text);
+            SettingContainer.ReferYWavePlotTimeDomain = double.Parse(referYTimeDomain.Text);
             StatusConstantParam.E = double.Parse(E_PARM.Text);
             StatusConstantParam.u = double.Parse(u_PARM.Text);
             StatusConstantParam.DELTA = double.Parse(delta_PARM.Text);

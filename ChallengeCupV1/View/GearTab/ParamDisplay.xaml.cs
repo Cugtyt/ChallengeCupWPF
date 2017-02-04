@@ -23,22 +23,24 @@ namespace ChallengeCupV1.View.GearTab
     /// </summary>
     public partial class ParamDisplay : UserControl
     {
+        /// <summary>
+        /// Sampling step
+        /// </summary>
         private int samplingStep = 100;
-        //private List<WaveLength> waveLengthSource = new List<WaveLength>();
-
-
-        //public List<double> waveLengthSource
-        //{
-        //    get { return (List<double>)GetValue(waveLengthSourceProperty); }
-        //    set { SetValue(waveLengthSourceProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for waveLengthSource.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty waveLengthSourceProperty =
-        //    DependencyProperty.Register("waveLengthSource", typeof(List<double>), typeof(ParamDisplay));
+        /// <summary>
+        /// Grid items source in which contains sampled wave length
+        /// 
+        /// As a set type like list etc. wants to be binded to view as data source, should be a 
+        /// ObservableCollection or others more than row type, for example, list is not working
+        /// fine, System.InvalidOperationException thrown, except the element of list be dependency
+        /// object type, which means double should not be used directly, create a class like 
+        /// XX{ propdp to create a dependency property to store double data }, it's work too.
+        /// </summary>
         private ObservableCollection<double> waveLengthSource = new ObservableCollection<double>();
-
-
+        
+        /// <summary>
+        /// Timer for update datagrid items source
+        /// </summary>
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
             Interval = TimeSpan.FromSeconds(2),
@@ -46,20 +48,22 @@ namespace ChallengeCupV1.View.GearTab
         public ParamDisplay()
         {
             InitializeComponent();
-            //waveLengthSource = new List<double>();
             waveLengthSource.Add(0.0);
             waveLength.ItemsSource = waveLengthSource;
-            //waveLengthSource.Add(new WaveLength() { ID = 1, Value = 100 });
-            //waveLengthSource.Add(new WaveLength() { ID = 2, Value = 100 });
-            //waveLengthSource.Add(new WaveLength() { ID = 3, Value = 100 });
-            //waveLengthSource[2].Value = 200;
             Timer.Tick += new EventHandler(updataSource);
             //Timer.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Update items source of data grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void updataSource(object sender, EventArgs e)
         {
+#if DEBUG
             Console.WriteLine("this is updateSource");
+#endif
             waveLengthSource.Clear();
             for (int i = 1; i < GratingDataContainer.Data.Length; i++)
             {
@@ -73,36 +77,15 @@ namespace ChallengeCupV1.View.GearTab
             //waveLengthSource.Add(0.0);
         }
 
+        /// <summary>
+        /// Auto increase row number when a new row added in datagrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void waveLength_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             e.Row.Header = e.Row.GetIndex() + 1;
         }
     }
 
-    class WaveLength : DependencyObject
-    {
-        //public int ID
-        //{
-        //    get { return (int)GetValue(IDProperty); }
-        //    set { SetValue(IDProperty, value); }
-        //}
-
-        //// Using a DependencyProperty as the backing store for ID.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty IDProperty =
-        //    DependencyProperty.Register("ID", typeof(int), typeof(WaveLength), new PropertyMetadata(0));
-
-
-
-        public double Value
-        {
-            get { return (double)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(WaveLength), new PropertyMetadata(0.0));
-
-
-    }
 }

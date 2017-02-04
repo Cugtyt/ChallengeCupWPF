@@ -23,8 +23,9 @@ namespace ChallengeCupV1.DataSource
         /// <summary>
         /// Max and min of y axis when time domain is selected
         /// </summary>
-        public static double WavePlotTimeDomainMaxY = 1560;
-        public static double WavePlotTimeDomainMinY = 1540;
+        public static double MaxYWavePlotTimeDomain = 1560;
+        public static double MinYWavePlotTimeDomain = 1540;
+        public static double ReferYWavePlotTimeDomain = 1500;
         
     }
 
