@@ -25,6 +25,7 @@ namespace ChallengeCupV1.View.SettingTab
         public SettingTabContent()
         {
             InitializeComponent();
+            UserControlManager.Register(this, this.GetType().Name);
             // Init text box
             statusReportDir.Text = SettingContainer.StatusReportDir;
             maxYTimeDomain.Text = SettingContainer.WavePlotTimeDomainMaxY.ToString();
@@ -69,6 +70,7 @@ namespace ChallengeCupV1.View.SettingTab
             StatusConstantParam.DELTA = double.Parse(delta_PARM.Text);
             StatusConstantParam.ALPHA = double.Parse(alpha_PARM.Text);
             StatusConstantParam.GEAR_WIDTH = double.Parse(gearWidth.Text);
+            (UserControlManager.Get("WavePlot") as WaveTab.WavePlot).UpdateYRange();
         }
     }
 }

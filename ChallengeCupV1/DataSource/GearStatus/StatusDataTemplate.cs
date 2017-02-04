@@ -21,30 +21,30 @@ namespace ChallengeCupV1.DataSource.GearStatus
             set { SetValue(NameProperty, value); }
         }
 
-        /// <summary>
-        /// Status data unit
-        /// </summary>
-        public string Unit;
-
         // Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NameProperty =
             DependencyProperty.Register("Name", typeof(string), typeof(StatusDataTemplate));
 
+
+
         /// <summary>
-        /// Status value
+        /// Status data unit
         /// </summary>
-        //public List<double> Value
-        //{
-        //    get { return (List<double>)GetValue(ValueProperty); }
-        //    set { SetValue(ValueProperty, value); }
-        //}
+        public string Unit
+        {
+            get { return (string)GetValue(UnitProperty); }
+            set { SetValue(UnitProperty, value); }
+        }
 
-        //// Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty ValueProperty =
-        //    DependencyProperty.Register("Value", typeof(List<double>), typeof(StatusDataTemplate));
+        // Using a DependencyProperty as the backing store for Unit.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty UnitProperty =
+            DependencyProperty.Register("Unit", typeof(string), typeof(StatusDataTemplate));
 
 
 
+        /// <summary>
+        /// Average value of  status value set
+        /// </summary>
         public double Value
         {
             get { return (double)GetValue(ValueProperty); }
@@ -54,6 +54,20 @@ namespace ChallengeCupV1.DataSource.GearStatus
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(StatusDataTemplate), new PropertyMetadata(0.0));
+
+
+        /// <summary>
+        /// Status value set
+        /// </summary>
+        public IEnumerable<double> ValueSet
+        {
+            get { return (IEnumerable<double>)GetValue(ValueSetProperty); }
+            set { SetValue(ValueSetProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ValueSet.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ValueSetProperty =
+            DependencyProperty.Register("ValueSet", typeof(IEnumerable<double>), typeof(StatusDataTemplate));
 
 
 
@@ -85,14 +99,8 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// <returns></returns>
         public void Calculate()
         {
-            //            if (input == null)
-            //            {
-            //#if DEBUG
-            //                Console.WriteLine("StatusDataTemplate: Calculate() -> Illegal input, argument can not be null.");
-            //#endif
-            //                throw new ArgumentNullException("StatusDataTemplate: Calculate()");
-            //            }
-            Value = calculater().Average();
+            ValueSet = calculater();
+            Value = ValueSet.Average();
         }
     }
 }

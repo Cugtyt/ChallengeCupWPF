@@ -37,6 +37,7 @@ namespace ChallengeCupV1.View
         public FunctionBar()
         {
             InitializeComponent();
+            UserControlManager.Register(this, this.GetType().Name);
             timer.Tick += new EventHandler(ReadDataFromFile);
         }
 
@@ -90,6 +91,7 @@ namespace ChallengeCupV1.View
                 }
                 WaveTab.WaveTabContent.Timer.IsEnabled = true;
                 StatusTab.StatusTabContent.Timer.IsEnabled = true;
+                GearTab.ParamDisplay.Timer.IsEnabled = true;
                 //WaveTab.WaveTabContent.IsDisplaying = true;
                 start.Content = "停止";
             }
@@ -98,6 +100,7 @@ namespace ChallengeCupV1.View
             {
                 WaveTab.WaveTabContent.Timer.IsEnabled = false;
                 StatusTab.StatusTabContent.Timer.IsEnabled = false;
+                GearTab.ParamDisplay.Timer.IsEnabled = false;
                 //WaveTab.WaveTabContent.IsDisplaying = false;
                 start.Content = "开始";
             }

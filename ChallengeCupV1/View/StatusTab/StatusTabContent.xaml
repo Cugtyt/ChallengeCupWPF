@@ -66,8 +66,9 @@
                 <DataGridTextColumn x:Name="frequency" Header="Frequency" Width="1*" Binding="{Binding Frequency}"/>
             </DataGrid.Columns>-->
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="parameter" Header="参数" Width="1*" Binding="{Binding Name}"/>
-                <DataGridTextColumn x:Name="value" Header="参数值" Width="1*" Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="参数" Width="1*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="参数值" Width="1*" Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="单位" Width="1*" Binding="{Binding Unit}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock Grid.Row="2" 

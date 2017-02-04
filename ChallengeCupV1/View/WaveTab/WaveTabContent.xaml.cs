@@ -41,38 +41,24 @@ namespace ChallengeCupV1.View.WaveTab
         public WaveTabContent()
         {
             InitializeComponent();
+            UserControlManager.Register(this, this.GetType().Name);
             //var dire = new DirectoryInfo(directoryPath);
             //var dir = new DirectoryInfo(SettingDataContainer.WaveDataDir);
             //files = dir.GetFiles();
-            
-//#if DEBUG
-//            Console.WriteLine("WaveTabContent:WaveTabContent() -> files name list");
-//            //for (int i = 0; i < files.Length; i++)
-//            //{
-//            //    Console.WriteLine(files[i].Name);
-//            //}
-//#endif
+
+            //#if DEBUG
+            //            Console.WriteLine("WaveTabContent:WaveTabContent() -> files name list");
+            //            //for (int i = 0; i < files.Length; i++)
+            //            //{
+            //            //    Console.WriteLine(files[i].Name);
+            //            //}
+            //#endif
             Timer.Tick += new EventHandler(AnimatedPlot);
             //timer.IsEnabled = true;
         }
 
         private void AnimatedPlot(object sender, EventArgs e)
         {
-            //------------------------------------------------
-            //var dir = new DirectoryInfo(SettingData.WaveDataDir);
-            //files = dir.GetFiles();
-            //if (IsDisplaying && files != null)
-            //{
-            //    AddPoints(await File.FileUtils
-            //    .ReadWaveData(SettingData.WaveDataDir + files[0].Name));
-            //}
-            //File.FileUtils.RemoveFileAll(files);
-            //-------------------------------------------------
-            //if (IsDisplaying && fileIndex < files.Length)
-            //{
-            //    AddPoints(await File.FileUtils
-            //    .ReadWaveData(SettingDataContainer.WaveDataDir + files[fileIndex++].Name));
-            //}
             var selected = (int)Enum.Parse(typeof(Grating), selectedGrating.ToString()) + 1;
             switch (selectedDomain)
             {
@@ -96,37 +82,7 @@ namespace ChallengeCupV1.View.WaveTab
             }
         }
 
-
-        /// <summary>
-        /// Add double list array to dataSource
-        /// added index of array is determined by value of selectedCH
-        /// </summary>
-        /// <param name="yListArray"></param>
-        /// <returns></returns>
-        //        public async Task AddPoints(List<double>[] yListArray)
-        //        {
-        //            var selected = (int)Enum.Parse(typeof(CH), selectedCH.ToString()) + 1;
-        //            switch (selectedDomain)
-        //            {
-        //                case Domain.Time:
-        //#if DEBUG
-        //                    Console.WriteLine("WaveTabContent:AddPoints() -> add time domain points");
-        //#endif
-        //                    await wavePlot.AddTimePoints(yListArray[selected]);
-        //                    break;
-        //                case Domain.Frequency:
-        //#if DEBUG
-        //                    Console.WriteLine("WaveTabContent:AddPoints() -> add frequency domain points");
-        //#endif
-        //                    //await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
-        //                    await wavePlot.AddFreqPoints(DataFFT.Forward(
-        //                        (from y in yListArray[selected] select new Complex(y, 0)).ToArray())
-        //                        .Result);
-        //                    break;
-        //                default:
-        //                    break;
-        //            }
-        //        }
+        #region Grating selected
 
         private void g1_Selected(object sender, RoutedEventArgs e)
         {
@@ -147,6 +103,8 @@ namespace ChallengeCupV1.View.WaveTab
         {
             selectedGrating = Grating.G4;
         }
+        #endregion
+        #region Time or Freq selected
 
         private void time_Selected(object sender, RoutedEventArgs e)
         {
@@ -167,6 +125,8 @@ namespace ChallengeCupV1.View.WaveTab
             }
             wavePlot.SetYTitle("");
         }
+        #endregion
+        #region CH selected
 
         private void ch1_Selected(object sender, RoutedEventArgs e)
         {
@@ -187,6 +147,7 @@ namespace ChallengeCupV1.View.WaveTab
         {
             selectedCH = CH.CH4;
         }
+        #endregion
     }
 }
 

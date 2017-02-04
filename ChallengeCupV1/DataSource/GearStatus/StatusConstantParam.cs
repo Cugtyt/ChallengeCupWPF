@@ -32,6 +32,14 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         public static double ALPHA = 1.2;
 
+        /// <summary>
+        /// Gear width
+        /// </summary>
         public static double GEAR_WIDTH = 1;
+
+        /// <summary>
+        /// Wave length reference value
+        /// </summary>
+        public static double WaveLengthReference = 1550;
     }
 }

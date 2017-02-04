@@ -20,11 +20,12 @@ namespace ChallengeCupV1.View.WaveTab
         /// <summary>
         /// Data source to show in chart
         /// </summary>
-        WavePoints dataSource = new DataSource.WavePoints();
+        WavePoints dataSource = new WavePoints();
 
         public WavePlot()
         {
             InitializeComponent();
+            UserControlManager.Register(this, this.GetType().Name);
             // Set axes range
             ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
             // Set mouse cannot change view of plotter
@@ -43,11 +44,7 @@ namespace ChallengeCupV1.View.WaveTab
         /// <returns></returns>
         public async Task AddTimePoints(List<double> yList)
         {
-            ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
-            restr.YRange = new DisplayRange(
-                SettingContainer.WavePlotTimeDomainMinY,
-                SettingContainer.WavePlotTimeDomainMaxY);
-            plotter.Viewport.Restrictions.Add(restr);
+            UpdateYRange();
             xAxis.Visibility = Visibility.Hidden;
             await dataSource.Add(yList);
         }
@@ -79,6 +76,15 @@ namespace ChallengeCupV1.View.WaveTab
                 throw new ArgumentNullException("WavePlot: SetYTitle()");
             }
             verticalTitle.Content = title;
+        }
+
+        public void UpdateYRange()
+        {
+            ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
+            restr.YRange = new DisplayRange(
+                SettingContainer.WavePlotTimeDomainMinY,
+                SettingContainer.WavePlotTimeDomainMaxY);
+            plotter.Viewport.Restrictions.Add(restr);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Research.DynamicDataDisplay;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,7 +36,7 @@ namespace ChallengeCupV1
             //Width = SystemParameters.PrimaryScreenWidth;
             //Height = SystemParameters.PrimaryScreenHeight;
             Width = 800;
-            Height = 450;
+            Height = 600;
         }
     }
 }

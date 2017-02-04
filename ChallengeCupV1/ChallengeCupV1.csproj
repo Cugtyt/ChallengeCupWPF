@@ -142,6 +142,7 @@
     <Compile Include="View\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControlManager.cs" />
     <Compile Include="View\WaveTab\WaveTabContent.xaml.cs">
       <DependentUpon>WaveTabContent.xaml</DependentUpon>
     </Compile>

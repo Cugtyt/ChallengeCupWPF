@@ -126,7 +126,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
                 {
                     temp += (GratingDataContainer.Data[i][j] - GratingDataContainer.Data[0][j]);
                 }
-                DELTABuffer.Add(temp / SamplingStep);
+                DELTABuffer.Add(temp * SamplingStep / GratingDataContainer.Data[0].Count);
             }
         }
     }

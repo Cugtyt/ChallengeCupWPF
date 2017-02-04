@@ -61,11 +61,12 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Name="gearContainer"/>
             <StackPanel Grid.Column="1" Name="sideBar" Visibility="Hidden" Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
+                <local:ParamDisplay/>
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                     <RadioButton Name="horizontal" GroupName="rotateStyle" IsChecked="True"
-                                 Content="Horizontal" Margin="0,0,20,0" Click="horizontal_Click"/>
+                                 Content="水平方向" Margin="0,0,20,0" Click="horizontal_Click"/>
                     <RadioButton Name="vertical" GroupName="rotateStyle" 
-                                 Content="Vertical" Margin="0,0,20,0" Click="vertical_Click"/>
+                                 Content="垂直方向" Margin="0,0,20,0" Click="vertical_Click"/>
                 </StackPanel>
                 <TextBlock Text="说明：&#x0a;鼠标左键按下移动旋转齿轮&#x0a;双击恢复初始状态&#x0a;滚轮可以进行缩放" TextWrapping="WrapWithOverflow"/>
             </StackPanel>

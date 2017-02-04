@@ -33,6 +33,7 @@ namespace ChallengeCupV1.View.GearTab
         public GearTabContent()
         {
             InitializeComponent();
+            UserControlManager.Register(this, this.GetType().Name);
         }
 
         private void setting_Click(object sender, RoutedEventArgs e)

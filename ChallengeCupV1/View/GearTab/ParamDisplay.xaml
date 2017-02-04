@@ -7,6 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/ChallengeCupV1;component/Resources/Style/DataGridStyle.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <DataGrid Name="waveLength" AutoGenerateColumns="False" GridLinesVisibility="Horizontal" LoadingRow="waveLength_LoadingRow">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Header="ID" Width="1*" Binding="{Binding ID}"/>-->
+                <DataGridTextColumn Header="波长" Width="1*" Binding="{Binding}"/>
+            </DataGrid.Columns>
+        </DataGrid>   
     </Grid>
 </UserControl>
