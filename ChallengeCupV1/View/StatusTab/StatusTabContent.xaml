@@ -19,8 +19,8 @@
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9.5*"/>
+            <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Margin="40,0,0,0">
             <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV1;component/Resources/Icon/GenerateReportDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" FontSize="15" Text="生成报告" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBlock Grid.Row="1" FontSize="15" Text="Generate Report" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="Button.IsPressed" Value="True">
@@ -66,13 +66,16 @@
                 <DataGridTextColumn x:Name="frequency" Header="Frequency" Width="1*" Binding="{Binding Frequency}"/>
             </DataGrid.Columns>-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header="参数" Width="1*" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="参数值" Width="1*" Binding="{Binding Value}"/>
-                <DataGridTextColumn Header="单位" Width="1*" Binding="{Binding Unit}"/>
+                <DataGridTextColumn Header="Parameters " Width="1*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Value" Width="1*" Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="Unit" Width="1*" Binding="{Binding Unit}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <!--<TextBlock Grid.Row="2" 
+                   TextWrapping="Wrap"
+            Text="说明：&#x0a;以上参数计算与齿轮材料以及光波长特性等值有关，如果使用不同材料和光波，请在设置中进行相关值设定" VerticalAlignment="Center"/>-->
         <TextBlock Grid.Row="2" 
                    TextWrapping="Wrap"
-            Text="说明：&#x0a;以上参数计算与齿轮材料以及光波长特性等值有关，如果使用不同材料和光波，请在设置中进行相关值设定" VerticalAlignment="Center"/>
+            Text="Note:&#x0a;&#x0009;The parameters above are related to the gear's material and the optical wavelength characteristics. If different materials and light waves are used, please set the relevant value in the settings." VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

@@ -18,7 +18,7 @@
         AllowsTransparency="True" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="42"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -56,6 +56,6 @@
                 <settingTab:SettingTabContent x:Name="setting"/>
             </TabItem>
         </TabControl>
-        <view:FunctionBar Grid.Row="2" Margin="150,0,0,0"/>
+        <view:FunctionBar Grid.Row="2" Margin="180,0,0,0"/>
     </Grid>
 </Window>

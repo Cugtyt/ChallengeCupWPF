@@ -20,8 +20,8 @@ namespace ChallengeCupV1.DataSource.GearStatus
         {
             new StatusDataTemplate("Stress", StatusCalculator.StressCalculator, "N"),
             new StatusDataTemplate("Strain", StatusCalculator.StressCalculator, "N"),
-            new StatusDataTemplate("Temperature", StatusCalculator.TemperatureCalculator, "N"),
-            new StatusDataTemplate("Frequency", StatusCalculator.FrequencyCalculator, "N")
+            new StatusDataTemplate("Temperature", StatusCalculator.TemperatureCalculator, "℃"),
+            new StatusDataTemplate("Frequency", StatusCalculator.FrequencyCalculator, "Hz")
         };
 
         /// <summary>

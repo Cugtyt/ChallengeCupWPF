@@ -12,6 +12,6 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Source="/ChallengeCupV1;component/Resources/Icon/GearTabIcon.png" Margin="0,0,10,0"/>
-        <TextBlock Grid.Column="1" Text="齿轮"/>
+        <TextBlock Grid.Column="1" Text="Gear"/>
     </Grid>
 </UserControl>

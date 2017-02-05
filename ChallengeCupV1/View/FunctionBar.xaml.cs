@@ -83,44 +83,44 @@ namespace ChallengeCupV1.View
         {
             
             // Connect asked
-            if ((string)connect.Content == "连接")
+            if ((string)connect.Content == "Connect")
             {
                 //WaveTab.WaveTabContent.Timer.IsEnabled = true;
                 //var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
                 //files = dir.GetFiles();
                 timer.IsEnabled = true;
-                connect.Content = "断开";
+                connect.Content = "Connected";
             }
             // Connected cancled
             else
             {
-                if ("停止" == (string)start.Content)
+                if ("Stop" == (string)start.Content)
                 {
-                    connect.Content = "请先停止";
+                    connect.Content = "Stop First";
                     return;
                 }
                 timer.IsEnabled = false;
                 WaveTab.WaveTabContent.Timer.IsEnabled = false;
                 StatusTab.StatusTabContent.Timer.IsEnabled = false;
-                connect.Content = "连接";
+                connect.Content = "Connect";
             }
         }
 
         private void start_Click(object sender, RoutedEventArgs e)
         {
             // Start asked
-            if ("开始" == (string)start.Content)
+            if ("Start" == (string)start.Content)
             {
-                if ((string)connect.Content == "连接")
+                if ((string)connect.Content == "Connect")
                 {
-                    start.Content = "请先连接";
+                    start.Content = "Connect First";
                     return;
                 }
                 WaveTab.WaveTabContent.Timer.IsEnabled = true;
                 StatusTab.StatusTabContent.Timer.IsEnabled = true;
                 GearTab.ParamDisplay.Timer.IsEnabled = true;
                 //WaveTab.WaveTabContent.IsDisplaying = true;
-                start.Content = "停止";
+                start.Content = "Stop";
             }
             // Start cancled
             else
@@ -129,7 +129,7 @@ namespace ChallengeCupV1.View
                 StatusTab.StatusTabContent.Timer.IsEnabled = false;
                 GearTab.ParamDisplay.Timer.IsEnabled = false;
                 //WaveTab.WaveTabContent.IsDisplaying = false;
-                start.Content = "开始";
+                start.Content = "Start";
             }
            
         }

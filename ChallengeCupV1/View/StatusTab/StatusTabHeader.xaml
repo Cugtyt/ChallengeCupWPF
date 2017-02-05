@@ -13,6 +13,6 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Source="/ChallengeCupV1;component/Resources/Icon/StatusTabIcon.png" Margin="0,0,10,0"/>
-        <TextBlock Grid.Column="1" Text="状态"/>    
+        <TextBlock Grid.Column="1" Text="Status"/>    
     </Grid>
 </UserControl>

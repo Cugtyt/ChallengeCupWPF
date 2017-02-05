@@ -6,12 +6,13 @@
              xmlns:local="clr-namespace:ChallengeCupV1.View.SettingTab"
              mc:Ignorable="d" 
              Foreground="Black"
-             FontSize="20"
+             FontSize="18"
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBox">
                 <Setter Property="Width" Value="180"/>
+                <Setter Property="Height" Value="30"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
             </Style>
             <Style TargetType="Label">
@@ -32,56 +33,62 @@
             <TextBlock Grid.Row="0" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
                    Text="设置"/>
             <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Text="Setting"/>
+                   Text="Settings"/>
         </Grid>
         <StackPanel Margin="40,20,0,0" Grid.Row="1">
+            <StackPanel.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Width" Value="280"/>
+                </Style>
+            </StackPanel.Resources>
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="报告生成文件夹： " Width="260"/>
-                    <TextBox Name="statusReportDir" Width="700"/>
-                    <Button Content="浏览" Background="Transparent" Click="browseDir_Click"/>
+                    <Label Content="Reports Foldrer Path:" Width="280"/>
+                    <TextBox Name="statusReportDir" Width="700" FontSize="16"/>
+                    <Button Content="Browse" Background="Transparent" Click="browseDir_Click" Margin="10,0"/>
                 </StackPanel>
-                <Label Content="参数设置" HorizontalAlignment="Left"/>
+                <Label Content="Parameter Settings" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">
+                    
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="材料弹性模量： "/>
+                        <Label Content="Material Elastic Modulus:"/>
                         <TextBox Name="E_PARM"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="材料的泊松比： "/>
+                        <Label Content="Material Poisson's Ratio:"/>
                         <TextBox Name="u_PARM"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="材料相关常量： "/>
+                        <Label Content="Material Related Constants:"/>
                         <TextBox Name="delta_PARM" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="光栅灵敏度系数： "/>
+                        <Label Content="Grating Sensitivity Coefficient:"/>
                         <TextBox Name="alpha_PARM"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="齿宽： "/>
+                        <Label Content="Gear Width:"/>
                         <TextBox Name="gearWidth"/>
                     </StackPanel>
                 </StackPanel>
-                <Label Content="波形显示设置" HorizontalAlignment="Left"/>
+                <Label Content="Wave Display Settings" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="时域波长参考值： "/>
+                        <Label Content="Wave Length Refer Value:"/>
                         <TextBox Name="referYTimeDomain"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="时域波长最大值： "/>
+                        <Label Content="Wave Length Max Value:"/>
                         <TextBox Name="maxYTimeDomain"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="时域波长最小值： "/>
+                        <Label Content="Wave Length Min Value:"/>
                         <TextBox Name="minYTimeDomain"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        <Button Grid.Row="2" Name="apply" Width="150" Height="60" Content="应用" Click="apply_Click">
+        <Button Grid.Row="2" Name="apply" Width="150" Height="60" Content="Apply" Click="apply_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>

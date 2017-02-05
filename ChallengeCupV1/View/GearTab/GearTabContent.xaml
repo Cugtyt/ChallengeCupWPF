@@ -38,7 +38,7 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV1;component/Resources/Icon/SettingDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-                            <TextBlock Grid.Row="1" FontSize="15" Text="齿轮选择" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <TextBlock Grid.Row="1" FontSize="15" Text="Select Gear" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="Button.IsPressed" Value="True">
@@ -50,25 +50,31 @@
             </Button>
         </Grid>
         <Grid Grid.Row="1"
-              MouseUp="gearContainer_MouseUp"
-              MouseDown="gearContainer_MouseDown"
-              MouseMove="gearContainer_MouseMove"
-              MouseLeave="gearContainer_MouseLeave"
-              MouseWheel="gearContainer_MouseWheel" Margin="15">
+              Margin="15">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Name="gearContainer"/>
-            <StackPanel Grid.Column="1" Name="sideBar" Visibility="Hidden" Orientation="Vertical">
+            <Grid Grid.Column="0" Name="gearContainer"
+                MouseUp="gearContainer_MouseUp"
+                MouseDown="gearContainer_MouseDown"
+                MouseMove="gearContainer_MouseMove"
+                MouseLeave="gearContainer_MouseLeave"
+                MouseWheel="gearContainer_MouseWheel" />
+            <StackPanel Grid.Column="1" Name="sideBar" Visibility="Hidden" Orientation="Vertical" VerticalAlignment="Center">
                 <local:ParamDisplay/>
-                <StackPanel Orientation="Horizontal" Margin="0,50,0,30">
+                <Label Content="Rotation Style: " FontSize="18" Margin="0,40,0,0"/>
+                <StackPanel Orientation="Horizontal" Margin="40,5,0,30">
                     <RadioButton Name="horizontal" GroupName="rotateStyle" IsChecked="True"
-                                 Content="水平方向" Margin="0,0,20,0" Click="horizontal_Click"/>
+                                 Content="Horizontal" Margin="0,0,20,0" Click="horizontal_Click"/>
                     <RadioButton Name="vertical" GroupName="rotateStyle" 
-                                 Content="垂直方向" Margin="0,0,20,0" Click="vertical_Click"/>
+                                 Content="Vertical" Margin="0,0,20,0" Click="vertical_Click"/>
                 </StackPanel>
-                <TextBlock Text="说明：&#x0a;* 鼠标左键按下移动旋转齿轮&#x0a;* 双击恢复初始状态&#x0a;* 滚轮可以进行缩放" TextWrapping="WrapWithOverflow"/>
+                <StackPanel>
+                    <Label Content="Notes:" FontSize="18"/>
+                    <!--<TextBlock Text="说明：&#x0a;* 鼠标左键按下移动旋转齿轮&#x0a;* 双击恢复初始状态&#x0a;* 滚轮可以进行缩放" TextWrapping="WrapWithOverflow"/>-->
+                    <TextBlock Text="    * Left button down to rotate gear model.&#x0a;    * Double click to reset model view.&#x0a;    * Zoom in and out by moving mouse wheel." TextWrapping="WrapWithOverflow" Margin="0,5,0,0"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
         <local:InitPage Grid.Row="1" x:Name="initPage" Width="450" Height="300"/>

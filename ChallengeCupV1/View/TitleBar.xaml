@@ -10,14 +10,26 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Left"
                 Orientation="Horizontal">
-                <Image/>
-                <TextBlock FontSize="18" Foreground="WhiteSmoke"
+                <Image Source="/ChallengeCupV1;component/Resources/Icon/whutlogo3.png" Margin="0,0,10,0"/>
+                <TextBlock FontSize="18" Foreground="WhiteSmoke" VerticalAlignment="Center"
                     Text="WHUT基于光纤光栅传感技术的齿轮运行状态检测系统上位机"/>
             </StackPanel>
-            <StackPanel DockPanel.Dock="Right"
-                Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Name="minWindow" Content="Min" Click="minWindow_Click"/>
-                <Button Name="colseWindow" Content="Close" Click="colseWindow_Click"/>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="minWindow" Click="minWindow_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Image Source="/ChallengeCupV1;component/Resources/Icon/Minimize.png" Margin="0,0,10,0"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="colseWindow" Click="colseWindow_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Image Source="/ChallengeCupV1;component/Resources/Icon/Close.png" Margin="0,0,10,0"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <!--<Button Name="colseWindow" Content="Close" Click="colseWindow_Click"/>-->
             </StackPanel>
         </DockPanel> 
     </Grid>
