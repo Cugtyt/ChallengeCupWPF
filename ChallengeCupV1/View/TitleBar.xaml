@@ -10,9 +10,9 @@
         <DockPanel>
             <StackPanel DockPanel.Dock="Left"
                 Orientation="Horizontal">
-                <Image Source="/ChallengeCupV1;component/Resources/Icon/whutlogo3.png" Margin="0,0,10,0"/>
+                <Image Source="/ChallengeCupV1;component/Resources/Icon/Logo.png" Margin="0,0,10,0"/>
                 <TextBlock FontSize="18" Foreground="WhiteSmoke" VerticalAlignment="Center"
-                    Text="WHUT基于光纤光栅传感技术的齿轮运行状态检测系统上位机"/>
+                    Text="WHUT基于光纤光栅传感技术的齿轮运行状态检测系统"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="minWindow" Click="minWindow_Click">

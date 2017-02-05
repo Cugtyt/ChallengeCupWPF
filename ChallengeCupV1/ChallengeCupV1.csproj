@@ -371,16 +371,7 @@
     <Resource Include="Resources\Icon\Minimize.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icon\WHUTLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icon\WHUTLogo1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icon\WHUTLogo2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icon\whutlogo3.png" />
+    <Resource Include="Resources\Icon\Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
