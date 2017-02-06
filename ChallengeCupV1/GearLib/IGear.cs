@@ -17,6 +17,6 @@ namespace ChallengeCupV1.GearLib
         GeometryModel3D GetModel();
         Viewport3D GetViewPort();
         AxisAngleRotation3D GetAxisAngleRotation();
-        void Reset();
+        void ResetView();
     }
 }

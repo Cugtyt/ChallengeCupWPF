@@ -89,7 +89,7 @@ namespace ChallengeCupV1.View
                 //var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
                 //files = dir.GetFiles();
                 timer.IsEnabled = true;
-                connect.Content = "Connected";
+                connect.Content = "Disconnect";
             }
             // Connected cancled
             else
@@ -100,8 +100,8 @@ namespace ChallengeCupV1.View
                     return;
                 }
                 timer.IsEnabled = false;
-                WaveTab.WaveTabContent.Timer.IsEnabled = false;
-                StateTab.StateTabContent.Timer.IsEnabled = false;
+                //WaveTab.WaveTabContent.Timer.IsEnabled = false;
+                //StateTab.StateTabContent.Timer.IsEnabled = false;
                 connect.Content = "Connect";
             }
         }
@@ -116,22 +116,34 @@ namespace ChallengeCupV1.View
                     start.Content = "Connect First";
                     return;
                 }
-                WaveTab.WaveTabContent.Timer.IsEnabled = true;
-                StateTab.StateTabContent.Timer.IsEnabled = true;
-                GearTab.ParamDisplay.Timer.IsEnabled = true;
+                //WaveTab.WaveTabContent.Timer.IsEnabled = true;
+                //StateTab.StateTabContent.Timer.IsEnabled = true;
+                //GearTab.ParamDisplay.Timer.IsEnabled = true;
+                //GearTab.GearTabContent.AutoRotationTimer.IsEnabled = true;
+                SetTimers(true);
                 //WaveTab.WaveTabContent.IsDisplaying = true;
                 start.Content = "Stop";
             }
             // Start cancled
             else
             {
-                WaveTab.WaveTabContent.Timer.IsEnabled = false;
-                StateTab.StateTabContent.Timer.IsEnabled = false;
-                GearTab.ParamDisplay.Timer.IsEnabled = false;
+                //WaveTab.WaveTabContent.Timer.IsEnabled = false;
+                //StateTab.StateTabContent.Timer.IsEnabled = false;
+                //GearTab.ParamDisplay.Timer.IsEnabled = false;
+                GearTab.GearTabContent.AutoRotationTimer.IsEnabled = false;
+                SetTimers(false);
                 //WaveTab.WaveTabContent.IsDisplaying = false;
                 start.Content = "Start";
             }
            
+        }
+
+        private void SetTimers(bool isEnabled)
+        {
+            WaveTab.WaveTabContent.Timer.IsEnabled
+                = StateTab.StateTabContent.Timer.IsEnabled
+                = GearTab.ParamDisplay.Timer.IsEnabled
+                = isEnabled;
         }
 
         /// <summary>

@@ -41,7 +41,7 @@ namespace ChallengeCupV1.View.StateTab
             InitializeComponent();
             UserControlManager.Register(this, this.GetType().Name);
             dataGrid.ItemsSource = statusDataSource.StatusData;
-            Timer.Tick += new EventHandler(calculateParam);
+            Timer.Tick += calculateParam;
             //Timer.IsEnabled = true;
         }
 

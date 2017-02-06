@@ -49,7 +49,7 @@ namespace ChallengeCupV1.GearLib
             return axisAngleRotation;
         }
 
-        public void Reset()
+        public void ResetView()
         {
             camera.Position = new Point3D(0,0,220);
             axisAngleRotation.Angle = 0;

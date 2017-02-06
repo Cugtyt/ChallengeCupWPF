@@ -29,11 +29,33 @@ namespace ChallengeCupV1.View.GearTab
     { 
         private IGear gear;
         private int mouseClickCount;
+        private DispatcherTimer doubleClickTimer = new DispatcherTimer()
+        {
+            Interval = TimeSpan.FromMilliseconds(300)
+        };
+        public static DispatcherTimer AutoRotationTimer = new DispatcherTimer()
+        {
+            Interval = TimeSpan.FromMilliseconds(10)
+        };
 
         public GearTabContent()
         {
             InitializeComponent();
-            UserControlManager.Register(this, this.GetType().Name);
+            UserControlManager.Register(this, GetType().Name);
+            doubleClickTimer.Tick += (s, e1) => 
+            {
+                doubleClickTimer.IsEnabled = false;
+                mouseClickCount = 0;
+            };
+            AutoRotationTimer.Tick += (s, e1) => 
+            {
+                if ("Start" ==  (string)(UserControlManager.Get("FunctionBar") as FunctionBar)
+                                .start.Content)
+                {
+                    return;
+                }
+                GearAction.AutoRotation(gear);
+            };
         }
 
         private void setting_Click(object sender, RoutedEventArgs e)
@@ -54,6 +76,7 @@ namespace ChallengeCupV1.View.GearTab
                 GearAction.RotateStyle.Horizontal : GearAction.RotateStyle.vertical);
             gearContainer.Children.Clear();
             gearContainer.Children.Add(gear as UserControl);
+            AutoRotationTimer.IsEnabled = true;
         }
 
         /// <summary>
@@ -73,6 +96,7 @@ namespace ChallengeCupV1.View.GearTab
         private void gearContainer_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             gear.Zoom(e.Delta);
+            AutoRotationTimer.IsEnabled = false;
         }
 
         /// <summary>
@@ -95,19 +119,19 @@ namespace ChallengeCupV1.View.GearTab
         private void gearContainer_MouseDown(object sender, MouseButtonEventArgs e)
         {
             mouseClickCount += 1;
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 300);
-            timer.Tick += (s, e1) => { timer.IsEnabled = false; mouseClickCount = 0; };
-            timer.IsEnabled = true;
+            //doubleClickTimer.Tick += (s, e1) => { doubleClickTimer.IsEnabled = false; mouseClickCount = 0; };
+            doubleClickTimer.IsEnabled = true;
             if (mouseClickCount % 2 == 0)
             {
-                timer.IsEnabled = false;
+                doubleClickTimer.IsEnabled = false;
                 mouseClickCount = 0;
-                gear.Reset();
+                gear.ResetView();
+                AutoRotationTimer.IsEnabled = true;
             }
             else
             {
                 gear.MouseDown(e);
+                AutoRotationTimer.IsEnabled = false;
             }
         }
 
@@ -129,7 +153,9 @@ namespace ChallengeCupV1.View.GearTab
         private void gearContainer_MouseLeave(object sender, MouseEventArgs e)
         {
             gear.MouseUp();
+            AutoRotationTimer.IsEnabled = true;
         }
+
 
         #region Set rotate style
 
@@ -143,6 +169,7 @@ namespace ChallengeCupV1.View.GearTab
             gear.SetRotateStyle(GearAction.RotateStyle.Horizontal);
         }
         #endregion
+
     }
 
 }

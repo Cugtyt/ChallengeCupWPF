@@ -27,7 +27,7 @@ namespace ChallengeCupV1.View.WaveTab
             InitializeComponent();
             UserControlManager.Register(this, this.GetType().Name);
             // Set axes range
-            ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
+            //ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
             // Set mouse cannot change view of plotter
             plotter.Children.Remove(plotter.MouseNavigation);
             plotter.Children.Remove(plotter.KeyboardNavigation);

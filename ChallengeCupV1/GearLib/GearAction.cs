@@ -33,6 +33,14 @@ namespace ChallengeCupV1.GearLib
             Horizontal, vertical
         }
 
+        private static int AutoRotationAngle = 0;
+        public static void AutoRotation(this IGear gear, int AngleStep = 1)
+        {
+            gear.ResetView();
+            gear.GetAxisAngleRotation().Axis = new Vector3D(0, 0, 1);
+            gear.GetAxisAngleRotation().Angle += (AutoRotationAngle += AngleStep);
+        }
+
         #region Zoom in and zoom out
         /// <summary>
         /// Zoom in and out of gear
@@ -61,10 +69,10 @@ namespace ChallengeCupV1.GearLib
         /// <param name="rs"></param>
         public static void SetRotateStyle(this IGear gear, RotateStyle rs)
         {
-            gear.Reset();
+            gear.ResetView();
             rotateStyle = rs;
-            gear.GetAxisAngleRotation().Axis = rs == RotateStyle.vertical ?
-                new Vector3D(1, 0, 0) : new Vector3D(0, 1, 0);
+            //gear.GetAxisAngleRotation().Axis = rs == RotateStyle.vertical ?
+            //    new Vector3D(1, 0, 0) : new Vector3D(0, 1, 0);
         }
 
         /// <summary>
@@ -121,6 +129,8 @@ namespace ChallengeCupV1.GearLib
             Console.WriteLine($"current position: {curPos.X}, {curPos.Y}");
             Console.WriteLine($"diff: {diff}");
 #endif
+            gear.GetAxisAngleRotation().Axis = rotateStyle == RotateStyle.vertical ?
+                new Vector3D(1, 0, 0) : new Vector3D(0, 1, 0);
             // Speed up factor is 16
             gear.GetAxisAngleRotation().Angle += diff / 
                 (rotateStyle == RotateStyle.Horizontal ? viewPort.ActualWidth : viewPort.ActualHeight )
