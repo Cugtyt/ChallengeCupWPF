@@ -17,12 +17,12 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace ChallengeCupV1.View.StatusTab
+namespace ChallengeCupV1.View.StateTab
 {
     /// <summary>
     /// StatusTabContent.xaml 的交互逻辑
     /// </summary>
-    public partial class StatusTabContent : UserControl
+    public partial class StateTabContent : UserControl
     {
         /// <summary>
         /// Data source of data grid to show 
@@ -36,7 +36,7 @@ namespace ChallengeCupV1.View.StatusTab
             Interval = TimeSpan.FromSeconds(2),
         };
 
-        public StatusTabContent()
+        public StateTabContent()
         {
             InitializeComponent();
             UserControlManager.Register(this, this.GetType().Name);

@@ -43,7 +43,7 @@
             </StackPanel.Resources>
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Reports Foldrer Path:" Width="280"/>
+                    <Label Content="Reports Foldrer:" Width="280"/>
                     <TextBox Name="statusReportDir" Width="700" FontSize="16"/>
                     <Button Content="Browse" Background="Transparent" Click="browseDir_Click" Margin="10,0"/>
                 </StackPanel>
@@ -74,15 +74,15 @@
                 <Label Content="Wave Display Settings" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Wave Length Refer Value:"/>
+                        <Label Content="Wavelength Reference:"/>
                         <TextBox Name="referYTimeDomain"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Wave Length Max Value:"/>
+                        <Label Content="Maximum Wavelength:"/>
                         <TextBox Name="maxYTimeDomain"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Wave Length Min Value:"/>
+                        <Label Content="Minimum Wavelength:"/>
                         <TextBox Name="minYTimeDomain"/>
                     </StackPanel>
                 </StackPanel>
@@ -96,12 +96,12 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Name="connectIcon" Source="/ChallengeCupV1;component/Resources/Icon/SettingDefault.png"/>
+                        <Image Grid.Column="0" Name="applyIcon" Source="/ChallengeCupV1;component/Resources/Icon/SettingDefault.png"/>
                         <TextBlock Grid.Column="1" Text="{TemplateBinding Button.Content}" VerticalAlignment="Center"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Button.IsPressed" Value="True">
-                            <Setter Property="Source" Value="/ChallengeCupV1;component/Resources/Icon/SettingEnabled.png" TargetName="connectIcon"/>
+                            <Setter Property="Source" Value="/ChallengeCupV1;component/Resources/Icon/SettingEnabled.png" TargetName="applyIcon"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

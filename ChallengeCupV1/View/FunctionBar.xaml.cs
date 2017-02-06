@@ -101,7 +101,7 @@ namespace ChallengeCupV1.View
                 }
                 timer.IsEnabled = false;
                 WaveTab.WaveTabContent.Timer.IsEnabled = false;
-                StatusTab.StatusTabContent.Timer.IsEnabled = false;
+                StateTab.StateTabContent.Timer.IsEnabled = false;
                 connect.Content = "Connect";
             }
         }
@@ -117,7 +117,7 @@ namespace ChallengeCupV1.View
                     return;
                 }
                 WaveTab.WaveTabContent.Timer.IsEnabled = true;
-                StatusTab.StatusTabContent.Timer.IsEnabled = true;
+                StateTab.StateTabContent.Timer.IsEnabled = true;
                 GearTab.ParamDisplay.Timer.IsEnabled = true;
                 //WaveTab.WaveTabContent.IsDisplaying = true;
                 start.Content = "Stop";
@@ -126,7 +126,7 @@ namespace ChallengeCupV1.View
             else
             {
                 WaveTab.WaveTabContent.Timer.IsEnabled = false;
-                StatusTab.StatusTabContent.Timer.IsEnabled = false;
+                StateTab.StateTabContent.Timer.IsEnabled = false;
                 GearTab.ParamDisplay.Timer.IsEnabled = false;
                 //WaveTab.WaveTabContent.IsDisplaying = false;
                 start.Content = "Start";

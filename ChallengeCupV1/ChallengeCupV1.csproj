@@ -127,17 +127,17 @@
     <Compile Include="View\FunctionBar.xaml.cs">
       <DependentUpon>FunctionBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SettingTab\SettingTabContent.xaml.cs">
-      <DependentUpon>SettingTabContent.xaml</DependentUpon>
+    <Compile Include="View\SettingsTab\SettingsTabContent.xaml.cs">
+      <DependentUpon>SettingsTabContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SettingTab\SettingTabHeader.xaml.cs">
-      <DependentUpon>SettingTabHeader.xaml</DependentUpon>
+    <Compile Include="View\SettingsTab\SettingsTabHeader.xaml.cs">
+      <DependentUpon>SettingsTabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\StatusTab\StatusTabContent.xaml.cs">
-      <DependentUpon>StatusTabContent.xaml</DependentUpon>
+    <Compile Include="View\StateTab\StateTabContent.xaml.cs">
+      <DependentUpon>StateTabContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\StatusTab\StatusTabHeader.xaml.cs">
-      <DependentUpon>StatusTabHeader.xaml</DependentUpon>
+    <Compile Include="View\StateTab\StateTabHeader.xaml.cs">
+      <DependentUpon>StateTabHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
@@ -252,19 +252,19 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Page Include="View\SettingTab\SettingTabContent.xaml">
+    <Page Include="View\SettingsTab\SettingsTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SettingTab\SettingTabHeader.xaml">
+    <Page Include="View\SettingsTab\SettingsTabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\StatusTab\StatusTabContent.xaml">
+    <Page Include="View\StateTab\StateTabContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\StatusTab\StatusTabHeader.xaml">
+    <Page Include="View\StateTab\StateTabHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,7 +12,7 @@
                 Orientation="Horizontal">
                 <Image Source="/ChallengeCupV1;component/Resources/Icon/Logo.png" Margin="0,0,10,0"/>
                 <TextBlock FontSize="18" Foreground="WhiteSmoke" VerticalAlignment="Center"
-                    Text="WHUT基于光纤光栅传感技术的齿轮运行状态检测系统"/>
+                    Text="The Gear State Detection System Based On The Fiber Bragg Grating Sensing Technique"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="minWindow" Click="minWindow_Click">

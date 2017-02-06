@@ -22,7 +22,7 @@
             <TextBlock Grid.Row="0" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
                    Text="实时波形检测"/>
             <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Text="Real-time waveform monitoring"/>
+                   Text="Real-time Waveform Monitoring"/>
             <Grid Grid.Row="2">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <StackPanel.Resources>
@@ -45,8 +45,8 @@
                         <ComboBoxItem Name="g4" Content="Grating4" Selected="g4_Selected"/>
                     </ComboBox>
                     <ComboBox Width="200" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}">
-                        <ComboBoxItem Name="time" Content="Time domain" IsSelected="True" Selected="time_Selected"/>
-                        <ComboBoxItem Name="freq" Content="Frequency domain" Selected="freq_Selected"/>
+                        <ComboBoxItem Name="time" Content="Time Domain" IsSelected="True" Selected="time_Selected"/>
+                        <ComboBoxItem Name="freq" Content="Frequency Domain" Selected="freq_Selected"/>
                     </ComboBox>
                 </StackPanel>
                
