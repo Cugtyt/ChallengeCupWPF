@@ -38,6 +38,7 @@ namespace ChallengeCupV1.View.SettingTab
             delta_PARM.Text = StateConstantParam.DELTA.ToString();
             alpha_PARM.Text = StateConstantParam.ALPHA.ToString();
             gearWidth.Text = StateConstantParam.GEAR_WIDTH.ToString();
+            demodulationFreq.Text = StateConstantParam.DemodulationFrequency.ToString();
         }
 
         /// <summary>
@@ -76,6 +77,7 @@ namespace ChallengeCupV1.View.SettingTab
             StateConstantParam.DELTA = double.Parse(delta_PARM.Text);
             StateConstantParam.ALPHA = double.Parse(alpha_PARM.Text);
             StateConstantParam.GEAR_WIDTH = double.Parse(gearWidth.Text);
+            StateConstantParam.DemodulationFrequency = double.Parse(demodulationFreq.Text);
             (UserControlManager.Get("WavePlot") as WaveTab.WavePlot).UpdateYRange();
             (UserControlManager.Get("FunctionBar") as FunctionBar).UpdateDir();
         }

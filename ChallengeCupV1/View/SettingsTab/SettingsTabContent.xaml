@@ -74,6 +74,10 @@
                         <Label Content="Initial Temperature:"/>
                         <TextBox Name="initTemperature"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Demodulation Frequency:"/>
+                        <TextBox Name="demodulationFreq"/>
+                    </StackPanel>
                 </StackPanel>
                 <Label Content="Wave Display Settings" HorizontalAlignment="Left"/>
                 <StackPanel Orientation="Vertical" Margin="80,0,0,0">

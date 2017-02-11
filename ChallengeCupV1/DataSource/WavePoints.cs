@@ -1,4 +1,5 @@
-﻿using Microsoft.Research.DynamicDataDisplay.DataSources;
+﻿using ChallengeCupV1.DataSource.GearState;
+using Microsoft.Research.DynamicDataDisplay.DataSources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,9 +102,10 @@ namespace ChallengeCupV1.DataSource
                 throw new ArgumentNullException("WavePoints: FromComplexArray()");
             }
             List<Point> pl = new List<Point>();
-            for (int i = 0; i < input.Length && i < 200; i++)
+            for (int i = 0; i < input.Length / 2; i++)
             {
-                pl.Add(new Point(i * 2e5 / 200, Math.Abs(input[i].Real)));
+                pl.Add(new Point(i * StateConstantParam.DemodulationFrequency / input.Length, 
+                    Math.Abs(input[i].Real)));
             }
             Points.Collection.Clear();
             Points.AppendMany(pl);

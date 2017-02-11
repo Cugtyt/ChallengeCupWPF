@@ -41,5 +41,7 @@ namespace ChallengeCupV1.DataSource.GearState
         /// Wave length reference value
         /// </summary>
         public static double WaveLengthReference = 1500;
+
+        public static double DemodulationFrequency = 12e4;
     }
 }

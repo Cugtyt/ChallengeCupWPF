@@ -79,7 +79,9 @@ namespace ChallengeCupV1.View.WaveTab
 #endif
                     //await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
                     wavePlot.AddFreqPoints(DataFFT.Forward(
-                        (from y in GratingDataContainer.Data[selected] select new Complex(y, 0)).ToArray())
+                        (from y in GratingDataContainer.Data[selected]
+                         select new Complex(y, 0))
+                         .ToArray())
                         .Result);
                     break;
                 default:

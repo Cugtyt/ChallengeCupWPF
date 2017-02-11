@@ -232,11 +232,11 @@ namespace ChallengeCupV1.File
         /// </summary>
         /// <param name="info">FileInfo array</param>
         /// <returns></returns>
-        public static Task RemoveFileAll(FileInfo[] info, int start, int end)
+        public static void RemoveFileAll(FileInfo[] info, int start, int end)
         {
             if (info == null || end <= start)
             {
-                return null;
+                return;
             }
 
             for (int i = start; i < end; i++)
@@ -244,7 +244,6 @@ namespace ChallengeCupV1.File
                 Console.WriteLine("now " + i);
                 info[i].Delete();
             }
-            return null;
         }
 
         /// <summary>
