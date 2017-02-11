@@ -329,7 +329,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icon\StatusTabIcon.png">
+    <Resource Include="Resources\Icon\StateTabIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

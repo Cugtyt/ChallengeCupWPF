@@ -41,19 +41,19 @@
                 <TabItem.Header>
                     <gearTab:GearTabHeader/>
                 </TabItem.Header>
-                <gearTab:GearTabContent x:Name="gear"/>
+                <gearTab:GearTabContent/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <stateTab:StateTabHeader/>
                 </TabItem.Header>
-                <stateTab:StateTabContent x:Name="status"/>
+                <stateTab:StateTabContent/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <settingTab:SettingTabHeader/>
                 </TabItem.Header>
-                <settingTab:SettingTabContent x:Name="setting"/>
+                <settingTab:SettingTabContent/>
             </TabItem>
         </TabControl>
         <view:FunctionBar Grid.Row="2" Margin="180,0,0,0"/>

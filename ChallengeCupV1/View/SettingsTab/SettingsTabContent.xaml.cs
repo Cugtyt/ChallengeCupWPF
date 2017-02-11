@@ -27,7 +27,7 @@ namespace ChallengeCupV1.View.SettingTab
             InitializeComponent();
             UserControlManager.Register(this, this.GetType().Name);
             // Init text box
-            statusReportDir.Text = SettingContainer.StatusReportDir;
+            stateReportDir.Text = SettingContainer.StateReportDir;
             maxYTimeDomain.Text = SettingContainer.MaxYWavePlotTimeDomain.ToString();
             minYTimeDomain.Text = SettingContainer.MinYWavePlotTimeDomain.ToString();
             initTemperature.Text = SettingContainer.InitTemperature.ToString();
@@ -55,7 +55,7 @@ namespace ChallengeCupV1.View.SettingTab
                 return;
             }
             string dir = dialog.SelectedPath.Trim();
-            statusReportDir.Text = dir;
+            stateReportDir.Text = dir;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace ChallengeCupV1.View.SettingTab
         /// <param name="e"></param>
         private void apply_Click(object sender, RoutedEventArgs e)
         {
-            SettingContainer.StatusReportDir = statusReportDir.Text;
+            SettingContainer.StateReportDir = stateReportDir.Text;
             SettingContainer.MaxYWavePlotTimeDomain = double.Parse(maxYTimeDomain.Text);
             SettingContainer.MinYWavePlotTimeDomain = double.Parse(minYTimeDomain.Text);
             SettingContainer.InitTemperature = double.Parse(initTemperature.Text);

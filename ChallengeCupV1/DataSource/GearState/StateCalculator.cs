@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace ChallengeCupV1.DataSource.GearState
 {
     /// <summary>
-    /// StatusCalculator is a calculate methods set, stores all algorithm
+    /// StateCalculator is a calculate methods set, stores all algorithm
     /// of param need to be calculated.
     /// 
-    /// These methods should be used as a part of StatusDataTemplate
-    /// when a status data object is produced, the way to pass the methods
+    /// These methods should be used as a part of StateDataTemplate
+    /// when a state data object is produced, the way to pass the methods
     /// is the enum Calculator behind StateCalculator, pass Calculator value
-    /// to initial StatusDataTemplate.
+    /// to initial StateDataTemplate.
     /// </summary>
     public static class StateCalculator
     {
@@ -50,23 +50,23 @@ namespace ChallengeCupV1.DataSource.GearState
         //    //            if (input == null)
         //    //            {
         //    //#if DEBUG
-        //    //                Console.WriteLine("StatusCalculator: StressCalculator() -> Illegal input, argument can not be null.");
+        //    //                Console.WriteLine("StateCalculator: StressCalculator() -> Illegal input, argument can not be null.");
         //    //#endif
-        //    //                throw new ArgumentNullException("StatusCalculator: StressCalculator()");
+        //    //                throw new ArgumentNullException("StateCalculator: StressCalculator()");
         //    //            }
         //    //            if (input.Length != 3)
         //    //            {
         //    //#if DEBUG
-        //    //                Console.WriteLine("StatusCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
+        //    //                Console.WriteLine("StateCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
         //    //                    + input.Length + ".");
         //    //#endif
-        //    //                throw new ArgumentException("StatusCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
+        //    //                throw new ArgumentException("StateCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
         //    //                    + input.Length + ".");
         //    //            }
-        //    //return -1 * StatusConstantParam.E * input[0]
-        //    /// (StatusConstantParam.u
-        //    //* (Math.Pow(StatusConstantParam.delta, input[1])) 
-        //    //* StatusConstantParam.alpha);
+        //    //return -1 * StateConstantParam.E * input[0]
+        //    /// (StateConstantParam.u
+        //    //* (Math.Pow(StateConstantParam.delta, input[1])) 
+        //    //* StateConstantParam.alpha);
 
         //    // Check data validation first
         //    if (DELTABuffer.Count == 0)
@@ -83,23 +83,23 @@ namespace ChallengeCupV1.DataSource.GearState
             //            if (input == null)
             //            {
             //#if DEBUG
-            //                Console.WriteLine("StatusCalculator: StressCalculator() -> Illegal input, argument can not be null.");
+            //                Console.WriteLine("StateCalculator: StressCalculator() -> Illegal input, argument can not be null.");
             //#endif
-            //                throw new ArgumentNullException("StatusCalculator: StressCalculator()");
+            //                throw new ArgumentNullException("StateCalculator: StressCalculator()");
             //            }
             //            if (input.Length != 3)
             //            {
             //#if DEBUG
-            //                Console.WriteLine("StatusCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
+            //                Console.WriteLine("StateCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
             //                    + input.Length + ".");
             //#endif
-            //                throw new ArgumentException("StatusCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
+            //                throw new ArgumentException("StateCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
             //                    + input.Length + ".");
             //            }
-            //return -1 * StatusConstantParam.E * input[0]
-            /// (StatusConstantParam.u
-            //* (Math.Pow(StatusConstantParam.delta, input[1])) 
-            //* StatusConstantParam.alpha);
+            //return -1 * StateConstantParam.E * input[0]
+            /// (StateConstantParam.u
+            //* (Math.Pow(StateConstantParam.delta, input[1])) 
+            //* StateConstantParam.alpha);
 
             // Check data validation first
             if (DELTABuffer.Count == 0)
@@ -130,20 +130,20 @@ namespace ChallengeCupV1.DataSource.GearState
         //    //            if (input == null)
         //    //            {
         //    //#if DEBUG
-        //    //                Console.WriteLine("StatusCalculator: StrainCalculator() -> Illegal input, argument can not be null.");
+        //    //                Console.WriteLine("StateCalculator: StrainCalculator() -> Illegal input, argument can not be null.");
         //    //#endif
-        //    //                throw new ArgumentNullException("StatusCalculator: StrainCalculator()");
+        //    //                throw new ArgumentNullException("StateCalculator: StrainCalculator()");
         //    //            }
         //    //            if (input.Length != 2)
         //    //            {
         //    //#if DEBUG
-        //    //            Console.WriteLine("StatusCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
+        //    //            Console.WriteLine("StateCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
         //    //                + input.Length + ".");
         //    //#endif
-        //    //                throw new ArgumentException("StatusCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
+        //    //                throw new ArgumentException("StateCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
         //    //                + input.Length + ".");
         //    //            }
-        //    //return input[0] / StatusConstantParam.alpha;
+        //    //return input[0] / StateConstantParam.alpha;
 
         //    // Check data validation first
         //    if (DELTABuffer.Count == 0)
@@ -157,20 +157,20 @@ namespace ChallengeCupV1.DataSource.GearState
             //            if (input == null)
             //            {
             //#if DEBUG
-            //                Console.WriteLine("StatusCalculator: StrainCalculator() -> Illegal input, argument can not be null.");
+            //                Console.WriteLine("StateCalculator: StrainCalculator() -> Illegal input, argument can not be null.");
             //#endif
-            //                throw new ArgumentNullException("StatusCalculator: StrainCalculator()");
+            //                throw new ArgumentNullException("StateCalculator: StrainCalculator()");
             //            }
             //            if (input.Length != 2)
             //            {
             //#if DEBUG
-            //            Console.WriteLine("StatusCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
+            //            Console.WriteLine("StateCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
             //                + input.Length + ".");
             //#endif
-            //                throw new ArgumentException("StatusCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
+            //                throw new ArgumentException("StateCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
             //                + input.Length + ".");
             //            }
-            //return input[0] / StatusConstantParam.alpha;
+            //return input[0] / StateConstantParam.alpha;
 
             // Check data validation first
             if (DELTABuffer.Count == 0)

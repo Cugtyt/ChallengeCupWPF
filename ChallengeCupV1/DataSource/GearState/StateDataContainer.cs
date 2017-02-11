@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace ChallengeCupV1.DataSource.GearState
 {
     /// <summary>
-    /// StatusDataContainer contains a list of StatusDataTemplate
-    /// in which all status data are stored.
+    /// StateDataContainer contains a list of StateDataTemplate
+    /// in which all state data are stored.
     /// </summary>
     public class StateDataContainer
     {
         /// <summary>
-        /// All status data are stored in StatusData. when new param 
-        /// is needed, add a new StatusDataTemplate object to it.
+        /// All state data are stored in StateData. when new param 
+        /// is needed, add a new StateDataTemplate object to it.
         /// </summary>
         public ObservableCollection<StateDataTemplate> StateData = new ObservableCollection<StateDataTemplate>()
         {
@@ -26,30 +26,30 @@ namespace ChallengeCupV1.DataSource.GearState
         };
 
         /// <summary>
-        /// Calculate and update the value of each status value in StatusData
+        /// Calculate and update the value of each state value in StateData
         /// </summary>
         //        public void Calculate()
         //        {
         //#if DEBUG
-        //            Console.WriteLine("StatusDataContainer: Calculate() -> calculating");
+        //            Console.WriteLine("StateDataContainer: Calculate() -> calculating");
         //#endif
-        //            //StatusData[0].Calculate(new List<double>() { });
-        //            //StatusData[1].Calculate(new List<double>() { });
-        //            //StatusData[2].Calculate(new List<double>() { });
-        //            //StatusData[3].Calculate(new List<double>() { });
-        //            //StatusData[0].Value = 1;
-        //            //StatusData[1].Value = 2;
-        //            //StatusData[2].Value = 3;
-        //            //StatusData[3].Value = 4;
-        //            //StatusCalculator.CalculateDELTA();
-        //            //foreach (var s in StatusData)
+        //            //StateData[0].Calculate(new List<double>() { });
+        //            //StateData[1].Calculate(new List<double>() { });
+        //            //StateData[2].Calculate(new List<double>() { });
+        //            //StateData[3].Calculate(new List<double>() { });
+        //            //StateData[0].Value = 1;
+        //            //StateData[1].Value = 2;
+        //            //StateData[2].Value = 3;
+        //            //StateData[3].Value = 4;
+        //            //StateCalculator.CalculateDELTA();
+        //            //foreach (var s in StateData)
         //            //{
         //            //    s.Calculate();
         //            //}
         //        }
 
         /// <summary>
-        /// Update StatusData
+        /// Update StateData
         /// 
         /// If StateData is not suit for Data in GratingDataContainer, update StateData,
         /// and call Calculate method in StateCalculator to update data set,

@@ -20,16 +20,16 @@ using System.Windows.Threading;
 namespace ChallengeCupV1.View.StateTab
 {
     /// <summary>
-    /// StatusTabContent.xaml 的交互逻辑
+    /// StateTabContent.xaml 的交互逻辑
     /// </summary>
     public partial class StateTabContent : UserControl
     {
         /// <summary>
         /// Data source of data grid to show 
         /// </summary>
-        private StateDataContainer statusDataSource = new StateDataContainer();
+        private StateDataContainer stateDataSource = new StateDataContainer();
         /// <summary>
-        /// Timer to set interval of calculating status data
+        /// Timer to set interval of calculating state data
         /// </summary>
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
@@ -40,7 +40,7 @@ namespace ChallengeCupV1.View.StateTab
         {
             InitializeComponent();
             UserControlManager.Register(this, this.GetType().Name);
-            dataGrid.ItemsSource = statusDataSource.StateData;
+            dataGrid.ItemsSource = stateDataSource.StateData;
             Timer.Tick += calculateParam;
             //Timer.IsEnabled = true;
         }
@@ -52,21 +52,21 @@ namespace ChallengeCupV1.View.StateTab
         /// <param name="e"></param>
         private void calculateParam(object sender, EventArgs e)
         {
-            //statusDataSource.Calculate();
+            //stateDataSource.Calculate();
 #if DEBUG
             Console.WriteLine("StateTabContent: calculateParam");
 #endif
-            statusDataSource.Update();
+            stateDataSource.Update();
         }
 
         /// <summary>
-        /// Generate status data file
+        /// Generate state data file
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
-            File.FileUtils.GenerateStateReportFile(SettingContainer.StatusReportDir, statusDataSource.StateData);
+            File.FileUtils.GenerateStateReportFile(SettingContainer.StateReportDir, stateDataSource.StateData);
         }
     }
 }

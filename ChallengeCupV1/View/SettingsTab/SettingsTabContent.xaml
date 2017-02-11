@@ -44,7 +44,7 @@
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Reports Foldrer:" Width="280"/>
-                    <TextBox Name="statusReportDir" Width="700" FontSize="16"/>
+                    <TextBox Name="stateReportDir" Width="700" FontSize="16"/>
                     <Button Content="Browse" Background="Transparent" Click="browseDir_Click" Margin="10,0"/>
                 </StackPanel>
                 <Label Content="Parameter Settings" HorizontalAlignment="Left"/>

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace ChallengeCupV1.View.StateTab
 {
     /// <summary>
-    /// StatusTabHeader.xaml 的交互逻辑
+    /// StateTabHeader.xaml 的交互逻辑
     /// </summary>
     public partial class StateTabHeader : UserControl
     {

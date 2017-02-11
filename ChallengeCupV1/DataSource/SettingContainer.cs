@@ -20,7 +20,7 @@ namespace ChallengeCupV1.DataSource
         /// <summary>
         /// File where to generate report
         /// </summary>
-        public static string StatusReportDir = File.FileUtils.GetRootPath() + @"\StatusReport\";
+        public static string StateReportDir = File.FileUtils.GetRootPath() + @"\StateReport\";
         /// <summary>
         /// Max and min of y axis when time domain is selected
         /// </summary>

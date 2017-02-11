@@ -8,7 +8,7 @@ using System.Windows;
 namespace ChallengeCupV1.DataSource.GearState
 {
     /// <summary>
-    /// StatusDataTemplate hold infos of status data
+    /// StateDataTemplate hold infos of state data
     /// </summary>
     public class StateDataTemplate : DependencyObject
     {
@@ -25,7 +25,7 @@ namespace ChallengeCupV1.DataSource.GearState
 
 
         /// <summary>
-        /// Status data name
+        /// State data name
         /// </summary>
         public string Name
         {
@@ -40,7 +40,7 @@ namespace ChallengeCupV1.DataSource.GearState
 
 
         /// <summary>
-        /// Status data unit
+        /// State data unit
         /// </summary>
         public string Unit
         {
@@ -55,7 +55,7 @@ namespace ChallengeCupV1.DataSource.GearState
 
 
         /// <summary>
-        /// Average value of  status value set
+        /// Average value of  state value set
         /// </summary>
         public double Value
         {
@@ -69,7 +69,7 @@ namespace ChallengeCupV1.DataSource.GearState
 
 
         /// <summary>
-        /// Status value set
+        /// State value set
         /// </summary>
         public IEnumerable<double> ValueSet
         {
@@ -96,9 +96,9 @@ namespace ChallengeCupV1.DataSource.GearState
             if (name == null || unit == null)
             {
 #if DEBUG
-                Console.WriteLine("StatusDataTemplate: StatusDataTemplate() -> Illegal input, argument can not be null.");
+                Console.WriteLine("StateDataTemplate: StateDataTemplate() -> Illegal input, argument can not be null.");
 #endif
-                throw new ArgumentNullException("StatusDataTemplate: StatusDataTemplate()");
+                throw new ArgumentNullException("StateDataTemplate: StateDataTemplate()");
             }
             GratingID = ID;
             Name = name;
