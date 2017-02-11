@@ -1,5 +1,5 @@
 ﻿using ChallengeCupV1.DataSource;
-using ChallengeCupV1.DataSource.GearStatus;
+using ChallengeCupV1.DataSource.GearState;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +30,14 @@ namespace ChallengeCupV1.View.SettingTab
             statusReportDir.Text = SettingContainer.StatusReportDir;
             maxYTimeDomain.Text = SettingContainer.MaxYWavePlotTimeDomain.ToString();
             minYTimeDomain.Text = SettingContainer.MinYWavePlotTimeDomain.ToString();
-            referYTimeDomain.Text = SettingContainer.ReferYWavePlotTimeDomain.ToString();
-            E_PARM.Text = StatusConstantParam.E.ToString();
-            u_PARM.Text = StatusConstantParam.u.ToString();
-            delta_PARM.Text = StatusConstantParam.DELTA.ToString();
-            alpha_PARM.Text = StatusConstantParam.ALPHA.ToString();
-            gearWidth.Text = StatusConstantParam.GEAR_WIDTH.ToString();
+            initTemperature.Text = SettingContainer.InitTemperature.ToString();
+            //referYTimeDomain.Text = SettingContainer.ReferYWavePlotTimeDomain.ToString();
+            referYTimeDomain.Text = StateConstantParam.WaveLengthReference.ToString();
+            E_PARM.Text = StateConstantParam.E.ToString();
+            u_PARM.Text = StateConstantParam.u.ToString();
+            delta_PARM.Text = StateConstantParam.DELTA.ToString();
+            alpha_PARM.Text = StateConstantParam.ALPHA.ToString();
+            gearWidth.Text = StateConstantParam.GEAR_WIDTH.ToString();
         }
 
         /// <summary>
@@ -66,12 +68,14 @@ namespace ChallengeCupV1.View.SettingTab
             SettingContainer.StatusReportDir = statusReportDir.Text;
             SettingContainer.MaxYWavePlotTimeDomain = double.Parse(maxYTimeDomain.Text);
             SettingContainer.MinYWavePlotTimeDomain = double.Parse(minYTimeDomain.Text);
-            SettingContainer.ReferYWavePlotTimeDomain = double.Parse(referYTimeDomain.Text);
-            StatusConstantParam.E = double.Parse(E_PARM.Text);
-            StatusConstantParam.u = double.Parse(u_PARM.Text);
-            StatusConstantParam.DELTA = double.Parse(delta_PARM.Text);
-            StatusConstantParam.ALPHA = double.Parse(alpha_PARM.Text);
-            StatusConstantParam.GEAR_WIDTH = double.Parse(gearWidth.Text);
+            SettingContainer.InitTemperature = double.Parse(initTemperature.Text);
+            //SettingContainer.ReferYWavePlotTimeDomain = double.Parse(referYTimeDomain.Text);
+            StateConstantParam.WaveLengthReference = double.Parse(referYTimeDomain.Text);
+            StateConstantParam.E = double.Parse(E_PARM.Text);
+            StateConstantParam.u = double.Parse(u_PARM.Text);
+            StateConstantParam.DELTA = double.Parse(delta_PARM.Text);
+            StateConstantParam.ALPHA = double.Parse(alpha_PARM.Text);
+            StateConstantParam.GEAR_WIDTH = double.Parse(gearWidth.Text);
             (UserControlManager.Get("WavePlot") as WaveTab.WavePlot).UpdateYRange();
             (UserControlManager.Get("FunctionBar") as FunctionBar).UpdateDir();
         }

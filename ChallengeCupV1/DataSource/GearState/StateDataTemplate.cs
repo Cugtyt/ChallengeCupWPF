@@ -5,13 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ChallengeCupV1.DataSource.GearStatus
+namespace ChallengeCupV1.DataSource.GearState
 {
     /// <summary>
     /// StatusDataTemplate hold infos of status data
     /// </summary>
-    public class StatusDataTemplate : DependencyObject
+    public class StateDataTemplate : DependencyObject
     {
+
+        public int GratingID
+        {
+            get { return (int)GetValue(GratingIDProperty); }
+            set { SetValue(GratingIDProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for GratingID.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty GratingIDProperty =
+            DependencyProperty.Register("GratingID", typeof(int), typeof(StateDataTemplate));
+
+
         /// <summary>
         /// Status data name
         /// </summary>
@@ -23,7 +35,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
 
         // Using a DependencyProperty as the backing store for Name.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NameProperty =
-            DependencyProperty.Register("Name", typeof(string), typeof(StatusDataTemplate));
+            DependencyProperty.Register("Name", typeof(string), typeof(StateDataTemplate));
 
 
 
@@ -38,7 +50,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
 
         // Using a DependencyProperty as the backing store for Unit.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty UnitProperty =
-            DependencyProperty.Register("Unit", typeof(string), typeof(StatusDataTemplate));
+            DependencyProperty.Register("Unit", typeof(string), typeof(StateDataTemplate));
 
 
 
@@ -53,7 +65,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
 
         // Using a DependencyProperty as the backing store for Value.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(StatusDataTemplate), new PropertyMetadata(0.0));
+            DependencyProperty.Register("Value", typeof(double), typeof(StateDataTemplate), new PropertyMetadata(0.0));
 
 
         /// <summary>
@@ -67,7 +79,7 @@ namespace ChallengeCupV1.DataSource.GearStatus
 
         // Using a DependencyProperty as the backing store for ValueSet.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ValueSetProperty =
-            DependencyProperty.Register("ValueSet", typeof(IEnumerable<double>), typeof(StatusDataTemplate));
+            DependencyProperty.Register("ValueSet", typeof(IEnumerable<double>), typeof(StateDataTemplate));
 
 
 
@@ -76,19 +88,21 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// <summary>
         /// This calculater is used to calculate the Value
         /// </summary>
-        private Func<IEnumerable<double>> calculater;
+        //private Func<IEnumerable<double>> calculater;
+        private Calculator calculater;
 
-        public StatusDataTemplate(string name, Func<IEnumerable<double>> cal, string unit)
+        public StateDataTemplate(int ID, string name, Calculator c, string unit)
         {
-            if (name == null || cal == null || unit == null)
+            if (name == null || unit == null)
             {
 #if DEBUG
                 Console.WriteLine("StatusDataTemplate: StatusDataTemplate() -> Illegal input, argument can not be null.");
 #endif
                 throw new ArgumentNullException("StatusDataTemplate: StatusDataTemplate()");
             }
+            GratingID = ID;
             Name = name;
-            calculater = cal;
+            calculater = c;
             Unit = unit;
         }
 
@@ -97,15 +111,28 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public void Calculate()
+        //public void Calculate()
+        //{
+        //    // Check data validation first
+        //    if (!GratingDataContainer.IsDataReady)
+        //    {
+        //        return;
+        //    }
+        //    ValueSet = calculater();
+        //    Value = ValueSet.Average();
+        //}
+
+        public void Get()
         {
-            // Check data validation first
+#if DEBUG
+            Console.WriteLine("StateDataTemplate: Get()");
+#endif
             if (!GratingDataContainer.IsDataReady)
             {
                 return;
             }
-            ValueSet = calculater();
-            Value = ValueSet.Average();
+            Value = StateCalculator.Get(GratingID, calculater);
+            Console.WriteLine(Name + " " + Value);
         }
     }
 }

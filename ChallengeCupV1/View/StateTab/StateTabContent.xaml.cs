@@ -1,5 +1,5 @@
 ﻿using ChallengeCupV1.DataSource;
-using ChallengeCupV1.DataSource.GearStatus;
+using ChallengeCupV1.DataSource.GearState;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -27,7 +27,7 @@ namespace ChallengeCupV1.View.StateTab
         /// <summary>
         /// Data source of data grid to show 
         /// </summary>
-        private StatusDataContainer statusDataSource = new StatusDataContainer();
+        private StateDataContainer statusDataSource = new StateDataContainer();
         /// <summary>
         /// Timer to set interval of calculating status data
         /// </summary>
@@ -40,7 +40,7 @@ namespace ChallengeCupV1.View.StateTab
         {
             InitializeComponent();
             UserControlManager.Register(this, this.GetType().Name);
-            dataGrid.ItemsSource = statusDataSource.StatusData;
+            dataGrid.ItemsSource = statusDataSource.StateData;
             Timer.Tick += calculateParam;
             //Timer.IsEnabled = true;
         }
@@ -52,7 +52,11 @@ namespace ChallengeCupV1.View.StateTab
         /// <param name="e"></param>
         private void calculateParam(object sender, EventArgs e)
         {
-            statusDataSource.Calculate();
+            //statusDataSource.Calculate();
+#if DEBUG
+            Console.WriteLine("StateTabContent: calculateParam");
+#endif
+            statusDataSource.Update();
         }
 
         /// <summary>
@@ -62,7 +66,7 @@ namespace ChallengeCupV1.View.StateTab
         /// <param name="e"></param>
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
-            File.FileUtils.GenerateStatusReportFile(SettingContainer.StatusReportDir, statusDataSource.StatusData);
+            File.FileUtils.GenerateStateReportFile(SettingContainer.StatusReportDir, statusDataSource.StateData);
         }
     }
 }

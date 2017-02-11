@@ -91,10 +91,10 @@
       <DependentUpon>Gear2Grating4.xaml</DependentUpon>
     </Compile>
     <Compile Include="Old\DataTypeAdapter.cs" />
-    <Compile Include="DataSource\GearStatus\StatusCalculator.cs" />
-    <Compile Include="DataSource\GearStatus\StatusConstantParam.cs" />
-    <Compile Include="DataSource\GearStatus\StatusDataContainer.cs" />
-    <Compile Include="DataSource\GearStatus\StatusDataTemplate.cs" />
+    <Compile Include="DataSource\GearState\StateCalculator.cs" />
+    <Compile Include="DataSource\GearState\StateConstantParam.cs" />
+    <Compile Include="DataSource\GearState\StateDataContainer.cs" />
+    <Compile Include="DataSource\GearState\StateDataTemplate.cs" />
     <Compile Include="DataSource\SettingContainer.cs" />
     <Compile Include="FFT\DataFFT.cs" />
     <Compile Include="File\FileUtils.cs" />

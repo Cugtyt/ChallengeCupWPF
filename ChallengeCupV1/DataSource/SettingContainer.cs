@@ -26,8 +26,8 @@ namespace ChallengeCupV1.DataSource
         /// </summary>
         public static double MaxYWavePlotTimeDomain = 1560;
         public static double MinYWavePlotTimeDomain = 1540;
-        public static double ReferYWavePlotTimeDomain = 1500;
-        
+        //public static double ReferYWavePlotTimeDomain = 1500;
+        public static double InitTemperature = 0;
     }
 
 }

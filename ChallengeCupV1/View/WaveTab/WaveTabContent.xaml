@@ -23,6 +23,34 @@
                    Text="实时波形检测"/>
             <TextBlock Grid.Row="1" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
                    Text="Real-time Waveform Monitoring"/>
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <StackPanel.Resources>
+                        <ResourceDictionary Source="/ChallengeCupV1;component/Resources/Style/ComboBoxStyle.xaml"/>
+                    </StackPanel.Resources>
+                    <!--<RadioButton Name="ch1" GroupName="CH" Content="CH1" Margin="0,0,20,0" IsChecked="True" Click="ch1_Click"/>
+                    <RadioButton Name="ch2" GroupName="CH" Content="CH2" Margin="0,0,20,0" Click="ch2_Click"/>
+                    <RadioButton Name="ch3" GroupName="CH" Content="CH3" Margin="0,0,20,0" Click="ch3_Click"/>
+                    <RadioButton Name="ch4" GroupName="CH" Content="CH4" Margin="0,0,20,0" Click="ch4_Click"/>-->
+                    <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}">
+                        <ComboBoxItem Name="ch1" Content="CH1" IsSelected="True" Selected="ch1_Selected"/>
+                        <ComboBoxItem Name="ch2" Content="CH2" Selected="ch2_Selected"/>
+                        <ComboBoxItem Name="ch3" Content="CH3" Selected="ch3_Selected"/>
+                        <ComboBoxItem Name="ch4" Content="CH4" Selected="ch4_Selected"/>
+                    </ComboBox>
+                    <ComboBox Width="150" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}">
+                        <ComboBoxItem Name="g1" Content="Grating1" IsSelected="True" Selected="g1_Selected"/>
+                        <ComboBoxItem Name="g2" Content="Grating2" Selected="g2_Selected"/>
+                        <ComboBoxItem Name="g3" Content="Grating3" Selected="g3_Selected"/>
+                        <ComboBoxItem Name="g4" Content="Grating4" Selected="g4_Selected"/>
+                    </ComboBox>
+                    <ComboBox Width="200" Margin="0,0,20,0" Style="{StaticResource ResourceKey=ComboBoxStyle}">
+                        <ComboBoxItem Name="time" Content="Time Domain" IsSelected="True" Selected="time_Selected"/>
+                        <ComboBoxItem Name="freq" Content="Frequency Domain" Selected="freq_Selected"/>
+                    </ComboBox>
+                </StackPanel>
+
+            </Grid>
         </Grid>
         <local:WavePlot Grid.Row="1" x:Name="wavePlot"/>
     </Grid>

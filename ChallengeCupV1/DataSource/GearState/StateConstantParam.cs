@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChallengeCupV1.DataSource.GearStatus
+namespace ChallengeCupV1.DataSource.GearState
 {
     /// <summary>
     /// StatusConstantParam contains some constant params
     /// used by calculator associate with material and etc.
     /// </summary>
-    public static class StatusConstantParam
+    public static class StateConstantParam
     {
         /// <summary>
         /// E -- 被测物材料的弹性模量
@@ -40,6 +40,6 @@ namespace ChallengeCupV1.DataSource.GearStatus
         /// <summary>
         /// Wave length reference value
         /// </summary>
-        public static double WaveLengthReference = 1550;
+        public static double WaveLengthReference = 1500;
     }
 }

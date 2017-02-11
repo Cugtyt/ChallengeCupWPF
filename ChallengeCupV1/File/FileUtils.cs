@@ -1,4 +1,4 @@
-﻿using ChallengeCupV1.DataSource.GearStatus;
+﻿using ChallengeCupV1.DataSource.GearState;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -267,7 +267,7 @@ namespace ChallengeCupV1.File
         /// <param name="dirPath"></param>
         /// <param name="datalist"></param>
         /// <returns></returns>
-        public static void GenerateStatusReportFile(string dirPath, List<StatusDataTemplate> datalist)
+        public static void GenerateStateReportFile(string dirPath, ICollection<StateDataTemplate> datalist)
         {
             #region Generate and check if the file path created by time is valid, it shoule always be vaild
             if (dirPath == null)
