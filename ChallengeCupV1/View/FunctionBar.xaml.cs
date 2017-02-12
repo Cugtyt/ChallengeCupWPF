@@ -42,7 +42,7 @@ namespace ChallengeCupV1.View
             timer.Tick += new EventHandler(ReadDataFromFile);
         }
 
-        private async void ReadDataFromFile(object sender, EventArgs e)
+        private void ReadDataFromFile(object sender, EventArgs e)
         {
             //-----------------------
             // Remove all files in dir
@@ -130,7 +130,7 @@ namespace ChallengeCupV1.View
                 //WaveTab.WaveTabContent.Timer.IsEnabled = false;
                 //StateTab.StateTabContent.Timer.IsEnabled = false;
                 //GearTab.ParamDisplay.Timer.IsEnabled = false;
-                GearTab.GearTabContent.AutoRotationTimer.IsEnabled = false;
+                //GearTab.GearTabContent.AutoRotationTimer.IsEnabled = false;
                 SetTimers(false);
                 //WaveTab.WaveTabContent.IsDisplaying = false;
                 start.Content = "Start";
@@ -143,6 +143,7 @@ namespace ChallengeCupV1.View
             WaveTab.WaveTabContent.Timer.IsEnabled
                 = StateTab.StateTabContent.Timer.IsEnabled
                 = GearTab.ParamDisplay.Timer.IsEnabled
+                = GearTab.GearTabContent.AutoRotationTimer.IsEnabled
                 = isEnabled;
         }
 

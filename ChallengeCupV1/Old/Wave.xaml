@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ChallengeCupV1.View.Wave"
+﻿<!--<UserControl x:Class="ChallengeCupV1.View.Wave"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,10 +9,10 @@
              mc:Ignorable="d" 
              Foreground="Black"
              d:DesignHeight="300" d:DesignWidth="300">
-    <!--<UserControl.Resources>
+    --><!--<UserControl.Resources>
         <data:Data x:Key="dataSource"/>
     </UserControl.Resources>-->
-    <!--<d3:ChartPlotter x:Name="plotter" DataContext="{StaticResource dataSource}">-->
+    <!--<d3:ChartPlotter x:Name="plotter" DataContext="{StaticResource dataSource}">--><!--
     <d3:ChartPlotter x:Name="plotter">
         <d3:ChartPlotter.VerticalAxis>
             <d3:VerticalIntegerAxis />
@@ -20,8 +20,8 @@
         <d3:ChartPlotter.HorizontalAxis>
             <d3:HorizontalIntegerAxis />
         </d3:ChartPlotter.HorizontalAxis>
-        <!--<d3:Header Content="Title"/>-->
+        --><!--<d3:Header Content="Title"/>--><!--
         <d3:VerticalAxisTitle Content="Y"/>
         <d3:LineGraph x:Name="line" DataSource="{Binding Points}"/>
     </d3:ChartPlotter>
-</UserControl>
+</UserControl>-->

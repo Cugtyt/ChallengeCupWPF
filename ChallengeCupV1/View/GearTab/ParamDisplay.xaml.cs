@@ -70,8 +70,8 @@ namespace ChallengeCupV1.View.GearTab
                 return;
             }
             waveLengthSource.Clear();
-            for (int i = 1; i < GratingDataContainer.Data.Length 
-                && i < (UserControlManager.Get("InitPage") as InitPage).GetGratingNumber() + 1; i++)
+            for (int i = 0; i < GratingDataContainer.Data.Length 
+                && i < (UserControlManager.Get("InitPage") as InitPage).GetGratingNumber(); i++)
             {
                 double temp = 0;
                 for (int j = 0; j < GratingDataContainer.Data[i].Count; j += samplingStep)

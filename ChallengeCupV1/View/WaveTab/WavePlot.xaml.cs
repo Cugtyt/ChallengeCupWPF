@@ -42,11 +42,11 @@ namespace ChallengeCupV1.View.WaveTab
         /// </summary>
         /// <param name="yList"></param>
         /// <returns></returns>
-        public async Task AddTimePoints(List<double> yList)
+        public void AddTimePoints(List<double> yList)
         {
             UpdateYRange();
             xAxis.Visibility = Visibility.Hidden;
-            await dataSource.Add(yList);
+            dataSource.Add(yList);
         }
         
         /// <summary>

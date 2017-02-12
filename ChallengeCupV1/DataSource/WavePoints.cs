@@ -57,7 +57,7 @@ namespace ChallengeCupV1.DataSource
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task Add(List<double> input)
+        public void Add(List<double> input)
         {
             if (input == null)
             {
@@ -70,13 +70,13 @@ namespace ChallengeCupV1.DataSource
             {
                 ySet[i] = input[i];
             }
-            await Update();
+            Update();
         }
 
         /// <summary>
         /// Update Points when it's time to display
         /// </summary>
-        public Task Update()
+        public void Update()
         {
             List<Point> pl = new List<Point>();
             for (int i = 0; i < ySet.Length; i++)
@@ -85,7 +85,6 @@ namespace ChallengeCupV1.DataSource
             }
             Points.Collection.Clear();
             Points.AppendMany(pl);
-            return null;
         }
 
         /// <summary>
@@ -105,7 +104,7 @@ namespace ChallengeCupV1.DataSource
             for (int i = 0; i < input.Length / 2; i++)
             {
                 pl.Add(new Point(i * StateConstantParam.DemodulationFrequency / input.Length, 
-                    Math.Abs(input[i].Real)));
+                    Math.Abs(input[i].Real) * 2));
             }
             Points.Collection.Clear();
             Points.AppendMany(pl);

@@ -60,10 +60,14 @@ namespace ChallengeCupV1.DataSource.GearState
 #if DEBUG
             Console.WriteLine("StateDataContainer: Update()");
 #endif
-            if (GratingDataContainer.Data.Length - 1 != StateData.Count / 4)
+            if (!GratingDataContainer.IsDataReady)
+            {
+                return;
+            }
+            if (GratingDataContainer.Data.Length != StateData.Count / 4)
             {
                 StateData.Clear();
-                for (int i = 0; i < GratingDataContainer.Data.Length - 1; i++)
+                for (int i = 0; i < GratingDataContainer.Data.Length; i++)
                 {
                     StateData.Add(new StateDataTemplate(i + 1, "Stress", Calculator.Stress, "N"));
                     StateData.Add(new StateDataTemplate(i + 1, "Strain", Calculator.Strain, "N"));

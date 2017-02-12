@@ -1,4 +1,5 @@
 ﻿using ChallengeCupV1.DataSource;
+using ChallengeCupV1.DataSource.GearState;
 using ChallengeCupV1.FFT;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace ChallengeCupV1.View.WaveTab
         private void AnimatedPlot(object sender, EventArgs e)
         {
             // Check data validation first
-            var selected = (int)Enum.Parse(typeof(Grating), selectedGrating.ToString()) + 1;
+            var selected = (int)Enum.Parse(typeof(Grating), selectedGrating.ToString());
             if (!GratingDataContainer.IsDataReady || GratingDataContainer.Data.Length <= selected)
             {
                 return;
@@ -78,11 +79,12 @@ namespace ChallengeCupV1.View.WaveTab
                     Console.WriteLine("WaveTabContent:AnimatedPlot() -> add frequency domain points");
 #endif
                     //await wavePlot.AddFreqPoints(DataFFT.Forward(yListArray[selected].ToComplex()).Result);
-                    wavePlot.AddFreqPoints(DataFFT.Forward(
-                        (from y in GratingDataContainer.Data[selected]
-                         select new Complex(y, 0))
-                         .ToArray())
-                        .Result);
+                    //wavePlot.AddFreqPoints(DataFFT.ForwardAsync(
+                    //    (from y in GratingDataContainer.Data[selected]
+                    //     select new Complex(y, 0))
+                    //     .ToArray())
+                    //    .Result);
+                    wavePlot.AddFreqPoints(StateCalculator.FFTResults[selected]);
                     break;
                 default:
                     break;

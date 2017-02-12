@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +28,8 @@ namespace ChallengeCupV1.DataSource.GearState
         private static List<double> strain = new List<double>();
         private static List<double> temperature = new List<double>();
         private static List<double> frequency = new List<double>();
+
+        public static List<Complex[]> FFTResults = new List<Complex[]>();
 
         /// <summary>
         /// 应力
@@ -182,16 +185,11 @@ namespace ChallengeCupV1.DataSource.GearState
                             select delta / StateConstantParam.ALPHA);
         }
 
-        //public static Func<IEnumerable<double>> TemperatureCalculator = () =>
-        //{
-        //    // Check data validation first
-        //    if (DELTABuffer.Count == 0)
-        //    {
-        //        return null;
-        //    }
-        //    //return new List<double>() { 0 };
-        //    return from delta in DELTABuffer select delta / 10;
-        //};
+        /// <summary>
+        /// Calculate temperature
+        /// 
+        /// Temperature change 1 ℃ when delta of wavelength change 10pm.
+        /// </summary>
         private static void calculateTemperature()
         {
             // Check data validation first
@@ -205,15 +203,9 @@ namespace ChallengeCupV1.DataSource.GearState
                             select delta / 10 + SettingContainer.InitTemperature);
         }
 
-        //public static Func<IEnumerable<double>> FrequencyCalculator = () =>
-        //{
-        //    // Check data validation first
-        //    if (DELTABuffer.Count == 0)
-        //    {
-        //        return null;
-        //    }
-        //    return new List<double>() { 0 };
-        //};
+        /// <summary>
+        /// Calculate frequency of gear 
+        /// </summary>
         private static void calculateFrequency()
         {
             // Check data validation first
@@ -221,9 +213,37 @@ namespace ChallengeCupV1.DataSource.GearState
             {
                 return;
             }
-
-            frequency.Clear();
-            frequency.AddRange(new List<double>() { 0, 0, 0, 0});
+            if (!GratingDataContainer.IsDataReady)
+            {
+                return;
+            }
+            lock (FFTResults)
+            {
+                FFTResults.Clear();
+                frequency.Clear();
+                for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+                {
+                    var temp = (from y in GratingDataContainer.Data[i]
+                                select new Complex(y, 0)).ToArray();
+                    FFT.DataFFT.Forward(temp);
+                    FFTResults.Add(temp);
+                    double max = FFTResults[i][0].Real;
+                    int maxIndex = 0;
+                    for (int j = 1; j < FFTResults[i].Length / 2; j++)
+                    {
+                        if (FFTResults[i][j].Real > max)
+                        {
+                            max = FFTResults[i][j].Real;
+                            maxIndex = j;
+                        }
+                    }
+                    frequency.Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
+                    // for test
+                    //frequency.Add(10 * StateConstantParam.DemodulationFrequency / temp.Length);
+                }
+            }
+            //frequency.Clear();
+            //frequency.AddRange(new List<double>() { 0, 0, 0, 0});
             //stress.AddRange(from delta in DELTABuffer
             //                select delta / 10);
         }
@@ -239,8 +259,7 @@ namespace ChallengeCupV1.DataSource.GearState
             }
             DELTABuffer.Clear();
             double temp;
-            // Basic value is array index 0, so starts from 1
-            for (int i = 1; i < GratingDataContainer.Data.Length; i++)
+            for (int i = 0; i < GratingDataContainer.Data.Length; i++)
             {
                 temp = 0;
                 // Sampling according to SamplingStep
@@ -254,6 +273,10 @@ namespace ChallengeCupV1.DataSource.GearState
             }
         }
 
+        /// <summary>
+        /// Update all state data above when a timer all this method,
+        /// this is the only way to update state data.
+        /// </summary>
         public static void Calculate()
         {
             calculateDELTA();
@@ -263,6 +286,12 @@ namespace ChallengeCupV1.DataSource.GearState
             calculateFrequency();
         }
 
+        /// <summary>
+        /// Get value by given gratingID and calculator
+        /// </summary>
+        /// <param name="gratingID"></param>
+        /// <param name="cal"></param>
+        /// <returns></returns>
         public static double Get(int gratingID, Calculator cal)
         {
             int index = gratingID - 1;

@@ -132,7 +132,9 @@ namespace ChallengeCupV1.DataSource.GearState
                 return;
             }
             Value = StateCalculator.Get(GratingID, calculater);
+#if DEBUG
             Console.WriteLine(Name + " " + Value);
+#endif
         }
     }
 }

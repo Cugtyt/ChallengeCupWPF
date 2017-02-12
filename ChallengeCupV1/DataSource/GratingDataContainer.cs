@@ -108,7 +108,7 @@ namespace ChallengeCupV1.DataSource
 
                 try
                 {
-                    Data = new List<double>[int.Parse(data[1]) + 1];
+                    Data = new List<double>[int.Parse(data[1])];
                     for (int i = 0; i < Data.Length; i++)
                     {
                         Data[i] = new List<double>();
@@ -126,20 +126,20 @@ namespace ChallengeCupV1.DataSource
                 {
                     switch (i % 10)
                     {
-                        case 5:
+                        //case 5:
+                        //    Data[0].Add(double.Parse(data[i]));
+                        //    break;
+                        case 6:
                             Data[0].Add(double.Parse(data[i]));
                             break;
-                        case 6:
+                        case 7:
                             Data[1].Add(double.Parse(data[i]));
                             break;
-                        case 7:
+                        case 8:
                             Data[2].Add(double.Parse(data[i]));
                             break;
-                        case 8:
-                            Data[3].Add(double.Parse(data[i]));
-                            break;
                         case 9:
-                            Data[4].Add(double.Parse(data[i]));
+                            Data[3].Add(double.Parse(data[i]));
                             break;
                         default:
                             break;

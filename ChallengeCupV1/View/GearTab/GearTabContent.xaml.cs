@@ -54,7 +54,10 @@ namespace ChallengeCupV1.View.GearTab
                 {
                     return;
                 }
-                GearAction.AutoRotation(gear);
+                if (gear != null)
+                {
+                    GearAction.AutoRotation(gear);
+                }
             };
         }
 
