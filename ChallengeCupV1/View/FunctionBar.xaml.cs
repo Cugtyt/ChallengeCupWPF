@@ -64,8 +64,8 @@ namespace ChallengeCupV1.View
                     GratingDataContainer.GetDataFrom(
                            File.FileUtils.ReadDataFromFile(
                                 SettingContainer.WaveDataDir + files.Last().Name));
-                    File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
-                    files.Last().Delete();
+                    File.FileUtils.RemoveFileAll(files, 0, files.Length);
+                    //files.Last().Delete();
                 }
                 catch (Exception ex)
                 {
@@ -154,6 +154,8 @@ namespace ChallengeCupV1.View
         /// <param name="e"></param>
         private void exit_Click(object sender, RoutedEventArgs e)
         {
+            timer.IsEnabled = false;
+            SetTimers(false);
             Application.Current.Shutdown();
         }
     }
