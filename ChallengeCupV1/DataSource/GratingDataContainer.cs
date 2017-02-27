@@ -105,10 +105,11 @@ namespace ChallengeCupV1.DataSource
             IsDataReady = false;
             lock (typeof(GratingDataContainer))
             {
-
+                int len;
                 try
                 {
-                    Data = new List<double>[int.Parse(data[1])];
+                    len = int.Parse(data[1]);
+                    Data = new List<double>[len];
                     for (int i = 0; i < Data.Length; i++)
                     {
                         Data[i] = new List<double>();
@@ -124,25 +125,29 @@ namespace ChallengeCupV1.DataSource
 
                 for (int i = 0; i < data.Length && i < MaxLength * 10; i++)
                 {
-                    switch (i % 10)
+                    //switch (i % 10)
+                    //{
+                    //    //case 5:
+                    //    //    Data[0].Add(double.Parse(data[i]));
+                    //    //    break;
+                    //    case 6:
+                    //        Data[0].Add(double.Parse(data[i]));
+                    //        break;
+                    //    case 7:
+                    //        Data[1].Add(double.Parse(data[i]));
+                    //        break;
+                    //    case 8:
+                    //        Data[2].Add(double.Parse(data[i]));
+                    //        break;
+                    //    case 9:
+                    //        Data[3].Add(double.Parse(data[i]));
+                    //        break;
+                    //    default:
+                    //        break;
+                    //}
+                    if (i % (6 + len) > 5)
                     {
-                        //case 5:
-                        //    Data[0].Add(double.Parse(data[i]));
-                        //    break;
-                        case 6:
-                            Data[0].Add(double.Parse(data[i]));
-                            break;
-                        case 7:
-                            Data[1].Add(double.Parse(data[i]));
-                            break;
-                        case 8:
-                            Data[2].Add(double.Parse(data[i]));
-                            break;
-                        case 9:
-                            Data[3].Add(double.Parse(data[i]));
-                            break;
-                        default:
-                            break;
+                        Data[i % (6 + len) - 6].Add(double.Parse(data[i]));
                     }
                 }
                 IsDataReady = true;

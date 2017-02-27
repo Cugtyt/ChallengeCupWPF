@@ -63,7 +63,7 @@ namespace ChallengeCupV1.View
                 {
                     GratingDataContainer.GetDataFrom(
                            File.FileUtils.ReadDataFromFile(
-                                SettingContainer.WaveDataDir + files.Last().Name));
+                                SettingContainer.WaveDataDir + files.First().Name));
                     File.FileUtils.RemoveFileAll(files, 0, files.Length);
                     //files.Last().Delete();
                 }
