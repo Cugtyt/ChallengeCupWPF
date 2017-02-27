@@ -1,0 +1,61 @@
+﻿<Window x:Class="ChallengeCupV2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChallengeCupV2"
+        xmlns:view="clr-namespace:ChallengeCupV2.View"
+        xmlns:waveTab="clr-namespace:ChallengeCupV2.View.WaveTab"
+        xmlns:gearTab="clr-namespace:ChallengeCupV2.View.GearTab"
+        xmlns:stateTab="clr-namespace:ChallengeCupV2.View.StateTab"
+        xmlns:settingTab="clr-namespace:ChallengeCupV2.View.SettingTab"
+        xmlns:data="clr-namespace:ChallengeCupV2.DataSource"
+        xmlns:d3="http://research.microsoft.com/DynamicDataDisplay/1.0"
+        mc:Ignorable="d"
+        Background="SlateGray" Loaded="Window_Loaded"
+        WindowState="Normal" ResizeMode="NoResize" Topmost="True"
+        Left="0" Top="0" 
+        AllowsTransparency="True" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="42"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <view:TitleBar Grid.Row="0" Margin="5,7,2,3"/>
+        <TabControl Grid.Row="1" TabStripPlacement="Left">
+            <TabControl.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="/ChallengeCupV2;component/Resources/Style/TabStyle.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </TabControl.Resources>
+            <TabItem>
+                <TabItem.Header>
+                    <waveTab:WaveTabHeader/>
+                </TabItem.Header>
+                <waveTab:WaveTabContent/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <gearTab:GearTabHeader/>
+                </TabItem.Header>
+                <gearTab:GearTabContent/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <stateTab:StateTabHeader/>
+                </TabItem.Header>
+                <stateTab:StateTabContent/>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <settingTab:SettingTabHeader/>
+                </TabItem.Header>
+                <settingTab:SettingTabContent/>
+            </TabItem>
+        </TabControl>
+        <view:FunctionBar Grid.Row="2" Margin="180,0,0,0"/>
+    </Grid>
+</Window>

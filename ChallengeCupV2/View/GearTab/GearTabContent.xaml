@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="ChallengeCupV2.View.GearTab.GearTabContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChallengeCupV2.View.GearTab"
+             mc:Ignorable="d" 
+             Foreground="Black"
+             FontSize="16"
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="40,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" FontSize="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                   Text="齿轮检测"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Text="Gear State Monitoring"/>
+            </Grid>
+            <Button Grid.Column="1" Name="setting" Visibility="Hidden"
+                    Margin="0,10,0,0" Click="setting_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Name="genRepoIcon" Source="/ChallengeCupV2;component/Resources/Icon/SettingDefault.png" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="1" FontSize="15" Text="Select Gear" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter Property="Source" Value="/ChallengeCupV2;component/Resources/Icon/SettingEnabled.png" TargetName="genRepoIcon"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" MouseLeave="gearContainer_MouseLeave"
+              Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Name="gearContainer" 
+                  MouseUp="gearContainer_MouseUp"
+                  MouseDown="gearContainer_MouseDown"
+                  MouseMove="gearContainer_MouseMove"
+                  MouseWheel="gearContainer_MouseWheel" />
+            <StackPanel Grid.Column="1" Name="sideBar" Visibility="Hidden" Orientation="Vertical" VerticalAlignment="Center">
+                <local:ParamDisplay/>
+                <Label Content="Rotation Style: " FontSize="18" Margin="0,40,0,0"/>
+                <StackPanel Orientation="Horizontal" Margin="40,5,0,30">
+                    <RadioButton Name="horizontal" GroupName="rotateStyle" IsChecked="True"
+                                 Content="Horizontal" Margin="0,0,20,0" Click="horizontal_Click"/>
+                    <RadioButton Name="vertical" GroupName="rotateStyle" 
+                                 Content="Vertical" Margin="0,0,20,0" Click="vertical_Click"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Notes:" FontSize="18"/>
+                    <!--<TextBlock Text="说明：&#x0a;* 鼠标左键按下移动旋转齿轮&#x0a;* 双击恢复初始状态&#x0a;* 滚轮可以进行缩放" TextWrapping="WrapWithOverflow"/>-->
+                    <TextBlock Text="    * Left button down to rotate gear model.&#x0a;    * Double click to reset model view.&#x0a;    * Zoom in and out by moving mouse wheel." TextWrapping="WrapWithOverflow" Margin="0,5,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <local:InitPage Grid.Row="1" x:Name="initPage" Width="450" Height="300"/>
+    </Grid>
+</UserControl>
