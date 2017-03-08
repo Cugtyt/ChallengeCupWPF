@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="ChallengeCupV2.View.GearTab.GearTabHeader"
+﻿<UserControl x:Class="ChallengeCupV2.View.ModelTab.ModelTabHeader"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ChallengeCupV2.View.GearTab"
+             xmlns:local="clr-namespace:ChallengeCupV2.View.ModelTab"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -11,7 +11,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Source="/ChallengeCupV2;component/Resources/Icon/GearTabIcon.png" Margin="0,0,10,0"/>
-        <TextBlock Grid.Column="1" Text="Gear"/>
+        <Image Grid.Column="0" Source="/ChallengeCupV2;component/Resources/Icon/ModelTabIcon.png" Margin="0,0,10,0"/>
+        <TextBlock Grid.Column="1" Text="Model"/>
     </Grid>
 </UserControl>

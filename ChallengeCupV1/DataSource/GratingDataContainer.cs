@@ -108,7 +108,7 @@ namespace ChallengeCupV1.DataSource
                 int len;
                 try
                 {
-                    len = int.Parse(data[1]);
+                    len = int.Parse(data[1]) + int.Parse(data[2]) + int.Parse(data[3]) + int.Parse(data[4]);
                     Data = new List<double>[len];
                     for (int i = 0; i < Data.Length; i++)
                     {

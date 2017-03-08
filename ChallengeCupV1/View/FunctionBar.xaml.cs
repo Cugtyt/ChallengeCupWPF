@@ -33,13 +33,16 @@ namespace ChallengeCupV1.View
 
         private FileInfo[] files;
         private DirectoryInfo dir = new DirectoryInfo(SettingContainer.WaveDataDir);
-        //private int index = 0;
+        // For cyclic
+        private int index = 0;
 
         public FunctionBar()
         {
             InitializeComponent();
             UserControlManager.Register(this, GetType().Name);
             timer.Tick += new EventHandler(ReadDataFromFile);
+            // For cyclic
+            files = dir.GetFiles();
         }
 
         private void ReadDataFromFile(object sender, EventArgs e)
@@ -56,6 +59,7 @@ namespace ChallengeCupV1.View
             //        File.FileUtils.ReadDataFromFile(
             //            SettingContainer.WaveDataDir + files[index++].Name).Result);
             //}
+            //*****************************
             files = dir.GetFiles();
             if (files.Length > 0)
             {
@@ -64,7 +68,7 @@ namespace ChallengeCupV1.View
                     GratingDataContainer.GetDataFrom(
                            File.FileUtils.ReadDataFromFile(
                                 SettingContainer.WaveDataDir + files.First().Name));
-                    File.FileUtils.RemoveFileAll(files, 0, files.Length);
+                    File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
                     //files.Last().Delete();
                 }
                 catch (Exception ex)
@@ -72,6 +76,11 @@ namespace ChallengeCupV1.View
                     Console.WriteLine(ex);
                 }
             }
+            //**********************************
+            //GratingDataContainer.GetDataFrom(
+            //           File.FileUtils.ReadDataFromFile(
+            //                SettingContainer.WaveDataDir + files.ElementAt(index++).Name));
+            //index %= files.Length;
         }
 
         public void UpdateDir()

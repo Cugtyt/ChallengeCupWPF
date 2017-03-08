@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ChallengeCupV2"
         xmlns:view="clr-namespace:ChallengeCupV2.View"
         xmlns:waveTab="clr-namespace:ChallengeCupV2.View.WaveTab"
-        xmlns:gearTab="clr-namespace:ChallengeCupV2.View.GearTab"
+        xmlns:modelTab="clr-namespace:ChallengeCupV2.View.ModelTab"
         xmlns:stateTab="clr-namespace:ChallengeCupV2.View.StateTab"
         xmlns:settingTab="clr-namespace:ChallengeCupV2.View.SettingTab"
         xmlns:data="clr-namespace:ChallengeCupV2.DataSource"
@@ -39,9 +39,9 @@
             </TabItem>
             <TabItem>
                 <TabItem.Header>
-                    <gearTab:GearTabHeader/>
+                    <modelTab:ModelTabHeader/>
                 </TabItem.Header>
-                <gearTab:GearTabContent/>
+                <modelTab:ModelTabContent/>
             </TabItem>
             <TabItem>
                 <TabItem.Header>

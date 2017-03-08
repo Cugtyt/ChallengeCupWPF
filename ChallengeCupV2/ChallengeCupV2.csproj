@@ -98,20 +98,25 @@
     <Compile Include="GearLib\GearFactory.cs" />
     <Compile Include="GearLib\IGear.cs" />
     <Compile Include="GearLib\IGrating.cs" />
+    <Compile Include="Models\Bearing.xaml.cs">
+      <DependentUpon>Bearing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gear.xaml.cs">
+      <DependentUpon>Gear.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\ModelAction.cs" />
     <Compile Include="Reflection\ReflectionUtils.cs" />
     <Compile Include="View\FunctionBar.xaml.cs">
       <DependentUpon>FunctionBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GearTab\GearTabContent.xaml.cs">
-      <DependentUpon>GearTabContent.xaml</DependentUpon>
+    <Compile Include="View\ModelTab\ModelTabContent.xaml.cs">
+      <DependentUpon>ModelTabContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GearTab\GearTabHeader.xaml.cs">
-      <DependentUpon>GearTabHeader.xaml</DependentUpon>
+    <Compile Include="View\ModelTab\ModelTabHeader.xaml.cs">
+      <DependentUpon>ModelTabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GearTab\InitPage.xaml.cs">
-      <DependentUpon>InitPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\GearTab\ParamDisplay.xaml.cs">
+    <Compile Include="View\ModelTab\ParamDisplay.xaml.cs">
       <DependentUpon>ParamDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsTab\SettingsTabContent.xaml.cs">
@@ -200,6 +205,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Models\Bearing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\Gear.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Style\TabStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -224,19 +237,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\GearTab\GearTabContent.xaml">
+    <Page Include="View\ModelTab\ModelTabContent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\GearTab\GearTabHeader.xaml">
+    <Page Include="View\ModelTab\ModelTabHeader.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\GearTab\InitPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\GearTab\ParamDisplay.xaml">
+    <Page Include="View\ModelTab\ParamDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -325,7 +334,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icon\GearTabIcon.png">
+    <Resource Include="Resources\Icon\ModelTabIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

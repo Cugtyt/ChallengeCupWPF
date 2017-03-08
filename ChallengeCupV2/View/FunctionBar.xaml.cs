@@ -118,8 +118,8 @@ namespace ChallengeCupV2.View
                 }
                 //WaveTab.WaveTabContent.Timer.IsEnabled = true;
                 //StateTab.StateTabContent.Timer.IsEnabled = true;
-                //GearTab.ParamDisplay.Timer.IsEnabled = true;
-                //GearTab.GearTabContent.AutoRotationTimer.IsEnabled = true;
+                //ModelTab.ParamDisplay.Timer.IsEnabled = true;
+                //ModelTab.ModelTabContent.AutoRotationTimer.IsEnabled = true;
                 SetTimers(true);
                 //WaveTab.WaveTabContent.IsDisplaying = true;
                 start.Content = "Stop";
@@ -129,8 +129,8 @@ namespace ChallengeCupV2.View
             {
                 //WaveTab.WaveTabContent.Timer.IsEnabled = false;
                 //StateTab.StateTabContent.Timer.IsEnabled = false;
-                //GearTab.ParamDisplay.Timer.IsEnabled = false;
-                //GearTab.GearTabContent.AutoRotationTimer.IsEnabled = false;
+                //ModelTab.ParamDisplay.Timer.IsEnabled = false;
+                //ModelTab.ModelTabContent.AutoRotationTimer.IsEnabled = false;
                 SetTimers(false);
                 //WaveTab.WaveTabContent.IsDisplaying = false;
                 start.Content = "Start";
@@ -142,8 +142,8 @@ namespace ChallengeCupV2.View
         {
             WaveTab.WaveTabContent.Timer.IsEnabled
                 = StateTab.StateTabContent.Timer.IsEnabled
-                = GearTab.ParamDisplay.Timer.IsEnabled
-                = GearTab.GearTabContent.AutoRotationTimer.IsEnabled
+                = ModelTab.ParamDisplay.Timer.IsEnabled
+                = ModelTab.ModelTabContent.AutoRotationTimer.IsEnabled
                 = isEnabled;
         }
 

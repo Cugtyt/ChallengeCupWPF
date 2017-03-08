@@ -16,7 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace ChallengeCupV2.View.GearTab
+namespace ChallengeCupV2.View.ModelTab
 {
     /// <summary>
     /// ParamDisplay.xaml 的交互逻辑
@@ -70,16 +70,16 @@ namespace ChallengeCupV2.View.GearTab
                 return;
             }
             waveLengthSource.Clear();
-            for (int i = 0; i < GratingDataContainer.Data.Length 
-                && i < (UserControlManager.Get("InitPage") as InitPage).GetGratingNumber(); i++)
-            {
-                double temp = 0;
-                for (int j = 0; j < GratingDataContainer.Data[i].Count; j += samplingStep)
-                {
-                    temp += GratingDataContainer.Data[i][j];
-                }
-                waveLengthSource.Add(temp * samplingStep / GratingDataContainer.Data[i].Count);
-            }
+            //for (int i = 0; i < GratingDataContainer.Data.Length 
+            //    && i < (UserControlManager.Get("InitPage") as InitPage).GetGratingNumber(); i++)
+            //{
+            //    double temp = 0;
+            //    for (int j = 0; j < GratingDataContainer.Data[i].Count; j += samplingStep)
+            //    {
+            //        temp += GratingDataContainer.Data[i][j];
+            //    }
+            //    waveLengthSource.Add(temp * samplingStep / GratingDataContainer.Data[i].Count);
+            //}
             //waveLengthSource.Add(0.0);
         }
 

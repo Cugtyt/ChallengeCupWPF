@@ -111,7 +111,7 @@ namespace ChallengeCupV1.DataSource.GearState
             }
             stress.Clear();
             stress.AddRange(from delta in DELTABuffer
-                            select -1 * StateConstantParam.E * delta
+                            select StateConstantParam.E * delta
                             / (StateConstantParam.u * (Math.Pow(StateConstantParam.DELTA, StateConstantParam.GEAR_WIDTH))
                             * StateConstantParam.ALPHA));
         }
@@ -182,7 +182,7 @@ namespace ChallengeCupV1.DataSource.GearState
             }
             strain.Clear();
             strain.AddRange(from delta in DELTABuffer
-                            select delta / StateConstantParam.ALPHA);
+                            select delta / StateConstantParam.ALPHA * 100);
         }
 
         /// <summary>

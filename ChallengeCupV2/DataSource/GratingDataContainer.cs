@@ -105,10 +105,9 @@ namespace ChallengeCupV2.DataSource
             IsDataReady = false;
             lock (typeof(GratingDataContainer))
             {
-                int len;
+                int len = int.Parse(data[1]) + int.Parse(data[2]) + int.Parse(data[3]) + int.Parse(data[4]);
                 try
                 {
-                    len = int.Parse(data[1]);
                     Data = new List<double>[len];
                     for (int i = 0; i < Data.Length; i++)
                     {

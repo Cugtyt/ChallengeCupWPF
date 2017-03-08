@@ -20,7 +20,7 @@ namespace ChallengeCupV1.DataSource.GearState
         public ObservableCollection<StateDataTemplate> StateData = new ObservableCollection<StateDataTemplate>()
         {
             new StateDataTemplate(1, "Stress", Calculator.Stress, "N"),
-            new StateDataTemplate(1, "Strain", Calculator.Strain, "N"),
+            new StateDataTemplate(1, "Strain", Calculator.Strain, "%"),
             new StateDataTemplate(1, "Temperature", Calculator.Temperature, "℃"),
             new StateDataTemplate(1, "Frequency", Calculator.Frequency, "Hz")
         };
@@ -70,7 +70,7 @@ namespace ChallengeCupV1.DataSource.GearState
                 for (int i = 0; i < GratingDataContainer.Data.Length; i++)
                 {
                     StateData.Add(new StateDataTemplate(i + 1, "Stress", Calculator.Stress, "N"));
-                    StateData.Add(new StateDataTemplate(i + 1, "Strain", Calculator.Strain, "N"));
+                    StateData.Add(new StateDataTemplate(i + 1, "Strain", Calculator.Strain, "%"));
                     StateData.Add(new StateDataTemplate(i + 1, "Temperature", Calculator.Temperature, "℃"));
                     StateData.Add(new StateDataTemplate(i + 1, "Frequency", Calculator.Frequency, "Hz"));
                 }

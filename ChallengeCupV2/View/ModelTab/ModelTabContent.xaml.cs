@@ -1,6 +1,7 @@
 ﻿using ChallengeCupV2.DataSource;
 using ChallengeCupV2.GearLib;
-using ChallengeCupV2.View.GearTab;
+using ChallengeCupV2.Models;
+using ChallengeCupV2.View.ModelTab;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,14 +22,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace ChallengeCupV2.View.GearTab
+namespace ChallengeCupV2.View.ModelTab
 {
     /// <summary>
-    /// GearTabContent.xaml 的交互逻辑
+    /// ModelTabContent.xaml 的交互逻辑
     /// </summary>
-    public partial class GearTabContent : UserControl
+    public partial class ModelTabContent : UserControl
     { 
-        private IGear gear;
+        private IModel model;
         private int mouseClickCount;
         private DispatcherTimer doubleClickTimer = new DispatcherTimer()
         {
@@ -39,7 +40,7 @@ namespace ChallengeCupV2.View.GearTab
             Interval = TimeSpan.FromMilliseconds(10)
         };
 
-        public GearTabContent()
+        public ModelTabContent()
         {
             InitializeComponent();
             UserControlManager.Register(this, GetType().Name);
@@ -55,42 +56,41 @@ namespace ChallengeCupV2.View.GearTab
                 {
                     return;
                 }
-                if (gear != null)
-                {
-                    GearAction.AutoRotation(gear);
-                }
+                //if (gear != null)
+                //{
+                //    GearAction.AutoRotation(gear);
+                //}
             };
         }
 
-        private void setting_Click(object sender, RoutedEventArgs e)
-        {
-            initPage.Visibility = Visibility.Visible;
-            setting.Visibility = Visibility.Hidden;
-            sideBar.Visibility = Visibility.Hidden;
-        }
-
         /// <summary>
-        /// Choose gear to show in GearTabControl
+        /// Choose gear to show in ModelTabControl
         /// </summary>
-        public void UpdateGear()
+        //public void UpdateGear()
+        //{
+        //    gear = GearFactory.GetGear(initPage.GetGearIndex(), initPage.GetGratingNumber());
+        //    // Set rotate style, cause new gear's rotate style may not be set
+        //    gear.SetRotateStyle(horizontal.IsChecked.Value ? 
+        //        GearAction.RotateStyle.Horizontal : GearAction.RotateStyle.vertical);
+        //    gearContainer.Children.Clear();
+        //    gearContainer.Children.Add(gear as UserControl);
+        //    AutoRotationTimer.IsEnabled = true;
+        //}
+
+        private void updateModel()
         {
-            gear = GearFactory.GetGear(initPage.GetGearIndex(), initPage.GetGratingNumber());
-            // Set rotate style, cause new gear's rotate style may not be set
-            gear.SetRotateStyle(horizontal.IsChecked.Value ? 
-                GearAction.RotateStyle.Horizontal : GearAction.RotateStyle.vertical);
-            gearContainer.Children.Clear();
-            gearContainer.Children.Add(gear as UserControl);
-            AutoRotationTimer.IsEnabled = true;
+            modelContainer?.Children.Clear();
+            modelContainer?.Children.Add(model as UserControl);
         }
 
         /// <summary>
         /// Show hidden things
         /// </summary>
-        public void ShowHidden()
-        {
-            setting.Visibility = Visibility.Visible;
-            sideBar.Visibility = Visibility.Visible;
-        }
+        //public void ShowHidden()
+        //{
+        //    setting.Visibility = Visibility.Visible;
+        //    sideBar.Visibility = Visibility.Visible;
+        //}
 
         /// <summary>
         /// Gear model zoom in and zoom out while mouse wheeling
@@ -99,8 +99,8 @@ namespace ChallengeCupV2.View.GearTab
         /// <param name="e"></param>
         private void gearContainer_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            gear.Zoom(e.Delta);
-            AutoRotationTimer.IsEnabled = false;
+            ////gear.Zoom(e.Delta);
+            //AutoRotationTimer.IsEnabled = false;
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace ChallengeCupV2.View.GearTab
         /// <param name="e"></param>
         private void gearContainer_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            gear.MouseUp();
+            //gear.MouseUp();
         }
 
         /// <summary>
@@ -129,12 +129,12 @@ namespace ChallengeCupV2.View.GearTab
             {
                 doubleClickTimer.IsEnabled = false;
                 mouseClickCount = 0;
-                gear.ResetView();
+                //gear.ResetView();
                 AutoRotationTimer.IsEnabled = true;
             }
             else
             {
-                gear.MouseDown(e);
+                //gear.MouseDown(e);
                 AutoRotationTimer.IsEnabled = false;
             }
         }
@@ -146,7 +146,7 @@ namespace ChallengeCupV2.View.GearTab
         /// <param name="e"></param>
         private void gearContainer_MouseMove(object sender, MouseEventArgs e)
         {
-            gear.Rotate();
+            //gear.Rotate();
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace ChallengeCupV2.View.GearTab
         /// <param name="e"></param>
         private void gearContainer_MouseLeave(object sender, MouseEventArgs e)
         {
-            gear.MouseUp();
+            //gear.MouseUp();
             AutoRotationTimer.IsEnabled = true;
         }
 
@@ -165,15 +165,26 @@ namespace ChallengeCupV2.View.GearTab
 
         private void vertical_Click(object sender, RoutedEventArgs e)
         {
-            gear.SetRotateStyle(GearAction.RotateStyle.vertical);
+            //gear.SetRotateStyle(GearAction.RotateStyle.vertical);
         }
 
         private void horizontal_Click(object sender, RoutedEventArgs e)
         {
-            gear.SetRotateStyle(GearAction.RotateStyle.Horizontal);
+            //gear.SetRotateStyle(GearAction.RotateStyle.Horizontal);
         }
         #endregion
 
+        private void gearModel_Selected(object sender, RoutedEventArgs e)
+        {
+            model = new Gear();
+            updateModel();
+        }
+
+        private void bearingModel_Selected(object sender, RoutedEventArgs e)
+        {
+            model = new Bearing();
+            updateModel();
+        }
     }
 
 }
