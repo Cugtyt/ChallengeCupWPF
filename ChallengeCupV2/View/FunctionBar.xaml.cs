@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,58 +27,63 @@ namespace ChallengeCupV2.View
         /// <summary>
         /// Timer to set gratingdata in GratingDataContainer
         /// </summary>
-        private DispatcherTimer timer = new DispatcherTimer()
-        {
-            Interval = TimeSpan.FromMilliseconds(50)
-        };
+        //private DispatcherTimer timer = new DispatcherTimer()
+        //{
+        //    Interval = TimeSpan.FromMilliseconds(50)
+        //};
 
-        private FileInfo[] files;
-        private DirectoryInfo dir = new DirectoryInfo(SettingContainer.WaveDataDir);
+        //private FileInfo[] files;
+        //private DirectoryInfo dir = new DirectoryInfo(SettingContainer.WaveDataDir);
         //private int index = 0;
+
+        private Task udpTask;
+        private CancellationTokenSource cts = new CancellationTokenSource();
 
         public FunctionBar()
         {
             InitializeComponent();
             UserControlManager.Register(this, GetType().Name);
-            timer.Tick += new EventHandler(ReadDataFromFile);
+            // A task to run method receive UDP
+            udpTask = new Task(new UDP.UDPRead().Receive, cts.Token);
+            //timer.Tick += new EventHandler(ReadDataFromFile);
         }
 
-        private void ReadDataFromFile(object sender, EventArgs e)
-        {
-            //-----------------------
-            // Remove all files in dir
-            //File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
-            //-------------------------
-            //if (index < files.Length)
-            //{
-            //    //GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
-            //    //    SettingDataContainer.WaveDataDir + files[index++].Name);
-            //    await GratingDataContainer.GetDataFrom(
-            //        File.FileUtils.ReadDataFromFile(
-            //            SettingContainer.WaveDataDir + files[index++].Name).Result);
-            //}
-            files = dir.GetFiles();
-            if (files.Length > 0)
-            {
-                try
-                {
-                    GratingDataContainer.GetDataFrom(
-                           File.FileUtils.ReadDataFromFile(
-                                SettingContainer.WaveDataDir + files.First().Name));
-                    File.FileUtils.RemoveFileAll(files, 0, files.Length);
-                    //files.Last().Delete();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-            }
-        }
+        //private void ReadDataFromFile(object sender, EventArgs e)
+        //{
+        //    //-----------------------
+        //    // Remove all files in dir
+        //    //File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
+        //    //-------------------------
+        //    //if (index < files.Length)
+        //    //{
+        //    //    //GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
+        //    //    //    SettingDataContainer.WaveDataDir + files[index++].Name);
+        //    //    await GratingDataContainer.GetDataFrom(
+        //    //        File.FileUtils.ReadDataFromFile(
+        //    //            SettingContainer.WaveDataDir + files[index++].Name).Result);
+        //    //}
+        //    files = dir.GetFiles();
+        //    if (files.Length > 0)
+        //    {
+        //        try
+        //        {
+        //            GratingDataContainer.GetDataFrom(
+        //                   File.FileUtils.ReadDataFromFile(
+        //                        SettingContainer.WaveDataDir + files.First().Name));
+        //            File.FileUtils.RemoveFileAll(files, 0, files.Length);
+        //            //files.Last().Delete();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex);
+        //        }
+        //    }
+        //}
 
-        public void UpdateDir()
-        {
-            dir = new DirectoryInfo(SettingContainer.WaveDataDir);
-        }
+        //public void UpdateDir()
+        //{
+        //    dir = new DirectoryInfo(SettingContainer.WaveDataDir);
+        //}
 
         private void connect_Click(object sender, RoutedEventArgs e)
         {
@@ -88,7 +94,8 @@ namespace ChallengeCupV2.View
                 //WaveTab.WaveTabContent.Timer.IsEnabled = true;
                 //var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
                 //files = dir.GetFiles();
-                timer.IsEnabled = true;
+                //timer.IsEnabled = true;
+                udpTask.Start();
                 connect.Content = "Disconnect";
             }
             // Connected cancled
@@ -99,7 +106,10 @@ namespace ChallengeCupV2.View
                     connect.Content = "Stop First";
                     return;
                 }
-                timer.IsEnabled = false;
+                // Cancel UDP task
+                //udpTask.Dispose();
+                cts.Cancel();
+                //timer.IsEnabled = false;
                 //WaveTab.WaveTabContent.Timer.IsEnabled = false;
                 //StateTab.StateTabContent.Timer.IsEnabled = false;
                 connect.Content = "Connect";
@@ -154,7 +164,10 @@ namespace ChallengeCupV2.View
         /// <param name="e"></param>
         private void exit_Click(object sender, RoutedEventArgs e)
         {
-            timer.IsEnabled = false;
+            //timer.IsEnabled = false;
+            // Cancel UDP task
+            //udpTask.Dispose();
+            cts.Cancel();
             SetTimers(false);
             Application.Current.Shutdown();
         }

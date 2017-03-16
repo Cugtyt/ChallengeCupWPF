@@ -79,7 +79,7 @@ namespace ChallengeCupV2.View.SettingTab
             StateConstantParam.GEAR_WIDTH = double.Parse(gearWidth.Text);
             StateConstantParam.DemodulationFrequency = double.Parse(demodulationFreq.Text);
             (UserControlManager.Get("WavePlot") as WaveTab.WavePlot).UpdateYRange();
-            (UserControlManager.Get("FunctionBar") as FunctionBar).UpdateDir();
+            //(UserControlManager.Get("FunctionBar") as FunctionBar).UpdateDir();
         }
     }
 }

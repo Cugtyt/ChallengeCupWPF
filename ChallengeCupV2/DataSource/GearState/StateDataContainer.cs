@@ -19,34 +19,11 @@ namespace ChallengeCupV2.DataSource.GearState
         /// </summary>
         public ObservableCollection<StateDataTemplate> StateData = new ObservableCollection<StateDataTemplate>()
         {
-            new StateDataTemplate(1, "Stress", Calculator.Stress, "N"),
-            new StateDataTemplate(1, "Strain", Calculator.Strain, "N"),
-            new StateDataTemplate(1, "Temperature", Calculator.Temperature, "℃"),
-            new StateDataTemplate(1, "Frequency", Calculator.Frequency, "Hz")
+            new StateDataTemplate(1, 1, "Stress", Calculator.Stress, "Pa"),
+            new StateDataTemplate(1, 1, "Strain", Calculator.Strain, "%"),
+            new StateDataTemplate(1, 1, "Temperature", Calculator.Temperature, "℃"),
+            new StateDataTemplate(1, 1, "Frequency", Calculator.Frequency, "Hz")
         };
-
-        /// <summary>
-        /// Calculate and update the value of each state value in StateData
-        /// </summary>
-        //        public void Calculate()
-        //        {
-        //#if DEBUG
-        //            Console.WriteLine("StateDataContainer: Calculate() -> calculating");
-        //#endif
-        //            //StateData[0].Calculate(new List<double>() { });
-        //            //StateData[1].Calculate(new List<double>() { });
-        //            //StateData[2].Calculate(new List<double>() { });
-        //            //StateData[3].Calculate(new List<double>() { });
-        //            //StateData[0].Value = 1;
-        //            //StateData[1].Value = 2;
-        //            //StateData[2].Value = 3;
-        //            //StateData[3].Value = 4;
-        //            //StateCalculator.CalculateDELTA();
-        //            //foreach (var s in StateData)
-        //            //{
-        //            //    s.Calculate();
-        //            //}
-        //        }
 
         /// <summary>
         /// Update StateData
@@ -64,15 +41,25 @@ namespace ChallengeCupV2.DataSource.GearState
             {
                 return;
             }
-            if (GratingDataContainer.Data.Length != StateData.Count / 4)
+            //if (GratingDataContainer.Data.Length != StateData.Count / 4)
+            //{
+            //    StateData.Clear();
+            //    for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+            //    {
+            //        StateData.Add(new StateDataTemplate(i + 1, "Stress", Calculator.Stress, "Pa"));
+            //        StateData.Add(new StateDataTemplate(i + 1, "Strain", Calculator.Strain, "%"));
+            //        StateData.Add(new StateDataTemplate(i + 1, "Temperature", Calculator.Temperature, "℃"));
+            //        StateData.Add(new StateDataTemplate(i + 1, "Frequency", Calculator.Frequency, "Hz"));
+            //    }
+            //}
+            for (int i = 0; i < GratingDataContainer.Data.Length; i++)
             {
-                StateData.Clear();
-                for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+                for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
                 {
-                    StateData.Add(new StateDataTemplate(i + 1, "Stress", Calculator.Stress, "N"));
-                    StateData.Add(new StateDataTemplate(i + 1, "Strain", Calculator.Strain, "N"));
-                    StateData.Add(new StateDataTemplate(i + 1, "Temperature", Calculator.Temperature, "℃"));
-                    StateData.Add(new StateDataTemplate(i + 1, "Frequency", Calculator.Frequency, "Hz"));
+                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Stress", Calculator.Stress, "Pa"));
+                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Strain", Calculator.Strain, "%"));
+                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Temperature", Calculator.Temperature, "℃"));
+                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Frequency", Calculator.Frequency, "Hz"));
                 }
             }
             StateCalculator.Calculate();

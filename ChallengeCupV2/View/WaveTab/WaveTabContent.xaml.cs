@@ -61,8 +61,9 @@ namespace ChallengeCupV2.View.WaveTab
         private void AnimatedPlot(object sender, EventArgs e)
         {
             // Check data validation first
-            var selected = (int)Enum.Parse(typeof(Grating), selectedGrating.ToString());
-            if (!GratingDataContainer.IsDataReady || GratingDataContainer.Data.Length <= selected)
+            var selectedCH = (int)Enum.Parse(typeof(CH), this.selectedCH.ToString());
+            var selectedGrating = (int)Enum.Parse(typeof(Grating), this.selectedGrating.ToString());
+            if (!GratingDataContainer.IsDataReady || GratingDataContainer.Data.Length <= selectedGrating)
             {
                 return;
             }
@@ -72,7 +73,7 @@ namespace ChallengeCupV2.View.WaveTab
 #if DEBUG
                     Console.WriteLine("WaveTabContent:AnimatedPlot() -> add time domain points");
 #endif
-                    wavePlot.AddTimePoints(GratingDataContainer.Data[selected]);
+                    wavePlot.AddTimePoints(GratingDataContainer.Data[selectedCH][selectedGrating]);
                     break;
                 case Domain.Frequency:
 #if DEBUG
@@ -84,7 +85,7 @@ namespace ChallengeCupV2.View.WaveTab
                     //     select new Complex(y, 0))
                     //     .ToArray())
                     //    .Result);
-                    wavePlot.AddFreqPoints(StateCalculator.FFTResults[selected]);
+                    wavePlot.AddFreqPoints(StateCalculator.FFTResults[selectedCH][selectedGrating]);
                     break;
                 default:
                     break;

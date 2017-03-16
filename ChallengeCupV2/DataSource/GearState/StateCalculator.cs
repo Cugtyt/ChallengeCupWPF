@@ -22,14 +22,20 @@ namespace ChallengeCupV2.DataSource.GearState
         /// <summary>
         /// Buffer of delta result, gotten by CalculateDELTA
         /// </summary>
-        private static List<double> DELTABuffer = new List<double>();
+        //private static List<double> DELTABuffer = new List<double>();
+        private static List<double>[] DELTABuffer = new List<double>[4] 
+        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
+        private static List<double>[] stress = new List<double>[4] 
+        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
+        private static List<double>[] strain = new List<double>[4] 
+        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
+        private static List<double>[] temperature = new List<double>[4] 
+        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
+        private static List<double>[] frequency = new List<double>[4] 
+        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
 
-        private static List<double> stress = new List<double>();
-        private static List<double> strain = new List<double>();
-        private static List<double> temperature = new List<double>();
-        private static List<double> frequency = new List<double>();
-
-        public static List<Complex[]> FFTResults = new List<Complex[]>();
+        public static List<Complex[]>[] FFTResults = new List<Complex[]>[4] 
+        { new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>() };
 
         /// <summary>
         /// 应力
@@ -48,39 +54,6 @@ namespace ChallengeCupV2.DataSource.GearState
         /// Output:
         ///     σ_x -- 应力
         /// </summary>
-        //public static Func<IEnumerable<double>> StressCalculator = () =>
-        //{
-        //    //            if (input == null)
-        //    //            {
-        //    //#if DEBUG
-        //    //                Console.WriteLine("StateCalculator: StressCalculator() -> Illegal input, argument can not be null.");
-        //    //#endif
-        //    //                throw new ArgumentNullException("StateCalculator: StressCalculator()");
-        //    //            }
-        //    //            if (input.Length != 3)
-        //    //            {
-        //    //#if DEBUG
-        //    //                Console.WriteLine("StateCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
-        //    //                    + input.Length + ".");
-        //    //#endif
-        //    //                throw new ArgumentException("StateCalculator: StressCalculator() -> Illegal input, expect count of input is 3, but accpet "
-        //    //                    + input.Length + ".");
-        //    //            }
-        //    //return -1 * StateConstantParam.E * input[0]
-        //    /// (StateConstantParam.u
-        //    //* (Math.Pow(StateConstantParam.delta, input[1])) 
-        //    //* StateConstantParam.alpha);
-
-        //    // Check data validation first
-        //    if (DELTABuffer.Count == 0)
-        //    {
-        //        return null;
-        //    }
-        //    return from delta in DELTABuffer
-        //           select -1 * StateConstantParam.E * delta
-        //           / (StateConstantParam.u * (Math.Pow(StateConstantParam.DELTA, StateConstantParam.GEAR_WIDTH))
-        //           * StateConstantParam.ALPHA); 
-        //};
         private static void calculateStress()
         {
             //            if (input == null)
@@ -105,15 +78,23 @@ namespace ChallengeCupV2.DataSource.GearState
             //* StateConstantParam.alpha);
 
             // Check data validation first
-            if (DELTABuffer.Count == 0)
+            if (DELTABuffer[0].Count == 0)
             {
                 return;
             }
-            stress.Clear();
-            stress.AddRange(from delta in DELTABuffer
-                            select -1 * StateConstantParam.E * delta
-                            / (StateConstantParam.u * (Math.Pow(StateConstantParam.DELTA, StateConstantParam.GEAR_WIDTH))
-                            * StateConstantParam.ALPHA));
+            //stress.Clear();
+            //stress.AddRange(from delta in DELTABuffer
+            //                select -1 * StateConstantParam.E * delta
+            //                / (StateConstantParam.u * (Math.Pow(StateConstantParam.DELTA, StateConstantParam.GEAR_WIDTH))
+            //                * StateConstantParam.ALPHA));
+            for (int i = 0; i < stress.Length; i++)
+            {
+                stress[i].Clear();
+                stress[i].AddRange(from delta in DELTABuffer[i]
+                                   select -1 * StateConstantParam.E * delta
+                                   / (StateConstantParam.u * (Math.Pow(StateConstantParam.DELTA, StateConstantParam.GEAR_WIDTH))
+                                   * StateConstantParam.ALPHA));
+            }
         }
 
         /// <summary>
@@ -128,33 +109,6 @@ namespace ChallengeCupV2.DataSource.GearState
         /// Output:
         ///     ε_y -- 应变
         /// </summary>
-        //public static Func<IEnumerable<double>> StrainCalculator = () =>
-        //{
-        //    //            if (input == null)
-        //    //            {
-        //    //#if DEBUG
-        //    //                Console.WriteLine("StateCalculator: StrainCalculator() -> Illegal input, argument can not be null.");
-        //    //#endif
-        //    //                throw new ArgumentNullException("StateCalculator: StrainCalculator()");
-        //    //            }
-        //    //            if (input.Length != 2)
-        //    //            {
-        //    //#if DEBUG
-        //    //            Console.WriteLine("StateCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
-        //    //                + input.Length + ".");
-        //    //#endif
-        //    //                throw new ArgumentException("StateCalculator: StrainCalculator() -> Illegal input, expect count of input is 2, but accpet "
-        //    //                + input.Length + ".");
-        //    //            }
-        //    //return input[0] / StateConstantParam.alpha;
-
-        //    // Check data validation first
-        //    if (DELTABuffer.Count == 0)
-        //    {
-        //        return null;
-        //    }
-        //    return from delta in DELTABuffer select delta / StateConstantParam.ALPHA;
-        //};
         private static void calculateStrain()
         {
             //            if (input == null)
@@ -176,13 +130,19 @@ namespace ChallengeCupV2.DataSource.GearState
             //return input[0] / StateConstantParam.alpha;
 
             // Check data validation first
-            if (DELTABuffer.Count == 0)
+            if (DELTABuffer[0].Count == 0)
             {
                 return;
             }
-            strain.Clear();
-            strain.AddRange(from delta in DELTABuffer
-                            select delta / StateConstantParam.ALPHA);
+            //strain.Clear();
+            //strain.AddRange(from delta in DELTABuffer
+            //                select delta / StateConstantParam.ALPHA);
+            for (int i = 0; i < strain.Length; i++)
+            {
+                strain[i].Clear();
+                strain[i].AddRange(from delta in DELTABuffer[i]
+                                   select delta / StateConstantParam.ALPHA);
+            }
         }
 
         /// <summary>
@@ -193,14 +153,19 @@ namespace ChallengeCupV2.DataSource.GearState
         private static void calculateTemperature()
         {
             // Check data validation first
-            if (DELTABuffer.Count == 0)
+            if (DELTABuffer[0].Count == 0)
             {
                 return;
             }
-
-            temperature.Clear();
-            temperature.AddRange(from delta in DELTABuffer
-                            select delta / 10 + SettingContainer.InitTemperature);
+            //temperature.Clear();
+            //temperature.AddRange(from delta in DELTABuffer
+            //                select delta / 10 + SettingContainer.InitTemperature);
+            for (int i = 0; i < temperature.Length; i++)
+            {
+                temperature[i].Clear();
+                temperature[i].AddRange(from delta in DELTABuffer[i]
+                                        select delta / 10 + SettingContainer.InitTemperature);
+            }
         }
 
         /// <summary>
@@ -209,7 +174,7 @@ namespace ChallengeCupV2.DataSource.GearState
         private static void calculateFrequency()
         {
             // Check data validation first
-            if (DELTABuffer.Count == 0)
+            if (DELTABuffer[0].Count == 0)
             {
                 return;
             }
@@ -219,34 +184,56 @@ namespace ChallengeCupV2.DataSource.GearState
             }
             lock (FFTResults)
             {
-                FFTResults.Clear();
-                frequency.Clear();
-                for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+                //FFTResults.Clear();
+                //frequency.Clear();
+                //for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+                //{
+                //    var temp = (from y in GratingDataContainer.Data[i]
+                //                select new Complex(y, 0)).ToArray();
+                //    FFT.DataFFT.Forward(temp);
+                //    FFTResults.Add(temp);
+                //    double max = FFTResults[i][0].Real;
+                //    int maxIndex = 0;
+                //    for (int j = 1; j < FFTResults[i].Length / 2; j++)
+                //    {
+                //        if (FFTResults[i][j].Real > max)
+                //        {
+                //            max = FFTResults[i][j].Real;
+                //            maxIndex = j;
+                //        }
+                //    }
+                //    frequency.Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
+
+                for (int i = 0; i < frequency.Length; i++)
                 {
-                    var temp = (from y in GratingDataContainer.Data[i]
-                                select new Complex(y, 0)).ToArray();
-                    FFT.DataFFT.Forward(temp);
-                    FFTResults.Add(temp);
-                    double max = FFTResults[i][0].Real;
-                    int maxIndex = 0;
-                    for (int j = 1; j < FFTResults[i].Length / 2; j++)
+                    frequency[i].Clear();
+                    FFTResults[i].Clear();
+                    for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
                     {
-                        if (FFTResults[i][j].Real > max)
+                        var temp = (from y in GratingDataContainer.Data[i][j]
+                                    select new Complex(y, 0)).ToArray();
+                        FFT.DataFFT.Forward(temp);
+                        FFTResults[i].Add(temp);
+                        double max = FFTResults[i][j][0].Real;
+                        int maxIndex = 0;
+                        for (int k = 1; k < FFTResults[i][j].Length / 2; k++)
                         {
-                            max = FFTResults[i][j].Real;
-                            maxIndex = j;
+                            if (FFTResults[i][j][k].Real > max)
+                            {
+                                max = FFTResults[i][j][k].Real;
+                                maxIndex = k;
+                            }
                         }
+                        frequency[i].Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
                     }
-                    frequency.Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
-                    // for test
-                    //frequency.Add(10 * StateConstantParam.DemodulationFrequency / temp.Length);
                 }
             }
+        }
             //frequency.Clear();
             //frequency.AddRange(new List<double>() { 0, 0, 0, 0});
             //stress.AddRange(from delta in DELTABuffer
             //                select delta / 10);
-        }
+        //}
 
         /// <summary>
         /// Calculate delta and store result in DELTABuffer
@@ -257,19 +244,37 @@ namespace ChallengeCupV2.DataSource.GearState
             {
                 return;
             }
-            DELTABuffer.Clear();
+            // Clear delta buffer
+            for (int i = 0; i < DELTABuffer.Length; i++)
+            {
+                DELTABuffer[i].Clear();
+            }
+            //DELTABuffer.Clear();
             double temp;
+            //for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+            //{
+            //    temp = 0;
+            //    // Sampling according to SamplingStep
+            //    for (int j = 0; j < GratingDataContainer.Data[0].Count; 
+            //        j += (int)(GratingDataContainer.Data[0].Count / SamplingStep))
+            //    {
+            //        //temp += (GratingDataContainer.Data[i][j] - GratingDataContainer.Data[0][j]);
+            //        temp += GratingDataContainer.Data[i][j] - StateConstantParam.WaveLengthReference;
+            //    }
+            //    DELTABuffer.Add(temp * SamplingStep / GratingDataContainer.Data[0].Count);
+            //}
             for (int i = 0; i < GratingDataContainer.Data.Length; i++)
             {
-                temp = 0;
-                // Sampling according to SamplingStep
-                for (int j = 0; j < GratingDataContainer.Data[0].Count; 
-                    j += (int)(GratingDataContainer.Data[0].Count / SamplingStep))
+                for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
                 {
-                    //temp += (GratingDataContainer.Data[i][j] - GratingDataContainer.Data[0][j]);
-                    temp += GratingDataContainer.Data[i][j] - StateConstantParam.WaveLengthReference;
+                    temp = 0;
+                    for (int k = 0; k < GratingDataContainer.Data[i][j].Count; 
+                        k += (int)(GratingDataContainer.Data[i][j].Count / SamplingStep))
+                    {
+                        temp += GratingDataContainer.Data[i][j][k] - StateConstantParam.WaveLengthReference;
+                    }
+                    DELTABuffer[i].Add(temp * SamplingStep / GratingDataContainer.Data[i][j].Count);
                 }
-                DELTABuffer.Add(temp * SamplingStep / GratingDataContainer.Data[0].Count);
             }
         }
 
@@ -292,23 +297,24 @@ namespace ChallengeCupV2.DataSource.GearState
         /// <param name="gratingID"></param>
         /// <param name="cal"></param>
         /// <returns></returns>
-        public static double Get(int gratingID, Calculator cal)
+        public static double Get(int ch, int gratingID, Calculator cal)
         {
-            int index = gratingID - 1;
-            if (stress.Count <= index)
+            int chIndex = ch - 1;
+            int gratingIndex = gratingID - 1;
+            if (stress.Length < chIndex || stress[chIndex].Count <= gratingIndex)
             {
                 return 0;
             }
             switch (cal)
             {
                 case Calculator.Stress:
-                    return stress[index];
+                    return stress[chIndex][gratingIndex];
                 case Calculator.Strain:
-                    return strain[index];
+                    return strain[chIndex][gratingIndex];
                 case Calculator.Temperature:
-                    return temperature[index];
+                    return temperature[chIndex][gratingIndex];
                 case Calculator.Frequency:
-                    return frequency[index];
+                    return frequency[chIndex][gratingIndex];
                 default:
                     return 0;
             }

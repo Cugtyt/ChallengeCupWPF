@@ -28,8 +28,8 @@ namespace ChallengeCupV2.View.ModelTab
     /// ModelTabContent.xaml 的交互逻辑
     /// </summary>
     public partial class ModelTabContent : UserControl
-    { 
-        private IModel model;
+    {
+        public IModel Model = new Gear();
         private int mouseClickCount;
         private DispatcherTimer doubleClickTimer = new DispatcherTimer()
         {
@@ -44,6 +44,7 @@ namespace ChallengeCupV2.View.ModelTab
         {
             InitializeComponent();
             UserControlManager.Register(this, GetType().Name);
+            updateModel();
             doubleClickTimer.Tick += (s, e1) => 
             {
                 doubleClickTimer.IsEnabled = false;
@@ -80,7 +81,7 @@ namespace ChallengeCupV2.View.ModelTab
         private void updateModel()
         {
             modelContainer?.Children.Clear();
-            modelContainer?.Children.Add(model as UserControl);
+            modelContainer?.Children.Add(Model as UserControl);
         }
 
         /// <summary>
@@ -176,13 +177,19 @@ namespace ChallengeCupV2.View.ModelTab
 
         private void gearModel_Selected(object sender, RoutedEventArgs e)
         {
-            model = new Gear();
+            Model = new Gear();
             updateModel();
         }
 
         private void bearingModel_Selected(object sender, RoutedEventArgs e)
         {
-            model = new Bearing();
+            Model = new Bearing();
+            updateModel();
+        }
+
+        private void shaftModel_Selected(object sender, RoutedEventArgs e)
+        {
+            Model = new Shaft();
             updateModel();
         }
     }

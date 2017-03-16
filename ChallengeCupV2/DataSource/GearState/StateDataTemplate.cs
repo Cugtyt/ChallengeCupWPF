@@ -13,6 +13,19 @@ namespace ChallengeCupV2.DataSource.GearState
     public class StateDataTemplate : DependencyObject
     {
 
+
+        public int CH
+        {
+            get { return (int)GetValue(CHProperty); }
+            set { SetValue(CHProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CH.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CHProperty =
+            DependencyProperty.Register("CH", typeof(int), typeof(StateDataTemplate));
+
+
+
         public int GratingID
         {
             get { return (int)GetValue(GratingIDProperty); }
@@ -69,29 +82,12 @@ namespace ChallengeCupV2.DataSource.GearState
 
 
         /// <summary>
-        /// State value set
-        /// </summary>
-        public IEnumerable<double> ValueSet
-        {
-            get { return (IEnumerable<double>)GetValue(ValueSetProperty); }
-            set { SetValue(ValueSetProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ValueSet.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ValueSetProperty =
-            DependencyProperty.Register("ValueSet", typeof(IEnumerable<double>), typeof(StateDataTemplate));
-
-
-
-
-
-        /// <summary>
         /// This calculater is used to calculate the Value
         /// </summary>
         //private Func<IEnumerable<double>> calculater;
         private Calculator calculater;
 
-        public StateDataTemplate(int ID, string name, Calculator c, string unit)
+        public StateDataTemplate(int ch, int ID, string name, Calculator c, string unit)
         {
             if (name == null || unit == null)
             {
@@ -100,27 +96,12 @@ namespace ChallengeCupV2.DataSource.GearState
 #endif
                 throw new ArgumentNullException("StateDataTemplate: StateDataTemplate()");
             }
+            CH = ch;
             GratingID = ID;
             Name = name;
             calculater = c;
             Unit = unit;
         }
-
-        /// <summary>
-        /// Use calculater to calculate Value
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        //public void Calculate()
-        //{
-        //    // Check data validation first
-        //    if (!GratingDataContainer.IsDataReady)
-        //    {
-        //        return;
-        //    }
-        //    ValueSet = calculater();
-        //    Value = ValueSet.Average();
-        //}
 
         public void Get()
         {
@@ -131,7 +112,7 @@ namespace ChallengeCupV2.DataSource.GearState
             {
                 return;
             }
-            Value = StateCalculator.Get(GratingID, calculater);
+            Value = StateCalculator.Get(CH, GratingID, calculater);
 #if DEBUG
             Console.WriteLine(Name + " " + Value);
 #endif

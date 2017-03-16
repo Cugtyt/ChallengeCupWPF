@@ -69,7 +69,7 @@ namespace ChallengeCupV2.View.ModelTab
             {
                 return;
             }
-            waveLengthSource.Clear();
+            //waveLengthSource.Clear();
             //for (int i = 0; i < GratingDataContainer.Data.Length 
             //    && i < (UserControlManager.Get("InitPage") as InitPage).GetGratingNumber(); i++)
             //{
@@ -81,6 +81,28 @@ namespace ChallengeCupV2.View.ModelTab
             //    waveLengthSource.Add(temp * samplingStep / GratingDataContainer.Data[i].Count);
             //}
             //waveLengthSource.Add(0.0);
+            Type modelType = (UserControlManager.Get("ModelTabContent") as ModelTabContent).Model.GetType();
+            int ch = modelType.Equals(typeof(Models.Gear))
+                ? 0 : modelType.Equals(typeof(Models.Bearing))
+                ? 1 : modelType.Equals(typeof(Models.Shaft))
+                ? 2 : 0;
+            var temp = waveLengthSource.ToList();
+            switch (ch)
+            {
+                case 0:
+                    temp.AddRange(from d in GratingDataContainer.Data[0] select d.Average());
+                    temp.AddRange(from d in GratingDataContainer.Data[1] select d.Average());
+                    break;
+                case 1:
+                    temp.AddRange(from d in GratingDataContainer.Data[2] select d.Average());
+                    break;
+                case 2:
+                    temp.AddRange(from d in GratingDataContainer.Data[3] select d.Average());
+                    break;
+                default:
+                    break;
+            }
+            waveLengthSource = new ObservableCollection<double>(temp);
         }
 
         /// <summary>

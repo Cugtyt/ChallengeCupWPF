@@ -24,7 +24,8 @@ namespace ChallengeCupV2.DataSource
         /// <summary>
         /// Stores all data after parsing input data
         /// </summary>
-        public static List<double>[] Data;
+        //public static List<double>[] Data;
+        public static List<double>[][] Data = new List<double>[4][];
 
         /// <summary>
         /// Get data from a string array input,
@@ -90,7 +91,75 @@ namespace ChallengeCupV2.DataSource
 //            });
 //        }
 
-        public static void GetDataFrom(string[] data)
+//        public static void GetDataFrom(string[] data)
+//        {
+//            // Input data is invalid, set IsDataReady and return
+//            if (data == null)
+//            {
+//#if DEBUG
+//                Console.WriteLine("GratingDataContainer: GetDataFrom() -> Illegal input, argument can not be null.");
+//#endif
+//                IsDataReady = false;
+//                return;
+//            }
+//            // Input data is valid, read and set Data
+//            IsDataReady = false;
+//            lock (typeof(GratingDataContainer))
+//            {
+//                int len = int.Parse(data[1]) + int.Parse(data[2]) + int.Parse(data[3]) + int.Parse(data[4]);
+//                try
+//                {
+//                    Data = new List<double>[len];
+//                    for (int i = 0; i < Data.Length; i++)
+//                    {
+//                        Data[i] = new List<double>();
+//                    }
+//                }
+//                catch (Exception)
+//                {
+//#if DEBUG
+//                    Console.WriteLine("File formate is illegal.");
+//#endif
+//                    throw new Exception("File formate is illegal.");
+//                }
+
+//                for (int i = 0; i < data.Length && i < MaxLength * 10; i++)
+//                {
+//                    //switch (i % 10)
+//                    //{
+//                    //    //case 5:
+//                    //    //    Data[0].Add(double.Parse(data[i]));
+//                    //    //    break;
+//                    //    case 6:
+//                    //        Data[0].Add(double.Parse(data[i]));
+//                    //        break;
+//                    //    case 7:
+//                    //        Data[1].Add(double.Parse(data[i]));
+//                    //        break;
+//                    //    case 8:
+//                    //        Data[2].Add(double.Parse(data[i]));
+//                    //        break;
+//                    //    case 9:
+//                    //        Data[3].Add(double.Parse(data[i]));
+//                    //        break;
+//                    //    default:
+//                    //        break;
+//                    //}
+//                    if (i % (6 + len) > 5)
+//                    {
+//                        Data[i % (6 + len) - 6].Add(double.Parse(data[i]));
+//                    }
+//                }
+//                IsDataReady = true;
+//            }
+//        }
+
+
+        /// <summary>
+        /// Updata data from input data
+        /// </summary>
+        /// <param name="data"></param>
+        public static void UpdateData(List<double>[][] data)
         {
             // Input data is invalid, set IsDataReady and return
             if (data == null)
@@ -102,55 +171,11 @@ namespace ChallengeCupV2.DataSource
                 return;
             }
             // Input data is valid, read and set Data
-            IsDataReady = false;
             lock (typeof(GratingDataContainer))
             {
-                int len = int.Parse(data[1]) + int.Parse(data[2]) + int.Parse(data[3]) + int.Parse(data[4]);
-                try
-                {
-                    Data = new List<double>[len];
-                    for (int i = 0; i < Data.Length; i++)
-                    {
-                        Data[i] = new List<double>();
-                    }
-                }
-                catch (Exception)
-                {
-#if DEBUG
-                    Console.WriteLine("File formate is illegal.");
-#endif
-                    throw new Exception("File formate is illegal.");
-                }
-
-                for (int i = 0; i < data.Length && i < MaxLength * 10; i++)
-                {
-                    //switch (i % 10)
-                    //{
-                    //    //case 5:
-                    //    //    Data[0].Add(double.Parse(data[i]));
-                    //    //    break;
-                    //    case 6:
-                    //        Data[0].Add(double.Parse(data[i]));
-                    //        break;
-                    //    case 7:
-                    //        Data[1].Add(double.Parse(data[i]));
-                    //        break;
-                    //    case 8:
-                    //        Data[2].Add(double.Parse(data[i]));
-                    //        break;
-                    //    case 9:
-                    //        Data[3].Add(double.Parse(data[i]));
-                    //        break;
-                    //    default:
-                    //        break;
-                    //}
-                    if (i % (6 + len) > 5)
-                    {
-                        Data[i % (6 + len) - 6].Add(double.Parse(data[i]));
-                    }
-                }
-                IsDataReady = true;
+                Data = data;
             }
+            IsDataReady = true;
         }
     }
 }

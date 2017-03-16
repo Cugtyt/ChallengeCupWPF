@@ -106,7 +106,11 @@
     </Compile>
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\ModelAction.cs" />
+    <Compile Include="Models\Shaft.xaml.cs">
+      <DependentUpon>Shaft.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reflection\ReflectionUtils.cs" />
+    <Compile Include="UDP\UDPRead.cs" />
     <Compile Include="View\FunctionBar.xaml.cs">
       <DependentUpon>FunctionBar.xaml</DependentUpon>
     </Compile>
@@ -210,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Models\Gear.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\Shaft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
