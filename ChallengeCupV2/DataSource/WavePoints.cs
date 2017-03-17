@@ -45,7 +45,7 @@ namespace ChallengeCupV2.DataSource
         public static readonly DependencyProperty PointsProperty =
             DependencyProperty.Register("Points", typeof(ObservableDataSource<Point>), typeof(WavePoints));
 
-        public WavePoints(int capacity = 200)
+        public WavePoints(int capacity = 300)
         {
             Points = new ObservableDataSource<Point>();
             this.capacity = capacity;

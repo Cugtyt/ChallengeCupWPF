@@ -25,6 +25,7 @@ namespace ChallengeCupV2.DataSource.GearState
             new StateDataTemplate(1, 1, "Frequency", Calculator.Frequency, "Hz")
         };
 
+
         /// <summary>
         /// Update StateData
         /// 
@@ -41,25 +42,21 @@ namespace ChallengeCupV2.DataSource.GearState
             {
                 return;
             }
-            //if (GratingDataContainer.Data.Length != StateData.Count / 4)
-            //{
-            //    StateData.Clear();
-            //    for (int i = 0; i < GratingDataContainer.Data.Length; i++)
-            //    {
-            //        StateData.Add(new StateDataTemplate(i + 1, "Stress", Calculator.Stress, "Pa"));
-            //        StateData.Add(new StateDataTemplate(i + 1, "Strain", Calculator.Strain, "%"));
-            //        StateData.Add(new StateDataTemplate(i + 1, "Temperature", Calculator.Temperature, "℃"));
-            //        StateData.Add(new StateDataTemplate(i + 1, "Frequency", Calculator.Frequency, "Hz"));
-            //    }
-            //}
-            for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+            if (StateData.Count == 4)
             {
-                for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
+                for (int i = 0; i < GratingDataContainer.Data.Length; i++)
                 {
-                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Stress", Calculator.Stress, "Pa"));
-                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Strain", Calculator.Strain, "%"));
-                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Temperature", Calculator.Temperature, "℃"));
-                    StateData.Add(new StateDataTemplate(i + 1, j + 1, "Frequency", Calculator.Frequency, "Hz"));
+                    for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
+                    {
+                        if (GratingDataContainer.Data[i][j].Count <= 0)
+                        {
+                            continue;
+                        }
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Stress", Calculator.Stress, "Pa"));
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Strain", Calculator.Strain, "%"));
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Temperature", Calculator.Temperature, "℃"));
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Frequency", Calculator.Frequency, "Hz"));
+                    }
                 }
             }
             StateCalculator.Calculate();

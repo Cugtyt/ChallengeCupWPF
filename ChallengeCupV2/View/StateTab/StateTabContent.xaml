@@ -66,6 +66,7 @@
                 <DataGridTextColumn x:Name="frequency" Header="Frequency" Width="1*" Binding="{Binding Frequency}"/>
             </DataGrid.Columns>-->
             <DataGrid.Columns>
+                <DataGridTextColumn Header="CH" Width="1*" Binding="{Binding CH}"/>
                 <DataGridTextColumn Header="Grating" Width="1*" Binding="{Binding GratingID}"/>
                 <DataGridTextColumn Header="Parameters" Width="1*" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Value" Width="1*" Binding="{Binding Value}"/>

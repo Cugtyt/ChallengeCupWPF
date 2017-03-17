@@ -36,7 +36,7 @@ namespace ChallengeCupV2.DataSource.GearState
 
         public static List<Complex[]>[] FFTResults = new List<Complex[]>[4] 
         { new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>() };
-
+        private static List<double>[][] dataClone;
         /// <summary>
         /// 应力
         ///     σ_x = - E / (μ * (δ ** b)) * Δλ_B / α_ε
@@ -203,15 +203,30 @@ namespace ChallengeCupV2.DataSource.GearState
                 //        }
                 //    }
                 //    frequency.Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
-
                 for (int i = 0; i < frequency.Length; i++)
                 {
                     frequency[i].Clear();
                     FFTResults[i].Clear();
-                    for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
+                    for (int j = 0; j < dataClone[i].Length; j++)
                     {
-                        var temp = (from y in GratingDataContainer.Data[i][j]
-                                    select new Complex(y, 0)).ToArray();
+                        if (dataClone[i][j].Count == 0)
+                        {
+                            FFTResults[i].Add(new Complex[1]);
+                            continue;
+                        }
+
+                        //var temp = (from y in dataClone[i][j]
+                        //            select new Complex(y, 0)).ToArray();
+                        List<Complex> cl = new List<Complex>();
+                        //foreach (var y in dataClone[i][j])
+                        //{
+                        //    cl.Add(new Complex(y, 0));
+                        //}
+                        for (int m = 0; m < dataClone[i][j].Count; m++)
+                        {
+                            cl.Add(new Complex(dataClone[i][j][m], 0));
+                        }
+                        var temp = cl.ToArray();
                         FFT.DataFFT.Forward(temp);
                         FFTResults[i].Add(temp);
                         double max = FFTResults[i][j][0].Real;
@@ -284,6 +299,8 @@ namespace ChallengeCupV2.DataSource.GearState
         /// </summary>
         public static void Calculate()
         {
+            //dataClone = GratingDataContainer.Data.Clone() as List<double>[][];
+            dataClone = GratingDataContainer.Data;
             calculateDELTA();
             calculateStress();
             calculateStrain();
@@ -301,19 +318,31 @@ namespace ChallengeCupV2.DataSource.GearState
         {
             int chIndex = ch - 1;
             int gratingIndex = gratingID - 1;
-            if (stress.Length < chIndex || stress[chIndex].Count <= gratingIndex)
-            {
-                return 0;
-            }
             switch (cal)
             {
                 case Calculator.Stress:
+                    if (chIndex > stress.Length || gratingID > stress[chIndex].Count)
+                    {
+                        return 0;
+                    }
                     return stress[chIndex][gratingIndex];
                 case Calculator.Strain:
+                    if (chIndex > strain.Length || gratingID > strain[chIndex].Count)
+                    {
+                        return 0;
+                    }
                     return strain[chIndex][gratingIndex];
                 case Calculator.Temperature:
+                    if (chIndex > temperature.Length || gratingID > temperature[chIndex].Count)
+                    {
+                        return 0;
+                    }
                     return temperature[chIndex][gratingIndex];
                 case Calculator.Frequency:
+                    if (chIndex > frequency.Length || gratingID > frequency[chIndex].Count)
+                    {
+                        return 0;
+                    }
                     return frequency[chIndex][gratingIndex];
                 default:
                     return 0;

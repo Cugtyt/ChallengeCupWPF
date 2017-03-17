@@ -37,14 +37,15 @@ namespace ChallengeCupV2.View
         //private int index = 0;
 
         private Task udpTask;
-        private CancellationTokenSource cts = new CancellationTokenSource();
+        private CancellationTokenSource cts;
+        private UDP.UDPRead udp = new UDP.UDPRead();
 
         public FunctionBar()
         {
             InitializeComponent();
             UserControlManager.Register(this, GetType().Name);
             // A task to run method receive UDP
-            udpTask = new Task(new UDP.UDPRead().Receive, cts.Token);
+            
             //timer.Tick += new EventHandler(ReadDataFromFile);
         }
 
@@ -95,6 +96,8 @@ namespace ChallengeCupV2.View
                 //var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
                 //files = dir.GetFiles();
                 //timer.IsEnabled = true;
+                cts = new CancellationTokenSource();
+                udpTask = new Task(udp.Receive, cts.Token);
                 udpTask.Start();
                 connect.Content = "Disconnect";
             }

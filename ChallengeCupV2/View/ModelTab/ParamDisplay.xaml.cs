@@ -86,23 +86,39 @@ namespace ChallengeCupV2.View.ModelTab
                 ? 0 : modelType.Equals(typeof(Models.Bearing))
                 ? 1 : modelType.Equals(typeof(Models.Shaft))
                 ? 2 : 0;
-            var temp = waveLengthSource.ToList();
+            waveLengthSource.Clear();
+            var dataClone = GratingDataContainer.Data;
             switch (ch)
             {
                 case 0:
-                    temp.AddRange(from d in GratingDataContainer.Data[0] select d.Average());
-                    temp.AddRange(from d in GratingDataContainer.Data[1] select d.Average());
+                    addAverage(dataClone, 0);
+                    addAverage(dataClone, 1);
                     break;
                 case 1:
-                    temp.AddRange(from d in GratingDataContainer.Data[2] select d.Average());
+                    addAverage(dataClone, 2);
                     break;
                 case 2:
-                    temp.AddRange(from d in GratingDataContainer.Data[3] select d.Average());
+                    addAverage(dataClone, 3);
                     break;
                 default:
                     break;
             }
-            waveLengthSource = new ObservableCollection<double>(temp);
+        }
+
+        /// <summary>
+        /// Add average wavelength to waveLengthSource
+        /// </summary>
+        /// <param name="dataClone"></param>
+        /// <param name="ch"></param>
+        private void addAverage(List<double>[][] dataClone, int ch)
+        {
+            foreach (var li in dataClone[ch])
+            {
+                if (li.Count > 0)
+                {
+                    waveLengthSource.Add(li.Average());
+                }
+            }
         }
 
         /// <summary>
