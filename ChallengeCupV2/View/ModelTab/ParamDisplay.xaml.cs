@@ -24,10 +24,6 @@ namespace ChallengeCupV2.View.ModelTab
     public partial class ParamDisplay : UserControl
     {
         /// <summary>
-        /// Sampling step
-        /// </summary>
-        private int samplingStep = 100;
-        /// <summary>
         /// Grid items source in which contains sampled wave length
         /// 
         /// As a set type like list etc. wants to be binded to view as data source, should be a 
