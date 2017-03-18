@@ -179,18 +179,21 @@ namespace ChallengeCupV2.View.ModelTab
         {
             Model = new Gear();
             updateModel();
+            paramDisplay?.UpdataSource(null, null);
         }
 
         private void bearingModel_Selected(object sender, RoutedEventArgs e)
         {
             Model = new Bearing();
             updateModel();
+            paramDisplay?.UpdataSource(null, null);
         }
 
         private void shaftModel_Selected(object sender, RoutedEventArgs e)
         {
             Model = new Shaft();
             updateModel();
+            paramDisplay?.UpdataSource(null, null);
         }
     }
 

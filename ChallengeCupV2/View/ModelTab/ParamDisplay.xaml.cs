@@ -46,7 +46,7 @@ namespace ChallengeCupV2.View.ModelTab
             InitializeComponent();
             waveLengthSource.Add(0.0);
             waveLength.ItemsSource = waveLengthSource;
-            Timer.Tick += new EventHandler(updataSource);
+            Timer.Tick += new EventHandler(UpdataSource);
             //Timer.IsEnabled = true;
         }
 
@@ -55,7 +55,7 @@ namespace ChallengeCupV2.View.ModelTab
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void updataSource(object sender, EventArgs e)
+        public void UpdataSource(object sender, EventArgs e)
         {
 #if DEBUG
             Console.WriteLine("this is updateSource");
@@ -77,10 +77,15 @@ namespace ChallengeCupV2.View.ModelTab
             //    waveLengthSource.Add(temp * samplingStep / GratingDataContainer.Data[i].Count);
             //}
             //waveLengthSource.Add(0.0);
-            Type modelType = (UserControlManager.Get("ModelTabContent") as ModelTabContent).Model.GetType();
-            int ch = modelType.Equals(typeof(Models.Gear))
-                ? 0 : modelType.Equals(typeof(Models.Bearing))
-                ? 1 : modelType.Equals(typeof(Models.Shaft))
+            //Type modelType = (UserControlManager.Get("ModelTabContent") as ModelTabContent).Model.GetType();
+            //int ch = modelType.Equals(typeof(Models.Gear))
+            //    ? 0 : modelType.Equals(typeof(Models.Bearing))
+            //    ? 1 : modelType.Equals(typeof(Models.Shaft))
+            //    ? 2 : 0;
+            var model = (UserControlManager.Get("ModelTabContent") as ModelTabContent).Model;
+            int ch = model is Models.Gear
+                ? 0 : model is Models.Bearing
+                ? 1 : model is Models.Shaft
                 ? 2 : 0;
             waveLengthSource.Clear();
             var dataClone = GratingDataContainer.Data;
