@@ -29,7 +29,7 @@ namespace ChallengeCupV2.View.WaveTab
         //public static bool IsDisplaying = false;
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromMilliseconds(100)
+            Interval = TimeSpan.FromMilliseconds(50)
         };
         //private FileInfo[] files;
         //private int fileIndex = 0;
@@ -63,7 +63,8 @@ namespace ChallengeCupV2.View.WaveTab
             // Check data validation first
             var selectedCH = (int)Enum.Parse(typeof(CH), this.selectedCH.ToString());
             var selectedGrating = (int)Enum.Parse(typeof(Grating), this.selectedGrating.ToString());
-            if (!GratingDataContainer.IsDataReady || GratingDataContainer.Data.Length <= selectedGrating)
+            //if (!GratingDataContainer.IsDataReady || GratingDataContainer.Data.Length <= selectedGrating)
+            if (!GratingDataContainer.IsDataReady)
             {
                 return;
             }

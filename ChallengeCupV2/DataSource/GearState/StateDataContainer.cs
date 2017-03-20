@@ -44,6 +44,7 @@ namespace ChallengeCupV2.DataSource.GearState
             }
             if (StateData.Count == 4)
             {
+                StateData.Clear();
                 for (int i = 0; i < GratingDataContainer.Data.Length; i++)
                 {
                     for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)

@@ -170,7 +170,7 @@ namespace ChallengeCupV2.View
             //timer.IsEnabled = false;
             // Cancel UDP task
             //udpTask.Dispose();
-            cts.Cancel();
+            cts?.Cancel();
             SetTimers(false);
             Application.Current.Shutdown();
         }

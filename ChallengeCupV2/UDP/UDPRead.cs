@@ -22,8 +22,8 @@ namespace ChallengeCupV2.UDP
         private List<double>[][] dataBuffer = new List<double>[4][];
         private int maxGratingNumber = 6;
 
-        private UdpClient udpClient = new UdpClient(10000);
-        private IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
+        private UdpClient udpClient = new UdpClient(60);
+        private IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 100);
 
         public UDPRead()
         {
@@ -67,36 +67,19 @@ namespace ChallengeCupV2.UDP
                 return;
             }
             //parse input
-            string[] parseResult = input.Split();
+            string[] results = input.Split();
             // Add to buffer
-            int spaceCount = 0;
-            int ch = 0;
-            int grating = 0;
-            for (int i = 0; i < parseResult.Length; i++)
-            {
-                if (parseResult[i].Equals(""))
-                {
-                    spaceCount++;
-                    if (spaceCount > 1)
-                    {
-                        break;
-                    }
-                    continue;
-                }
-                if (spaceCount == 1)
-                {
-                    ++ch;
-                    grating = 0;
-#if DEBUG
-                    Debug.Assert(ch < 4);
-                    Debug.Assert(grating < 6);
-#endif
-                }
-                dataBuffer[ch][grating++].Add(double.Parse(parseResult[i]));
-                spaceCount = 0;
-            }
+            int ch1Count = int.Parse(results[0]);
+            int ch2Count = int.Parse(results[1]);
+            int ch3Count = int.Parse(results[2]);
+            int ch4Count = int.Parse(results[3]);
+            addResult(results, 4, 0, ch1Count);
+            addResult(results, 4 + ch1Count, 1, ch2Count);
+            addResult(results, 4 + ch1Count + ch2Count, 2, ch3Count);
+            addResult(results, 4 + ch1Count + ch2Count + ch3Count, 3, ch4Count);
             // If count of buffer is enough, update 
-            if (dataBuffer[0][0].Count >= 1000)
+            if (dataBuffer[0][0].Count >= 500 || dataBuffer[1][0].Count >= 500
+                || dataBuffer[2][0].Count >= 500 | dataBuffer[3][0].Count >= 500)
             {
                 GratingDataContainer.UpdateData(dataBuffer);
                 for (int i = 0; i < dataBuffer.Length; i++)
@@ -106,6 +89,14 @@ namespace ChallengeCupV2.UDP
                         dataBuffer[i][j].Clear();
                     }
                 }
+            }
+        }
+
+        private void addResult(string[] results, int start, int ch, int len)
+        {
+            for (int i = 0; i < len; i++)
+            {
+                dataBuffer[ch][i].Add(double.Parse(results[start + i]));
             }
         }
     }

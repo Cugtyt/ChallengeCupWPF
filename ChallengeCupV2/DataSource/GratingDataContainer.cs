@@ -167,9 +167,10 @@ namespace ChallengeCupV2.DataSource
 #if DEBUG
                 Console.WriteLine("GratingDataContainer: GetDataFrom() -> Illegal input, argument can not be null.");
 #endif
-                IsDataReady = false;
+                //IsDataReady = false;
                 return;
             }
+            IsDataReady = false;
             // Input data is valid, read and set Data
             lock (typeof(GratingDataContainer))
             {

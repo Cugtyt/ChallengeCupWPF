@@ -85,6 +85,7 @@ namespace ChallengeCupV2.DataSource
             }
             Points.Collection.Clear();
             Points.AppendMany(pl);
+            //Points = new ObservableDataSource<Point>(pl);
         }
 
         /// <summary>

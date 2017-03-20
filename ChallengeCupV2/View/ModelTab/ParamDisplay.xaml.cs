@@ -44,7 +44,7 @@ namespace ChallengeCupV2.View.ModelTab
         public ParamDisplay()
         {
             InitializeComponent();
-            waveLengthSource.Add(0.0);
+            //waveLengthSource.Add(0.0);
             waveLength.ItemsSource = waveLengthSource;
             Timer.Tick += new EventHandler(UpdataSource);
             //Timer.IsEnabled = true;
@@ -87,23 +87,25 @@ namespace ChallengeCupV2.View.ModelTab
                 ? 0 : model is Models.Bearing
                 ? 1 : model is Models.Shaft
                 ? 2 : 0;
-            waveLengthSource.Clear();
+            //waveLengthSource.Clear();
             var dataClone = GratingDataContainer.Data;
+            List<double> temp = new List<double>();
             switch (ch)
             {
                 case 0:
-                    addAverage(dataClone, 0);
-                    addAverage(dataClone, 1);
+                    addAverage(dataClone, 0, temp);
+                    addAverage(dataClone, 1, temp);
                     break;
                 case 1:
-                    addAverage(dataClone, 2);
+                    addAverage(dataClone, 2, temp);
                     break;
                 case 2:
-                    addAverage(dataClone, 3);
+                    addAverage(dataClone, 3, temp);
                     break;
                 default:
                     break;
             }
+            waveLength.ItemsSource = new ObservableCollection<double>(temp);
         }
 
         /// <summary>
@@ -111,13 +113,20 @@ namespace ChallengeCupV2.View.ModelTab
         /// </summary>
         /// <param name="dataClone"></param>
         /// <param name="ch"></param>
-        private void addAverage(List<double>[][] dataClone, int ch)
+        private void addAverage(List<double>[][] dataClone, int ch, List<double> temp)
         {
-            foreach (var li in dataClone[ch])
+            //foreach (var li in dataClone[ch])
+            //{
+            //    if (li.Count > 0)
+            //    {
+            //        temp.Add(li.Average());
+            //    }
+            //}
+            for (int i = 0; i < dataClone[ch].Length; i++)
             {
-                if (li.Count > 0)
+                if (dataClone[ch][i].Count > 0)
                 {
-                    waveLengthSource.Add(li.Average());
+                    temp.Add(dataClone[ch][i].Average());
                 }
             }
         }
