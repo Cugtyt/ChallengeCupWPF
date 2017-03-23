@@ -32,7 +32,7 @@ namespace ChallengeCupV2
             //Width = SystemParameters.PrimaryScreenWidth;
             //Height = SystemParameters.PrimaryScreenHeight;
             Width = 800;
-            Height = 800;
+            Height = 600;
         }
     }
 }

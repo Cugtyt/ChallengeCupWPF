@@ -21,12 +21,15 @@ namespace ChallengeCupV2.UDP
         /// </summary>
         private List<double>[][] dataBuffer = new List<double>[4][];
         private int maxGratingNumber = 6;
+        private int maxLen = 100;
 
         private UdpClient udpClient = new UdpClient(60);
         private IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 100);
 
         public UDPRead()
         {
+            // To active GratingDataContainer static ctr
+            GratingDataContainer.IsDataReady = false;
             for (int i = 0; i < dataBuffer.Length; i++)
             {
                 dataBuffer[i] = new List<double>[maxGratingNumber];
@@ -78,10 +81,13 @@ namespace ChallengeCupV2.UDP
             addResult(results, 4 + ch1Count + ch2Count, 2, ch3Count);
             addResult(results, 4 + ch1Count + ch2Count + ch3Count, 3, ch4Count);
             // If count of buffer is enough, update 
-            if (dataBuffer[0][0].Count >= 500 || dataBuffer[1][0].Count >= 500
-                || dataBuffer[2][0].Count >= 500 | dataBuffer[3][0].Count >= 500)
+            if (dataBuffer[0][0].Count >= maxLen || dataBuffer[1][0].Count >= maxLen
+                || dataBuffer[2][0].Count >= maxLen | dataBuffer[3][0].Count >= maxLen)
             {
                 GratingDataContainer.UpdateData(dataBuffer);
+#if DEBUG
+                Console.WriteLine("udp update data in grating data container.");
+#endif
                 for (int i = 0; i < dataBuffer.Length; i++)
                 {
                     for (int j = 0; j < dataBuffer[i].Length; j++)

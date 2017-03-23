@@ -20,12 +20,27 @@ namespace ChallengeCupV2.DataSource
         /// <summary>
         /// MaxLength limits length every list of double in Data array
         /// </summary>
-        public static int MaxLength = 1000;
+        private static int maxLength = 500;
         /// <summary>
         /// Stores all data after parsing input data
         /// </summary>
         //public static List<double>[] Data;
-        public static List<double>[][] Data = new List<double>[4][];
+        public static List<double>[][] Data;
+        private static int chMax = 4;
+        private static int gratingMax = 6;
+
+        static GratingDataContainer()
+        {
+            Data = new List<double>[chMax][];
+            for (int i = 0; i < chMax; i++)
+            {
+                Data[i] = new List<double>[gratingMax];
+                for (int j = 0; j < gratingMax; j++)
+                {
+                    Data[i][j] = new List<double>();
+                }
+            }
+        }
 
         /// <summary>
         /// Get data from a string array input,
@@ -174,9 +189,29 @@ namespace ChallengeCupV2.DataSource
             // Input data is valid, read and set Data
             lock (typeof(GratingDataContainer))
             {
-                Data = data;
+#if DEBUG
+                Debug.Assert(data.Length == chMax);
+                Debug.Assert(data[0].Length == gratingMax);
+#endif
+                // Copy
+                for (int i = 0; i < data.Length; i++)
+                {
+                    for (int j = 0; j < data[i].Length; j++)
+                    {
+                        //Data[i][j].Clear();
+                        //Data[i][j].AddRange(data[i][j]);
+                        if (Data[i][j].Count >= maxLength)
+                        {
+                            Data[i][j].RemoveRange(0, data[i][j].Count);
+                        }
+                        Data[i][j].AddRange(data[i][j]);
+                    }
+                }
+                IsDataReady = Data[0][0].Count >= maxLength 
+                    || Data[1][0].Count >= maxLength
+                    || Data[2][0].Count >= maxLength
+                    || Data[3][0].Count >= maxLength;
             }
-            IsDataReady = true;
         }
     }
 }

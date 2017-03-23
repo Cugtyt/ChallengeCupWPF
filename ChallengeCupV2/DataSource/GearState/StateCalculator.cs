@@ -36,7 +36,7 @@ namespace ChallengeCupV2.DataSource.GearState
 
         public static List<Complex[]>[] FFTResults = new List<Complex[]>[4] 
         { new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>() };
-        private static List<double>[][] dataClone;
+        //private static List<double>[][] dataClone;
         /// <summary>
         /// 应力
         ///     σ_x = - E / (μ * (δ ** b)) * Δλ_B / α_ε
@@ -207,9 +207,9 @@ namespace ChallengeCupV2.DataSource.GearState
                 {
                     frequency[i].Clear();
                     FFTResults[i].Clear();
-                    for (int j = 0; j < dataClone[i].Length; j++)
+                    for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
                     {
-                        if (dataClone[i][j].Count == 0)
+                        if (GratingDataContainer.Data[i][j].Count == 0)
                         {
                             FFTResults[i].Add(new Complex[1]);
                             continue;
@@ -222,9 +222,9 @@ namespace ChallengeCupV2.DataSource.GearState
                         //{
                         //    cl.Add(new Complex(y, 0));
                         //}
-                        for (int m = 0; m < dataClone[i][j].Count; m++)
+                        for (int m = 0; m < GratingDataContainer.Data[i][j].Count; m++)
                         {
-                            cl.Add(new Complex(dataClone[i][j][m], 0));
+                            cl.Add(new Complex(GratingDataContainer.Data[i][j][m], 0));
                         }
                         var temp = cl.ToArray();
                         FFT.DataFFT.Forward(temp);
@@ -300,7 +300,7 @@ namespace ChallengeCupV2.DataSource.GearState
         public static void Calculate()
         {
             //dataClone = GratingDataContainer.Data.Clone() as List<double>[][];
-            dataClone = GratingDataContainer.Data;
+            //dataClone = GratingDataContainer.Data;
             calculateDELTA();
             calculateStress();
             calculateStrain();

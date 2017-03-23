@@ -3,6 +3,7 @@ using ChallengeCupV2.DataSource.GearState;
 using ChallengeCupV2.FFT;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -29,7 +30,7 @@ namespace ChallengeCupV2.View.WaveTab
         //public static bool IsDisplaying = false;
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromMilliseconds(50)
+            Interval = TimeSpan.FromMilliseconds(20)
         };
         //private FileInfo[] files;
         //private int fileIndex = 0;
@@ -60,19 +61,18 @@ namespace ChallengeCupV2.View.WaveTab
 
         private void AnimatedPlot(object sender, EventArgs e)
         {
-            // Check data validation first
-            var selectedCH = (int)Enum.Parse(typeof(CH), this.selectedCH.ToString());
-            var selectedGrating = (int)Enum.Parse(typeof(Grating), this.selectedGrating.ToString());
-            //if (!GratingDataContainer.IsDataReady || GratingDataContainer.Data.Length <= selectedGrating)
             if (!GratingDataContainer.IsDataReady)
             {
                 return;
             }
+            // Check data validation first
+            var selectedCH = (int)Enum.Parse(typeof(CH), this.selectedCH.ToString());
+            var selectedGrating = (int)Enum.Parse(typeof(Grating), this.selectedGrating.ToString());
             switch (selectedDomain)
             {
                 case Domain.Time:
 #if DEBUG
-                    Console.WriteLine("WaveTabContent:AnimatedPlot() -> add time domain points");
+                    //Console.WriteLine("WaveTabContent:AnimatedPlot() -> add time domain points");
 #endif
                     wavePlot.AddTimePoints(GratingDataContainer.Data[selectedCH][selectedGrating]);
                     break;

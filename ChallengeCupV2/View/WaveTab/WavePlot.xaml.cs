@@ -44,7 +44,7 @@ namespace ChallengeCupV2.View.WaveTab
         /// <returns></returns>
         public void AddTimePoints(List<double> yList)
         {
-            UpdateYRange();
+            UpdateYRange(yList[0] - 0.2, yList[0] + 0.2);
             xAxis.Visibility = Visibility.Hidden;
             dataSource.Add(yList);
         }
@@ -78,12 +78,16 @@ namespace ChallengeCupV2.View.WaveTab
             verticalTitle.Content = title;
         }
 
-        public void UpdateYRange()
+        public void UpdateYRange(double min, double max)
         {
             ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
-            restr.YRange = new DisplayRange(
-                SettingContainer.MinYWavePlotTimeDomain,
-                SettingContainer.MaxYWavePlotTimeDomain);
+            //restr.YRange = new DisplayRange(
+            //    SettingContainer.MinYWavePlotTimeDomain,
+            //    SettingContainer.MaxYWavePlotTimeDomain);
+            restr.YRange = new DisplayRange(min, max);
+            //restr.YRange = new DisplayRange(
+            //    1556,
+            //    1556.5);
             plotter.Viewport.Restrictions.Add(restr);
         }
     }

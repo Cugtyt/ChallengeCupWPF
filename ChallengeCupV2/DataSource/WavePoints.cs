@@ -21,11 +21,12 @@ namespace ChallengeCupV2.DataSource
         /// <summary>
         /// Capacity of ySet
         /// </summary>
-        private int capacity;
+        private int capacity = 500;
         /// <summary>
         /// All the ys of points
         /// </summary>
-        private double[] ySet;
+        private List<double> ySet = new List<double>();
+        private List<Point> ps = new List<Point>();
         /// <summary>
         /// Points is the final points set to show in chart
         /// </summary>
@@ -45,11 +46,11 @@ namespace ChallengeCupV2.DataSource
         public static readonly DependencyProperty PointsProperty =
             DependencyProperty.Register("Points", typeof(ObservableDataSource<Point>), typeof(WavePoints));
 
-        public WavePoints(int capacity = 300)
+        public WavePoints()
         {
             Points = new ObservableDataSource<Point>();
-            this.capacity = capacity;
-            ySet = new double[capacity];
+            //this.capacity = capacity;
+            //ySet = new double[capacity];
         }
 
         /// <summary>
@@ -66,27 +67,31 @@ namespace ChallengeCupV2.DataSource
 #endif
                 throw new ArgumentNullException("WavePoints: Add()");
             }
+            ps.Clear();
+            //Points.Collection.Clear();
             for (int i = 0; i < input.Count && i < capacity; i++)
             {
-                ySet[i] = input[i];
+                //ySet[i] = input[i];
+                ps.Add(new Point(i, input[i]));
             }
-            Update();
+            //Update();
+            Points.Collection.Clear();
+            Points.AppendMany(ps);
         }
 
         /// <summary>
         /// Update Points when it's time to display
         /// </summary>
-        public void Update()
-        {
-            List<Point> pl = new List<Point>();
-            for (int i = 0; i < ySet.Length; i++)
-            {
-                pl.Add(new Point(i, ySet[i]));
-            }
-            Points.Collection.Clear();
-            Points.AppendMany(pl);
-            //Points = new ObservableDataSource<Point>(pl);
-        }
+        //public void Update()
+        //{
+        //    List<Point> pl = new List<Point>();
+        //    for (int i = 0; i < ySet.Count; i++)
+        //    {
+        //        pl.Add(new Point(i, ySet[i]));
+        //    }
+        //    Points.Collection.Clear();
+        //    Points.AppendMany(pl);
+        //}
 
         /// <summary>
         /// Transform complex array to ySet
