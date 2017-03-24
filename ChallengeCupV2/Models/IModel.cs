@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media.Media3D;
 
 namespace ChallengeCupV2.Models
 {
@@ -11,5 +13,10 @@ namespace ChallengeCupV2.Models
     /// </summary>
     public interface IModel
     {
+        PerspectiveCamera GetCamera();
+        GeometryModel3D GetModel();
+        Viewport3D GetViewPort();
+        AxisAngleRotation3D GetAxisAngleRotation();
+        void ResetView();
     }
 }

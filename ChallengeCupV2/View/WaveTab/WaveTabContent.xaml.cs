@@ -30,7 +30,7 @@ namespace ChallengeCupV2.View.WaveTab
         //public static bool IsDisplaying = false;
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromMilliseconds(20)
+            Interval = TimeSpan.FromMilliseconds(50)
         };
         //private FileInfo[] files;
         //private int fileIndex = 0;

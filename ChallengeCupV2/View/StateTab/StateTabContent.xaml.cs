@@ -57,7 +57,6 @@ namespace ChallengeCupV2.View.StateTab
             Console.WriteLine("StateTabContent: calculateParam");
 #endif
             stateDataSource.Update();
-            // TODO: Change color of rows in which data is over threshold
         }
 
         /// <summary>
@@ -68,6 +67,24 @@ namespace ChallengeCupV2.View.StateTab
         private void generateReport_Click(object sender, RoutedEventArgs e)
         {
             File.FileUtils.GenerateStateReportFile(SettingContainer.StateReportDir, stateDataSource.StateData);
+        }
+
+        /// <summary>
+        /// Change color of rows which value is out of normal range
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            // Test for change background
+            if ((e.Row.Item as StateDataTemplate).CH == 1)
+            {
+                e.Row.Background = Brushes.Red;
+            }
+            else
+            {
+                e.Row.Background = new SolidColorBrush(Color.FromRgb(242, 242, 242));
+            }
         }
     }
 }

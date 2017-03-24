@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
@@ -23,6 +24,31 @@ namespace ChallengeCupV2.Models
         public Gear()
         {
             InitializeComponent();
+        }
+
+        public AxisAngleRotation3D GetAxisAngleRotation()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PerspectiveCamera GetCamera()
+        {
+            throw new NotImplementedException();
+        }
+
+        public GeometryModel3D GetModel()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Viewport3D GetViewPort()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ResetView()
+        {
+            throw new NotImplementedException();
         }
     }
 }

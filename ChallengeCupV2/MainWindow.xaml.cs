@@ -29,10 +29,10 @@ namespace ChallengeCupV2
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Set window size max
-            //Width = SystemParameters.PrimaryScreenWidth;
-            //Height = SystemParameters.PrimaryScreenHeight;
-            Width = 800;
-            Height = 600;
+            Width = SystemParameters.PrimaryScreenWidth;
+            Height = SystemParameters.PrimaryScreenHeight;
+            //Width = 800;
+            //Height = 600;
         }
     }
 }

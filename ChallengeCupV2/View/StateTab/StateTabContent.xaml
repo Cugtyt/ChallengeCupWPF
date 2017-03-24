@@ -57,14 +57,9 @@
                 </Button.Template>
             </Button>
         </Grid>
-        <DataGrid Grid.Row="1" x:Name="dataGrid" AutoGenerateColumns="False" GridLinesVisibility="Horizontal" Margin="0,30,0,0">
-            <!--<DataGrid.Columns>
-                <DataGridTextColumn x:Name="gear" Header="Gear" Width="2*"/>
-                <DataGridTextColumn x:Name="stress" Header="Stress" Width="1*" Binding="{Binding Stress}"/>
-                <DataGridTextColumn x:Name="strain" Header="Strain" Width="1*" Binding="{Binding Strain}"/>
-                <DataGridTextColumn x:Name="temperature" Header="Temperature" Width="1*" Binding="{Binding Temperature}"/>
-                <DataGridTextColumn x:Name="frequency" Header="Frequency" Width="1*" Binding="{Binding Frequency}"/>
-            </DataGrid.Columns>-->
+        <DataGrid Grid.Row="1" x:Name="dataGrid"
+                  LoadingRow="dataGrid_LoadingRow"
+                  AutoGenerateColumns="False" GridLinesVisibility="Horizontal" Margin="0,30,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="CH" Width="1*" Binding="{Binding CH}"/>
                 <DataGridTextColumn Header="Grating" Width="1*" Binding="{Binding GratingID}"/>

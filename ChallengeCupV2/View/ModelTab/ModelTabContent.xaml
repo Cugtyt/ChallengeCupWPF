@@ -27,13 +27,28 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"
                    Text="3D Model"/>
 
-            <ComboBox Grid.Row="2" Width="150" Margin="0,0,20,0"
+            <!--<ComboBox Grid.Row="2" Width="150" Margin="0,0,20,0"
                       HorizontalAlignment="Left"
                       Style="{StaticResource ResourceKey=ComboBoxStyle}">
                 <ComboBoxItem Name="gearModel" Content="Gear" IsSelected="True" Selected="gearModel_Selected"/>
                 <ComboBoxItem Name="bearingModel" Content="Bearing" Selected="bearingModel_Selected"/>
                 <ComboBoxItem Name="shaftModel" Content="Shaft" Selected="shaftModel_Selected"/>
-            </ComboBox>
+            </ComboBox>-->
+            <StackPanel Grid.Row="2" VerticalAlignment="Center"
+                        HorizontalAlignment="Left" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="RadioButton">
+                        <Setter Property="FontSize" Value="20"/>
+                        <Setter Property="Margin" Value="0,0,30,0"/>
+                    </Style>
+                </StackPanel.Resources>
+                <RadioButton Name="gear" GroupName="model" IsChecked="True" 
+                                 Content="Gear" Click="gearModel_Selected"/>
+                <RadioButton Name="bearing" GroupName="model" 
+                                 Content="Bearing" Click="bearingModel_Selected"/>
+                <RadioButton Name="shaft" GroupName="model" 
+                                 Content="Shaft" Click="shaftModel_Selected"/>
+            </StackPanel>
         </Grid>
         <Grid Grid.Row="1" MouseLeave="gearContainer_MouseLeave"
               Margin="5">
@@ -45,7 +60,7 @@
                   MouseUp="gearContainer_MouseUp"
                   MouseDown="gearContainer_MouseDown"
                   MouseMove="gearContainer_MouseMove"
-                  MouseWheel="gearContainer_MouseWheel" />
+                  MouseWheel="gearContainer_MouseWheel"/>
             <StackPanel Grid.Column="1" Name="sideBar" Orientation="Vertical" VerticalAlignment="Center">
                 <local:WavelengthDisplay x:Name="wavelengthDisplay"/>
                 <Label Content="Rotation Style: " FontSize="18" Margin="0,40,0,0"/>
