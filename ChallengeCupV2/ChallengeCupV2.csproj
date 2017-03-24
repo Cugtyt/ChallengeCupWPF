@@ -120,8 +120,8 @@
     <Compile Include="View\ModelTab\ModelTabHeader.xaml.cs">
       <DependentUpon>ModelTabHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ModelTab\ParamDisplay.xaml.cs">
-      <DependentUpon>ParamDisplay.xaml</DependentUpon>
+    <Compile Include="View\ModelTab\WavelengthDisplay.xaml.cs">
+      <DependentUpon>WavelengthDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsTab\SettingsTabContent.xaml.cs">
       <DependentUpon>SettingsTabContent.xaml</DependentUpon>
@@ -253,7 +253,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ModelTab\ParamDisplay.xaml">
+    <Page Include="View\ModelTab\WavelengthDisplay.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

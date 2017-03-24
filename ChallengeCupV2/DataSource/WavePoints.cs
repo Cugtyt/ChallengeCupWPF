@@ -25,7 +25,7 @@ namespace ChallengeCupV2.DataSource
         /// <summary>
         /// All the ys of points
         /// </summary>
-        private List<double> ySet = new List<double>();
+        //private List<double> ySet = new List<double>();
         private List<Point> ps = new List<Point>();
         /// <summary>
         /// Points is the final points set to show in chart
@@ -96,7 +96,6 @@ namespace ChallengeCupV2.DataSource
         /// <summary>
         /// Transform complex array to ySet
         /// </summary>
-        /// <returns></returns>
         public void FromComplexArray(Complex[] input)
         {
             if (input == null)
@@ -106,14 +105,20 @@ namespace ChallengeCupV2.DataSource
 #endif
                 throw new ArgumentNullException("WavePoints: FromComplexArray()");
             }
-            List<Point> pl = new List<Point>();
+            //List<Point> pl = new List<Point>();
+            ps.Clear();
             for (int i = 0; i < input.Length / 2; i++)
             {
-                pl.Add(new Point(i * StateConstantParam.DemodulationFrequency / input.Length, 
+                ps.Add(new Point(i * StateConstantParam.DemodulationFrequency / input.Length, 
                     Math.Abs(input[i].Real) * 2));
             }
             Points.Collection.Clear();
-            Points.AppendMany(pl);
+            Points.AppendMany(ps);
+        }
+
+        public void CleanAll()
+        {
+            Points.Collection.Clear();
         }
     }
 }

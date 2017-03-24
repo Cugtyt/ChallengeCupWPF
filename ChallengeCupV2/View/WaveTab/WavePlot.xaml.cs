@@ -44,6 +44,12 @@ namespace ChallengeCupV2.View.WaveTab
         /// <returns></returns>
         public void AddTimePoints(List<double> yList)
         {
+            if (yList.Count == 0)
+            {
+                dataSource.CleanAll();
+                return;
+            }
+            plotter.Viewport.Restrictions.Clear();
             UpdateYRange(yList[0] - 0.2, yList[0] + 0.2);
             xAxis.Visibility = Visibility.Hidden;
             dataSource.Add(yList);
@@ -56,6 +62,11 @@ namespace ChallengeCupV2.View.WaveTab
         /// <returns></returns>
         public Task AddFreqPoints(Complex[] com)
         {
+            if (com == null || com.Length == 0)
+            {
+                dataSource.CleanAll();
+                return null;
+            }
             plotter.Viewport.Restrictions.Clear();
             xAxis.Visibility = Visibility.Visible;
             dataSource.FromComplexArray(com);
@@ -78,6 +89,11 @@ namespace ChallengeCupV2.View.WaveTab
             verticalTitle.Content = title;
         }
 
+        /// <summary>
+        /// Update y range that from min to max
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
         public void UpdateYRange(double min, double max)
         {
             ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
@@ -89,6 +105,11 @@ namespace ChallengeCupV2.View.WaveTab
             //    1556,
             //    1556.5);
             plotter.Viewport.Restrictions.Add(restr);
+        }
+
+        public void Clean()
+        {
+            dataSource.CleanAll();
         }
     }
 

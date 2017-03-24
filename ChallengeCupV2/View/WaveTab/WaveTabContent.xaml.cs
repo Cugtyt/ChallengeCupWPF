@@ -86,6 +86,10 @@ namespace ChallengeCupV2.View.WaveTab
                     //     select new Complex(y, 0))
                     //     .ToArray())
                     //    .Result);
+                    if (StateCalculator.FFTResults[selectedCH].Count == 0)
+                    {
+                        return;
+                    }
                     wavePlot.AddFreqPoints(StateCalculator.FFTResults[selectedCH][selectedGrating]);
                     break;
                 default:

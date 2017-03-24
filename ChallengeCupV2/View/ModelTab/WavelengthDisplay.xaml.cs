@@ -1,4 +1,5 @@
 ﻿using ChallengeCupV2.DataSource;
+using ChallengeCupV2.DataSource.GearState;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,9 +20,9 @@ using System.Windows.Threading;
 namespace ChallengeCupV2.View.ModelTab
 {
     /// <summary>
-    /// ParamDisplay.xaml 的交互逻辑
+    /// WavelengthDisplay.xaml 的交互逻辑
     /// </summary>
-    public partial class ParamDisplay : UserControl
+    public partial class WavelengthDisplay : UserControl
     {
         /// <summary>
         /// Grid items source in which contains sampled wave length
@@ -41,7 +42,7 @@ namespace ChallengeCupV2.View.ModelTab
         {
             Interval = TimeSpan.FromSeconds(2),
         };
-        public ParamDisplay()
+        public WavelengthDisplay()
         {
             InitializeComponent();
             //waveLengthSource.Add(0.0);
@@ -84,28 +85,46 @@ namespace ChallengeCupV2.View.ModelTab
             //    ? 2 : 0;
             var model = (UserControlManager.Get("ModelTabContent") as ModelTabContent).Model;
             int ch = model is Models.Gear
-                ? 0 : model is Models.Bearing
-                ? 1 : model is Models.Shaft
-                ? 2 : 0;
-            //waveLengthSource.Clear();
-            var dataClone = GratingDataContainer.Data;
-            List<double> temp = new List<double>();
+                ? 1 : model is Models.Bearing
+                ? 2 : model is Models.Shaft
+                ? 3 : 0;
+            waveLengthSource.Clear();
             switch (ch)
             {
-                case 0:
-                    addAverage(dataClone, 0, temp);
-                    addAverage(dataClone, 1, temp);
-                    break;
+                // For gear average wavelength
                 case 1:
-                    addAverage(dataClone, 2, temp);
+                    waveLengthSource.Add(StateCalculator.GetAve(ch, 1));
+                    waveLengthSource.Add(StateCalculator.GetAve(ch, 2));
                     break;
+                // For shaft average wavelength
                 case 2:
-                    addAverage(dataClone, 3, temp);
+                    waveLengthSource.Add(StateCalculator.GetAve(ch, 1));
+                    break;
+                // For bearing average wavelength
+                case 3:
+                    waveLengthSource.Add(StateCalculator.GetAve(ch, 1));
                     break;
                 default:
                     break;
             }
-            waveLength.ItemsSource = new ObservableCollection<double>(temp);
+            //var dataClone = GratingDataContainer.Data;
+            //List<double> temp = new List<double>();
+            //switch (ch)
+            //{
+            //    case 0:
+            //        addAverage(dataClone, 0, temp);
+            //        addAverage(dataClone, 1, temp);
+            //        break;
+            //    case 1:
+            //        addAverage(dataClone, 2, temp);
+            //        break;
+            //    case 2:
+            //        addAverage(dataClone, 3, temp);
+            //        break;
+            //    default:
+            //        break;
+            //}
+            //waveLength.ItemsSource = new ObservableCollection<double>(temp);
         }
 
         /// <summary>
@@ -113,23 +132,23 @@ namespace ChallengeCupV2.View.ModelTab
         /// </summary>
         /// <param name="dataClone"></param>
         /// <param name="ch"></param>
-        private void addAverage(List<double>[][] dataClone, int ch, List<double> temp)
-        {
-            //foreach (var li in dataClone[ch])
-            //{
-            //    if (li.Count > 0)
-            //    {
-            //        temp.Add(li.Average());
-            //    }
-            //}
-            for (int i = 0; i < dataClone[ch].Length; i++)
-            {
-                if (dataClone[ch][i].Count > 0)
-                {
-                    temp.Add(dataClone[ch][i].Average());
-                }
-            }
-        }
+        //private void addAverage(List<double>[][] dataClone, int ch, List<double> temp)
+        //{
+        //    //foreach (var li in dataClone[ch])
+        //    //{
+        //    //    if (li.Count > 0)
+        //    //    {
+        //    //        temp.Add(li.Average());
+        //    //    }
+        //    //}
+        //    for (int i = 0; i < dataClone[ch].Length; i++)
+        //    {
+        //        if (dataClone[ch][i].Count > 0)
+        //        {
+        //            temp.Add(dataClone[ch][i].Average());
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Auto increase row number when a new row added in datagrid

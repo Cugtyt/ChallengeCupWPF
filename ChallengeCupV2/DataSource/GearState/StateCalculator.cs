@@ -22,7 +22,8 @@ namespace ChallengeCupV2.DataSource.GearState
         /// <summary>
         /// Buffer of delta result, gotten by CalculateDELTA
         /// </summary>
-        //private static List<double> DELTABuffer = new List<double>();
+        private static List<double>[] average = new List<double>[4] 
+        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
         private static List<double>[] DELTABuffer = new List<double>[4] 
         { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
         private static List<double>[] stress = new List<double>[4] 
@@ -253,7 +254,7 @@ namespace ChallengeCupV2.DataSource.GearState
         /// <summary>
         /// Calculate delta and store result in DELTABuffer
         /// </summary>
-        private static void calculateDELTA()
+        private static void calculateDELTAAndAve()
         {
             if (!GratingDataContainer.IsDataReady)
             {
@@ -263,6 +264,7 @@ namespace ChallengeCupV2.DataSource.GearState
             for (int i = 0; i < DELTABuffer.Length; i++)
             {
                 DELTABuffer[i].Clear();
+                average[i].Clear();
             }
             //DELTABuffer.Clear();
             double temp;
@@ -283,6 +285,16 @@ namespace ChallengeCupV2.DataSource.GearState
                 for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
                 {
                     temp = 0;
+                    //average[i].Add(GratingDataContainer.Data[i] != null 
+                    //    ? GratingDataContainer.Data[i][j] != null 
+                    //        && GratingDataContainer.Data[i][j].Count > 0
+                    //    ? GratingDataContainer.Data[i][j].Average()
+                    //    : 0
+                    //    : 0);
+                    if (GratingDataContainer.Data[i][j].Count > 0)
+                    {
+                        average[i].Add(GratingDataContainer.Data[i][j].Average());
+                    }
                     for (int k = 0; k < GratingDataContainer.Data[i][j].Count; 
                         k += (int)(GratingDataContainer.Data[i][j].Count / SamplingStep))
                     {
@@ -301,7 +313,7 @@ namespace ChallengeCupV2.DataSource.GearState
         {
             //dataClone = GratingDataContainer.Data.Clone() as List<double>[][];
             //dataClone = GratingDataContainer.Data;
-            calculateDELTA();
+            calculateDELTAAndAve();
             calculateStress();
             calculateStrain();
             calculateTemperature();
@@ -311,35 +323,35 @@ namespace ChallengeCupV2.DataSource.GearState
         /// <summary>
         /// Get value by given gratingID and calculator
         /// </summary>
-        /// <param name="gratingID"></param>
+        /// <param name="grating"></param>
         /// <param name="cal"></param>
         /// <returns></returns>
-        public static double Get(int ch, int gratingID, Calculator cal)
+        public static double Get(int ch, int grating, Calculator cal)
         {
             int chIndex = ch - 1;
-            int gratingIndex = gratingID - 1;
+            int gratingIndex = grating - 1;
             switch (cal)
             {
                 case Calculator.Stress:
-                    if (chIndex > stress.Length || gratingID > stress[chIndex].Count)
+                    if (chIndex > stress.Length || grating > stress[chIndex].Count)
                     {
                         return 0;
                     }
                     return stress[chIndex][gratingIndex];
                 case Calculator.Strain:
-                    if (chIndex > strain.Length || gratingID > strain[chIndex].Count)
+                    if (chIndex > strain.Length || grating > strain[chIndex].Count)
                     {
                         return 0;
                     }
                     return strain[chIndex][gratingIndex];
                 case Calculator.Temperature:
-                    if (chIndex > temperature.Length || gratingID > temperature[chIndex].Count)
+                    if (chIndex > temperature.Length || grating > temperature[chIndex].Count)
                     {
                         return 0;
                     }
                     return temperature[chIndex][gratingIndex];
                 case Calculator.Frequency:
-                    if (chIndex > frequency.Length || gratingID > frequency[chIndex].Count)
+                    if (chIndex > frequency.Length || grating > frequency[chIndex].Count)
                     {
                         return 0;
                     }
@@ -347,6 +359,23 @@ namespace ChallengeCupV2.DataSource.GearState
                 default:
                     return 0;
             }
+        }
+
+        /// <summary>
+        /// Get average wavelength for para display
+        /// </summary>
+        /// <param name="ch"></param>
+        /// <param name="grating"></param>
+        /// <returns></returns>
+        public static double GetAve(int ch, int grating)
+        {
+            int chIndex = ch - 1;
+            int gratingIndex = grating - 1;
+            if (average.Length <= chIndex || average[chIndex].Count <= gratingIndex)
+            {
+                return 0;
+            }
+            return average[chIndex][gratingIndex];
         }
     }
 

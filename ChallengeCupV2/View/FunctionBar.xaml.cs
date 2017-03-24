@@ -44,47 +44,7 @@ namespace ChallengeCupV2.View
         {
             InitializeComponent();
             UserControlManager.Register(this, GetType().Name);
-            // A task to run method receive UDP
-            
-            //timer.Tick += new EventHandler(ReadDataFromFile);
         }
-
-        //private void ReadDataFromFile(object sender, EventArgs e)
-        //{
-        //    //-----------------------
-        //    // Remove all files in dir
-        //    //File.FileUtils.RemoveFileAll(files, 0, files.Length - 1);
-        //    //-------------------------
-        //    //if (index < files.Length)
-        //    //{
-        //    //    //GratingDataContainer.Data = await File.FileUtils.ReadWaveData(
-        //    //    //    SettingDataContainer.WaveDataDir + files[index++].Name);
-        //    //    await GratingDataContainer.GetDataFrom(
-        //    //        File.FileUtils.ReadDataFromFile(
-        //    //            SettingContainer.WaveDataDir + files[index++].Name).Result);
-        //    //}
-        //    files = dir.GetFiles();
-        //    if (files.Length > 0)
-        //    {
-        //        try
-        //        {
-        //            GratingDataContainer.GetDataFrom(
-        //                   File.FileUtils.ReadDataFromFile(
-        //                        SettingContainer.WaveDataDir + files.First().Name));
-        //            File.FileUtils.RemoveFileAll(files, 0, files.Length);
-        //            //files.Last().Delete();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex);
-        //        }
-        //    }
-        //}
-
-        //public void UpdateDir()
-        //{
-        //    dir = new DirectoryInfo(SettingContainer.WaveDataDir);
-        //}
 
         private void connect_Click(object sender, RoutedEventArgs e)
         {
@@ -92,10 +52,6 @@ namespace ChallengeCupV2.View
             // Connect asked
             if ((string)connect.Content == "Connect")
             {
-                //WaveTab.WaveTabContent.Timer.IsEnabled = true;
-                //var dir = new DirectoryInfo(SettingContainer.WaveDataDir);
-                //files = dir.GetFiles();
-                //timer.IsEnabled = true;
                 cts = new CancellationTokenSource();
                 udpTask = new Task(udp.Receive, cts.Token);
                 udpTask.Start();
@@ -110,11 +66,7 @@ namespace ChallengeCupV2.View
                     return;
                 }
                 // Cancel UDP task
-                //udpTask.Dispose();
                 cts.Cancel();
-                //timer.IsEnabled = false;
-                //WaveTab.WaveTabContent.Timer.IsEnabled = false;
-                //StateTab.StateTabContent.Timer.IsEnabled = false;
                 connect.Content = "Connect";
             }
         }
@@ -129,23 +81,13 @@ namespace ChallengeCupV2.View
                     start.Content = "Connect First";
                     return;
                 }
-                //WaveTab.WaveTabContent.Timer.IsEnabled = true;
-                //StateTab.StateTabContent.Timer.IsEnabled = true;
-                //ModelTab.ParamDisplay.Timer.IsEnabled = true;
-                //ModelTab.ModelTabContent.AutoRotationTimer.IsEnabled = true;
                 SetTimers(true);
-                //WaveTab.WaveTabContent.IsDisplaying = true;
                 start.Content = "Stop";
             }
             // Start cancled
             else
             {
-                //WaveTab.WaveTabContent.Timer.IsEnabled = false;
-                //StateTab.StateTabContent.Timer.IsEnabled = false;
-                //ModelTab.ParamDisplay.Timer.IsEnabled = false;
-                //ModelTab.ModelTabContent.AutoRotationTimer.IsEnabled = false;
                 SetTimers(false);
-                //WaveTab.WaveTabContent.IsDisplaying = false;
                 start.Content = "Start";
             }
            
@@ -155,7 +97,7 @@ namespace ChallengeCupV2.View
         {
             WaveTab.WaveTabContent.Timer.IsEnabled
                 = StateTab.StateTabContent.Timer.IsEnabled
-                = ModelTab.ParamDisplay.Timer.IsEnabled
+                = ModelTab.WavelengthDisplay.Timer.IsEnabled
                 = ModelTab.ModelTabContent.AutoRotationTimer.IsEnabled
                 = isEnabled;
         }
@@ -167,9 +109,6 @@ namespace ChallengeCupV2.View
         /// <param name="e"></param>
         private void exit_Click(object sender, RoutedEventArgs e)
         {
-            //timer.IsEnabled = false;
-            // Cancel UDP task
-            //udpTask.Dispose();
             cts?.Cancel();
             SetTimers(false);
             Application.Current.Shutdown();
