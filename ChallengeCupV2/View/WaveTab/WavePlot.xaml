@@ -16,7 +16,8 @@
         <!--<d3:ChartPlotter x:Name="plotter" DataContext="{StaticResource dataSource}">-->
         <d3:ChartPlotter x:Name="plotter">
             <d3:ChartPlotter.VerticalAxis>
-                <d3:VerticalIntegerAxis />
+                <!--<d3:VerticalIntegerAxis/>-->
+                <d3:VerticalAxis/>
             </d3:ChartPlotter.VerticalAxis>
             <d3:ChartPlotter.HorizontalAxis>
                 <d3:HorizontalIntegerAxis Name="xAxis"/>

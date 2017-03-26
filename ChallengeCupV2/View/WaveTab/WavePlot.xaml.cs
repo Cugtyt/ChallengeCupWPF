@@ -20,7 +20,9 @@ namespace ChallengeCupV2.View.WaveTab
         /// <summary>
         /// Data source to show in chart
         /// </summary>
-        WavePoints dataSource = new WavePoints();
+        private WavePoints dataSource = new WavePoints();
+        private double end;
+        private double start;
 
         public WavePlot()
         {
@@ -49,8 +51,8 @@ namespace ChallengeCupV2.View.WaveTab
                 dataSource.CleanAll();
                 return;
             }
-            plotter.Viewport.Restrictions.Clear();
-            UpdateYRange(yList[0] - 0.2, yList[0] + 0.2);
+            
+            UpdateYRange(yList[0] - 0.1, yList[0] + 0.1);
             xAxis.Visibility = Visibility.Hidden;
             dataSource.Add(yList);
         }
@@ -96,14 +98,20 @@ namespace ChallengeCupV2.View.WaveTab
         /// <param name="max"></param>
         public void UpdateYRange(double min, double max)
         {
+            if (plotter.Viewport.Restrictions.Count > 0 && Math.Abs(start - min) < 0.1)
+            {
+                return;
+            }
             ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
             //restr.YRange = new DisplayRange(
             //    SettingContainer.MinYWavePlotTimeDomain,
             //    SettingContainer.MaxYWavePlotTimeDomain);
-            restr.YRange = new DisplayRange(min, max);
+            restr.YRange = new DisplayRange(start = min, end = max);
             //restr.YRange = new DisplayRange(
             //    1556,
             //    1556.5);
+            //plotter.Viewport.AutoFitToView = true;
+            plotter.Viewport.Restrictions.Clear();
             plotter.Viewport.Restrictions.Add(restr);
         }
 
