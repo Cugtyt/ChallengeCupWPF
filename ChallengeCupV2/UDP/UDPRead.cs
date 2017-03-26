@@ -100,7 +100,7 @@ namespace ChallengeCupV2.UDP
 
         private void addResult(string[] results, int start, int ch, int len)
         {
-            for (int i = 0; i < len; i++)
+            for (int i = 0; i < len && i < maxGratingNumber; i++)
             {
                 dataBuffer[ch][i].Add(double.Parse(results[start + i]));
             }

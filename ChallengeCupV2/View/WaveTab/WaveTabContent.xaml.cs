@@ -74,7 +74,10 @@ namespace ChallengeCupV2.View.WaveTab
 #if DEBUG
                     //Console.WriteLine("WaveTabContent:AnimatedPlot() -> add time domain points");
 #endif
-                    wavePlot.AddTimePoints(GratingDataContainer.Data[selectedCH][selectedGrating]);
+                    lock (this)
+                    {
+                        wavePlot.AddTimePoints(GratingDataContainer.Data[selectedCH][selectedGrating]);
+                    }
                     break;
                 case Domain.Frequency:
 #if DEBUG
@@ -90,7 +93,10 @@ namespace ChallengeCupV2.View.WaveTab
                     {
                         return;
                     }
-                    wavePlot.AddFreqPoints(StateCalculator.FFTResults[selectedCH][selectedGrating]);
+                    lock (this)
+                    {
+                        wavePlot.AddFreqPoints(StateCalculator.FFTResults[selectedCH][selectedGrating]);
+                    }
                     break;
                 default:
                     break;
