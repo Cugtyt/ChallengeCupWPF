@@ -50,17 +50,17 @@
                                  Content="Shaft" Click="shaftModel_Selected"/>
             </StackPanel>
         </Grid>
-        <Grid Grid.Row="1" MouseLeave="gearContainer_MouseLeave"
+        <Grid Grid.Row="1" MouseLeave="modelContainer_MouseLeave"
               Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Name="modelContainer" 
-                  MouseUp="gearContainer_MouseUp"
-                  MouseDown="gearContainer_MouseDown"
-                  MouseMove="gearContainer_MouseMove"
-                  MouseWheel="gearContainer_MouseWheel"/>
+                  MouseUp="modelContainer_MouseUp"
+                  MouseDown="modelContainer_MouseDown"
+                  MouseMove="modelContainer_MouseMove"
+                  MouseWheel="modelContainer_MouseWheel"/>
             <StackPanel Grid.Column="1" Name="sideBar" Orientation="Vertical" VerticalAlignment="Center">
                 <local:WavelengthDisplay x:Name="wavelengthDisplay"/>
                 <Label Content="Rotation Style: " FontSize="18" Margin="0,40,0,0"/>
@@ -73,7 +73,7 @@
                 <StackPanel>
                     <Label Content="Notes:" FontSize="18"/>
                     <!--<TextBlock Text="说明：&#x0a;* 鼠标左键按下移动旋转齿轮&#x0a;* 双击恢复初始状态&#x0a;* 滚轮可以进行缩放" TextWrapping="WrapWithOverflow"/>-->
-                    <TextBlock Text="    * Left button down to rotate gear model.&#x0a;    * Double click to reset model view.&#x0a;    * Zoom in and out by moving mouse wheel." TextWrapping="WrapWithOverflow" Margin="0,5,0,0"/>
+                    <TextBlock Text="    * Left button down to rotate model.&#x0a;    * Double click to reset model view.&#x0a;    * Zoom in and out by moving mouse wheel." TextWrapping="WrapWithOverflow" Margin="0,5,0,0"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

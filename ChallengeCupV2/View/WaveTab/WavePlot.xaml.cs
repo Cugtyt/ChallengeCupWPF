@@ -81,14 +81,7 @@ namespace ChallengeCupV2.View.WaveTab
         /// <param name="title"></param>
         public void SetYTitle(string title)
         {
-            if (title == null)
-            {
-#if DEBUG
-                Console.WriteLine("WavePlot: SetYTitle() -> Illegal input, argument can not be null.");
-#endif
-                throw new ArgumentNullException("WavePlot: SetYTitle()");
-            }
-            verticalTitle.Content = title;
+            verticalTitle.Content = title ?? throw new ArgumentNullException("WavePlot: SetYTitle()");
         }
 
         /// <summary>
@@ -102,11 +95,13 @@ namespace ChallengeCupV2.View.WaveTab
             {
                 return;
             }
-            ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction();
-            //restr.YRange = new DisplayRange(
-            //    SettingContainer.MinYWavePlotTimeDomain,
-            //    SettingContainer.MaxYWavePlotTimeDomain);
-            restr.YRange = new DisplayRange(start = min, end = max);
+            ViewportAxesRangeRestriction restr = new ViewportAxesRangeRestriction()
+            {
+                //restr.YRange = new DisplayRange(
+                //    SettingContainer.MinYWavePlotTimeDomain,
+                //    SettingContainer.MaxYWavePlotTimeDomain);
+                YRange = new DisplayRange(start = min, end = max)
+            };
             //restr.YRange = new DisplayRange(
             //    1556,
             //    1556.5);

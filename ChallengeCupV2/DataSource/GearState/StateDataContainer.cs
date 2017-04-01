@@ -19,10 +19,10 @@ namespace ChallengeCupV2.DataSource.GearState
         /// </summary>
         public ObservableCollection<StateDataTemplate> StateData = new ObservableCollection<StateDataTemplate>()
         {
-            new StateDataTemplate(1, 1, "Stress", Calculator.Stress, "Pa"),
-            new StateDataTemplate(1, 1, "Strain", Calculator.Strain, "%"),
-            new StateDataTemplate(1, 1, "Temperature", Calculator.Temperature, "℃"),
-            new StateDataTemplate(1, 1, "Frequency", Calculator.Frequency, "Hz")
+            new StateDataTemplate(1, 1, "Stress", Calculator.Stress, "Pa", 1500, OutlierJudge.StressJudge),
+            new StateDataTemplate(1, 1, "Strain", Calculator.Strain, "%", 1500, OutlierJudge.StrainJudge),
+            new StateDataTemplate(1, 1, "Temperature", Calculator.Temperature, "℃", 0, OutlierJudge.TemperatureJudge),
+            new StateDataTemplate(1, 1, "Frequency", Calculator.Frequency, "Hz", 0, OutlierJudge.FrequencyJudge)
         };
 
 
@@ -53,10 +53,10 @@ namespace ChallengeCupV2.DataSource.GearState
                         {
                             continue;
                         }
-                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Stress", Calculator.Stress, "Pa"));
-                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Strain", Calculator.Strain, "%"));
-                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Temperature", Calculator.Temperature, "℃"));
-                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Frequency", Calculator.Frequency, "Hz"));
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Stress", Calculator.Stress, "Pa", 1500, OutlierJudge.StressJudge));
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Strain", Calculator.Strain, "%",1500,  OutlierJudge.StrainJudge));
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Temperature", Calculator.Temperature, "℃", 0, OutlierJudge.TemperatureJudge));
+                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Frequency", Calculator.Frequency, "Hz", 0, OutlierJudge.FrequencyJudge));
                     }
                 }
             }

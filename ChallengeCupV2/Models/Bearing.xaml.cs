@@ -28,27 +28,28 @@ namespace ChallengeCupV2.Models
 
         public AxisAngleRotation3D GetAxisAngleRotation()
         {
-            throw new NotImplementedException();
+            return axisAngleRotation;
         }
 
         public PerspectiveCamera GetCamera()
         {
-            throw new NotImplementedException();
+            return camera;
         }
 
         public GeometryModel3D GetModel()
         {
-            throw new NotImplementedException();
+            return model;
         }
 
         public Viewport3D GetViewPort()
         {
-            throw new NotImplementedException();
+            return viewPort;
         }
 
         public void ResetView()
         {
-            throw new NotImplementedException();
+            camera.Position = new Point3D(3.43322754474684E-05, 0.477958679199201, 187.799609685296);
+            axisAngleRotation.Angle = 0;
         }
     }
 }

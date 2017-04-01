@@ -300,7 +300,7 @@ namespace ChallengeCupV2.File
                 + "\n{0, -20}{0, -20}{1, -20}{2, -20}{3, -20}\n", "CH", "Grating", "StatePARM", "Value", "Unit"));
             foreach (var d in datalist)
             {
-                sb.Append(string.Format("{0, -20}{0, -20}{1, -20}{2, -20}{3, -20}\n", 
+                sb.Append(string.Format("{0, -20}{1, -20}{2, -20}{3, -20}{4, -20}\n", 
                     d.CH, d.GratingID, d.Name, d.Value, d.Unit));
             }
 #if DEBUG

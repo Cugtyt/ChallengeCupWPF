@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#02FFFFFF">
-        <Viewport3D ClipToBounds="True">
+        <Viewport3D Name="viewPort" ClipToBounds="True">
             <Viewport3D.Camera>
-                <PerspectiveCamera FieldOfView="45" FarPlaneDistance="362.39809663401377" LookDirection="0,0,-138.29937412774" NearPlaneDistance="0.1" 
+                <PerspectiveCamera x:Name="camera" FieldOfView="45" FarPlaneDistance="362.39809663401377" LookDirection="0,0,-138.29937412774" NearPlaneDistance="0.1" 
                                    Position="3.43322754474684E-05,0.477958679199201,187.799609685296" UpDirection="0,1,0"/>
             </Viewport3D.Camera>
             <ModelVisual3D x:Name="World">
@@ -34,16 +34,16 @@
                             <ScaleTransform3D ScaleZ="1" ScaleY="1" ScaleX="1"/>
                             <RotateTransform3D d:EulerAngles="0,0,0">
                                 <RotateTransform3D.Rotation>
-                                    <AxisAngleRotation3D Axis="0,0,0" Angle="0"/>
+                                    <AxisAngleRotation3D x:Name="axisAngleRotation" Axis="0,0,0" Angle="0"/>
                                 </RotateTransform3D.Rotation>
                             </RotateTransform3D>
                             <TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="0"/>
                             <TranslateTransform3D OffsetZ="0" OffsetX="0" OffsetY="0"/>
                         </Transform3DGroup>
                     </ModelVisual3D.Transform>
-                    <ModelVisual3D x:Name="model">
+                    <ModelVisual3D>
                         <ModelVisual3D.Content>
-                            <GeometryModel3D x:Name="wire_115115115" d:Bounds="-14.9999332427979,-14.7719650268555,-17.9997730255127,30.0000171661377,29.5442399978638,35.0000171661377">
+                            <GeometryModel3D x:Name="model" d:Bounds="-14.9999332427979,-14.7719650268555,-17.9997730255127,30.0000171661377,29.5442399978638,35.0000171661377">
                                 <GeometryModel3D.Geometry>
                                     <MeshGeometry3D Normals="0.93969297,0.34202,1E-06 0.93969297,0.34202,1E-06 1,0,0 1,0,0 0.93969202,-0.34202099,0 0.93969202,-0.34202099,0 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1
 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1 0,0,-1

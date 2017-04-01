@@ -187,12 +187,12 @@ namespace ChallengeCupV2.DataSource
             }
             IsDataReady = false;
             // Input data is valid, read and set Data
-            lock (typeof(GratingDataContainer))
-            {
 #if DEBUG
                 Debug.Assert(data.Length == chMax);
                 Debug.Assert(data[0].Length == gratingMax);
 #endif
+            lock (Data)
+            {
                 // Copy
                 for (int i = 0; i < data.Length; i++)
                 {

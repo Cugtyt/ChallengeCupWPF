@@ -49,8 +49,6 @@ namespace ChallengeCupV2.DataSource
         public WavePoints()
         {
             Points = new ObservableDataSource<Point>();
-            //this.capacity = capacity;
-            //ySet = new double[capacity];
         }
 
         /// <summary>
@@ -77,6 +75,7 @@ namespace ChallengeCupV2.DataSource
             //Update();
             Points.Collection.Clear();
             Points.AppendMany(ps);
+            
         }
 
         /// <summary>

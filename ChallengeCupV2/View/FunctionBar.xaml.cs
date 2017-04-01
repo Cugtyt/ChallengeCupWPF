@@ -22,7 +22,7 @@ namespace ChallengeCupV2.View
     /// <summary>
     /// FunctionColumn.xaml 的交互逻辑
     /// </summary>
-    public partial class FunctionBar : UserControl
+    public partial class FunctionBar : UserControl, IDisposable
     {
         /// <summary>
         /// Timer to set gratingdata in GratingDataContainer
@@ -112,6 +112,11 @@ namespace ChallengeCupV2.View
             cts?.Cancel();
             SetTimers(false);
             Application.Current.Shutdown();
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)cts).Dispose();
         }
     }
 

@@ -12,8 +12,6 @@ namespace ChallengeCupV2.DataSource.GearState
     /// </summary>
     public class StateDataTemplate : DependencyObject
     {
-
-
         public int CH
         {
             get { return (int)GetValue(CHProperty); }
@@ -51,7 +49,6 @@ namespace ChallengeCupV2.DataSource.GearState
             DependencyProperty.Register("Name", typeof(string), typeof(StateDataTemplate));
 
 
-
         /// <summary>
         /// State data unit
         /// </summary>
@@ -87,7 +84,12 @@ namespace ChallengeCupV2.DataSource.GearState
         //private Func<IEnumerable<double>> calculater;
         private Calculator calculater;
 
-        public StateDataTemplate(int ch, int ID, string name, Calculator c, string unit)
+
+        private double threshold;
+        public bool IsOutlier = false;
+        private Func<double, double, bool> judge;
+
+        public StateDataTemplate(int ch, int ID, string name, Calculator c, string unit, double thd, Func<double, double, bool> jg)
         {
             if (name == null || unit == null)
             {
@@ -101,6 +103,8 @@ namespace ChallengeCupV2.DataSource.GearState
             Name = name;
             calculater = c;
             Unit = unit;
+            threshold = thd;
+            judge = jg;
         }
 
         public void Get()
@@ -116,6 +120,28 @@ namespace ChallengeCupV2.DataSource.GearState
 #if DEBUG
             Console.WriteLine(Name + " " + Value);
 #endif
+            IsOutlier = judge(Value, threshold);
         }
     }
+
+    public static class OutlierJudge
+    {
+        public static Func<double, double, bool> StressJudge = (value, threshold) =>
+        {
+            return value - threshold > 10;
+        };
+        public static Func<double, double, bool> StrainJudge = (value, threshold) =>
+        {
+            return value - threshold > 10;
+        };
+        public static Func<double, double, bool> TemperatureJudge = (value, threshold) =>
+        {
+            return value - threshold > 10;
+        };
+        public static Func<double, double, bool> FrequencyJudge = (value, threshold) =>
+        {
+            return value - threshold > 10;
+        };
+    }
+
 }

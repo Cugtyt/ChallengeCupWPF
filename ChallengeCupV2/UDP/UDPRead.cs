@@ -14,7 +14,7 @@ namespace ChallengeCupV2.UDP
     /// <summary>
     /// Receive data from UDP and update 
     /// </summary>
-    public class UDPRead
+    public class UDPRead : IDisposable
     {
         /// <summary>
         /// Buffer data received from UDP and update data in GratingDataContainer
@@ -104,6 +104,11 @@ namespace ChallengeCupV2.UDP
             {
                 dataBuffer[ch][i].Add(double.Parse(results[start + i]));
             }
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)udpClient).Dispose();
         }
     }
 }
