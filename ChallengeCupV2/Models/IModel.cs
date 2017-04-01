@@ -18,5 +18,6 @@ namespace ChallengeCupV2.Models
         Viewport3D GetViewPort();
         AxisAngleRotation3D GetAxisAngleRotation();
         void ResetView();
+        void AutoRotation();
     }
 }

@@ -26,6 +26,11 @@ namespace ChallengeCupV2.Models
             InitializeComponent();
         }
 
+        public void AutoRotation()
+        {
+            // There should be nothing.
+        }
+
         public AxisAngleRotation3D GetAxisAngleRotation()
         {
             return axisAngleRotation;

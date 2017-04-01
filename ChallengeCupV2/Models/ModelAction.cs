@@ -32,12 +32,13 @@ namespace ChallengeCupV2.Models
             Horizontal, vertical
         }
 
-        private static int AutoRotationAngle = 0;
-        public static void AutoRotation(this IModel model, int AngleStep = 1)
+        //private static int AutoRotationAngle = 0;
+        public static void AutoRotation(this IModel model)
         {
-            model.ResetView();
-            model.GetAxisAngleRotation().Axis = new Vector3D(0, 0, 1);
-            model.GetAxisAngleRotation().Angle += (AutoRotationAngle += AngleStep);
+            model.AutoRotation();
+            //model.ResetView();
+            //model.GetAxisAngleRotation().Axis = new Vector3D(0, 0, 1);
+            //model.GetAxisAngleRotation().Angle += (AutoRotationAngle += AngleStep);
         }
 
         #region Zoom in and zoom out

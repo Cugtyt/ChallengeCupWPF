@@ -13,7 +13,7 @@
                                     FarPlaneDistance="896.85993018317913"
                                     LookDirection="0,0,-313.953382540308"
                                     NearPlaneDistance="0.1"
-                                    Position="3.4332275191673E-05,-0.000160217284999931,313.953315783106" UpDirection="0,1,0"/>
+                                    Position="3.4332275191673E-05,-0.000160217284999931,373.953315783106" UpDirection="0,1,0"/>
             </Viewport3D.Camera>
             <ModelVisual3D x:Name="World">
                 <ModelVisual3D x:Name="AmbientLightContainer">

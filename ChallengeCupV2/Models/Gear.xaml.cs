@@ -31,6 +31,14 @@ namespace ChallengeCupV2.Models
             return axisAngleRotation;
         }
 
+        static int AutoRotationAngle = 0;
+        public void AutoRotation()
+        {
+            ResetView();
+            axisAngleRotation.Axis = new Vector3D(0, 0, 1);
+            axisAngleRotation.Angle += (AutoRotationAngle += 1);
+        }
+
         public PerspectiveCamera GetCamera()
         {
             return camera;
@@ -48,7 +56,7 @@ namespace ChallengeCupV2.Models
 
         public void ResetView()
         {
-            camera.Position = new Point3D(3.4332275191673E-05, -0.000160217284999931, 313.953315783106);
+            camera.Position = new Point3D(3.4332275191673E-05, -0.000160217284999931, 373.953315783106);
             axisAngleRotation.Angle = 0;
         }
     }
