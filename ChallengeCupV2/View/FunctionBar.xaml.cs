@@ -76,7 +76,7 @@ namespace ChallengeCupV2.View
             // Start asked
             if ("Start" == (string)start.Content)
             {
-                if ((string)connect.Content != "Connected")
+                if ((string)connect.Content == "Connect")
                 {
                     start.Content = "Connect First";
                     return;

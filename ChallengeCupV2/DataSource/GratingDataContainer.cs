@@ -198,9 +198,8 @@ namespace ChallengeCupV2.DataSource
                 {
                     for (int j = 0; j < data[i].Length; j++)
                     {
-                        //Data[i][j].Clear();
-                        //Data[i][j].AddRange(data[i][j]);
-                        if (Data[i][j].Count >= maxLength)
+                        // Ensure that count is small than input data and not more than maxLength
+                        if (Data[i][j].Count > data[i][j].Count && Data[i][j].Count >= maxLength)
                         {
                             Data[i][j].RemoveRange(0, data[i][j].Count);
                         }
