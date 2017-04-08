@@ -89,7 +89,7 @@ namespace ChallengeCupV2.DataSource.GearState
         public bool IsOutlier = false;
         private Func<double, double, bool> judge;
 
-        public StateDataTemplate(int ch, int ID, string name, Calculator c, string unit, double thd, Func<double, double, bool> jg)
+        public StateDataTemplate(int ch, int ID, string name, Calculator c, string unit, Func<double, double, bool> jg)
         {
             if (name == null || unit == null)
             {
@@ -103,7 +103,7 @@ namespace ChallengeCupV2.DataSource.GearState
             Name = name;
             calculater = c;
             Unit = unit;
-            threshold = thd;
+            //threshold = thd;
             judge = jg;
         }
 
@@ -116,11 +116,11 @@ namespace ChallengeCupV2.DataSource.GearState
             {
                 return;
             }
-            Value = StateCalculator.Get(CH, GratingID, calculater);
+            Value = StateCalculator.GetParam(CH, GratingID, calculater);
 #if DEBUG
             Console.WriteLine(Name + " " + Value);
 #endif
-            IsOutlier = judge(Value, threshold);
+            IsOutlier = judge(StateCalculator.GetDELTA(CH, GratingID), 0);
         }
     }
 
@@ -128,11 +128,11 @@ namespace ChallengeCupV2.DataSource.GearState
     {
         public static Func<double, double, bool> StressJudge = (value, threshold) =>
         {
-            return value - threshold > 10;
+            return Math.Abs(value - threshold) > 0.18;
         };
         public static Func<double, double, bool> StrainJudge = (value, threshold) =>
         {
-            return value - threshold > 10;
+            return Math.Abs(value - threshold) > 0.18;
         };
         public static Func<double, double, bool> TemperatureJudge = (value, threshold) =>
         {

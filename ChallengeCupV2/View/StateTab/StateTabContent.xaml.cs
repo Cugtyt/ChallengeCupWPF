@@ -33,7 +33,7 @@ namespace ChallengeCupV2.View.StateTab
         /// </summary>
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromSeconds(3),
+            Interval = TimeSpan.FromSeconds(4),
         };
 
         public StateTabContent()

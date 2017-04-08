@@ -28,11 +28,11 @@ namespace ChallengeCupV2.View.SettingTab
             UserControlManager.Register(this, this.GetType().Name);
             // Init text box
             stateReportDir.Text = SettingContainer.StateReportDir;
-            maxYTimeDomain.Text = SettingContainer.MaxYWavePlotTimeDomain.ToString();
-            minYTimeDomain.Text = SettingContainer.MinYWavePlotTimeDomain.ToString();
+            //maxYTimeDomain.Text = SettingContainer.MaxYWavePlotTimeDomain.ToString();
+            //minYTimeDomain.Text = SettingContainer.MinYWavePlotTimeDomain.ToString();
             initTemperature.Text = SettingContainer.InitTemperature.ToString();
             //referYTimeDomain.Text = SettingContainer.ReferYWavePlotTimeDomain.ToString();
-            referYTimeDomain.Text = StateConstantParam.WaveLengthReference.ToString();
+            //referYTimeDomain.Text = StateConstantParam.WaveLengthReference.ToString();
             E_PARM.Text = StateConstantParam.E.ToString();
             u_PARM.Text = StateConstantParam.u.ToString();
             delta_PARM.Text = StateConstantParam.DELTA.ToString();
@@ -67,11 +67,11 @@ namespace ChallengeCupV2.View.SettingTab
         private void apply_Click(object sender, RoutedEventArgs e)
         {
             SettingContainer.StateReportDir = stateReportDir.Text;
-            SettingContainer.MaxYWavePlotTimeDomain = double.Parse(maxYTimeDomain.Text);
-            SettingContainer.MinYWavePlotTimeDomain = double.Parse(minYTimeDomain.Text);
+            //SettingContainer.MaxYWavePlotTimeDomain = double.Parse(maxYTimeDomain.Text);
+            //SettingContainer.MinYWavePlotTimeDomain = double.Parse(minYTimeDomain.Text);
             SettingContainer.InitTemperature = double.Parse(initTemperature.Text);
             //SettingContainer.ReferYWavePlotTimeDomain = double.Parse(referYTimeDomain.Text);
-            StateConstantParam.WaveLengthReference = double.Parse(referYTimeDomain.Text);
+            //StateConstantParam.WaveLengthReference = double.Parse(referYTimeDomain.Text);
             StateConstantParam.E = double.Parse(E_PARM.Text);
             StateConstantParam.u = double.Parse(u_PARM.Text);
             StateConstantParam.DELTA = double.Parse(delta_PARM.Text);
@@ -80,6 +80,7 @@ namespace ChallengeCupV2.View.SettingTab
             StateConstantParam.DemodulationFrequency = double.Parse(demodulationFreq.Text);
             //(UserControlManager.Get("WavePlot") as WaveTab.WavePlot).UpdateYRange();
             //(UserControlManager.Get("FunctionBar") as FunctionBar).UpdateDir();
+            StateConstantParam.UpdateStressMultiplier();
         }
     }
 }

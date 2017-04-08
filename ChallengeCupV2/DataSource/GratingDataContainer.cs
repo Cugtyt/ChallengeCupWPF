@@ -20,24 +20,30 @@ namespace ChallengeCupV2.DataSource
         /// <summary>
         /// MaxLength limits length every list of double in Data array
         /// </summary>
-        private static int maxLength = 500;
+        private static int maxLength = 512;
         /// <summary>
         /// Stores all data after parsing input data
         /// </summary>
         //public static List<double>[] Data;
-        public static List<double>[][] Data;
         private static int chMax = 4;
         private static int gratingMax = 6;
+        // Do not set array length here, exception will thrown in UDPRead for init problem 
+        // !!!!
+        public static List<double>[][] Data;
+        public static double?[][] RefLen;
 
         static GratingDataContainer()
         {
             Data = new List<double>[chMax][];
+            RefLen = new double?[chMax][];
             for (int i = 0; i < chMax; i++)
             {
                 Data[i] = new List<double>[gratingMax];
+                RefLen[i] = new double?[gratingMax];
                 for (int j = 0; j < gratingMax; j++)
                 {
                     Data[i][j] = new List<double>();
+                    RefLen[i][j] = null;
                 }
             }
         }
@@ -204,6 +210,15 @@ namespace ChallengeCupV2.DataSource
                             Data[i][j].RemoveRange(0, data[i][j].Count);
                         }
                         Data[i][j].AddRange(data[i][j]);
+                        if (Data[i][j].Count > 0)
+                        {
+                            RefLen[i][j] = Data[i][j].Average();
+
+                        }
+                        //else
+                        //{
+                        //    RefLen[i][j] = null;
+                        //}
                     }
                 }
                 IsDataReady = Data[0][0].Count >= maxLength 

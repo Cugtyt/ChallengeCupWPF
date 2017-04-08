@@ -104,12 +104,11 @@ namespace ChallengeCupV2.DataSource
 #endif
                 throw new ArgumentNullException("WavePoints: FromComplexArray()");
             }
-            //List<Point> pl = new List<Point>();
             ps.Clear();
-            for (int i = 0; i < input.Length / 2; i++)
+            for (int i = 1; i < input.Length / 2; i++)
             {
                 ps.Add(new Point(i * StateConstantParam.DemodulationFrequency / input.Length, 
-                    Math.Abs(input[i].Real) * 2));
+                    Math.Abs(input[i].Real)));
             }
             Points.Collection.Clear();
             Points.AppendMany(ps);

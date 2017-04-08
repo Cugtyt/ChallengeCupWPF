@@ -54,6 +54,7 @@ namespace ChallengeCupV2.View.WaveTab
             
             UpdateYRange(yList[0] - 0.1, yList[0] + 0.1);
             xAxis.Visibility = Visibility.Hidden;
+            yAxis.Visibility = Visibility.Visible;
             dataSource.Add(yList);
         }
         
@@ -71,6 +72,7 @@ namespace ChallengeCupV2.View.WaveTab
             }
             plotter.Viewport.Restrictions.Clear();
             xAxis.Visibility = Visibility.Visible;
+            yAxis.Visibility = Visibility.Hidden;
             dataSource.FromComplexArray(com);
             return null;
         }

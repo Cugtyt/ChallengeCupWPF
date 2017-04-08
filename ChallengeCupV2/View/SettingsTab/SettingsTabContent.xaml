@@ -79,8 +79,8 @@
                         <TextBox Name="demodulationFreq"/>
                     </StackPanel>
                 </StackPanel>
-                <Label Content="Wave Display Settings" HorizontalAlignment="Left"/>
-                <StackPanel Orientation="Vertical" Margin="80,0,0,0">
+                <!--<Label Content="Wave Display Settings" HorizontalAlignment="Left"/>-->
+                <!--<StackPanel Orientation="Vertical" Margin="80,0,0,0">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Wavelength Reference:"/>
                         <TextBox Name="referYTimeDomain"/>
@@ -93,7 +93,7 @@
                         <Label Content="Minimum Wavelength:"/>
                         <TextBox Name="minYTimeDomain"/>
                     </StackPanel>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
         </StackPanel>
         <Button Grid.Row="2" Name="apply" Width="150" Height="60" Content="Apply" Click="apply_Click">

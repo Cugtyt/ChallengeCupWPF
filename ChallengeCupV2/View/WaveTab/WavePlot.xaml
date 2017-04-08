@@ -17,10 +17,11 @@
         <d3:ChartPlotter x:Name="plotter">
             <d3:ChartPlotter.VerticalAxis>
                 <!--<d3:VerticalIntegerAxis/>-->
-                <d3:VerticalAxis/>
+                <d3:VerticalAxis Name="yAxis"/>
             </d3:ChartPlotter.VerticalAxis>
             <d3:ChartPlotter.HorizontalAxis>
-                <d3:HorizontalIntegerAxis Name="xAxis"/>
+                <!--<d3:HorizontalIntegerAxis Name="xAxis"/>-->
+                <d3:HorizontalAxis Name="xAxis"/>
             </d3:ChartPlotter.HorizontalAxis>
             <!--<d3:Header Content="Title"/>-->
             <d3:VerticalAxisTitle Name="verticalTitle" Content="WaveLength"/>

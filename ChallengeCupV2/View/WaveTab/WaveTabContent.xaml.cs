@@ -30,7 +30,7 @@ namespace ChallengeCupV2.View.WaveTab
         //public static bool IsDisplaying = false;
         public static DispatcherTimer Timer = new DispatcherTimer()
         {
-            Interval = TimeSpan.FromMilliseconds(50)
+            Interval = TimeSpan.FromMilliseconds(60)
         };
         //private FileInfo[] files;
         //private int fileIndex = 0;
@@ -144,7 +144,7 @@ namespace ChallengeCupV2.View.WaveTab
             {
                 return;
             }
-            wavePlot.SetYTitle("");
+            wavePlot.SetYTitle("Frequency");
         }
         #endregion
         #region CH selected
