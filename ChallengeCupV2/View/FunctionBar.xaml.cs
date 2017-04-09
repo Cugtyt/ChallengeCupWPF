@@ -39,6 +39,7 @@ namespace ChallengeCupV2.View
         private Task udpTask;
         private CancellationTokenSource cts;
         private UDP.UDPRead udp = new UDP.UDPRead();
+        //private UDP.UDPRead udp;
 
         public FunctionBar()
         {
@@ -48,7 +49,8 @@ namespace ChallengeCupV2.View
 
         private void connect_Click(object sender, RoutedEventArgs e)
         {
-            
+            //udp = new UDP.UDPRead();
+
             // Connect asked
             if ((string)connect.Content == "Connect")
             {
@@ -67,6 +69,7 @@ namespace ChallengeCupV2.View
                 }
                 // Cancel UDP task
                 cts.Cancel();
+                //udp.Dispose();
                 connect.Content = "Connect";
             }
         }
@@ -111,6 +114,8 @@ namespace ChallengeCupV2.View
         {
             cts?.Cancel();
             SetTimers(false);
+            udp.Dispose();
+            //Dispose();
             Application.Current.Shutdown();
         }
 

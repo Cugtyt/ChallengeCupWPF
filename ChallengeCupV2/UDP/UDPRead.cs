@@ -108,6 +108,7 @@ namespace ChallengeCupV2.UDP
 
         public void Dispose()
         {
+            udpClient.Close();
             ((IDisposable)udpClient).Dispose();
         }
     }

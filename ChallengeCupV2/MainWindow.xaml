@@ -56,6 +56,6 @@
                 <settingTab:SettingTabContent/>
             </TabItem>
         </TabControl>
-        <view:FunctionBar Grid.Row="2" Margin="180,0,0,0"/>
+        <view:FunctionBar Grid.Row="2" Margin="230,0,0,0"/>
     </Grid>
 </Window>
