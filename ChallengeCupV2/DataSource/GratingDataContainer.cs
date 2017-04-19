@@ -20,7 +20,7 @@ namespace ChallengeCupV2.DataSource
         /// <summary>
         /// MaxLength limits length every list of double in Data array
         /// </summary>
-        private static int maxLength = 512;
+        private static int maxLength = 1024;
         /// <summary>
         /// Stores all data after parsing input data
         /// </summary>

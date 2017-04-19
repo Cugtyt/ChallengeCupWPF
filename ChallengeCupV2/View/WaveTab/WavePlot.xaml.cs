@@ -52,9 +52,10 @@ namespace ChallengeCupV2.View.WaveTab
                 return;
             }
             
-            UpdateYRange(yList[0] - 0.1, yList[0] + 0.1);
+            UpdateYRange(yList[0] - 0.15, yList[0] + 0.15);
             xAxis.Visibility = Visibility.Hidden;
             yAxis.Visibility = Visibility.Visible;
+            yAxis.Width = 74;
             dataSource.Add(yList);
         }
         
@@ -63,18 +64,18 @@ namespace ChallengeCupV2.View.WaveTab
         /// </summary>
         /// <param name="com"></param>
         /// <returns></returns>
-        public Task AddFreqPoints(Complex[] com)
+        public void AddFreqPoints(Complex[] com)
         {
             if (com == null || com.Length == 0)
             {
                 dataSource.CleanAll();
-                return null;
+                return;
             }
             plotter.Viewport.Restrictions.Clear();
             xAxis.Visibility = Visibility.Visible;
             yAxis.Visibility = Visibility.Hidden;
+            yAxis.Width = 10;
             dataSource.FromComplexArray(com);
-            return null;
         }
 
         /// <summary>

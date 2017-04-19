@@ -32,8 +32,8 @@ namespace ChallengeCupV2
             Width = SystemParameters.PrimaryScreenWidth;
             Height = SystemParameters.PrimaryScreenHeight;
             //this.WindowState = WindowState.Maximized;
-            Width = 800;
-            Height = 600;
+            //Width = 800;
+            //Height = 600;
         }
     }
 }

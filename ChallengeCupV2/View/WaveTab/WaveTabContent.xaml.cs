@@ -89,13 +89,19 @@ namespace ChallengeCupV2.View.WaveTab
                     //     select new Complex(y, 0))
                     //     .ToArray())
                     //    .Result);
-                    if (StateCalculator.FFTResults[selectedCH].Count == 0)
+                    //if (StateCalculator.FFTResults[selectedCH].Count == 0)
+                    //{
+                    //    return;
+                    //}
+                    if (GratingDataContainer.Data[selectedCH][selectedGrating] == null
+                        || GratingDataContainer.Data[selectedCH][selectedGrating].Count == 0)
                     {
                         return;
                     }
                     lock (this)
                     {
-                        wavePlot.AddFreqPoints(StateCalculator.FFTResults[selectedCH][selectedGrating]);
+                        //wavePlot.AddFreqPoints(StateCalculator.FFTResults[selectedCH][selectedGrating]);
+                        wavePlot.AddFreqPoints(DataFFT.Forward(GratingDataContainer.Data[selectedCH][selectedGrating]));
                     }
                     break;
                 default:

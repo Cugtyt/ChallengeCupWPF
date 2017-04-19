@@ -21,8 +21,8 @@ namespace ChallengeCupV2.DataSource.GearState
         {
             new StateDataTemplate(1, 1, "Stress", Calculator.Stress, "MPa", OutlierJudge.StressJudge),
             new StateDataTemplate(1, 1, "Strain", Calculator.Strain, "nε", OutlierJudge.StrainJudge),
-            new StateDataTemplate(1, 1, "Temperature", Calculator.Temperature, "℃", OutlierJudge.TemperatureJudge),
-            new StateDataTemplate(1, 1, "Frequency", Calculator.Frequency, "Hz", OutlierJudge.FrequencyJudge)
+            //new StateDataTemplate(1, 1, "Temperature", Calculator.Temperature, "℃", OutlierJudge.TemperatureJudge),
+            //new StateDataTemplate(1, 1, "Frequency", Calculator.Frequency, "Hz", OutlierJudge.FrequencyJudge)
         };
 
 
@@ -56,8 +56,8 @@ namespace ChallengeCupV2.DataSource.GearState
                         }
                         StateData.Add(new StateDataTemplate(i + 1, j + 1, "Stress", Calculator.Stress, "MPa", OutlierJudge.StressJudge));
                         StateData.Add(new StateDataTemplate(i + 1, j + 1, "Strain", Calculator.Strain, "nε",  OutlierJudge.StrainJudge));
-                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Temperature", Calculator.Temperature, "℃", OutlierJudge.TemperatureJudge));
-                        StateData.Add(new StateDataTemplate(i + 1, j + 1, "Frequency", Calculator.Frequency, "Hz", OutlierJudge.FrequencyJudge));
+                        //StateData.Add(new StateDataTemplate(i + 1, j + 1, "Temperature", Calculator.Temperature, "℃", OutlierJudge.TemperatureJudge));
+                        //StateData.Add(new StateDataTemplate(i + 1, j + 1, "Frequency", Calculator.Frequency, "Hz", OutlierJudge.FrequencyJudge));
                     }
                 }
             }

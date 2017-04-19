@@ -81,7 +81,7 @@ namespace ChallengeCupV2.View.ModelTab
                     break;
                 // For shaft average wavelength
                 case Models.Bearing b:
-                    waveLengthSource.Add(StateCalculator.GetAve(2, 1));
+                    waveLengthSource.Add(StateCalculator.GetAve(4, 1));
                     break;
                 // For bearing average wavelength
                 case Models.Shaft s:

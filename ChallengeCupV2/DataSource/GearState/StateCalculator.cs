@@ -30,13 +30,13 @@ namespace ChallengeCupV2.DataSource.GearState
         { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
         private static List<double>[] strain = new List<double>[4] 
         { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
-        private static List<double>[] temperature = new List<double>[4] 
-        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
-        private static List<double>[] frequency = new List<double>[4] 
-        { new List<double>(), new List<double>(), new List<double>(), new List<double>() };
+        //private static List<double>[] temperature = new List<double>[4] 
+        //{ new List<double>(), new List<double>(), new List<double>(), new List<double>() };
+        //private static List<double>[] frequency = new List<double>[4] 
+        //{ new List<double>(), new List<double>(), new List<double>(), new List<double>() };
 
-        public static List<Complex[]>[] FFTResults = new List<Complex[]>[4] 
-        { new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>() };
+        //public static List<Complex[]>[] FFTResults = new List<Complex[]>[4] 
+        //{ new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>(), new List<Complex[]>() };
         //private static List<double>[][] dataClone;
         /// <summary>
         /// 应力
@@ -58,7 +58,8 @@ namespace ChallengeCupV2.DataSource.GearState
         private static void calculateStress()
         {
             // Check data validation first
-            if (DELTABuffer[0].Count == 0)
+            if (DELTABuffer[0].Count == 0 && DELTABuffer[1].Count == 0 
+                && DELTABuffer[2].Count == 0 && DELTABuffer[3].Count == 0)
             {
                 return;
             }
@@ -88,7 +89,8 @@ namespace ChallengeCupV2.DataSource.GearState
         private static void calculateStrain()
         {
             // Check data validation first
-            if (DELTABuffer[0].Count == 0)
+            if (DELTABuffer[0].Count == 0 && DELTABuffer[1].Count == 0
+                && DELTABuffer[2].Count == 0 && DELTABuffer[3].Count == 0)
             {
                 return;
             }
@@ -108,100 +110,98 @@ namespace ChallengeCupV2.DataSource.GearState
         /// 
         /// Temperature change 1 ℃ when delta of wavelength change 10pm.
         /// </summary>
-        private static void calculateTemperature()
-        {
-            // Check data validation first
-            if (DELTABuffer[0].Count == 0)
-            {
-                return;
-            }
-            //temperature.Clear();
-            //temperature.AddRange(from delta in DELTABuffer
-            //                select delta / 10 + SettingContainer.InitTemperature);
-            for (int i = 0; i < temperature.Length; i++)
-            {
-                temperature[i].Clear();
-                temperature[i].AddRange(from delta in DELTABuffer[i]
-                                        select delta / 10 + SettingContainer.InitTemperature);
-            }
-        }
+        //private static void calculateTemperature()
+        //{
+        //    // Check data validation first
+        //    if (DELTABuffer[0].Count == 0 && DELTABuffer[1].Count == 0
+        //        && DELTABuffer[2].Count == 0 && DELTABuffer[3].Count == 0)
+        //    {
+        //        return;
+        //    }
+        //    //temperature.Clear();
+        //    //temperature.AddRange(from delta in DELTABuffer
+        //    //                select delta / 10 + SettingContainer.InitTemperature);
+        //    for (int i = 0; i < temperature.Length; i++)
+        //    {
+        //        temperature[i].Clear();
+        //        temperature[i].AddRange(from delta in DELTABuffer[i]
+        //                                select delta / 10 + SettingContainer.InitTemperature);
+        //    }
+        //}
 
         /// <summary>
         /// Calculate frequency of gear 
         /// </summary>
-        private static void calculateFrequency()
-        {
-            // Check data validation first
-            if (DELTABuffer[0].Count == 0 || !GratingDataContainer.IsDataReady)
-            {
-                return;
-            }
-            lock (FFTResults)
-            {
-                //FFTResults.Clear();
-                //frequency.Clear();
-                //for (int i = 0; i < GratingDataContainer.Data.Length; i++)
-                //{
-                //    var temp = (from y in GratingDataContainer.Data[i]
-                //                select new Complex(y, 0)).ToArray();
-                //    FFT.DataFFT.Forward(temp);
-                //    FFTResults.Add(temp);
-                //    double max = FFTResults[i][0].Real;
-                //    int maxIndex = 0;
-                //    for (int j = 1; j < FFTResults[i].Length / 2; j++)
-                //    {
-                //        if (FFTResults[i][j].Real > max)
-                //        {
-                //            max = FFTResults[i][j].Real;
-                //            maxIndex = j;
-                //        }
-                //    }
-                //    frequency.Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
-                for (int i = 0; i < frequency.Length; i++)
-                {
-                    frequency[i].Clear();
-                    FFTResults[i].Clear();
-                    for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
-                    {
-                        if (GratingDataContainer.Data[i][j].Count == 0)
-                        {
-                            FFTResults[i].Add(new Complex[1]);
-                            continue;
-                        }
+        //private static void calculateFrequency()
+        //{
+        //    // Check data validation first
+        //    if (DELTABuffer[0].Count == 0 && DELTABuffer[1].Count == 0
+        //        && DELTABuffer[2].Count == 0 && DELTABuffer[3].Count == 0)
+        //    {
+        //        return;
+        //    }
+        //    lock (FFTResults)
+        //    {
+        //        //FFTResults.Clear();
+        //        //frequency.Clear();
+        //        //for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+        //        //{
+        //        //    var temp = (from y in GratingDataContainer.Data[i]
+        //        //                select new Complex(y, 0)).ToArray();
+        //        //    FFT.DataFFT.Forward(temp);
+        //        //    FFTResults.Add(temp);
+        //        //    double max = FFTResults[i][0].Real;
+        //        //    int maxIndex = 0;
+        //        //    for (int j = 1; j < FFTResults[i].Length / 2; j++)
+        //        //    {
+        //        //        if (FFTResults[i][j].Real > max)
+        //        //        {
+        //        //            max = FFTResults[i][j].Real;
+        //        //            maxIndex = j;
+        //        //        }
+        //        //    }
+        //        //    frequency.Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
+        //        for (int i = 0; i < frequency.Length; i++)
+        //        {
+        //            frequency[i].Clear();
+        //            FFTResults[i].Clear();
+        //            for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
+        //            {
+        //                if (GratingDataContainer.Data[i][j].Count == 0)
+        //                {
+        //                    FFTResults[i].Add(new Complex[1]);
+        //                    continue;
+        //                }
 
-                        //var temp = (from y in dataClone[i][j]
-                        //            select new Complex(y, 0)).ToArray();
-                        List<Complex> cl = new List<Complex>();
-                        //foreach (var y in dataClone[i][j])
-                        //{
-                        //    cl.Add(new Complex(y, 0));
-                        //}
-                        for (int m = 0; m < GratingDataContainer.Data[i][j].Count; m++)
-                        {
-                            cl.Add(new Complex(GratingDataContainer.Data[i][j][m], 0));
-                        }
-                        var temp = cl.ToArray();
-                        FFT.DataFFT.Forward(temp);
-                        FFTResults[i].Add(temp);
-                        double max = FFTResults[i][j][1].Real;
-                        int maxIndex = 0;
-                        for (int k = 2; k < FFTResults[i][j].Length / 2; k++)
-                        {
-                            if (FFTResults[i][j][k].Real > max)
-                            {
-                                max = FFTResults[i][j][k].Real;
-                                maxIndex = k;
-                            }
-                        }
-                        frequency[i].Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
-                    }
-                }
-            }
-        }
-            //frequency.Clear();
-            //frequency.AddRange(new List<double>() { 0, 0, 0, 0});
-            //stress.AddRange(from delta in DELTABuffer
-            //                select delta / 10);
+        //                //var temp = (from y in dataClone[i][j]
+        //                //            select new Complex(y, 0)).ToArray();
+        //                List<Complex> cl = new List<Complex>();
+        //                //foreach (var y in dataClone[i][j])
+        //                //{
+        //                //    cl.Add(new Complex(y, 0));
+        //                //}
+        //                for (int m = 0; m < GratingDataContainer.Data[i][j].Count / 2; m++)
+        //                {
+        //                    cl.Add(new Complex(GratingDataContainer.Data[i][j][m], 0));
+        //                }
+        //                var temp = cl.ToArray();
+        //                FFT.DataFFT.Forward(temp);
+        //                FFTResults[i].Add(temp);
+        //                //double max = FFTResults[i][j][1].Real;
+        //                double max = 0;
+        //                int maxIndex = 0;
+        //                for (int k = 2; k < FFTResults[i][j].Length / 2; k++)
+        //                {
+        //                    if (FFTResults[i][j][k].Real > max)
+        //                    {
+        //                        max = FFTResults[i][j][k].Real;
+        //                        maxIndex = k;
+        //                    }
+        //                }
+        //                frequency[i].Add(maxIndex * StateConstantParam.DemodulationFrequency / temp.Length);
+        //            }
+        //        }
+        //    }
         //}
 
         /// <summary>
@@ -223,18 +223,6 @@ namespace ChallengeCupV2.DataSource.GearState
             double temp;
             double max;
             double min;
-            //for (int i = 0; i < GratingDataContainer.Data.Length; i++)
-            //{
-            //    temp = 0;
-            //    // Sampling according to SamplingStep
-            //    for (int j = 0; j < GratingDataContainer.Data[0].Count; 
-            //        j += (int)(GratingDataContainer.Data[0].Count / SamplingStep))
-            //    {
-            //        //temp += (GratingDataContainer.Data[i][j] - GratingDataContainer.Data[0][j]);
-            //        temp += GratingDataContainer.Data[i][j] - StateConstantParam.WaveLengthReference;
-            //    }
-            //    DELTABuffer.Add(temp * SamplingStep / GratingDataContainer.Data[0].Count);
-            //}
             for (int i = 0; i < GratingDataContainer.Data.Length; i++)
             {
                 for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
@@ -244,18 +232,6 @@ namespace ChallengeCupV2.DataSource.GearState
                         continue;
                     }
                     temp = min = max = GratingDataContainer.Data[i][j][0];
-                    //if (GratingDataContainer.Data[i][j].Count > 0)
-                    //{
-                    //    average[i].Add(GratingDataContainer.Data[i][j].Average());
-                    //}
-                    //average[i].Add(GratingDataContainer.Data[i][j].Average());
-                    //for (int k = 0; k < GratingDataContainer.Data[i][j].Count;
-                    //    k += (int)(GratingDataContainer.Data[i][j].Count / SamplingStep))
-                    //{
-                    //    //temp += GratingDataContainer.Data[i][j][k] - GratingDataContainer.Data[i][j].Average();
-                    //    tempAve += GratingDataContainer.Data[i][j][k] - GratingDataContainer.RefLen[i][j] ?? GratingDataContainer.Data[i][j].Average();
-                    //}
-                    //DELTABuffer[i].Add(tempAve * SamplingStep / GratingDataContainer.Data[i][j].Count);
                     for (int k = 0; k < GratingDataContainer.Data[i][j].Count; k++)
                     {
                         temp += GratingDataContainer.Data[i][j][k];
@@ -280,8 +256,8 @@ namespace ChallengeCupV2.DataSource.GearState
                 calculateDELTAAndAve();
                 calculateStress();
                 calculateStrain();
-                calculateTemperature();
-                calculateFrequency();
+                //calculateTemperature();
+                //calculateFrequency();
             }
         }
 
@@ -309,18 +285,18 @@ namespace ChallengeCupV2.DataSource.GearState
                         return 0;
                     }
                     return strain[chIndex][gratingIndex];
-                case Calculator.Temperature:
-                    if (chIndex > temperature.Length || grating > temperature[chIndex].Count)
-                    {
-                        return 0;
-                    }
-                    return temperature[chIndex][gratingIndex];
-                case Calculator.Frequency:
-                    if (chIndex > frequency.Length || grating > frequency[chIndex].Count)
-                    {
-                        return 0;
-                    }
-                    return frequency[chIndex][gratingIndex];
+                //case Calculator.Temperature:
+                //    if (chIndex > temperature.Length || grating > temperature[chIndex].Count)
+                //    {
+                //        return 0;
+                //    }
+                //    return temperature[chIndex][gratingIndex];
+                //case Calculator.Frequency:
+                //    if (chIndex > frequency.Length || grating > frequency[chIndex].Count)
+                //    {
+                //        return 0;
+                //    }
+                //    return frequency[chIndex][gratingIndex];
                 default:
                     return 0;
             }

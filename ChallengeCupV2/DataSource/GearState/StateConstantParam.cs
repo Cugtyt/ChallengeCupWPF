@@ -43,7 +43,7 @@ namespace ChallengeCupV2.DataSource.GearState
         /// </summary>
         public static double StressMultiplier = 880;
 
-        public static double DemodulationFrequency = 4e3;
+        public static double DemodulationFrequency = 4e4;
 
         public static void UpdateStressMultiplier()
         {

@@ -10,6 +10,8 @@ namespace ChallengeCupV2.FFT
 {
     public class DataFFT
     {
+
+        private static Complex[] temp;
         /// <summary>
         /// Forward Complex[] data
         /// </summary>
@@ -52,6 +54,30 @@ namespace ChallengeCupV2.FFT
 #if DEBUG
             Console.WriteLine("DataFFT: Forward() -> Forward ends");
 #endif
+        }
+
+        public static Complex[] Forward(List<double> input)
+        {
+            if (input == null)
+            {
+#if DEBUG
+                Console.WriteLine("DataFFT: Forward() -> Illegal input, argument can not be null.");
+#endif
+                throw new ArgumentNullException("DataFFT: Forward()");
+            }
+#if DEBUG
+            Console.WriteLine("DataFFT: Forward() -> Forward begins");
+#endif
+            temp = new Complex[input.Count];
+            for (int i = 0; i < input.Count; i++)
+            {
+                temp[i] = new Complex(input[i], 0);
+            }
+            Fourier.Forward(temp);
+#if DEBUG
+            Console.WriteLine("DataFFT: Forward() -> Forward ends");
+#endif
+            return temp;
         }
     }
 }
