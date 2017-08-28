@@ -128,11 +128,13 @@ namespace ChallengeCupV2.DataSource.GearState
     {
         public static Func<double, double, bool> StressJudge = (value, threshold) =>
         {
-            return Math.Abs(value - threshold) > 0.18 || Math.Abs(value - threshold) < 0.01;
+            return Math.Abs(value - threshold) > StateConstantParam.maxThreshold 
+                    || Math.Abs(value - threshold) < StateConstantParam.minThreshold;
         };
         public static Func<double, double, bool> StrainJudge = (value, threshold) =>
         {
-            return Math.Abs(value - threshold) > 0.18 || Math.Abs(value - threshold) < 0.01;
+            return Math.Abs(value - threshold) > StateConstantParam.maxThreshold 
+                    || Math.Abs(value - threshold) < StateConstantParam.minThreshold;
         };
         //public static Func<double, double, bool> TemperatureJudge = (value, threshold) =>
         //{

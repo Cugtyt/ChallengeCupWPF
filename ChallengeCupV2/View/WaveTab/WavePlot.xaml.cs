@@ -52,7 +52,7 @@ namespace ChallengeCupV2.View.WaveTab
                 return;
             }
             
-            UpdateYRange(yList[0] - 0.15, yList[0] + 0.15);
+            UpdateYRange(yList[0] - 0.07, yList[0] + 0.07);
             xAxis.Visibility = Visibility.Hidden;
             yAxis.Visibility = Visibility.Visible;
             yAxis.Width = 74;

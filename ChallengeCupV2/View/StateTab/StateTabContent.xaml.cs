@@ -77,7 +77,9 @@ namespace ChallengeCupV2.View.StateTab
         private void dataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
             // Test for change background
-            if ((e.Row.Item as StateDataTemplate).IsOutlier)
+            //if ((e.Row.Item as StateDataTemplate).IsOutlier)
+            if ((e.Row.Item as StateDataTemplate).GratingID == 1
+                && (UserControlManager.Get("FunctionBar") as FunctionBar).startBtn.Content.ToString() == "Stop")
             {
                 e.Row.Background = Brushes.Red;
             }

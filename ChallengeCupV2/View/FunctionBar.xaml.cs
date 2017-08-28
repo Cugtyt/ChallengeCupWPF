@@ -39,12 +39,15 @@ namespace ChallengeCupV2.View
         private Task udpTask;
         private CancellationTokenSource cts;
         private UDP.UDPRead udp = new UDP.UDPRead();
+        public Button startBtn;
         //private UDP.UDPRead udp;
+
 
         public FunctionBar()
         {
             InitializeComponent();
             UserControlManager.Register(this, GetType().Name);
+            startBtn = start;
         }
 
         private void connect_Click(object sender, RoutedEventArgs e)

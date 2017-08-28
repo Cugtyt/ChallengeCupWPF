@@ -39,6 +39,10 @@ namespace ChallengeCupV2.View.SettingTab
             alpha_PARM.Text = StateConstantParam.ALPHA.ToString();
             gearWidth.Text = StateConstantParam.GEAR_WIDTH.ToString();
             demodulationFreq.Text = StateConstantParam.DemodulationFrequency.ToString();
+            gearChannel.Text = StateConstantParam.GearChannel.ToString();
+            //bearingChannel.Text = StateConstantParam.BearingChannel.ToString();
+            maxThreshold.Text = StateConstantParam.maxThreshold.ToString();
+            minThreshold.Text = StateConstantParam.minThreshold.ToString();
         }
 
         /// <summary>
@@ -80,7 +84,11 @@ namespace ChallengeCupV2.View.SettingTab
             StateConstantParam.DemodulationFrequency = double.Parse(demodulationFreq.Text);
             //(UserControlManager.Get("WavePlot") as WaveTab.WavePlot).UpdateYRange();
             //(UserControlManager.Get("FunctionBar") as FunctionBar).UpdateDir();
-            StateConstantParam.UpdateStressMultiplier();
+            //StateConstantParam.UpdateStressMultiplier();
+            StateConstantParam.GearChannel = int.Parse(gearChannel.Text);
+            //StateConstantParam.BearingChannel = int.Parse(bearingChannel.Text);
+            StateConstantParam.maxThreshold = double.Parse(maxThreshold.Text);
+            StateConstantParam.minThreshold = double.Parse(minThreshold.Text);
         }
     }
 }

@@ -76,16 +76,16 @@ namespace ChallengeCupV2.View.ModelTab
             {
                 // For gear average wavelength
                 case Models.Gear g:
-                    waveLengthSource.Add(StateCalculator.GetAve(1, 1));
-                    waveLengthSource.Add(StateCalculator.GetAve(1, 2));
+                    waveLengthSource.Add(StateCalculator.GetAve(StateConstantParam.GearChannel, 1));
+                    waveLengthSource.Add(StateCalculator.GetAve(StateConstantParam.GearChannel, 2));
                     break;
                 // For shaft average wavelength
                 case Models.Bearing b:
-                    waveLengthSource.Add(StateCalculator.GetAve(4, 1));
+                    waveLengthSource.Add(StateCalculator.GetAve(StateConstantParam.BearingChannel, 1));
                     break;
                 // For bearing average wavelength
                 case Models.Shaft s:
-                    waveLengthSource.Add(StateCalculator.GetAve(3, 1));
+                    waveLengthSource.Add(StateCalculator.GetAve(StateConstantParam.ShaftChannel, 1));
                     break;
                 default:
                     break;

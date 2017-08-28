@@ -34,6 +34,8 @@ namespace ChallengeCupV2
             //this.WindowState = WindowState.Maximized;
             //Width = 800;
             //Height = 600;
+            //Width = 1366;
+            //Height = 768;
         }
     }
 }

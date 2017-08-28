@@ -51,5 +51,14 @@ namespace ChallengeCupV2.DataSource.GearState
                 (StateConstantParam.u * (Math.Pow(StateConstantParam.DELTA, StateConstantParam.GEAR_WIDTH) 
                 * StateConstantParam.ALPHA));
         }
+
+        // Channel
+        public static int GearChannel = 2;
+        public static int BearingChannel = 2;
+        public static int ShaftChannel = 3;
+
+        // threshold
+        public static double minThreshold = 0.01;
+        public static double maxThreshold = 0.18;
     }
 }

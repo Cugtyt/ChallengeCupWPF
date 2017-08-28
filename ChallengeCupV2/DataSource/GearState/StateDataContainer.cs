@@ -46,9 +46,11 @@ namespace ChallengeCupV2.DataSource.GearState
             if (StateData.Count != (from ch in GratingDataContainer.Data select ch.Length).Sum())
             {
                 StateData.Clear();
-                for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+                //for (int i = 0; i < GratingDataContainer.Data.Length; i++)
+                for (int i = 0; i < StateConstantParam.GearChannel; i++)
                 {
-                    for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
+                    //for (int j = 0; j < GratingDataContainer.Data[i].Length; j++)
+                    for (int j = 0; j < 2; j++)
                     {
                         if (GratingDataContainer.Data[i][j].Count <= 0)
                         {

@@ -1,12 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ChallengeCupWPF.DataUtils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Research.DynamicDataDisplay.DataSources;
-using System.Windows;
 using System.Numerics;
 using MathNet.Numerics.IntegralTransforms;
 

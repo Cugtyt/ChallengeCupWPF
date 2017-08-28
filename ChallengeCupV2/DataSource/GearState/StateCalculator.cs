@@ -80,6 +80,9 @@ namespace ChallengeCupV2.DataSource.GearState
         /// Param:
         ///     Δλ_B -- 反射光波偏移量
         ///     α_ɛ -- 对于中心波长处于1550nm附近的光栅，其灵敏度系数大约为α_ɛ=1.2pm/μɛ
+        ///     Note:
+        ///         To reduce the deviation, add some params, let delta lambda wavelength * 1000 - 180,
+        ///         then * 1.6 according to experiment.
         /// Input:
         ///     Δλ_B -- 反射光波偏移量
         ///         ---- 需要基准值和实时值
@@ -101,7 +104,7 @@ namespace ChallengeCupV2.DataSource.GearState
             {
                 strain[i].Clear();
                 strain[i].AddRange(from delta in DELTABuffer[i]
-                                   select delta / StateConstantParam.ALPHA);
+                                   select (delta * 1000 / StateConstantParam.ALPHA - 180) * 1.6);
             }
         }
 

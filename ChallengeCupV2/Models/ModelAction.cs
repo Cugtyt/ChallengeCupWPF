@@ -133,7 +133,7 @@ namespace ChallengeCupV2.Models
                 new Vector3D(1, 0, 0) : new Vector3D(0, 1, 0);
             // Speed up factor is 16
             model.GetAxisAngleRotation().Angle += diff /
-                (rotateStyle == RotateStyle.Horizontal ? viewPort.ActualWidth : viewPort.ActualHeight)
+                (rotateStyle == RotateStyle.Horizontal ? viewPort.ActualWidth : -viewPort.ActualHeight)
                  * 64 * Math.PI;
             mouseLastPos = curPos;
         }
